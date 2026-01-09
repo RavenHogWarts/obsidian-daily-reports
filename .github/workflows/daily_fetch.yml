@@ -1,0 +1,47 @@
+name: Daily Obsidian Report Data Fetcher
+
+on:
+  schedule:
+    # 每天 UTC 0点运行 (Beijing Time 8:00)
+    - cron: "0 0 * * *"
+  workflow_dispatch: # 允许手动触发测试
+
+jobs:
+  fetch-and-commit:
+    runs-on: ubuntu-latest
+
+    # 赋予写权限以提交代码
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Run Fetcher Script
+        env:
+          # GitHub Actions 自动提供的 Token，有读写权限（如果在 permissions 中声明了）
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/obsidian_fetcher.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          # 添加 data 目录下的更改
+          git add data/
+
+          # 检查是否有变更，如果有则提交
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: auto-update daily obsidian report data [skip ci]"
+            git push
+          fi
