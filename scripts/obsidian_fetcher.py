@@ -5,6 +5,7 @@ import datetime
 import os
 import sys
 import time
+import xml.etree.ElementTree as ET
 
 # ==============================================================================
 # 用户配置区域 (USER CONFIGURATION AREA)
@@ -39,7 +40,7 @@ CONFIG = {
     },
     "github_repo": "obsidianmd/obsidian-releases",
     "reddit": {
-        "url": "https://www.reddit.com/r/ObsidianMD/new.json?limit=50", # 获取最新 50 条
+        "url": "https://www.reddit.com/r/ObsidianMD/new.rss?limit=50", # Use RSS to avoid JSON 403
         "name": "Reddit ObsidianMD"
     }
 }
@@ -156,60 +157,82 @@ def fetch_discourse_topics(forum_name, base_url, category_api_url, start_time, e
 
 def fetch_reddit_posts(config, start_time, end_time):
     """
-    从 Reddit 获取昨日帖子 (使用 .json API)。
-    Fetch yesterday's posts from Reddit using the .json endpoint.
+    从 Reddit 获取昨日帖子 (使用 RSS/Atom API 以避免 JSON 403 错误)。
+    Fetch yesterday's posts from Reddit using RSS/Atom to bypass JSON blocking.
     """
     name = config['name']
     url = config['url']
-    print(f"🔍 [{name}] Checking for new posts...")
+    print(f"🔍 [{name}] Checking for new posts (RSS)...")
     
-    # Reddit API 极其讨厌数据中心 IP 使用通用浏览器 User-Agent。
-    # 为了避免 429/403 错误，必须使用自定义的 User-Agent。
-    # Use a custom User-Agent to avoid Reddit blocking GitHub Actions IPs.
+    # Reddit RSS is stricter with User-Agent from cloud IPs.
+    # Use a custom User-Agent to identify as a script/bot.
     reddit_headers = {
         "User-Agent": "script:obsidian-daily-reporter:v1.0 (by /u/github-actions)",
-        "Accept": "application/json"
+        "Accept": "application/atom+xml,application/xml,text/xml"
     }
     
-    data = get_json(url, headers=reddit_headers)
-    
-    if not data or 'data' not in data or 'children' not in data['data']:
-        print(f"❌ [{name}] Failed to fetch posts (Check connection or rate limit).")
+    xml_data = ""
+    try:
+        req = urllib.request.Request(url, headers=reddit_headers)
+        with urllib.request.urlopen(req) as response:
+            xml_data = response.read().decode('utf-8')
+    except Exception as e:
+        print(f"❌ [{name}] Failed to fetch RSS: {e}")
         return []
 
     new_posts = []
-    posts = data['data']['children']
     
-    for post_wrapper in posts:
-        post = post_wrapper.get('data', {})
+    try:
+        # Parse XML
+        root = ET.fromstring(xml_data)
+        # Atom Namespace
+        # Usually Reddit RSS uses: http://www.w3.org/2005/Atom
+        # We can handle namespace by {uri}tag or using namespaces dict
+        ns = {'atom': 'http://www.w3.org/2005/Atom'}
         
-        # Reddit created_utc 是 Unix Timestamp
-        created_utc_ts = post.get('created_utc')
-        if not created_utc_ts:
-            continue
-            
-        created_at = datetime.datetime.fromtimestamp(created_utc_ts, datetime.timezone.utc)
+        # Verify it is an atom feed
+        if 'http://www.w3.org/2005/Atom' not in root.tag:
+             # Fallback if specific namespace is missing or different?
+             # But Reddit uses Atom. Let's try direct search if ns fails.
+             pass
+
+        entries = root.findall('atom:entry', ns)
         
-        if start_time <= created_at <= end_time:
-            title = post.get('title')
-            author = post.get('author')
-            permalink = post.get('permalink')
-            full_url = f"https://www.reddit.com{permalink}"
-            selftext = post.get('selftext') or post.get('url') # 如果是链接贴，用 URL 作为内容摘要
+        for entry in entries:
+            # Extract fields
+            title_elem = entry.find('atom:title', ns)
+            title = title_elem.text if title_elem is not None else "No Title"
             
-            new_posts.append({
-                "source": "Reddit",
-                "title": title,
-                "url": full_url,
-                "author": author,
-                "created_at": created_at.isoformat(),
-                "content_text": selftext # Reddit 主要是文本
-            })
-            print(f"  ✅ Found: {title}")
-        else:
-            # New 列表是按时间倒序的，如果遇到比昨天还早的，理论上可以停止，
-            # 但为了防止置顶帖干扰，还是建议遍历完当前页(25-50条)
-            pass
+            link_elem = entry.find('atom:link', ns)
+            link = link_elem.attrib.get('href') if link_elem is not None else ""
+            
+            updated_elem = entry.find('atom:updated', ns)
+            if updated_elem is not None:
+                updated_str = updated_elem.text
+                created_at = parse_iso_time(updated_str)
+            else:
+                created_at = None
+
+            author_elem = entry.find('atom:author/atom:name', ns)
+            author = author_elem.text if author_elem is not None else "Unknown"
+
+            content_elem = entry.find('atom:content', ns)
+            content = content_elem.text if content_elem is not None else ""
+            
+            if created_at and start_time <= created_at <= end_time:
+                 new_posts.append({
+                    "source": "Reddit",
+                    "title": title,
+                    "url": link,
+                    "author": author,
+                    "created_at": created_at.isoformat(),
+                    "content_text": content # RSS content is usually HTML
+                })
+                 print(f"  ✅ Found: {title}")
+            
+    except ET.ParseError as e:
+        print(f"❌ [{name}] XML Parse Error: {e}")
+        return []
             
     return new_posts
 
