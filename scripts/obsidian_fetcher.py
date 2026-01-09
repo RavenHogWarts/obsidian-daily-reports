@@ -163,9 +163,15 @@ def fetch_reddit_posts(config, start_time, end_time):
     url = config['url']
     print(f"🔍 [{name}] Checking for new posts...")
     
-    # Reddit API 需要独特的 User-Agent，尽量不要用默认的 requests/urllib
-    # Config 中的 HEADERS 已经设置了伪装的 Chrome UA
-    data = get_json(url)
+    # Reddit API 极其讨厌数据中心 IP 使用通用浏览器 User-Agent。
+    # 为了避免 429/403 错误，必须使用自定义的 User-Agent。
+    # Use a custom User-Agent to avoid Reddit blocking GitHub Actions IPs.
+    reddit_headers = {
+        "User-Agent": "script:obsidian-daily-reporter:v1.0 (by /u/github-actions)",
+        "Accept": "application/json"
+    }
+    
+    data = get_json(url, headers=reddit_headers)
     
     if not data or 'data' not in data or 'children' not in data['data']:
         print(f"❌ [{name}] Failed to fetch posts (Check connection or rate limit).")
