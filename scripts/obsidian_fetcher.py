@@ -357,19 +357,18 @@ def main():
     # 假设 script 在 scripts/ 目录下，向上找一级到项目根目录
     project_root = os.path.dirname(script_dir) 
     
-    # 确保 data 目录存在
-    data_dir = os.path.join(project_root, "data")
+    # 确保 data/daily 目录存在
+    # Ensure data/daily directory exists
+    data_dir = os.path.join(project_root, "data", "daily")
     if not os.path.exists(data_dir):
-        # 如果 scripts/ 不是在根目录下二级，可能找不到正确的 data 目录
-        # 为了稳健，如果找不到 data 目录，就在当前脚本目录下创建
-        # 但我们设计的结构是 project/scripts 和 project/data
         try:
-             os.makedirs(data_dir)
+            os.makedirs(data_dir, exist_ok=True)
         except OSError:
-             # Fallback to local dir if permission denied or path issue
-             data_dir = script_dir
+            # Fallback to local dir if permission denied or path issue
+            data_dir = script_dir
     
-    filename = f"obsidian_daily_{yesterday_str}.json"
+    # 文件名格式: {YYYY-MM-DD}.json
+    filename = f"{yesterday_str}.json"
     output_file = os.path.join(data_dir, filename)
     
     with open(output_file, 'w', encoding='utf-8') as f:

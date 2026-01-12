@@ -35,8 +35,8 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # 添加 data 目录下的更改
-          git add data/
+          # 添加 data/daily 目录下的更改
+          git add data/daily/
 
           # 检查是否有变更，如果有则提交
           if git diff --staged --quiet; then
