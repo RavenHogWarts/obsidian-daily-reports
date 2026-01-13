@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useWeeklyData } from '../hooks/useData';
 import type { ForumPost, PullRequest, RedditPost } from '../types/data';

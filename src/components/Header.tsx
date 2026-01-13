@@ -1,7 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import { UnifiedCalendar } from './UnifiedCalendar';
+import { useIndex } from '../hooks/useData';
 
 const Header = () => {
+  const params = useParams<{ date?: string; week?: string }>();
+  const { data: indexData } = useIndex();
+
+  // 获取当前日期或周
+  const currentDate = params.date;
+  const currentWeek = params.week;
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/70 backdrop-blur-md transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -18,6 +27,12 @@ const Header = () => {
           </nav>
           <div className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
           <ThemeToggle />
+          <UnifiedCalendar
+            availableDates={indexData.daily}
+            availableWeeks={indexData.weekly}
+            currentDate={currentDate}
+            currentWeek={currentWeek}
+          />
         </div>
       </div>
     </header>
