@@ -1,0 +1,59 @@
+# .github/workflows/vercel-deploy-debounced.yml
+
+name: Vercel Deploy (Debounced)
+
+on:
+  push:
+    branches:
+      - web # 将此配置为您的主分支（例如 'main', 'master', 'production'）
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    # 此 'concurrency' 设置是去抖动的关键：
+    # - 'group': 定义并发的组。此组中只能同时运行一个作业。
+    #            使用固定字符串如 'vercel-deploy-main' 意味着所有推送到 'main' 的作业
+    #            都将属于此组。
+    # - 'cancel-in-progress: true': 如果在旧作业仍在运行时，此组中启动了新作业，
+    #                               旧作业将被自动取消。
+    concurrency:
+      group: vercel-deploy-web
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Debounce commits for 5 minutes
+        run: |
+          echo "新提交已推送。等待 5 分钟以确保没有进一步的提交..."
+          sleep 300 # 等待 300 秒（5 分钟）
+          echo "去抖动期已完成。如果此作业未被取消，则没有新提交到达。"
+          # 如果在此 'sleep' 期间有新提交被推送，
+          # 此作业将被 'concurrency' 设置取消，
+          # 并且将为最新提交启动新作业。
+          # 因此，如果此步骤完成，意味着在此分支上有 5 分钟
+          # 没有新提交。
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        # 此步骤提取您的 Vercel 项目的环境变量和配置。
+        # 这通常是 'vercel build' 步骤成功所需的。
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project
+        # 这在 GitHub Actions 运行器中本地执行构建。
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          SITE_URL: ${{ secrets.VERCEL_URL }}
+
+      - name: Deploy Project to Vercel
+        # '--prebuilt' 标志告诉 Vercel 使用上一步的已构建输出，
+        # 这节省了 Vercel 构建时间，因为它不需要再次构建。
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
