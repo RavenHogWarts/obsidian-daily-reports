@@ -5,13 +5,8 @@ import re
 import argparse
 import logging
 from typing import Dict, Any, Optional, List
-
 import httpx
-try:
-    from zai import ZhipuAiClient
-except ImportError:
-    # Fallback or mock for environments without zai installed during dev/test if needed
-    ZhipuAiClient = None
+from zai import ZhipuAiClient
 
 # Configure Logging
 logging.basicConfig(
