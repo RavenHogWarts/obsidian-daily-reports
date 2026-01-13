@@ -1,0 +1,532 @@
+{
+  "date": "2026-01-12",
+  "generated_at": "2026-01-13T01:20:28.467601+00:00",
+  "chinese_forum": [
+    {
+      "source": "Obsidian Chinese Forum",
+      "title": "obsidian-excalidraw 会在客户端打开时明显卡顿",
+      "url": "https://forum-zh.obsidian.md/t/topic/57623",
+      "author": "zhouwei15301",
+      "created_at": "2026-01-12T08:10:29.520Z",
+      "content_html": "<p>我手下有两台电脑，一台配置高（后面称 A），一台配置稍低（后面称 B）</p>\n<p>最近感觉所有电脑打开 obsidian 时明显卡顿，A 会卡个 1-1.5s 左右，B 电脑直接卡死，导致无法进入设置</p>\n<p>我在A上进行，一个一个关闭插件进行测试，最后锁定 obsidian-excalidraw 插件。</p>\n<p>关掉之后神清气爽，丝毫不卡，最后换回 obsidian 自带的画板了。</p>"
+    }
+  ],
+  "english_forum": [
+    {
+      "source": "Obsidian English Forum",
+      "title": "\"What did they say in that meeting?\" - Solved. ",
+      "url": "https://forum.obsidian.md/t/what-did-they-say-in-that-meeting-solved/109845",
+      "author": "ayumu.homes",
+      "created_at": "2026-01-12T07:03:06.752Z",
+      "content_html": "<p>Recording meetings is easy. Finding that one thing someone said? Not so much.</p>\n<p>I built <strong>Recmo</strong> - a macOS app that:<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/round_pushpin.png?v=15\" title=\":round_pushpin:\" class=\"emoji\" alt=\":round_pushpin:\" loading=\"lazy\" width=\"20\" height=\"20\"> Records any meeting (Zoom, Meet, Teams, anything)<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/locked.png?v=15\" title=\":locked:\" class=\"emoji\" alt=\":locked:\" loading=\"lazy\" width=\"20\" height=\"20\"> Transcribes locally (Whisper - no cloud, no API)<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/memo.png?v=15\" title=\":memo:\" class=\"emoji\" alt=\":memo:\" loading=\"lazy\" width=\"20\" height=\"20\"> Outputs Markdown directly to your Vault</p>\n<p><strong>Seamless Obsidian integration:</strong><br>\nNo plugins. No API. No config.<br>\nJust set your output folder to your Vault - that’s it.<br>\nRecmo and Obsidian don’t “connect.” They just coexist naturally.</p>\n<p><strong>The killer feature:</strong> <code>![[meeting.m4a]]</code> embedded audio.<br>\nRead the summary, click play, hear the exact moment.</p>\n<aside class=\"onebox allowlistedgeneric\" data-onebox-src=\"https://recmo.me/en.html\">\n  <header class=\"source\">\n\n      <a href=\"https://recmo.me/en.html\" target=\"_blank\" rel=\"noopener nofollow ugc\">recmo.me</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    \n\n<h3><a href=\"https://recmo.me/en.html\" target=\"_blank\" rel=\"noopener nofollow ugc\">Recmo - From Recording to Remembering.</a></h3>\n\n  <p>One-tap recording. Local transcription. Auto-saved to your notes. Meeting recording app for macOS.</p>\n\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p><img src=\"https://forum.obsidian.md/uploads/default/original/3X/b/c/bc55674dc64168a93b016534c98cca923b3724e5.gif\" alt=\"preview\" data-base62-sha1=\"qS4JV77oGVnVLuswyhUBZtBiBXD\" width=\"422\" height=\"317\" class=\"animated\"></p>"
+    },
+    {
+      "source": "Obsidian English Forum",
+      "title": "Stack tabs with Canvas causing cursor drift, and I fixed it",
+      "url": "https://forum.obsidian.md/t/stack-tabs-with-canvas-causing-cursor-drift-and-i-fixed-it/109838",
+      "author": "RobertttBS",
+      "created_at": "2026-01-12T01:32:30.250Z",
+      "content_html": "<p>I met the issue same as <a href=\"https://forum.obsidian.md/t/stacked-tabs-when-multiples-canvases-are-stacked-the-mouse-selection-and-scrolling-do-not-work-property-its-shifted/104658\" class=\"inline-onebox\">Stacked Tabs: When multiples canvases are stacked, the mouse selection and scrolling do not work property (it's shifted)</a></p>\n<p>And I fixed it at my plugin Enhanced Canvas: <a href=\"https://forum.obsidian.md/t/new-plugin-enhanced-canvas/97169\" class=\"inline-onebox\">New Plugin: Enhanced Canvas</a></p>\n<p>Basically, I added two event listeners related to “stack tabs” and “canvas” that trigger <code>view.onResize()</code> method whenever necessary.</p>"
+    }
+  ],
+  "github_opened": [
+    {
+      "source": "GitHub Open",
+      "title": "Change cover from theme \"Universitario\"",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9492",
+      "author": "wulflo",
+      "created_at": "2026-01-12T15:32:00Z",
+      "body": "# I am submitting a new Community Theme\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my theme: https://github.com/wulflo/obsidian-3Sumaq\r\n\r\n## Theme checklist\r\n\r\n<!--- Confirm that you have done the following before submitting your theme -->\r\n- [x] My repo contains all required files (please *do not* add them to this `obsidian-releases` repo).\r\n  - [x] `manifest.json`\r\n  - [x] `theme.css`\r\n  - [x] The screenshot file (16:9 aspect ratio, recommended size is 512px by 288px for fast loading).\r\n- [x] I have indicated which modes (dark, light, or both) are compatible with my theme.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my theme's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Themes/App+themes/Theme+guidelines and have self-reviewed my theme to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other themes that I'm using. I have given proper attribution to these other themes in my `README.md`.\r\n",
+      "state": "closed"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: Universal Cursor Hotkeys",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9491",
+      "author": "shichishima",
+      "created_at": "2026-01-12T14:02:16Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/shichishima/obsidian-universal-cursor-hotkeys\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: Spark Assistant",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9490",
+      "author": "devautomaze",
+      "created_at": "2026-01-12T11:06:04Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [x]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: Note Tabs",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9489",
+      "author": "jaemega",
+      "created_at": "2026-01-12T10:56:17Z",
+      "body": "Proposal to add \"Note Tabs\" to community plugins\r\n\r\n# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/Project-Free-Rangers/obsidian-notetabs\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add Note to Wiki.js plugin entry",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9488",
+      "author": "luashiping",
+      "created_at": "2026-01-12T10:54:16Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [ ] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [ x ]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [ x ] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [ x ] `main.js`\r\n  - [ x  ] `manifest.json`\r\n  - [ x  ] `styles.css` _(optional)_\r\n- [ x ] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [ x  ] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [ x ] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [ x ] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [ x  ] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [ x ] I have added a license in the LICENSE file.\r\n- [ x ] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Update community-plugins.json",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9487",
+      "author": "swefpifh",
+      "created_at": "2026-01-12T07:04:32Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/swefpifh/obsidian-note-folder-state-icons\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [ ]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [ x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: Claude Terminal",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9486",
+      "author": "suyuan2022",
+      "created_at": "2026-01-12T07:03:16Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:https://github.com/suyuan2022/claude-terminal\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [ ] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [ ] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: One Click Lock",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9485",
+      "author": "lihengjun",
+      "created_at": "2026-01-12T06:14:04Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\nLink to my plugin:https://github.com/lihengjun/obsidian-one-click-lock\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: Export Bases Files",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9482",
+      "author": "ljklonepiece",
+      "created_at": "2026-01-12T03:31:57Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/ljklonepiece/obsidian-export-files-by-bases\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [x]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: Planner",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9481",
+      "author": "SawyerRensel",
+      "created_at": "2026-01-12T03:07:23Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\nhttps://github.com/SawyerRensel/Planner\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [x]  Linux\r\n  - [x]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n  - [x] `timeline.html` (for [Timeline View](https://sawyerrensel.github.io/Planner/views/timeline/))\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: Vassago - Graph Relation Types",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9480",
+      "author": "luke1879012",
+      "created_at": "2026-01-12T03:05:06Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [ ]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: TapGloss",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9476",
+      "author": "jesse-ux",
+      "created_at": "2026-01-12T01:47:32Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n  - [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n  ## Repo URL\r\n\r\n  <!--- Paste a link to your repo here for easy access -->\r\n  Link to my plugin: https://github.com/jesse-ux/obsidian-tapgloss\r\n\r\n  ## Release Checklist\r\n  - [x] I have tested the plugin on\r\n    - [x]  Windows\r\n    - [x]  macOS\r\n    - [ ]  Linux\r\n    - [ ]  Android _(if applicable)_\r\n    - [ ]  iOS _(if applicable)_\r\n  - [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n    - [x] `main.js`\r\n    - [x] `manifest.json`\r\n    - [ ] `styles.css` _(optional)_\r\n  - [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n  - [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n  - [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n  - [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n  - [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n  - [x] I have added a license in the LICENSE file.\r\n  - [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n        I have given proper attribution to these other projects in my `README.md`. \r\n     ",
+      "state": "open"
+    },
+    {
+      "source": "GitHub Open",
+      "title": "Add plugin: OpenCode CLI Sidebar",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9475",
+      "author": "derekross",
+      "created_at": "2026-01-12T01:38:59Z",
+      "body": "# I am submitting a new Community Plugin\r\n\r\n- [X] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [ ]  macOS\r\n  - [X]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [X] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [X] `main.js`\r\n  - [X] `manifest.json`\r\n  - [X] `styles.css` _(optional)_\r\n- [X] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [X] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [X] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [X] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [X] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [X] I have added a license in the LICENSE file.\r\n- [X] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
+      "state": "open"
+    }
+  ],
+  "github_merged": [
+    {
+      "source": "GitHub Merged",
+      "title": "Change cover from theme \"Universitario\"",
+      "url": "https://github.com/obsidianmd/obsidian-releases/pull/9492",
+      "author": "wulflo",
+      "merged_at": "2026-01-12T18:12:10Z",
+      "body": "# I am submitting a new Community Theme\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my theme: https://github.com/wulflo/obsidian-3Sumaq\r\n\r\n## Theme checklist\r\n\r\n<!--- Confirm that you have done the following before submitting your theme -->\r\n- [x] My repo contains all required files (please *do not* add them to this `obsidian-releases` repo).\r\n  - [x] `manifest.json`\r\n  - [x] `theme.css`\r\n  - [x] The screenshot file (16:9 aspect ratio, recommended size is 512px by 288px for fast loading).\r\n- [x] I have indicated which modes (dark, light, or both) are compatible with my theme.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my theme's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Themes/App+themes/Theme+guidelines and have self-reviewed my theme to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other themes that I'm using. I have given proper attribution to these other themes in my `README.md`.\r\n",
+      "state": "merged"
+    }
+  ],
+  "reddit": [
+    {
+      "source": "Reddit",
+      "title": "Is this happening to anyone else on 1.11.4?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qban57/is_this_happening_to_anyone_else_on_1114/",
+      "author": "/u/exaltcovert",
+      "created_at": "2026-01-12T23:15:07+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qban57/is_this_happening_to_anyone_else_on_1114/\"> <img src=\"https://preview.redd.it/tkb555go30dg1.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=39f297feb8576e3552fd4423e5626742c341f902\" alt=\"Is this happening to anyone else on 1.11.4?\" title=\"Is this happening to anyone else on 1.11.4?\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Lists in Bases are being truncated. I switched to default theme and turned off Style Settings, Minimal Theme Settings, Hider and all CSS, but it made no difference. I&#39;m running 1.11.4 on Tahoe, it&#39;s also happening on the latest iOS version. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/exaltcovert\"> /u/exaltcovert </a> <br/> <span><a href=\"https://i.redd.it/tkb555go30dg1.jpeg\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qban57/is_this_happening_to_anyone_else_on_1114/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Daily notes base filtering",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qba9hc/daily_notes_base_filtering/",
+      "author": "/u/godarchmage",
+      "created_at": "2026-01-12T23:00:00+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>In <a href=\"/u/kepano\">u/kepano</a>’s daily.base, there’s an advanced filter <code>created.toString().contains(this.file.name)</code> that shows files based on their created property containing the string of the file name that has the base. My challenges are;</p> <ul> <li>This uses the format YYYY-MM-DD but my files use the format ddd Do MMM YYYY. Hence, it doesn’t work. How can I have it work with my format (which is the way I format dates in my vault).<br/></li> <li>Why does advance filter seem to be a hassle? Is there a place or way I can try out things and see the output? Like I don’t know what the value of <code>created</code> property outputs.</li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/godarchmage\"> /u/godarchmage </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qba9hc/daily_notes_base_filtering/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qba9hc/daily_notes_base_filtering/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Solo Leveling inspired workout page",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb9q66/solo_leveling_inspired_workout_page/",
+      "author": "/u/HowLoco",
+      "created_at": "2026-01-12T22:38:57+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9q66/solo_leveling_inspired_workout_page/\"> <img src=\"https://b.thumbs.redditmedia.com/Zs6qiNTSB-QkS1GiXoh9gnz9ish8yoV-ItPzsReG-vU.jpg\" alt=\"Solo Leveling inspired workout page\" title=\"Solo Leveling inspired workout page\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I always wanted a workout app that had the same style as solo leveling, so I decided to create one in Obsidian.</p> <p>I cant take much credit for the coding though as I used AI to generate the dataviewjs code for the UI panel. I consider it a WIP, but I&#39;d love some suggestions for what I could add.</p> <p>Btw if anyone has created something similar inside of Obsidian then I would love to see it!</p> <p>Plugins used:</p> <ul> <li>Pretty-properties (for the banner and icon)</li> <li>Heatmap tracker</li> <li>Dataview</li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/HowLoco\"> /u/HowLoco </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1qb9q66\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9q66/solo_leveling_inspired_workout_page/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Omi AI",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb9ixh/omi_ai/",
+      "author": "/u/atomicpapa210",
+      "created_at": "2026-01-12T22:31:07+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Has anyone created a plugin that allows you to export your Memories, Tasks, and Conversations from Omi AI to Obsidian? I found one plugin that will enable you to search your vault from Omi (<a href=\"https://github.com/paulsybrandy/omi-obsidian-plugin\">https://github.com/paulsybrandy/omi-obsidian-plugin</a>), but that&#39;s not exactly what I am looking for.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/atomicpapa210\"> /u/atomicpapa210 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9ixh/omi_ai/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9ixh/omi_ai/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "readwise vs zotero",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb9f5a/readwise_vs_zotero/",
+      "author": "/u/SweetCheeksxo",
+      "created_at": "2026-01-12T22:27:04+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>i want a frictionless way to highlight pdfs on my ipad with my apple pencil. i am studying a course from textbooks</p> <ol> <li><p>have those highlights appear in my vault, preferably with properties and/or metadata. being able to format what they look like is key because if it’s not nice looking my brain won’t like it </p></li> <li><p>be able to edit my highlights in obsidian with wiki links to link to existing concept notes, add in extra info if need</p></li> <li><p>creating a reference list is an optional nice to have </p></li> </ol> <p>i am trying readwise but not a fan of the fact imported pages are read only as this disrupts point 2. any notes i make disappear on resync. it’s also not the cheap </p> <p>any ideas if these are my best two options? any other options or recommended plugins to use?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/SweetCheeksxo\"> /u/SweetCheeksxo </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9f5a/readwise_vs_zotero/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9f5a/readwise_vs_zotero/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Link does not appear on Graph View",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/",
+      "author": "/u/erick_diego",
+      "created_at": "2026-01-12T22:21:13+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\"> <img src=\"https://a.thumbs.redditmedia.com/3rED3TtBIjA2X9yv6kvgKlnNTvYlxiUGdIDVTtfkg50.jpg\" alt=\"Link does not appear on Graph View\" title=\"Link does not appear on Graph View\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I can put links inside code block, in this case, Timeline</p> <p><a href=\"https://preview.redd.it/c14bpuywtzcg1.png?width=596&amp;format=png&amp;auto=webp&amp;s=33f0a634e185610a124cafaf5e81f017673c6fdf\">https://preview.redd.it/c14bpuywtzcg1.png?width=596&amp;format=png&amp;auto=webp&amp;s=33f0a634e185610a124cafaf5e81f017673c6fdf</a></p> <p>And this is how it renders:</p> <p><a href=\"https://preview.redd.it/yumci0g2uzcg1.png?width=1146&amp;format=png&amp;auto=webp&amp;s=a351f298bbfc3d23f7c1bb4ecb3a50e1d18a1f14\">https://preview.redd.it/yumci0g2uzcg1.png?width=1146&amp;format=png&amp;auto=webp&amp;s=a351f298bbfc3d23f7c1bb4ecb3a50e1d18a1f14</a></p> <p>But the link does not appear on the Graph view, only the link that&#39;s outside of that code block.</p> <p><a href=\"https://preview.redd.it/2vqr1z5guzcg1.png?width=385&amp;format=png&amp;auto=webp&amp;s=160343bb13e668a9d3c6ab681f3d0e35c250d3d3\">https://preview.redd.it/2vqr1z5guzcg1.png?width=385&amp;format=png&amp;auto=webp&amp;s=160343bb13e668a9d3c6ab681f3d0e35c250d3d3</a></p> <p>There&#39;s a way to solve this?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/erick_diego\"> /u/erick_diego </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Folder or other way",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb8pte/folder_or_other_way/",
+      "author": "/u/Rushprod",
+      "created_at": "2026-01-12T22:00:33+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi, i&#39;ve been using using obsidian for two years, i use a lots of folders with sub folder in it and its began very messy to find notes does it can be done right or i shoud switch in a other way for more efficient search?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Rushprod\"> /u/Rushprod </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb8pte/folder_or_other_way/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb8pte/folder_or_other_way/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Give me one TINY thing you want fixed or improved in Obsidian. The smaller the better. Going on a paper cuts rampage.",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb7ppj/give_me_one_tiny_thing_you_want_fixed_or_improved/",
+      "author": "/u/kepano",
+      "created_at": "2026-01-12T21:23:43+00:00",
+      "content_text": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/kepano\"> /u/kepano </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7ppj/give_me_one_tiny_thing_you_want_fixed_or_improved/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7ppj/give_me_one_tiny_thing_you_want_fixed_or_improved/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Juggl no longer maintained?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb7h9h/juggl_no_longer_maintained/",
+      "author": "/u/OkCatch1930",
+      "created_at": "2026-01-12T21:14:44+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Relatively new to Obsidian and the community. I use the hierarchical feature in the Juggl plugin for my studies. This seemingly simple and inoquous feature makes Obsidian worth it for me. The problem I&#39;ve encountered, the insidious snake in my garden, is that it has grown more unstable and buggy. I wouldn&#39;t say it&#39;s unusable but it&#39;s getting there. I went to the developer&#39;s discord and didn&#39;t see much recent activity, and I believe the plugin was last update more than two years ago, almost three. Is Juggl dead? Has it been abandoned by the developer? Any replacement plugins if that&#39;s the case? I&#39;ve used Excalibrain. The only problem is that, as far as I am aware, Excalibrain supports only 3 hyrarchical levels (the parents of the selected note and it&#39;s children). For my studies I would need a lot more than that. Any guidance from this community will be profoundly appreciated. Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/OkCatch1930\"> /u/OkCatch1930 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7h9h/juggl_no_longer_maintained/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7h9h/juggl_no_longer_maintained/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Hotkey for getting OUT of properties",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb7d7n/hotkey_for_getting_out_of_properties/",
+      "author": "/u/somianomoly",
+      "created_at": "2026-01-12T21:10:28+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;m trying to lessen my use of the mouse which is why I post this. There is a hotkey to add a property &quot;ctrl+;&quot; but not something to get out of the property screen and type on the note. ctrl+end doesn&#39;t work for me. Any solutions?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/somianomoly\"> /u/somianomoly </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7d7n/hotkey_for_getting_out_of_properties/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7d7n/hotkey_for_getting_out_of_properties/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "what do u guys think of my homepage",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb6nhw/what_do_u_guys_think_of_my_homepage/",
+      "author": "/u/Only_Bath697",
+      "created_at": "2026-01-12T20:43:49+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb6nhw/what_do_u_guys_think_of_my_homepage/\"> <img src=\"https://b.thumbs.redditmedia.com/9fukUnfJVpeQXe9b7QBN6v-wUmFCbzN-ApfjBc5SGTg.jpg\" alt=\"what do u guys think of my homepage\" title=\"what do u guys think of my homepage\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>is it overkill ? should i reduce stuff on it </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Only_Bath697\"> /u/Only_Bath697 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1qb6nhw\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb6nhw/what_do_u_guys_think_of_my_homepage/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Broke all my links, for future, how do I insert a link into existing text as fast as possible?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb4s4z/broke_all_my_links_for_future_how_do_i_insert_a/",
+      "author": "/u/centipedeberryjuice",
+      "created_at": "2026-01-12T19:35:47+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>So, I take a lot of notes that require links to other notes and my workflow is to first write out my note as text:</p> <p>A is a treatment to B</p> <p>and then I insert the note &quot;A: disease characteristics&quot; into the letter A.</p> <p>I was originally doing this with markdown links, hitting command K and then doing [A]([[A: disease characteristics]]) because it was super fast and was working correctly. However, I guess with an auto update, all of these links broke, and I learned that it is not the correct syntax.</p> <p>So I went through and manually fixed all of the links using correct syntax such as [[link | text]]</p> <p>But my question is - is there any way to mirror the same work flow I was originally doing to insert a link while allowing me to use the in-built auto complete to find the correct article to link in the text? I essentially just want to highlight text I wrote, and then use auto complete to insert a link to the correct note.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/centipedeberryjuice\"> /u/centipedeberryjuice </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4s4z/broke_all_my_links_for_future_how_do_i_insert_a/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4s4z/broke_all_my_links_for_future_how_do_i_insert_a/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "I have setup Obsidian to git for first time along with google drive already in sincy",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb4mgx/i_have_setup_obsidian_to_git_for_first_time_along/",
+      "author": "/u/akgo",
+      "created_at": "2026-01-12T19:30:08+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hello</p> <p>So, I have set up git with github and also have drive for sync with phone.</p> <p>Is it part of the whole thing to have the heavy .git folder everywhere.</p> <p>Because this is so much of sync for drive and phone.</p> <p>just some confusion </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/akgo\"> /u/akgo </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4mgx/i_have_setup_obsidian_to_git_for_first_time_along/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4mgx/i_have_setup_obsidian_to_git_for_first_time_along/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Is there a way to bind a hotkey to open the note referenced on a specific property? (Or add launching a link from a specific property to the command pallette?)",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb2y44/is_there_a_way_to_bind_a_hotkey_to_open_the_note/",
+      "author": "/u/bball2",
+      "created_at": "2026-01-12T18:31:28+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I used to use the breadcrumbs plugin extensively on all my notes to quickly navigate to previous/next/parent notes using keyboard/mouse shortcuts, but it&#39;s gotten really buggy recently - 15-20s extra load times, random crashes, not remembering settings/locations.</p> <p>Most of my notes have the parent property tag and some of them have the next/previous tag as well. Do you guys have any suggestions on how I could bind a keyboard shortcut to open the note based on those tags? Maybe with some kind of script using templater or meta bind?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/bball2\"> /u/bball2 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb2y44/is_there_a_way_to_bind_a_hotkey_to_open_the_note/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb2y44/is_there_a_way_to_bind_a_hotkey_to_open_the_note/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Is there a way to make my own graph view ?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb11qc/is_there_a_way_to_make_my_own_graph_view/",
+      "author": "/u/thinking_and_curious",
+      "created_at": "2026-01-12T17:23:47+00:00",
+      "content_text": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/thinking_and_curious\"> /u/thinking_and_curious </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb11qc/is_there_a_way_to_make_my_own_graph_view/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb11qc/is_there_a_way_to_make_my_own_graph_view/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Todoist app flows?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb0u4v/todoist_app_flows/",
+      "author": "/u/smerdy",
+      "created_at": "2026-01-12T17:16:08+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Anyone else use Todoist for tasks and Obsidian as a repo of thinking? If I think about using what different apps are well designed for, it&#39;d look like: Todoist for quickly capturing tasks, synced to Fantastical so I can drag them around my day, and some Todoist tasks are to revisit Obsidian notes (so i include the Obsidian URI in the title)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/smerdy\"> /u/smerdy </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0u4v/todoist_app_flows/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0u4v/todoist_app_flows/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "New plugin for personal finance tracking in obsidian",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb0hz4/new_plugin_for_personal_finance_tracking_in/",
+      "author": "/u/Working-Chemical-447",
+      "created_at": "2026-01-12T17:04:00+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0hz4/new_plugin_for_personal_finance_tracking_in/\"> <img src=\"https://preview.redd.it/x4oxbxoa9ycg1.gif?width=640&amp;crop=smart&amp;s=748447e39d7be7ab0ab9a39b09cf63dc853fd421\" alt=\"New plugin for personal finance tracking in obsidian\" title=\"New plugin for personal finance tracking in obsidian\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>A simple Beancount integration for Obsidian, allowing you to manage your personal finances, track expenses, and view interactive dashboards directly within your vault.</p> <p>Github Repo: <a href=\"https://github.com/pranjulsingh/obsidian-flat-financing\">https://github.com/pranjulsingh/obsidian-flat-financing</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Working-Chemical-447\"> /u/Working-Chemical-447 </a> <br/> <span><a href=\"https://i.redd.it/x4oxbxoa9ycg1.gif\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0hz4/new_plugin_for_personal_finance_tracking_in/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Obsidian 1.11 — new mobile design, widgets, Siri integration, shortcuts and more!",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaz9cd/obsidian_111_new_mobile_design_widgets_siri/",
+      "author": "/u/kepano",
+      "created_at": "2026-01-12T16:19:33+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz9cd/obsidian_111_new_mobile_design_widgets_siri/\"> <img src=\"https://external-preview.redd.it/cWlycDhzMmcxeWNnMbfNcw86yzihnq4Ihu6ivxhU4u2QICrz8jHRMssYjKfO.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=bfe4a2ee2f128ec3fb2eecb03bf429576e03acaa\" alt=\"Obsidian 1.11 — new mobile design, widgets, Siri integration, shortcuts and more!\" title=\"Obsidian 1.11 — new mobile design, widgets, Siri integration, shortcuts and more!\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>This update contains major changes to Obsidian&#39;s appearance on mobile so please remember to update your themes and plugins. If you encounter any issues, try using the default theme and restricted mode.</p> <p>Full release notes can be found here:</p> <ul> <li><a href=\"https://obsidian.md/changelog/2026-01-12-desktop-v1.11.4\">Obsidian 1.11.4 Desktop</a></li> <li><a href=\"https://obsidian.md/changelog/2026-01-12-mobile-v1.11.4\">Obsidian 1.11.4 Mobile</a></li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/kepano\"> /u/kepano </a> <br/> <span><a href=\"https://v.redd.it/4yug782g1ycg1\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz9cd/obsidian_111_new_mobile_design_widgets_siri/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Bases-centric Graph view controls",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaz8n0/basescentric_graph_view_controls/",
+      "author": "/u/GASSANDRlD",
+      "created_at": "2026-01-12T16:18:53+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Simple enough of an idea, but I feel like it would be neat if the bases philosophy for honing display properties, filtering, etc applied to the graph view as well. Not sure if this would look like creating a new bases view entirely for the graph view, or adding the same controls to the default one, but building custom views for graphs of a certain subject, without having to make a complex search query in the tiny text box we have right now. </p> <p>I feel like it would also make the obsidian philosophy more consistent and unify the varying features under a certain standard. There are some things I could see being a problem with this, like the grouping/sorting implementation for a graph view, but regardless I think it would be a nice venture for a core/community plugin. Properties of a base could also control the hover functionality, in the same way the Map core plugin allows you to display stuff on hover, etc.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/GASSANDRlD\"> /u/GASSANDRlD </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz8n0/basescentric_graph_view_controls/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz8n0/basescentric_graph_view_controls/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Obsidian game library?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qayxux/obsidian_game_library/",
+      "author": "/u/Kurzh",
+      "created_at": "2026-01-12T16:08:22+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Out of curiosity, I see that some people are using Obsidian to integrate games, or are they just links to a website? Transform Obsidian into a functional library for launching games, whether from Steam, Xbox, or other platforms.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Kurzh\"> /u/Kurzh </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qayxux/obsidian_game_library/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qayxux/obsidian_game_library/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Help Syncing Obsidian and Zotero",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/",
+      "author": "/u/Pure-Ticket5777",
+      "created_at": "2026-01-12T15:51:10+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\"> <img src=\"https://b.thumbs.redditmedia.com/8wCN-eshKaeIq6DlO7TRGCb_iBunyUfvXXhcoKMJ1PM.jpg\" alt=\"Help Syncing Obsidian and Zotero\" title=\"Help Syncing Obsidian and Zotero\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Hello!</p> <p>I just started my PhD and want to sync Obsidian with Zotero. I followed the step by step guide below in the link but keep getting an error message (photo). I tried following a couple of other tutorials but didn&#39;t end up making any changes from them. (<a href=\"https://www.linkedin.com/pulse/step-by-step-how-integrate-zotero-obsidian-seamless-sofie-peters-gfngf/\">https://www.linkedin.com/pulse/step-by-step-how-integrate-zotero-obsidian-seamless-sofie-peters-gfngf/</a>).</p> <p><a href=\"https://preview.redd.it/d7x3trzmwxcg1.jpg?width=3024&amp;format=pjpg&amp;auto=webp&amp;s=ffdaa8b392f446f9c7db19a7b7607551626eece4\">https://preview.redd.it/d7x3trzmwxcg1.jpg?width=3024&amp;format=pjpg&amp;auto=webp&amp;s=ffdaa8b392f446f9c7db19a7b7607551626eece4</a></p> <p>Anyone have any ideas? Thanks all!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Pure-Ticket5777\"> /u/Pure-Ticket5777 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Font size based on theme?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaxv0a/font_size_based_on_theme/",
+      "author": "/u/quisegosum",
+      "created_at": "2026-01-12T15:28:33+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Is it possible to set a custom font size with a CSS snippet based on the currently used theme?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/quisegosum\"> /u/quisegosum </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxv0a/font_size_based_on_theme/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxv0a/font_size_based_on_theme/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Sync Obsidian between IOS and Windows",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaxd3v/sync_obsidian_between_ios_and_windows/",
+      "author": "/u/Jones-XL",
+      "created_at": "2026-01-12T15:09:25+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi experts,</p> <p>I recently started using Obsidian on my iPhone. I really like it and want to know if there is any way to use Dropbox for syncing with Windows?</p> <p>Is this a possibility or do i need an other cloudservice?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Jones-XL\"> /u/Jones-XL </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxd3v/sync_obsidian_between_ios_and_windows/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxd3v/sync_obsidian_between_ios_and_windows/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Obsidian Tutor/Vault Setup Help (paid)",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qawbnh/obsidian_tutorvault_setup_help_paid/",
+      "author": "/u/AdRepresentative672",
+      "created_at": "2026-01-12T14:28:29+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;ve been using Obsidian for a while and I love it but I&#39;m having a hard time figuring out how best to organize my vault. I&#39;m particularly overwhelmed by trying to learn Bases. I&#39;m very intrigued by Kepano&#39;s system and am looking for someone to help, tutor, assist in setting up a simple system that works for my needs. Online or in-person (NYC) - I&#39;m very happy to pay for the service and would appreciate any responses. I&#39;ve looked at the Obsidian Discord but it doesn&#39;t seem like Obsidian tutors are a thing...</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/AdRepresentative672\"> /u/AdRepresentative672 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qawbnh/obsidian_tutorvault_setup_help_paid/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qawbnh/obsidian_tutorvault_setup_help_paid/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Folder template not applied as default when creating a new note (Templater)",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qavk2v/folder_template_not_applied_as_default_when/",
+      "author": "/u/Katmai_X",
+      "created_at": "2026-01-12T13:57:28+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qavk2v/folder_template_not_applied_as_default_when/\"> <img src=\"https://preview.redd.it/s8tjbtq8cxcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=2fddc234b6f17d6f03b61d4be72ee328d608eff0\" alt=\"Folder template not applied as default when creating a new note (Templater)\" title=\"Folder template not applied as default when creating a new note (Templater)\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Hi!</p> <p>I’m having an issue with Templater folder templates and I can’t figure out what I’m missing.</p> <p>I’ve enabled Folder templates and set a template on the root folder /, pointing to System/Templates/Notes.md. According to the docs, a template defined on / should act as a global default, and the deepest match should be used.</p> <p>However, when I create a new note (empty file) anywhere in the vault, the template is not applied automatically. Nothing gets inserted.</p> <p>What I’ve checked so far:</p> <ul> <li>Folder templates are enabled</li> <li>File regex templates are disabled (I know they’re mutually exclusive)</li> <li>The template file exists and works if I insert it manually </li> <li>I’m creating new notes as empty files</li> </ul> <p>Am I misunderstanding how folder templates work, or is there something else required to make a root / template act as the default?</p> <p>What am I doing wrong?</p> <p>Edit: Spelling</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Katmai_X\"> /u/Katmai_X </a> <br/> <span><a href=\"https://i.redd.it/s8tjbtq8cxcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qavk2v/folder_template_not_applied_as_default_when/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Hot take: Obsidian Bases should be renamed to Obsidian Indexes",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/",
+      "author": "/u/Beginning_Sun_7558",
+      "created_at": "2026-01-12T13:28:35+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\"> <img src=\"https://b.thumbs.redditmedia.com/8uPxVAzLPrurhn3VLl3nnmDa7zBa8CKja1iHTb9EShQ.jpg\" alt=\"Hot take: Obsidian Bases should be renamed to Obsidian Indexes\" title=\"Hot take: Obsidian Bases should be renamed to Obsidian Indexes\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Maybe because I come from a software dev background - reading &quot;bases&quot; automatically meant databases.</p> <p>Something similar to databases inside Notion is what came to my mind. I took me a while to understand that in reality it is just custom indexes (with filters &amp; sorting options), probably an easier replacement for a subset of Dataview plugin, for people who need the UI and aren&#39;t comfortable with writing SQL like queries.</p> <p><strong>Update:</strong> I just checked they seemed to have revised the documentation pages to make it more clear, but still database-like views is a bit more clear. </p> <p>I think this part screenshot-ed below should be the first sentence of the entire Bases section of the documentation. Instead I found this under Filters in one of the sub pages.</p> <p><a href=\"https://preview.redd.it/m0ef9z3n6xcg1.png?width=1522&amp;format=png&amp;auto=webp&amp;s=4c5420d0e0a9f5dc057c8fd7057529d05131c183\">https://preview.redd.it/m0ef9z3n6xcg1.png?width=1522&amp;format=png&amp;auto=webp&amp;s=4c5420d0e0a9f5dc057c8fd7057529d05131c183</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Beginning_Sun_7558\"> /u/Beginning_Sun_7558 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Google Docs tabs a Osidian",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qauhkm/google_docs_tabs_a_osidian/",
+      "author": "/u/Extension-Physics-73",
+      "created_at": "2026-01-12T13:11:27+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hola! Quisiera saber si hay alguna manera de pasar un documento de Google doc con pestañas a Obsidian directamente. Ya que tiene bastantes pestañas y subdocumentos, además bastantes imágenes y gastaría un montón de tiempo pasándolas uno por uno. Cabe tener en cuenta que el vault no lo tengo sincronizado con Drive y ya intenté descargarlo en formato html y md y ninguno funcionó.</p> <p>Gracias!!!!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Extension-Physics-73\"> /u/Extension-Physics-73 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauhkm/google_docs_tabs_a_osidian/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauhkm/google_docs_tabs_a_osidian/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Struggling to actually complete my note",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qas3a2/struggling_to_actually_complete_my_note/",
+      "author": "/u/bizbaaz",
+      "created_at": "2026-01-12T11:06:37+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I am studying cloud and networking, I use obsidian and make my notes in there. I making use of tagging and linking different notes together, however, i often find myself starting a note and never finishing it. In fact out of the around 150 notes, I maybe completed 10.</p> <p>Another thing is I struggle to decide how concise or detailed it should be. Should I create a general note with topic that covers a lot of things, this way everything is in one place? Or should I divide it as much as I can and then use the smallest question or topic as the title and make a note about that, and then link those smaller notes using a tag, or linking them to the main note.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/bizbaaz\"> /u/bizbaaz </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qas3a2/struggling_to_actually_complete_my_note/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qas3a2/struggling_to_actually_complete_my_note/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Is there any way to also upload plugins folder to the GitHub repository?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaqeuf/is_there_any_way_to_also_upload_plugins_folder_to/",
+      "author": "/u/Nshx-",
+      "created_at": "2026-01-12T09:23:43+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I use the &quot;Fit&quot; plugin to sync with my iPad and iPhone. The first time, to also have the plugins on my iPhone, I manually transferred the plugins folder to the iPhone using a shortcut that lets me view hidden files.</p> <p>But then, if I add new plugins to my MacBook, the Fit plugin doesn&#39;t sync the plugin folders.</p> <p>Is there any way to also upload this folder to the GitHub repository?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Nshx-\"> /u/Nshx- </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaqeuf/is_there_any_way_to_also_upload_plugins_folder_to/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaqeuf/is_there_any_way_to_also_upload_plugins_folder_to/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Kindle Scribe notes sync to obsidian",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qapmmn/kindle_scribe_notes_sync_to_obsidian/",
+      "author": "/u/karnajik",
+      "created_at": "2026-01-12T08:33:18+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapmmn/kindle_scribe_notes_sync_to_obsidian/\"> <img src=\"https://preview.redd.it/0nwagqwogqcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=45f88497dd4065cae2d057f189285569f9111fcd\" alt=\"Kindle Scribe notes sync to obsidian\" title=\"Kindle Scribe notes sync to obsidian\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/karnajik\"> /u/karnajik </a> <br/> <span><a href=\"https://i.redd.it/0nwagqwogqcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapmmn/kindle_scribe_notes_sync_to_obsidian/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Looking for advices on using Obsidian for a Choose Your Own Adventure book",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qapd83/looking_for_advices_on_using_obsidian_for_a/",
+      "author": "/u/Tupuchan",
+      "created_at": "2026-01-12T08:16:30+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi everyone,</p> <p>For a few months I&#39;ve been trying out Obsidian to take notes for Tabletop Roleplaying Games (ttrpg) or even academic research. </p> <p>I&#39;ve only used the basic functionalities and very few plugins, so consider me a newbie! </p> <p>I&#39;ve been wanting to try out a new projet, some kind of Choose Your Own Adventure. My aim is to think tabletop first: - each section is attributed to a number, and when making choices you refer to these number - you have a &quot;variable sheet&quot;, the player keeps track of certain choices manually by checking boxes in a table (so no need to keep track of variables automatically, the text will say &quot;check the box corresponding to your choice&quot; or &quot;if you have this box checked, directly go to X&quot;) - I want to export everything in the same pdf</p> <p>Do you have any tips or plugins that&#39;d work best? I&#39;ve been wondering: - are each section a different note? - are the names of the notes the numbers (to keep track of not making two times the same number) - should I merge all the files in the end, to export as a pdf a single note? (Haven&#39;t tried it yet) - to keep track of variables, are they notes or tags?</p> <p>Thank you for reading!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Tupuchan\"> /u/Tupuchan </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapd83/looking_for_advices_on_using_obsidian_for_a/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapd83/looking_for_advices_on_using_obsidian_for_a/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Obsidian Bases but for Google Drive (?)",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qapckl/obsidian_bases_but_for_google_drive/",
+      "author": "/u/memetorangutan",
+      "created_at": "2026-01-12T08:15:23+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi all,</p> <p>For some context I really love the Base feature in Obsidian. I feel like it is a much more flexible way of categorizing files than putting stuff in folders. Does such a thing exist in Google Drive? Especially across multiple Google Drive accounts for a small team of people. I&#39;d love it if by simply tagging things, we wouldn&#39;t need to move files across google drives so often and create multiple bases based on file tags/properties. Would like to know if there&#39;s a 3rd party app that has this function especially across different workspaces (Google Drive, Microsoft 360, etc.)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/memetorangutan\"> /u/memetorangutan </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapckl/obsidian_bases_but_for_google_drive/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapckl/obsidian_bases_but_for_google_drive/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "How do you feel about the Obsidian mobile app lately?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qap5ra/how_do_you_feel_about_the_obsidian_mobile_app/",
+      "author": "/u/Katmai_X",
+      "created_at": "2026-01-12T08:03:18+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi,</p> <p>I’m curious to hear how you’re experiencing the Obsidian mobile app these days.</p> <p>I’ve only been using it for a short while, but my first impression has been very positive, especially with the newer layout and overall flow. That said, I haven’t used it long enough to really judge how it holds up in daily use. I know you can&#39;t compare it to Bear or Apple Notes.</p> <p>Do you feel the mobile app is “good enough” now to be a natural part of your workflow?<br/> Or do you mainly see it as a companion to the desktop app?</p> <p>Would love to hear what works well for you, what still feels rough, and how you’re actually using it.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Katmai_X\"> /u/Katmai_X </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qap5ra/how_do_you_feel_about_the_obsidian_mobile_app/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qap5ra/how_do_you_feel_about_the_obsidian_mobile_app/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Feedback on my Obsidian backup setup",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaoryb/feedback_on_my_obsidian_backup_setup/",
+      "author": "/u/jaziillearning",
+      "created_at": "2026-01-12T07:39:16+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Please let me know what you think of my backup setup:</p> <ul> <li>I sync my vault to iCloud. However, as I learned -the hard way- that sync ≠ backup,</li> <li>I use the &quot;Local Backup&quot; community plugin (by GC Chen) to back up my vault.</li> <li>The backup itself is stored in my Google Drive folder, so it is also saved on the cloud.</li> </ul> <p>Am I good this way?</p> <p>PS: I&#39;m aware of Obsidian Sync, but I cannot use it at the moment.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/jaziillearning\"> /u/jaziillearning </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaoryb/feedback_on_my_obsidian_backup_setup/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaoryb/feedback_on_my_obsidian_backup_setup/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Please help me fix this issue in Baseline",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaorht/please_help_me_fix_this_issue_in_baseline/",
+      "author": "/u/registrartulip",
+      "created_at": "2026-01-12T07:38:25+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaorht/please_help_me_fix_this_issue_in_baseline/\"> <img src=\"https://preview.redd.it/qz14e1elgvcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=6059ce5c4d9da974cead7667d61448fd7ad419ed\" alt=\"Please help me fix this issue in Baseline\" title=\"Please help me fix this issue in Baseline\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I am using baseline theme which makes these left sidebar items in a list automatically but I want them side by side as in default theme.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/registrartulip\"> /u/registrartulip </a> <br/> <span><a href=\"https://i.redd.it/qz14e1elgvcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaorht/please_help_me_fix_this_issue_in_baseline/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Page preview pop up in mobile app",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaogxs/page_preview_pop_up_in_mobile_app/",
+      "author": "/u/godarchmage",
+      "created_at": "2026-01-12T07:19:35+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Can we have page preview pop up in mobile app like it is in desktop. Maybe it can show on first tap then second tap on the link can take user to the page or the pop up can show on press and hold </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/godarchmage\"> /u/godarchmage </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaogxs/page_preview_pop_up_in_mobile_app/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaogxs/page_preview_pop_up_in_mobile_app/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "online editing of MD files to accompany Obsidian",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qao9tk/online_editing_of_md_files_to_accompany_obsidian/",
+      "author": "/u/Final-Isopod",
+      "created_at": "2026-01-12T07:07:47+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I switched to Obsidian from Notion like three months ago and am amazed how simple yet powerful it is. The moment I think it doesn&#39;t have a feature I need it turns out it does but in different fashion and more. BUT there is one thing it doesn&#39;t have which wanted me to maybe switch back to Notion. I dropped this idea quite quickly realizing how much I got accustomed to Obsidian and really like it. So I&#39;m talking about the fact that Notion is a web service so I can access it from wherever I want not having to install anything. I got now Obsidian set up to sync with my Google Drive across devices. My primary work is done on a machine where Obsidian is installed so I only need this online feature from time to time. So far I was simply using Notion to do whatever I wanted to do online and then copy back to Obsidian when possible but obviously it doesnt always work as I don&#39;t have access to vast array of files I got. So I started to ask if there is a different way - by simply accessing the files on my Google Drive directly with some third party MD editor or even a web service that would have access to my Google Drive. Has anyone done this like that? Any recommendations on the workflow or tools for online MD editing?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Final-Isopod\"> /u/Final-Isopod </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qao9tk/online_editing_of_md_files_to_accompany_obsidian/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qao9tk/online_editing_of_md_files_to_accompany_obsidian/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "(Image Converter plugin) annotate Image how to erase?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qanceh/image_converter_plugin_annotate_image_how_to_erase/",
+      "author": "/u/ValdertCrossXX",
+      "created_at": "2026-01-12T06:14:09+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I can&#39;t seem to figure it out. So when I add annotations to my images is there a way to erase the annotation without having to CTRL Z? Something like an erasure tool. Thanks. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/ValdertCrossXX\"> /u/ValdertCrossXX </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qanceh/image_converter_plugin_annotate_image_how_to_erase/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qanceh/image_converter_plugin_annotate_image_how_to_erase/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "View settings getting reset",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qam4cm/view_settings_getting_reset/",
+      "author": "/u/AssociatePatient4629",
+      "created_at": "2026-01-12T05:08:29+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hello, thanks for reading. I&#39;m using Windows 10, Obsidian MD version 1.9.10 without any addons at all. No syncing.</p> <p>I like to use Split/Linked Tabs: the left tab is set to show Source Mode and the right tab is linked with the left tab and set to Reading Mode with Backtrack Links in Document enabled. It works fine mostly.</p> <p>When I click on a Base page, the link functionality maintains the link but experiences some trouble. </p> <ol> <li>Source mode is unchecked.</li> <li>Reading mode is unchecked.</li> <li>Backlink mode is unchecked.</li> <li>The right tab remains stuck on the Base page when pressing the &quot;Back&quot; or &quot;Previous Page&quot; button on my mouse while the left tab &quot;Back&quot; functionality works fine.</li> </ol> <p>What am I doing wrong? Are Bases not compatible or friendly to this kind of work layout?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/AssociatePatient4629\"> /u/AssociatePatient4629 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qam4cm/view_settings_getting_reset/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qam4cm/view_settings_getting_reset/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "D&D 2024 resources? Where to find other resources?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qalk49/dd_2024_resources_where_to_find_other_resources/",
+      "author": "/u/Aborted_Plebeian",
+      "created_at": "2026-01-12T04:40:05+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hey all, first time poster so sorry if I&#39;m asking a repeated question.</p> <p>Im worldbuilding for my D&amp;D campaign and have recently stumbled across this wonderful tool. Im now using Obsidian to worldbuild and have found ttrpgtutorials and his content which has helped a bunch with plugins etc. However most of his videos are before the latest run of D&amp;D 2024 and im using that as my base.</p> <p>I plan to use ObsidianMD to worldbuild, storyboard and also run my games.</p> <p>I own DND 2024 as physical and digital copies, but I really dont want to go through all of the hassle of copying and pasting everything into my vault. There-in lies my question.</p> <p>Is there a general resource hub that I can find these sorts of things? And is there a method to finding something like a DND 2024 compendium that i can copy into my vault to avoid the painstaking task of copying a textbook paragraph by paragraph and making sure all of the links are valid?</p> <p>Please be kind in your response, I am only one man 🙏</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Aborted_Plebeian\"> /u/Aborted_Plebeian </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qalk49/dd_2024_resources_where_to_find_other_resources/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qalk49/dd_2024_resources_where_to_find_other_resources/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "TaskNotes Calendar",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qakpyc/tasknotes_calendar/",
+      "author": "/u/Acceptable_Oven7602",
+      "created_at": "2026-01-12T03:59:28+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I have been playing around with Tasknotes and was thinking if there is a way to create calendar events (not tasks, just events) in the advanced calendar. I saw that there is Google and Outlook integration, but what if I don&#39;t want to go down that route and I only want to create the event within Obsidian?</p> <p>I tried playing around with the advanced calendars and creating time entries, but those are for creating tasks, so I don&#39;t think that is what I am looking for. </p> <p>Thank you!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Acceptable_Oven7602\"> /u/Acceptable_Oven7602 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qakpyc/tasknotes_calendar/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qakpyc/tasknotes_calendar/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Behold the brain of an author (5 years, 17 worlds, 15 novels, and much tea)",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qai7uk/behold_the_brain_of_an_author_5_years_17_worlds/",
+      "author": "/u/RavensQuillWriting",
+      "created_at": "2026-01-12T02:02:42+00:00",
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qai7uk/behold_the_brain_of_an_author_5_years_17_worlds/\"> <img src=\"https://preview.redd.it/zqkdonhistcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=f4f42bc818e24198df7c12079c17fbabd1d1a4b9\" alt=\"Behold the brain of an author (5 years, 17 worlds, 15 novels, and much tea)\" title=\"Behold the brain of an author (5 years, 17 worlds, 15 novels, and much tea)\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I think it&#39;s pretty clear that I love Obsidian by this point. Also, I said 5 years, haven&#39;t been using the program much longer than 2. But I&#39;ve copied over almost all my notes/manuscripts.</p> <p>Never thought a program made for researchers and coders recommended to me by a reader would become almost as big an obsession as the actual worldbuilding and writing :)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/RavensQuillWriting\"> /u/RavensQuillWriting </a> <br/> <span><a href=\"https://i.redd.it/zqkdonhistcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qai7uk/behold_the_brain_of_an_author_5_years_17_worlds/\">[comments]</a></span> </td></tr></table>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Go-To Themes for TTRPG Worldbuilding/Notetaking?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qahx1r/goto_themes_for_ttrpg_worldbuildingnotetaking/",
+      "author": "/u/thoegn",
+      "created_at": "2026-01-12T01:49:33+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hey everyone! Not much more than what the title is really. I’m just always very cautious and picky about what I want stuff to look like so I still haven’t done anything to the themes of my vault and I still use the vanilla look😅</p> <p>So I’m asking here if you could recommend some themes for me to try out!</p> <p>Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/thoegn\"> /u/thoegn </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahx1r/goto_themes_for_ttrpg_worldbuildingnotetaking/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahx1r/goto_themes_for_ttrpg_worldbuildingnotetaking/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "TaskNotes Bi-Directional Sync",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qahkjo/tasknotes_bidirectional_sync/",
+      "author": "/u/Spiritual_Flow_501",
+      "created_at": "2026-01-12T01:34:03+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Now that TaskNotes does bi-directional sync could you use that to sync tasks between multiple vaults connected to the same google calendar? For example 3 people share a calendar and all their tasknotes get put onto the calendar so you can see what other people are doing or assign tasks to other people through TaskNotes. just use tags to assign people or departments? </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Spiritual_Flow_501\"> /u/Spiritual_Flow_501 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahkjo/tasknotes_bidirectional_sync/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahkjo/tasknotes_bidirectional_sync/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "Thousands of note MD files, but I never read or open them. Tips on consolidating?",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qahf2n/thousands_of_note_md_files_but_i_never_read_or/",
+      "author": "/u/ElKorTorro",
+      "created_at": "2026-01-12T01:27:19+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi,</p> <p>I have thousands of note files, all of which are varying in length and don&#39;t follow any specific structure. Some of them are literally just from watching a YouTube video, taking a few notes, and that&#39;s it.</p> <p>I&#39;ve realized now that I never really re-open these notes and thus I&#39;m questioning the value of this approach to note-taking. Obviously I&#39;ve been doing something wrong/inefficient since my notes never get revisited other than a handful.</p> <p>Now I&#39;m looking to clean this up, resolve this, and change my approach to note-taking.</p> <p>Any specific approaches or methods you use to handle this? </p> <p>Do you try to consolidate all of them into a single note MD file? Use interlinking to drill down? Create a mindmap of the main concepts only?</p> <p>Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/ElKorTorro\"> /u/ElKorTorro </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahf2n/thousands_of_note_md_files_but_i_never_read_or/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahf2n/thousands_of_note_md_files_but_i_never_read_or/\">[comments]</a></span>"
+    },
+    {
+      "source": "Reddit",
+      "title": "How to sync vault between devices without using Sync",
+      "url": "https://www.reddit.com/r/ObsidianMD/comments/1qah3pc/how_to_sync_vault_between_devices_without_using/",
+      "author": "/u/nicohenriqueds",
+      "created_at": "2026-01-12T01:13:14+00:00",
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>As the title suggests, I&#39;d like to get some feedback on how you have been navigating around paying for Sync to sync between devices.</p> <p>Is there a third party plugin available?</p> <p>Are you using some form of cloud service?</p> <p>I really appreciate any and all suggestions!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/nicohenriqueds\"> /u/nicohenriqueds </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qah3pc/how_to_sync_vault_between_devices_without_using/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qah3pc/how_to_sync_vault_between_devices_without_using/\">[comments]</a></span>"
+    }
+  ]
+}
