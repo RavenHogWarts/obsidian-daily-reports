@@ -1,21 +1,10 @@
 const Footer = () => {
   return (
-    <footer style={{
-      borderTop: '1px solid var(--border-light)',
-      padding: '2rem 1rem',
-      backgroundColor: 'var(--bg-secondary)',
-      marginTop: 'auto'
-    }}>
-      <div style={{
-        maxWidth: 'var(--max-width)',
-        margin: '0 auto',
-        textAlign: 'center',
-        color: 'var(--text-secondary)',
-        fontSize: '0.875rem'
-      }}>
+    <footer className="mt-auto border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 py-8 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 dark:text-slate-400 text-sm">
         <p>© {new Date().getFullYear()} Obsidian Daily Reports. Community driven.</p>
-        <p style={{ marginTop: '0.5rem' }}>
-          Powered by <a href="https://github.com/RavenHogWarts/obsidian-daily-reports" target="_blank" rel="noopener noreferrer">GitHub Actions</a> & Vercel
+        <p className="mt-2">
+          Powered by <a href="https://github.com/RavenHogWarts/obsidian-daily-reports" target="_blank" rel="noopener noreferrer" className="text-violet-600 dark:text-violet-400 hover:underline">GitHub Actions</a> & Vercel
         </p>
       </div>
     </footer>

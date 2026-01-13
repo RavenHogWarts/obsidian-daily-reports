@@ -24,27 +24,14 @@ const detectProjectType = (title: string): 'plugin' | 'theme' | null => {
 // --- Components ---
 
 const ReportHeader = ({ date }: { date: string }) => (
-  <div style={{ textAlign: 'center', marginBottom: '3rem', paddingTop: '1rem' }}>
-    <svg width="60" height="4" viewBox="0 0 60 4" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', margin: '0 auto' }}>
-      <rect width="60" height="4" rx="2" fill="var(--text-primary)" opacity="0.8" />
+  <div className="text-center mb-12 pt-4">
+    <svg width="60" height="4" viewBox="0 0 60 4" xmlns="http://www.w3.org/2000/svg" className="block mx-auto">
+      <rect width="60" height="4" rx="2" fill="currentColor" className="text-slate-900 dark:text-slate-100 opacity-80" />
     </svg>
-    <h1 style={{
-      fontSize: '2rem',
-      fontWeight: '400',
-      letterSpacing: '1px',
-      margin: '1rem 0 0.5rem 0',
-      color: 'var(--text-primary)'
-    }}>
-      社区速递 <span style={{ color: 'var(--accent)' }}>·</span> {date}
+    <h1 className="text-3xl md:text-4xl font-normal tracking-wide mt-4 mb-2 text-slate-900 dark:text-white">
+      社区速递 <span className="text-violet-600 dark:text-violet-400">·</span> {date}
     </h1>
-    <p style={{
-      fontSize: '0.8rem',
-      color: 'var(--text-secondary)',
-      fontWeight: '600',
-      letterSpacing: '1px',
-      textTransform: 'uppercase',
-      marginTop: '0'
-    }}>
+    <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold tracking-widest uppercase mt-0">
       Curated Highlights from Obsidian Community
     </p>
   </div>
@@ -52,20 +39,14 @@ const ReportHeader = ({ date }: { date: string }) => (
 
 // Badge Component
 const Badge = ({ text, color, bg }: { text: string, color: string, bg?: string }) => (
-  <span style={{
-    display: 'inline-block',
-    padding: '0.15rem 0.5rem',
-    borderRadius: '4px',
-    fontSize: '0.7rem',
-    fontWeight: 700,
-    textTransform: 'uppercase',
-    letterSpacing: '0.05em',
-    color: color,
-    backgroundColor: bg || `${color}15`, // default low opacity bg
-    border: `1px solid ${color}40`,
-    marginRight: '0.5rem',
-    verticalAlign: 'middle'
-  }}>
+  <span 
+    className="inline-block px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider mr-2 align-middle border"
+    style={{
+      color: color,
+      backgroundColor: bg || `${color}15`,
+      borderColor: `${color}40`
+    }}
+  >
     {text}
   </span>
 );
@@ -82,7 +63,7 @@ const getCalloutStyles = (type: CalloutType) => {
       return { color: '#ff4500', icon: '🔥', bg: 'rgba(255, 69, 0, 0.04)' };
     case 'forum':
     default:
-      return { color: 'var(--text-primary)', icon: '💬', bg: 'var(--bg-tertiary)' };
+      return { color: '#64748b', icon: '💬', bg: 'rgba(100, 116, 139, 0.04)' };
   }
 };
 
@@ -97,82 +78,44 @@ const CalloutCard = ({ title, summary, meta, link, type, badges = [] }: {
   const style = getCalloutStyles(type);
   
   return (
-    <div style={{
-      borderLeft: `4px solid ${style.color}`,
-      backgroundColor: style.bg,
-      borderRadius: '4px',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-      overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-      border: '1px solid var(--border-light)',
-      borderLeftWidth: '4px',
-      borderLeftColor: style.color,
-      transition: 'transform 0.2s, box-shadow 0.2s',
-      position: 'relative'
-    }}
-    className="hover-card"
+    <div 
+      className="group relative rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col h-full transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
+      style={{
+        borderLeftWidth: '4px',
+        borderLeftColor: style.color,
+        backgroundColor: style.bg
+      }}
     >
       {/* Header */}
-      <div style={{
-        padding: '1rem 1rem 0.5rem',
-        display: 'flex',
-        alignItems: 'start', // Align top to handle multiline titles
-        gap: '0.75rem'
-      }}>
-        <span style={{ fontSize: '1.2em', lineHeight: 1.4 }} role="img" aria-label="icon">{style.icon}</span>
-        <div style={{ flex: 1 }}>
-            <div style={{ marginBottom: '0.25rem' }}>
+      <div className="p-4 pb-2 flex items-start gap-3">
+        <span className="text-xl leading-tight" role="img" aria-label="icon">{style.icon}</span>
+        <div className="flex-1">
+            <div className="mb-1">
                 {badges.map((badge, i) => <span key={i}>{badge}</span>)}
             </div>
-            <h3 style={{ 
-            fontSize: '1.1rem', 
-            margin: 0, 
-            fontWeight: 700,
-            lineHeight: 1.4,
-            }}>
-            <a href={link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>
+            <h3 className="text-lg font-bold leading-snug m-0">
+              <a href={link} target="_blank" rel="noopener noreferrer" className="text-slate-900 dark:text-white no-underline hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                 {title}
-            </a>
+              </a>
             </h3>
         </div>
       </div>
 
       {/* Content */}
-      <div style={{
-        padding: '0.5rem 1rem 1rem',
-        color: 'var(--text-secondary)',
-        fontSize: '0.95rem',
-        lineHeight: 1.6,
-        flex: 1
-      }}>
+      <div className="px-4 py-2 pb-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex-1">
         {summary}
       </div>
 
       {/* Footer / Meta */}
-      <div style={{
-        padding: '0.75rem 1rem',
-        borderTop: '1px solid var(--border-light)',
-        fontSize: '0.8rem',
-        color: 'var(--text-tertiary)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: 'rgba(255,255,255,0.3)'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="px-4 py-3 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 flex justify-between items-center bg-white/30 dark:bg-slate-800/30">
+        <div className="flex items-center gap-2">
           {meta}
         </div>
-        <a href={link} target="_blank" rel="noopener noreferrer" style={{ 
-          color: style.color, 
-          fontWeight: 600,
-          textDecoration: 'none',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.25rem'
-        }}>
-          Read <span style={{ fontSize: '1.1em' }}>›</span>
+        <a href={link} target="_blank" rel="noopener noreferrer" 
+          className="font-semibold no-underline flex items-center gap-1 hover:underline transition-colors"
+          style={{ color: style.color }}
+        >
+          Read <span className="text-lg">›</span>
         </a>
       </div>
     </div>
@@ -187,34 +130,22 @@ const DailyReport = () => {
 
   // Loading State
   if (loading) return (
-    <div style={{ padding: '6rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
-      <div style={{ 
-        width: '40px', height: '40px', 
-        border: '3px solid var(--border-light)', 
-        borderTopColor: 'var(--accent)', 
-        borderRadius: '50%', 
-        margin: '0 auto 1rem',
-        animation: 'spin 1s linear infinite' 
-      }}></div>
-      <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+    <div className="py-24 text-center text-slate-500 dark:text-slate-400">
+      <div className="w-10 h-10 border-3 border-slate-200 dark:border-slate-700 border-t-violet-600 dark:border-t-violet-400 rounded-full mx-auto mb-4 animate-spin"></div>
       <p>Loading report for {date}...</p>
     </div>
   );
 
   // Error State
   if (error || !data) return (
-    <div style={{ padding: '6rem', textAlign: 'center' }}>
-      <h2 style={{ color: 'var(--error)', fontSize: '2rem', marginBottom: '1rem' }}>Report Not Found</h2>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+    <div className="py-24 text-center">
+      <h2 className="text-red-500 dark:text-red-400 text-3xl mb-4">Report Not Found</h2>
+      <p className="text-slate-500 dark:text-slate-400 mb-8">
         We couldn't find the data for {date}. It might not be generated yet.
       </p>
-      <Link to="/" style={{ 
-        padding: '0.75rem 1.5rem', 
-        backgroundColor: 'var(--accent)', 
-        color: 'white', 
-        borderRadius: '8px', 
-        fontWeight: 600 
-      }}>Return Home</Link>
+      <Link to="/" className="inline-block px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white rounded-lg font-semibold transition-colors">
+        Return Home
+      </Link>
     </div>
   );
 
@@ -225,40 +156,31 @@ const DailyReport = () => {
   const hasContent = totalForum + totalReddit + totalPRs > 0;
 
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+    <div className="max-w-5xl mx-auto px-6 py-8">
       
-      <div style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
-        <Link to="/" style={{ color: 'var(--text-tertiary)' }}>Home</Link>
-        <span style={{ margin: '0 0.5rem', color: 'var(--text-tertiary)' }}>/</span>
-        <span style={{ color: 'var(--text-primary)' }}>Daily Report</span>
+      <div className="mb-8 text-sm">
+        <Link to="/" className="text-slate-400 dark:text-slate-500 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">Home</Link>
+        <span className="mx-2 text-slate-400 dark:text-slate-500">/</span>
+        <span className="text-slate-900 dark:text-white">Daily Report</span>
       </div>
 
       <ReportHeader date={data.date} />
 
       {!hasContent && (
-        <div style={{ textAlign: 'center', padding: '4rem', background: 'var(--bg-secondary)', borderRadius: '12px' }}>
-          <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)' }}>💤 No community activity recorded for this day.</p>
+        <div className="text-center py-16 bg-slate-50 dark:bg-slate-900 rounded-xl">
+          <p className="text-lg text-slate-500 dark:text-slate-400">💤 No community activity recorded for this day.</p>
         </div>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+      <div className="flex flex-col gap-16">
         
         {/* Development Activity */}
         {(data.github_merged?.length > 0 || data.github_opened?.length > 0) && (
           <section>
-            <h2 style={{ 
-              fontSize: '1.5rem', 
-              marginBottom: '1.5rem', 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.75rem',
-              color: 'var(--text-primary)',
-              borderBottom: '1px solid var(--border-light)',
-              paddingBottom: '0.75rem'
-            }}>
+            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 🛠️ Development Activity
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '1.5rem' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {data.github_merged?.map((pr: PullRequest, idx: number) => {
                     const projectType = detectProjectType(pr.title);
                     return (
@@ -275,7 +197,7 @@ const DailyReport = () => {
                         ]}
                         meta={<span>by <strong>{pr.author}</strong></span>}
                     />
-                )})}
+                );})}
                 {data.github_opened?.map((pr: PullRequest, idx: number) => {
                     const projectType = detectProjectType(pr.title);
                     return (
@@ -300,19 +222,10 @@ const DailyReport = () => {
         {/* Community Forum */}
         {(data.english_forum?.length > 0 || data.chinese_forum?.length > 0) && (
           <section>
-            <h2 style={{ 
-              fontSize: '1.5rem', 
-              marginBottom: '1.5rem', 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.75rem',
-              color: 'var(--text-primary)',
-              borderBottom: '1px solid var(--border-light)',
-              paddingBottom: '0.75rem'
-            }}>
+            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 💬 Community Forum
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '1.5rem' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {data.english_forum?.map((post: ForumPost, idx: number) => (
                     <CalloutCard 
                         key={`en-${idx}`}
@@ -342,19 +255,10 @@ const DailyReport = () => {
         {/* Reddit */}
         {data.reddit?.length > 0 && (
           <section>
-            <h2 style={{ 
-               fontSize: '1.5rem', 
-               marginBottom: '1.5rem', 
-               display: 'flex', 
-               alignItems: 'center', 
-               gap: '0.75rem',
-               color: 'var(--text-primary)',
-               borderBottom: '1px solid var(--border-light)',
-               paddingBottom: '0.75rem'
-            }}>
+            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 🔴 Reddit Highlights
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '1.5rem' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {data.reddit.map((post: RedditPost, idx: number) => (
                     <CalloutCard 
                         key={`reddit-${idx}`}
@@ -371,7 +275,7 @@ const DailyReport = () => {
       </div>
       
       {/* Footer Note */}
-      <div style={{ marginTop: '4rem', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '0.85rem', fontStyle: 'italic' }}>
+      <div className="mt-16 text-center text-slate-400 dark:text-slate-500 text-sm italic">
         Generated by Obsidian Community Report System
       </div>
     </div>

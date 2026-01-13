@@ -7,9 +7,9 @@ import WeeklyReport from './pages/WeeklyReport';
 
 function App() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div className="flex flex-col min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-300">
       <Header />
-      <main style={{ flex: 1 }}>
+      <main className="flex-1 w-full">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/daily/:date" element={<DailyReport />} />
