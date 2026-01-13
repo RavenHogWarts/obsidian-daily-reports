@@ -110,8 +110,7 @@ const Home = () => {
              {latestWeekly ? (
                 <>
                     <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>{latestWeekly}</p>
-                    {/* Weekly page not implemented yet, linking to json or placeholder */}
-                    <span style={{ color: 'var(--text-tertiary)' }}>Coming Soon</span>
+                    <Link to={`/weekly/${latestWeekly}`} style={{ color: 'var(--accent)', fontWeight: 600 }}>Read Summary &rarr;</Link>
                 </>
              ) : (
                 <>
@@ -126,7 +125,7 @@ const Home = () => {
       {/* List recent archives */}
       {index.daily.length > 0 && (
         <section style={{ marginTop: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Archive</h2>
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Daily Archive</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                 {index.daily.slice(0, 5).map(date => (
                     <Link key={date} to={`/daily/${date}`} style={{
@@ -137,6 +136,25 @@ const Home = () => {
                         color: 'var(--text-secondary)'
                     }}>
                         {date}
+                    </Link>
+                ))}
+            </div>
+        </section>
+      )}
+
+      {index.weekly.length > 0 && (
+        <section style={{ marginTop: '3rem' }}>
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Weekly Archive</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                {index.weekly.slice(0, 5).map(week => (
+                    <Link key={week} to={`/weekly/${week}`} style={{
+                        padding: '0.5rem 1rem',
+                        backgroundColor: 'var(--bg-tertiary)',
+                        borderRadius: '8px',
+                        fontSize: '0.9rem',
+                        color: 'var(--text-secondary)'
+                    }}>
+                        {week}
                     </Link>
                 ))}
             </div>

@@ -39,11 +39,18 @@ export interface DailyReportData {
 }
 
 export interface WeeklyReportData {
-  week: string;
-  start_date: string;
-  end_date: string;
-  summary: string;
-  // TODO: Update structure based on actual weekly data
+  iso_week: string;
+  date_range: {
+    start: string;
+    end: string;
+  };
+  actual_dates: string[];
+  generated_at: string;
+  chinese_forum: ForumPost[];
+  english_forum: ForumPost[];
+  github_opened: PullRequest[];
+  github_merged?: PullRequest[];
+  reddit?: RedditPost[];
 }
 
 export interface IndexData {

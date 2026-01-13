@@ -40,7 +40,7 @@ const generateIndexFilePlugin = () => {
       fs.writeFileSync(outputFile, JSON.stringify(index, null, 2));
     },
     // Watch for changes in public/data directory
-    handleHotUpdate({ file, server }: any) {
+    handleHotUpdate({ file }: any) {
       if (file.includes("public/data")) {
         // Re-run buildStart logic or separate function
         // For simplicity, just touching the index file to trigger HMR
