@@ -8,7 +8,20 @@
       "url": "https://forum-zh.obsidian.md/t/topic/57623",
       "author": "zhouwei15301",
       "created_at": "2026-01-12T08:10:29.520Z",
-      "content_html": "<p>我手下有两台电脑，一台配置高（后面称 A），一台配置稍低（后面称 B）</p>\n<p>最近感觉所有电脑打开 obsidian 时明显卡顿，A 会卡个 1-1.5s 左右，B 电脑直接卡死，导致无法进入设置</p>\n<p>我在A上进行，一个一个关闭插件进行测试，最后锁定 obsidian-excalidraw 插件。</p>\n<p>关掉之后神清气爽，丝毫不卡，最后换回 obsidian 自带的画板了。</p>"
+      "content_html": "<p>我手下有两台电脑，一台配置高（后面称 A），一台配置稍低（后面称 B）</p>\n<p>最近感觉所有电脑打开 obsidian 时明显卡顿，A 会卡个 1-1.5s 左右，B 电脑直接卡死，导致无法进入设置</p>\n<p>我在A上进行，一个一个关闭插件进行测试，最后锁定 obsidian-excalidraw 插件。</p>\n<p>关掉之后神清气爽，丝毫不卡，最后换回 obsidian 自带的画板了。</p>",
+      "_source_key": "chinese_forum",
+      "ai_summary": "用户排查发现 obsidian-excalidraw 插件导致启动严重卡顿，高配机卡1.5秒，低配机直接卡死，禁用后换回原生画板。",
+      "ai_pain_point": "插件导致的启动卡顿与客户端死机",
+      "ai_highlights": [
+        "高配机卡顿1.5秒，低配机直接卡死，排查逻辑清晰",
+        "果断放弃 Excalidraw 换回原生画板，重获流畅体验"
+      ],
+      "ai_comment": "Excalidraw 画图虽爽，但吃起资源来也是毫不客气，逼得用户不得不从“豪华座驾”换回“共享单车”，毕竟卡死没法写笔记才是最痛的。",
+      "ai_tags": [
+        "效率党",
+        "颜值党"
+      ],
+      "ai_score": 8
     }
   ],
   "english_forum": [
@@ -18,7 +31,20 @@
       "url": "https://forum.obsidian.md/t/what-did-they-say-in-that-meeting-solved/109845",
       "author": "ayumu.homes",
       "created_at": "2026-01-12T07:03:06.752Z",
-      "content_html": "<p>Recording meetings is easy. Finding that one thing someone said? Not so much.</p>\n<p>I built <strong>Recmo</strong> - a macOS app that:<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/round_pushpin.png?v=15\" title=\":round_pushpin:\" class=\"emoji\" alt=\":round_pushpin:\" loading=\"lazy\" width=\"20\" height=\"20\"> Records any meeting (Zoom, Meet, Teams, anything)<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/locked.png?v=15\" title=\":locked:\" class=\"emoji\" alt=\":locked:\" loading=\"lazy\" width=\"20\" height=\"20\"> Transcribes locally (Whisper - no cloud, no API)<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/memo.png?v=15\" title=\":memo:\" class=\"emoji\" alt=\":memo:\" loading=\"lazy\" width=\"20\" height=\"20\"> Outputs Markdown directly to your Vault</p>\n<p><strong>Seamless Obsidian integration:</strong><br>\nNo plugins. No API. No config.<br>\nJust set your output folder to your Vault - that’s it.<br>\nRecmo and Obsidian don’t “connect.” They just coexist naturally.</p>\n<p><strong>The killer feature:</strong> <code>![[meeting.m4a]]</code> embedded audio.<br>\nRead the summary, click play, hear the exact moment.</p>\n<aside class=\"onebox allowlistedgeneric\" data-onebox-src=\"https://recmo.me/en.html\">\n  <header class=\"source\">\n\n      <a href=\"https://recmo.me/en.html\" target=\"_blank\" rel=\"noopener nofollow ugc\">recmo.me</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    \n\n<h3><a href=\"https://recmo.me/en.html\" target=\"_blank\" rel=\"noopener nofollow ugc\">Recmo - From Recording to Remembering.</a></h3>\n\n  <p>One-tap recording. Local transcription. Auto-saved to your notes. Meeting recording app for macOS.</p>\n\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p><img src=\"https://forum.obsidian.md/uploads/default/original/3X/b/c/bc55674dc64168a93b016534c98cca923b3724e5.gif\" alt=\"preview\" data-base62-sha1=\"qS4JV77oGVnVLuswyhUBZtBiBXD\" width=\"422\" height=\"317\" class=\"animated\"></p>"
+      "content_html": "<p>Recording meetings is easy. Finding that one thing someone said? Not so much.</p>\n<p>I built <strong>Recmo</strong> - a macOS app that:<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/round_pushpin.png?v=15\" title=\":round_pushpin:\" class=\"emoji\" alt=\":round_pushpin:\" loading=\"lazy\" width=\"20\" height=\"20\"> Records any meeting (Zoom, Meet, Teams, anything)<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/locked.png?v=15\" title=\":locked:\" class=\"emoji\" alt=\":locked:\" loading=\"lazy\" width=\"20\" height=\"20\"> Transcribes locally (Whisper - no cloud, no API)<br>\n<img src=\"https://forum.obsidian.md/images/emoji/apple/memo.png?v=15\" title=\":memo:\" class=\"emoji\" alt=\":memo:\" loading=\"lazy\" width=\"20\" height=\"20\"> Outputs Markdown directly to your Vault</p>\n<p><strong>Seamless Obsidian integration:</strong><br>\nNo plugins. No API. No config.<br>\nJust set your output folder to your Vault - that’s it.<br>\nRecmo and Obsidian don’t “connect.” They just coexist naturally.</p>\n<p><strong>The killer feature:</strong> <code>![[meeting.m4a]]</code> embedded audio.<br>\nRead the summary, click play, hear the exact moment.</p>\n<aside class=\"onebox allowlistedgeneric\" data-onebox-src=\"https://recmo.me/en.html\">\n  <header class=\"source\">\n\n      <a href=\"https://recmo.me/en.html\" target=\"_blank\" rel=\"noopener nofollow ugc\">recmo.me</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    \n\n<h3><a href=\"https://recmo.me/en.html\" target=\"_blank\" rel=\"noopener nofollow ugc\">Recmo - From Recording to Remembering.</a></h3>\n\n  <p>One-tap recording. Local transcription. Auto-saved to your notes. Meeting recording app for macOS.</p>\n\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p><img src=\"https://forum.obsidian.md/uploads/default/original/3X/b/c/bc55674dc64168a93b016534c98cca923b3724e5.gif\" alt=\"preview\" data-base62-sha1=\"qS4JV77oGVnVLuswyhUBZtBiBXD\" width=\"422\" height=\"317\" class=\"animated\"></p>",
+      "_source_key": "english_forum",
+      "ai_summary": "Recmo 这款 Mac 应用通过本地转录和 Markdown 直出，完美解决了会议录音回溯难的问题。",
+      "ai_pain_point": "录了一大堆会议录音却找不到具体哪句说了什么，以及担心云端转录泄露隐私。",
+      "ai_highlights": [
+        "基于 Whisper 本地转录，无 API 无云端，直出 Markdown 至 Obsidian",
+        "支持嵌入音频 ![[meeting.m4a]]，点读文字即可跳转听到对应原声"
+      ],
+      "ai_comment": "终于不用像傻子一样去配 API Key 了，这才是“无缝”该有的样子，把折腾留给自己，把清爽留给用户。",
+      "ai_tags": [
+        "效率党",
+        "数据极客"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Obsidian English Forum",
@@ -26,7 +52,19 @@
       "url": "https://forum.obsidian.md/t/stack-tabs-with-canvas-causing-cursor-drift-and-i-fixed-it/109838",
       "author": "RobertttBS",
       "created_at": "2026-01-12T01:32:30.250Z",
-      "content_html": "<p>I met the issue same as <a href=\"https://forum.obsidian.md/t/stacked-tabs-when-multiples-canvases-are-stacked-the-mouse-selection-and-scrolling-do-not-work-property-its-shifted/104658\" class=\"inline-onebox\">Stacked Tabs: When multiples canvases are stacked, the mouse selection and scrolling do not work property (it's shifted)</a></p>\n<p>And I fixed it at my plugin Enhanced Canvas: <a href=\"https://forum.obsidian.md/t/new-plugin-enhanced-canvas/97169\" class=\"inline-onebox\">New Plugin: Enhanced Canvas</a></p>\n<p>Basically, I added two event listeners related to “stack tabs” and “canvas” that trigger <code>view.onResize()</code> method whenever necessary.</p>"
+      "content_html": "<p>I met the issue same as <a href=\"https://forum.obsidian.md/t/stacked-tabs-when-multiples-canvases-are-stacked-the-mouse-selection-and-scrolling-do-not-work-property-its-shifted/104658\" class=\"inline-onebox\">Stacked Tabs: When multiples canvases are stacked, the mouse selection and scrolling do not work property (it's shifted)</a></p>\n<p>And I fixed it at my plugin Enhanced Canvas: <a href=\"https://forum.obsidian.md/t/new-plugin-enhanced-canvas/97169\" class=\"inline-onebox\">New Plugin: Enhanced Canvas</a></p>\n<p>Basically, I added two event listeners related to “stack tabs” and “canvas” that trigger <code>view.onResize()</code> method whenever necessary.</p>",
+      "_source_key": "english_forum",
+      "ai_summary": "堆叠 Canvas 标签页导致鼠标漂移？写个插件监听一下 `onResize` 就能修好这官方级的尴尬。",
+      "ai_pain_point": "Canvas 面板在堆叠标签模式下，鼠标选择和滚动位置发生偏移（光标漂移）。",
+      "ai_highlights": [
+        "修复了在堆叠标签页模式下使用 Canvas 时出现的鼠标选择和滚动偏移问题",
+        "通过添加事件监听器并在必要时触发 `view.onResize()` 方法实现了修复"
+      ],
+      "ai_comment": "官方还在沉默，插件作者已经把补丁交上来了，果然还得靠社区自救。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 8
     }
   ],
   "github_opened": [
@@ -37,7 +75,19 @@
       "author": "wulflo",
       "created_at": "2026-01-12T15:32:00Z",
       "body": "# I am submitting a new Community Theme\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my theme: https://github.com/wulflo/obsidian-3Sumaq\r\n\r\n## Theme checklist\r\n\r\n<!--- Confirm that you have done the following before submitting your theme -->\r\n- [x] My repo contains all required files (please *do not* add them to this `obsidian-releases` repo).\r\n  - [x] `manifest.json`\r\n  - [x] `theme.css`\r\n  - [x] The screenshot file (16:9 aspect ratio, recommended size is 512px by 288px for fast loading).\r\n- [x] I have indicated which modes (dark, light, or both) are compatible with my theme.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my theme's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Themes/App+themes/Theme+guidelines and have self-reviewed my theme to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other themes that I'm using. I have given proper attribution to these other themes in my `README.md`.\r\n",
-      "state": "closed"
+      "state": "closed",
+      "_source_key": "github_opened",
+      "ai_summary": "提交了名为 '3Sumaq' 的新社区主题，并严格遵守了开发规范与截图尺寸要求。",
+      "ai_pain_point": "缺乏多样化的视觉风格与规范化的主题提交流程。",
+      "ai_highlights": [
+        "严格按照开发者政策与主题指南自查，规避常见陷阱",
+        "采用推荐尺寸截图(512x288)，优化了加载速度"
+      ],
+      "ai_comment": "标题写着 'Universitario' 改封面，正文却是提交 '3Sumaq' 新主题，这谜语人操作令人头秃，不过好在清单填得比谁都乖巧，审核员总算能少叹两口气。",
+      "ai_tags": [
+        "颜值党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "GitHub Open",
@@ -46,7 +96,19 @@
       "author": "shichishima",
       "created_at": "2026-01-12T14:02:16Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/shichishima/obsidian-universal-cursor-hotkeys\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "告别鼠标切来切去，Obsidian 通用光标热键插件助你实现纯键盘流编辑。",
+      "ai_pain_point": "编辑时频繁在键盘和鼠标/触控板间切换打断思路，难以通过键盘精准控制光标。",
+      "ai_highlights": [
+        "覆盖 Windows、macOS 及 iOS 平台，保证多端基础可用性",
+        "提供通用光标控制热键，无需依赖鼠标即可完成精准定位"
+      ],
+      "ai_comment": "虽然 Linux 和 Android 用户暂时只能眼馋，但这绝对是键盘党的续命神药，终于不用把手移出主键盘区了。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "GitHub Open",
@@ -55,7 +117,20 @@
       "author": "devautomaze",
       "created_at": "2026-01-12T11:06:04Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [x]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "名为 Spark Assistant 的新插件提交入库，目前仅确认支持 macOS 和 Linux 系统。",
+      "ai_pain_point": "需要新的辅助工具（基于名称推测）",
+      "ai_highlights": [
+        "开发者在 macOS 和 Linux 上进行了测试",
+        "承诺了维护责任并包含完整发布文件"
+      ],
+      "ai_comment": "又一个 'Assistant'，测试列表把 Windows 和移动端全删了，这是在赤裸裸地搞平台歧视吗？希望代码比它被截断的描述更完整。",
+      "ai_tags": [
+        "开发者",
+        "效率党"
+      ],
+      "ai_score": 6
     },
     {
       "source": "GitHub Open",
@@ -64,7 +139,19 @@
       "author": "jaemega",
       "created_at": "2026-01-12T10:56:17Z",
       "body": "Proposal to add \"Note Tabs\" to community plugins\r\n\r\n# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/Project-Free-Rangers/obsidian-notetabs\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "给Obsidian加上类似浏览器的多标签页功能，让你在不同笔记间切换不再手忙脚乱。",
+      "ai_pain_point": "原生界面切换笔记需要频繁关闭或重新打开，难以同时对比参考多个文档内容。",
+      "ai_highlights": [
+        "提供浏览器风格的多标签页管理，提升多任务处理体验",
+        "已通过Windows和macOS测试，作者承诺积极维护更新"
+      ],
+      "ai_comment": "虽然连Linux都没测就敢提PR，但能把这该死的标签页功能补上，还得说一声谢了。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "GitHub Open",
@@ -73,7 +160,20 @@
       "author": "luashiping",
       "created_at": "2026-01-12T10:54:16Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [ ] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [ x ]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [ x ] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [ x ] `main.js`\r\n  - [ x  ] `manifest.json`\r\n  - [ x  ] `styles.css` _(optional)_\r\n- [ x ] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [ x  ] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [ x ] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [ x ] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [ x  ] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [ x ] I have added a license in the LICENSE file.\r\n- [ x ] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "有人提交了一个对接 Wiki.js 的新插件申请，可惜测试范围仅覆盖了 macOS。",
+      "ai_pain_point": "缺乏将 Obsidian 笔记自动发布或同步到 Wiki.js 平台的便捷工具。",
+      "ai_highlights": [
+        "填补了 Obsidian 与 Wiki.js 生态连接的空白",
+        "开发者已在 macOS 环境下完成了基础功能验证"
+      ],
+      "ai_comment": "提交正文基本全是模板废话，测试只选了 macOS，这种极简主义的提交风格，不知道是自信还是单纯懒得填。Windows 和 Linux 用户先退下吧。",
+      "ai_tags": [
+        "[开发者]",
+        "[数据极客]"
+      ],
+      "ai_score": 6
     },
     {
       "source": "GitHub Open",
@@ -82,7 +182,20 @@
       "author": "swefpifh",
       "created_at": "2026-01-12T07:04:32Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/swefpifh/obsidian-note-folder-state-icons\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [ ]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [ x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "提交了一款「状态图标」插件，试图用视觉元素拯救杂乱的笔记列表。",
+      "ai_pain_point": "默认图标千篇一律，无法通过视觉快速识别笔记或文件夹的特殊状态（如存档、待办等）。",
+      "ai_highlights": [
+        "新插件「Note Folder State Icons」申请入驻，主打基于状态的图标变更功能",
+        "作者承诺会积极维护并响应Bug，不过目前仅在Windows平台上完成了测试"
+      ],
+      "ai_comment": "承诺维护的誓言写得很感人，但测试清单里除了 Windows 全是空白，这大概是给非 Windows 用户准备的惊喜盲盒吧。",
+      "ai_tags": [
+        "颜值党",
+        "效率党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -91,7 +204,19 @@
       "author": "suyuan2022",
       "created_at": "2026-01-12T07:03:16Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:https://github.com/suyuan2022/claude-terminal\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [ ] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [ ] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "把 Claude 搬进极客风终端界面，满足你在 Obsidian 里进行命令行式 AI 对话的硬核需求。",
+      "ai_pain_point": "传统 AI 聊天界面缺乏仪式感，无法满足开发者对命令行（CLI）交互习惯的依赖。",
+      "ai_highlights": [
+        "开发者立下“军令状”承诺代码高质量，甚至想好了“后事”维护者，态度感人",
+        "发布清单显示目前仅在 macOS 上测试通过，Windows 与 Linux 用户暂时只能围观"
+      ],
+      "ai_comment": "名字叫“终端”，希望别只是个换了皮的对话框。另外，只测了 macOS 就敢提交，这勇气我先替 Windows 用户收下了。",
+      "ai_tags": [
+        "开发者"
+      ],
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -100,7 +225,19 @@
       "author": "lihengjun",
       "created_at": "2026-01-12T06:14:04Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\nLink to my plugin:https://github.com/lihengjun/obsidian-one-click-lock\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "一键锁定笔记防止误触，专为苹果生态打造的备忘录守护神。",
+      "ai_pain_point": "纯阅读或展示时，手指/手滑误触导致笔记内容被意外篡改或删除。",
+      "ai_highlights": [
+        "一键锁定当前视图，彻底根除误触修改的焦虑",
+        "优先适配 macOS 和 iOS，精准狙击移动端误操作"
+      ],
+      "ai_comment": "别的平台还在苦哈哈地手动切状态，苹果用户已经可以一键锁死走人了，这波‘优越感’给满分。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "GitHub Open",
@@ -109,7 +246,19 @@
       "author": "ljklonepiece",
       "created_at": "2026-01-12T03:31:57Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/ljklonepiece/obsidian-export-files-by-bases\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [x]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "新增插件 Export Bases Files，旨在解决按特定基准批量导出文件的繁琐需求。",
+      "ai_pain_point": "无法快速、精准地按目录或基准规则筛选并导出文件，手动操作效率低下且容易出错。",
+      "ai_highlights": [
+        "全平台桌面端支持（Win/Mac/Linux），无缝融入各种工作流",
+        "开发者签署“军令状”承诺持续维护与响应，不再是玩消失的幽灵插件"
+      ],
+      "ai_comment": "名字里的 \"Bases\" 看得人云里雾里，但好在作者良心发现覆盖了三大桌面端。至于移动端用户？抱歉，在这个插件眼里，手机似乎只是个装饰品。",
+      "ai_tags": [
+        "[效率党]"
+      ],
+      "ai_score": 8
     },
     {
       "source": "GitHub Open",
@@ -118,7 +267,19 @@
       "author": "SawyerRensel",
       "created_at": "2026-01-12T03:07:23Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\nhttps://github.com/SawyerRensel/Planner\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [x]  Linux\r\n  - [x]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n  - [x] `timeline.html` (for [Timeline View](https://sawyerrensel.github.io/Planner/views/timeline/))\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "一款名为 Planner 的新插件正式提交入库，承诺全平台兼容与持续维护。",
+      "ai_pain_point": "在 Obsidian 内缺乏直观且跨平台统一的任务规划与时间管理工具。",
+      "ai_highlights": [
+        "全平台测试通过（覆盖 Windows、macOS、Linux、Android、iOS）",
+        "开发者签署了“军令状”，承诺代码质量并对 bug 负责"
+      ],
+      "ai_comment": "又一个计划器？不过看在开发者把全平台测试都跑了一遍的份上，这次暂且收起毒舌，给个高分鼓励。",
+      "ai_tags": [
+        "[效率党]"
+      ],
+      "ai_score": 8
     },
     {
       "source": "GitHub Open",
@@ -127,7 +288,19 @@
       "author": "luke1879012",
       "created_at": "2026-01-12T03:05:06Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [ ]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "拒绝让关系图变成毫无意义的乱炖，Vassago 为连线加上类型标签，理清逻辑。",
+      "ai_pain_point": "原生关系图只能显示节点间的连接，无法区分是“父子”、“引用”还是“反驳”等具体语义。",
+      "ai_highlights": [
+        "自定义关系图中的连接类型（如：灵感、引用）",
+        "通过筛选特定类型，在复杂网络中快速理清笔记归属"
+      ],
+      "ai_comment": "如果你的图谱看着像盘丝洞，那不是笔记多，是你连的太没头没脑。",
+      "ai_tags": [
+        "数据极客"
+      ],
+      "ai_score": 8
     },
     {
       "source": "GitHub Open",
@@ -136,7 +309,20 @@
       "author": "jesse-ux",
       "created_at": "2026-01-12T01:47:32Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n  - [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n  ## Repo URL\r\n\r\n  <!--- Paste a link to your repo here for easy access -->\r\n  Link to my plugin: https://github.com/jesse-ux/obsidian-tapgloss\r\n\r\n  ## Release Checklist\r\n  - [x] I have tested the plugin on\r\n    - [x]  Windows\r\n    - [x]  macOS\r\n    - [ ]  Linux\r\n    - [ ]  Android _(if applicable)_\r\n    - [ ]  iOS _(if applicable)_\r\n  - [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n    - [x] `main.js`\r\n    - [x] `manifest.json`\r\n    - [ ] `styles.css` _(optional)_\r\n  - [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n  - [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n  - [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n  - [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n  - [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n  - [x] I have added a license in the LICENSE file.\r\n  - [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n        I have given proper attribution to these other projects in my `README.md`. \r\n     ",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "名为 TapGloss 的新插件申请入库，旨在通过点击交互优化术语定义的使用体验。",
+      "ai_pain_point": "笔记中缺乏便捷的术语解释交互方式，导致查阅和定义管理不够直观流畅。",
+      "ai_highlights": [
+        "开发者签署了高质量承诺书，保证长期维护并响应 Bug 报告",
+        "已完成 Windows 与 macOS 平台的兼容性测试"
+      ],
+      "ai_comment": "只有 Windows 和 Mac 测了就敢发 PR，Linux 和移动端用户看来是‘二等公民’。既然信誓旦旦说代码质量高，希望别是又来凑数的。",
+      "ai_tags": [
+        "效率党",
+        "学术党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -145,7 +331,20 @@
       "author": "derekross",
       "created_at": "2026-01-12T01:38:59Z",
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [X] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [ ]  macOS\r\n  - [X]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [X] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [X] `main.js`\r\n  - [X] `manifest.json`\r\n  - [X] `styles.css` _(optional)_\r\n- [X] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [X] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [X] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [X] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [X] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [X] I have added a license in the LICENSE file.\r\n- [X] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
-      "state": "open"
+      "state": "open",
+      "_source_key": "github_opened",
+      "ai_summary": "一个名为 OpenCode CLI Sidebar 的新插件申请入库，旨在通过侧边栏集成代码或命令行功能。",
+      "ai_pain_point": "缓解了在 Obsidian 中记录技术文档时，缺乏直接访问终端或代码环境的割裂感。",
+      "ai_highlights": [
+        "插件首发文件打包齐全，作者承诺会积极维护不跑路",
+        "从标题推测，能直接在侧边栏操作 CLI，适合不想切屏的开发者"
+      ],
+      "ai_comment": "也就是只有 Linux 用户能第一时间用得舒心，剩下系统的用户都在这帮极客的“兼容性赌局”里裸奔。",
+      "ai_tags": [
+        "开发者",
+        "效率党"
+      ],
+      "ai_score": 7
     }
   ],
   "github_merged": [
@@ -156,7 +355,19 @@
       "author": "wulflo",
       "merged_at": "2026-01-12T18:12:10Z",
       "body": "# I am submitting a new Community Theme\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my theme: https://github.com/wulflo/obsidian-3Sumaq\r\n\r\n## Theme checklist\r\n\r\n<!--- Confirm that you have done the following before submitting your theme -->\r\n- [x] My repo contains all required files (please *do not* add them to this `obsidian-releases` repo).\r\n  - [x] `manifest.json`\r\n  - [x] `theme.css`\r\n  - [x] The screenshot file (16:9 aspect ratio, recommended size is 512px by 288px for fast loading).\r\n- [x] I have indicated which modes (dark, light, or both) are compatible with my theme.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my theme's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Themes/App+themes/Theme+guidelines and have self-reviewed my theme to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other themes that I'm using. I have given proper attribution to these other themes in my `README.md`.\r\n",
-      "state": "merged"
+      "state": "merged",
+      "_source_key": "github_merged",
+      "ai_summary": "名为 3Sumaq 的新主题正式提交，准备登陆官方仓库。",
+      "ai_pain_point": "用户对现有主题审美疲劳，急需新的视觉风格注入。",
+      "ai_highlights": [
+        "提交了完整的 3Sumaq 主题文件，包含 manifest 与 CSS",
+        "作者仔细阅读并勾选了所有开发策略与规范清单"
+      ],
+      "ai_comment": "标题写着改封面，内容却是新主题提交，这种文不对题的草率操作也就只有清单填得还算敬业了。",
+      "ai_tags": [
+        "颜值党"
+      ],
+      "ai_score": 7
     }
   ],
   "reddit": [
@@ -166,7 +377,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qban57/is_this_happening_to_anyone_else_on_1114/",
       "author": "/u/exaltcovert",
       "created_at": "2026-01-12T23:15:07+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qban57/is_this_happening_to_anyone_else_on_1114/\"> <img src=\"https://preview.redd.it/tkb555go30dg1.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=39f297feb8576e3552fd4423e5626742c341f902\" alt=\"Is this happening to anyone else on 1.11.4?\" title=\"Is this happening to anyone else on 1.11.4?\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Lists in Bases are being truncated. I switched to default theme and turned off Style Settings, Minimal Theme Settings, Hider and all CSS, but it made no difference. I&#39;m running 1.11.4 on Tahoe, it&#39;s also happening on the latest iOS version. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/exaltcovert\"> /u/exaltcovert </a> <br/> <span><a href=\"https://i.redd.it/tkb555go30dg1.jpeg\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qban57/is_this_happening_to_anyone_else_on_1114/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qban57/is_this_happening_to_anyone_else_on_1114/\"> <img src=\"https://preview.redd.it/tkb555go30dg1.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=39f297feb8576e3552fd4423e5626742c341f902\" alt=\"Is this happening to anyone else on 1.11.4?\" title=\"Is this happening to anyone else on 1.11.4?\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Lists in Bases are being truncated. I switched to default theme and turned off Style Settings, Minimal Theme Settings, Hider and all CSS, but it made no difference. I&#39;m running 1.11.4 on Tahoe, it&#39;s also happening on the latest iOS version. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/exaltcovert\"> /u/exaltcovert </a> <br/> <span><a href=\"https://i.redd.it/tkb555go30dg1.jpeg\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qban57/is_this_happening_to_anyone_else_on_1114/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "Obsidian 1.11.4 版本出现严重 Bug，Bases 列表内容被截断，且非主题或插件冲突所致。",
+      "ai_pain_point": "数据显示异常（Bases 列表截断）",
+      "ai_highlights": [
+        "已排除主题、CSS插件干扰，确认为原生Bug",
+        "跨平台复现（桌面端Tahoe与iOS均受影响）"
+      ],
+      "ai_comment": "每次版本大更新就像是开盲盒，这次轮到 Bases 功能 '自断一臂'，官方回归测试形同虚设。",
+      "ai_tags": [
+        "[数据极客]"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -174,7 +397,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qba9hc/daily_notes_base_filtering/",
       "author": "/u/godarchmage",
       "created_at": "2026-01-12T23:00:00+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>In <a href=\"/u/kepano\">u/kepano</a>’s daily.base, there’s an advanced filter <code>created.toString().contains(this.file.name)</code> that shows files based on their created property containing the string of the file name that has the base. My challenges are;</p> <ul> <li>This uses the format YYYY-MM-DD but my files use the format ddd Do MMM YYYY. Hence, it doesn’t work. How can I have it work with my format (which is the way I format dates in my vault).<br/></li> <li>Why does advance filter seem to be a hassle? Is there a place or way I can try out things and see the output? Like I don’t know what the value of <code>created</code> property outputs.</li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/godarchmage\"> /u/godarchmage </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qba9hc/daily_notes_base_filtering/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qba9hc/daily_notes_base_filtering/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>In <a href=\"/u/kepano\">u/kepano</a>’s daily.base, there’s an advanced filter <code>created.toString().contains(this.file.name)</code> that shows files based on their created property containing the string of the file name that has the base. My challenges are;</p> <ul> <li>This uses the format YYYY-MM-DD but my files use the format ddd Do MMM YYYY. Hence, it doesn’t work. How can I have it work with my format (which is the way I format dates in my vault).<br/></li> <li>Why does advance filter seem to be a hassle? Is there a place or way I can try out things and see the output? Like I don’t know what the value of <code>created</code> property outputs.</li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/godarchmage\"> /u/godarchmage </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qba9hc/daily_notes_base_filtering/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qba9hc/daily_notes_base_filtering/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "用户因使用自定义日期格式导致 `daily.base` 的高级过滤器失效，同时吐槽了缺乏调试过滤器输出的环境。",
+      "ai_pain_point": "非标准日期格式破坏预设过滤器逻辑，以及高级过滤器/脚本缺乏调试工具。",
+      "ai_highlights": [
+        "Kepano 的 daily.base 过滤器与自定义日期格式 ddd Do MMM YYYY 的兼容性冲突",
+        "用户对 created 属性输出未知感到无助，呼吁提供调试沙盒"
+      ],
+      "ai_comment": "为了所谓的“颜值”把日期格式改得花里胡哨，结果匹配不了逻辑就怪工具难用，Dataview 调试确实一直是反人类设计。",
+      "ai_tags": [
+        "[颜值党]",
+        "[数据极客]"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -182,7 +418,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb9q66/solo_leveling_inspired_workout_page/",
       "author": "/u/HowLoco",
       "created_at": "2026-01-12T22:38:57+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9q66/solo_leveling_inspired_workout_page/\"> <img src=\"https://b.thumbs.redditmedia.com/Zs6qiNTSB-QkS1GiXoh9gnz9ish8yoV-ItPzsReG-vU.jpg\" alt=\"Solo Leveling inspired workout page\" title=\"Solo Leveling inspired workout page\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I always wanted a workout app that had the same style as solo leveling, so I decided to create one in Obsidian.</p> <p>I cant take much credit for the coding though as I used AI to generate the dataviewjs code for the UI panel. I consider it a WIP, but I&#39;d love some suggestions for what I could add.</p> <p>Btw if anyone has created something similar inside of Obsidian then I would love to see it!</p> <p>Plugins used:</p> <ul> <li>Pretty-properties (for the banner and icon)</li> <li>Heatmap tracker</li> <li>Dataview</li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/HowLoco\"> /u/HowLoco </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1qb9q66\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9q66/solo_leveling_inspired_workout_page/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9q66/solo_leveling_inspired_workout_page/\"> <img src=\"https://b.thumbs.redditmedia.com/Zs6qiNTSB-QkS1GiXoh9gnz9ish8yoV-ItPzsReG-vU.jpg\" alt=\"Solo Leveling inspired workout page\" title=\"Solo Leveling inspired workout page\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I always wanted a workout app that had the same style as solo leveling, so I decided to create one in Obsidian.</p> <p>I cant take much credit for the coding though as I used AI to generate the dataviewjs code for the UI panel. I consider it a WIP, but I&#39;d love some suggestions for what I could add.</p> <p>Btw if anyone has created something similar inside of Obsidian then I would love to see it!</p> <p>Plugins used:</p> <ul> <li>Pretty-properties (for the banner and icon)</li> <li>Heatmap tracker</li> <li>Dataview</li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/HowLoco\"> /u/HowLoco </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1qb9q66\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9q66/solo_leveling_inspired_workout_page/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "用户利用 AI 生成的代码配合 Dataview 和 Pretty-properties 插件，在 Obsidian 中还原了《Solo Leveling》风格的健身系统面板。",
+      "ai_pain_point": "传统健身应用界面枯燥，缺乏沉浸式的游戏化“系统面板”体验。",
+      "ai_highlights": [
+        "通过 Pretty-properties 和 DataviewJS 打造了极具视觉冲击力的二次元系统UI",
+        "集成 Heatmap tracker 插件进行健身数据的热力图追踪"
+      ],
+      "ai_comment": "只要把需求喂给 AI，笔记软件就能变身 RPG 游戏界面，现在的 Obsidian 离“纯粹”越来越远了，但离“好玩”倒是越来越近。",
+      "ai_tags": [
+        "颜值党",
+        "数据极客"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -190,7 +439,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb9ixh/omi_ai/",
       "author": "/u/atomicpapa210",
       "created_at": "2026-01-12T22:31:07+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Has anyone created a plugin that allows you to export your Memories, Tasks, and Conversations from Omi AI to Obsidian? I found one plugin that will enable you to search your vault from Omi (<a href=\"https://github.com/paulsybrandy/omi-obsidian-plugin\">https://github.com/paulsybrandy/omi-obsidian-plugin</a>), but that&#39;s not exactly what I am looking for.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/atomicpapa210\"> /u/atomicpapa210 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9ixh/omi_ai/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9ixh/omi_ai/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Has anyone created a plugin that allows you to export your Memories, Tasks, and Conversations from Omi AI to Obsidian? I found one plugin that will enable you to search your vault from Omi (<a href=\"https://github.com/paulsybrandy/omi-obsidian-plugin\">https://github.com/paulsybrandy/omi-obsidian-plugin</a>), but that&#39;s not exactly what I am looking for.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/atomicpapa210\"> /u/atomicpapa210 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9ixh/omi_ai/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9ixh/omi_ai/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "用户发帖寻找能将Omi AI的记忆、任务及对话导出到Obsidian的插件。",
+      "ai_pain_point": "数据无法回流，Omi AI中的核心数据（Memories、Tasks等）无法同步到本地Obsidian库中。",
+      "ai_highlights": [
+        "需求明确：希望将Memories、Tasks和Conversations导出至本地",
+        "指出工具缺失：现有插件仅支持从Omi搜索Obsidian，无法实现数据导入"
+      ],
+      "ai_comment": "想把AI脑子里的东西挖空存进自己的黑匣子，这种把云端当外挂硬盘的想法虽然务实，但现有的插件显然还没跟上这种“盗窃”的步伐。",
+      "ai_tags": [
+        "数据极客",
+        "效率党"
+      ],
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -198,7 +460,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb9f5a/readwise_vs_zotero/",
       "author": "/u/SweetCheeksxo",
       "created_at": "2026-01-12T22:27:04+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>i want a frictionless way to highlight pdfs on my ipad with my apple pencil. i am studying a course from textbooks</p> <ol> <li><p>have those highlights appear in my vault, preferably with properties and/or metadata. being able to format what they look like is key because if it’s not nice looking my brain won’t like it </p></li> <li><p>be able to edit my highlights in obsidian with wiki links to link to existing concept notes, add in extra info if need</p></li> <li><p>creating a reference list is an optional nice to have </p></li> </ol> <p>i am trying readwise but not a fan of the fact imported pages are read only as this disrupts point 2. any notes i make disappear on resync. it’s also not the cheap </p> <p>any ideas if these are my best two options? any other options or recommended plugins to use?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/SweetCheeksxo\"> /u/SweetCheeksxo </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9f5a/readwise_vs_zotero/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9f5a/readwise_vs_zotero/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>i want a frictionless way to highlight pdfs on my ipad with my apple pencil. i am studying a course from textbooks</p> <ol> <li><p>have those highlights appear in my vault, preferably with properties and/or metadata. being able to format what they look like is key because if it’s not nice looking my brain won’t like it </p></li> <li><p>be able to edit my highlights in obsidian with wiki links to link to existing concept notes, add in extra info if need</p></li> <li><p>creating a reference list is an optional nice to have </p></li> </ol> <p>i am trying readwise but not a fan of the fact imported pages are read only as this disrupts point 2. any notes i make disappear on resync. it’s also not the cheap </p> <p>any ideas if these are my best two options? any other options or recommended plugins to use?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/SweetCheeksxo\"> /u/SweetCheeksxo </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9f5a/readwise_vs_zotero/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb9f5a/readwise_vs_zotero/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "用户纠结于Readwise的高昂费用和只读限制，寻求能在iPad上高亮PDF并同步至Obsidian且支持二次编辑的替代方案。",
+      "ai_pain_point": "Readwise导入内容为只读导致二次编辑同步丢失，且订阅价格昂贵；iPad PDF高亮同步至Obsidian的格式与元数据管理需求无法完美满足。",
+      "ai_highlights": [
+        "寻求在iPad上用Apple Pencil高亮PDF并同步至Obsidian的无摩擦工作流",
+        "吐槽Readwise导入页面只读导致无法在Obsidian中通过Wiki链接构建知识网络"
+      ],
+      "ai_comment": "既要无摩擦又要长得美，还嫌Readwise贵的“既要又要”党，大概只能去硬啃Zotero那复杂的配置文档了。",
+      "ai_tags": [
+        "学术党",
+        "颜值党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -206,7 +481,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/",
       "author": "/u/erick_diego",
       "created_at": "2026-01-12T22:21:13+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\"> <img src=\"https://a.thumbs.redditmedia.com/3rED3TtBIjA2X9yv6kvgKlnNTvYlxiUGdIDVTtfkg50.jpg\" alt=\"Link does not appear on Graph View\" title=\"Link does not appear on Graph View\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I can put links inside code block, in this case, Timeline</p> <p><a href=\"https://preview.redd.it/c14bpuywtzcg1.png?width=596&amp;format=png&amp;auto=webp&amp;s=33f0a634e185610a124cafaf5e81f017673c6fdf\">https://preview.redd.it/c14bpuywtzcg1.png?width=596&amp;format=png&amp;auto=webp&amp;s=33f0a634e185610a124cafaf5e81f017673c6fdf</a></p> <p>And this is how it renders:</p> <p><a href=\"https://preview.redd.it/yumci0g2uzcg1.png?width=1146&amp;format=png&amp;auto=webp&amp;s=a351f298bbfc3d23f7c1bb4ecb3a50e1d18a1f14\">https://preview.redd.it/yumci0g2uzcg1.png?width=1146&amp;format=png&amp;auto=webp&amp;s=a351f298bbfc3d23f7c1bb4ecb3a50e1d18a1f14</a></p> <p>But the link does not appear on the Graph view, only the link that&#39;s outside of that code block.</p> <p><a href=\"https://preview.redd.it/2vqr1z5guzcg1.png?width=385&amp;format=png&amp;auto=webp&amp;s=160343bb13e668a9d3c6ab681f3d0e35c250d3d3\">https://preview.redd.it/2vqr1z5guzcg1.png?width=385&amp;format=png&amp;auto=webp&amp;s=160343bb13e668a9d3c6ab681f3d0e35c250d3d3</a></p> <p>There&#39;s a way to solve this?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/erick_diego\"> /u/erick_diego </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\"> <img src=\"https://a.thumbs.redditmedia.com/3rED3TtBIjA2X9yv6kvgKlnNTvYlxiUGdIDVTtfkg50.jpg\" alt=\"Link does not appear on Graph View\" title=\"Link does not appear on Graph View\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I can put links inside code block, in this case, Timeline</p> <p><a href=\"https://preview.redd.it/c14bpuywtzcg1.png?width=596&amp;format=png&amp;auto=webp&amp;s=33f0a634e185610a124cafaf5e81f017673c6fdf\">https://preview.redd.it/c14bpuywtzcg1.png?width=596&amp;format=png&amp;auto=webp&amp;s=33f0a634e185610a124cafaf5e81f017673c6fdf</a></p> <p>And this is how it renders:</p> <p><a href=\"https://preview.redd.it/yumci0g2uzcg1.png?width=1146&amp;format=png&amp;auto=webp&amp;s=a351f298bbfc3d23f7c1bb4ecb3a50e1d18a1f14\">https://preview.redd.it/yumci0g2uzcg1.png?width=1146&amp;format=png&amp;auto=webp&amp;s=a351f298bbfc3d23f7c1bb4ecb3a50e1d18a1f14</a></p> <p>But the link does not appear on the Graph view, only the link that&#39;s outside of that code block.</p> <p><a href=\"https://preview.redd.it/2vqr1z5guzcg1.png?width=385&amp;format=png&amp;auto=webp&amp;s=160343bb13e668a9d3c6ab681f3d0e35c250d3d3\">https://preview.redd.it/2vqr1z5guzcg1.png?width=385&amp;format=png&amp;auto=webp&amp;s=160343bb13e668a9d3c6ab681f3d0e35c250d3d3</a></p> <p>There&#39;s a way to solve this?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/erick_diego\"> /u/erick_diego </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb99nm/link_does_not_appear_on_graph_view/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "把链接写在代码块里却不显示在关系图中，这算不算Obsidian的偷懒？",
+      "ai_pain_point": "关系图无法索引代码块内的链接",
+      "ai_highlights": [
+        "用户尝试在代码块内放置Timeline链接，阅读视图正常",
+        "关系图仅识别代码块外链接，导致连接断裂的视觉错觉"
+      ],
+      "ai_comment": "代码块就是隔绝关系的防火墙，别指望把链接塞进去还能被关系图当宝贝捡起来，这是基础语法常识。",
+      "ai_tags": [
+        "新手友好"
+      ],
+      "ai_score": 5
     },
     {
       "source": "Reddit",
@@ -214,7 +501,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb8pte/folder_or_other_way/",
       "author": "/u/Rushprod",
       "created_at": "2026-01-12T22:00:33+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi, i&#39;ve been using using obsidian for two years, i use a lots of folders with sub folder in it and its began very messy to find notes does it can be done right or i shoud switch in a other way for more efficient search?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Rushprod\"> /u/Rushprod </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb8pte/folder_or_other_way/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb8pte/folder_or_other_way/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi, i&#39;ve been using using obsidian for two years, i use a lots of folders with sub folder in it and its began very messy to find notes does it can be done right or i shoud switch in a other way for more efficient search?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Rushprod\"> /u/Rushprod </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb8pte/folder_or_other_way/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb8pte/folder_or_other_way/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "两年老用户深陷多层文件夹泥潭，苦恼于目录混乱导致检索低效，寻求破局之道。",
+      "ai_pain_point": "深度嵌套的文件夹结构导致文件混乱，难以快速定位所需笔记。",
+      "ai_highlights": [
+        "两年Obsidian老兵依赖传统文件夹管理，最终陷入目录臃肿的困境",
+        "用户试图从层级分类转向以搜索为核心的更高效工作流"
+      ],
+      "ai_comment": "用了两年还在像整理Windows硬盘一样整理Obsidian，把双向链接的“大脑”玩成了单线程的“文件柜”，这叠叠乐玩得不错啊。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -222,7 +521,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb7ppj/give_me_one_tiny_thing_you_want_fixed_or_improved/",
       "author": "/u/kepano",
       "created_at": "2026-01-12T21:23:43+00:00",
-      "content_text": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/kepano\"> /u/kepano </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7ppj/give_me_one_tiny_thing_you_want_fixed_or_improved/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7ppj/give_me_one_tiny_thing_you_want_fixed_or_improved/\">[comments]</a></span>"
+      "content_text": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/kepano\"> /u/kepano </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7ppj/give_me_one_tiny_thing_you_want_fixed_or_improved/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7ppj/give_me_one_tiny_thing_you_want_fixed_or_improved/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "Kepano 发起“纸割”大扫除，号召社区集火吐槽那些微小但令人抓狂的 UI/UX 细节。",
+      "ai_pain_point": "那些不影响核心功能但极度破坏体验的微小瑕疵（如对齐偏差、图标缺失、微交互卡顿）。",
+      "ai_highlights": [
+        "集思广益：汇集数千个用户视角的微小痛点，直击强迫症死穴",
+        "精准打击：针对 UI/UX 细节的“显微镜式”找茬，不求宏大但求完美"
+      ],
+      "ai_comment": "这种“找茬大会”最适合强迫症患者，虽然都是些鸡毛蒜皮的小事，但堆起来就是用户体验的垃圾山，希望能被开发组看到而不是被无视。",
+      "ai_tags": [
+        "效率党",
+        "颜值党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -230,7 +542,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb7h9h/juggl_no_longer_maintained/",
       "author": "/u/OkCatch1930",
       "created_at": "2026-01-12T21:14:44+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Relatively new to Obsidian and the community. I use the hierarchical feature in the Juggl plugin for my studies. This seemingly simple and inoquous feature makes Obsidian worth it for me. The problem I&#39;ve encountered, the insidious snake in my garden, is that it has grown more unstable and buggy. I wouldn&#39;t say it&#39;s unusable but it&#39;s getting there. I went to the developer&#39;s discord and didn&#39;t see much recent activity, and I believe the plugin was last update more than two years ago, almost three. Is Juggl dead? Has it been abandoned by the developer? Any replacement plugins if that&#39;s the case? I&#39;ve used Excalibrain. The only problem is that, as far as I am aware, Excalibrain supports only 3 hyrarchical levels (the parents of the selected note and it&#39;s children). For my studies I would need a lot more than that. Any guidance from this community will be profoundly appreciated. Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/OkCatch1930\"> /u/OkCatch1930 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7h9h/juggl_no_longer_maintained/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7h9h/juggl_no_longer_maintained/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Relatively new to Obsidian and the community. I use the hierarchical feature in the Juggl plugin for my studies. This seemingly simple and inoquous feature makes Obsidian worth it for me. The problem I&#39;ve encountered, the insidious snake in my garden, is that it has grown more unstable and buggy. I wouldn&#39;t say it&#39;s unusable but it&#39;s getting there. I went to the developer&#39;s discord and didn&#39;t see much recent activity, and I believe the plugin was last update more than two years ago, almost three. Is Juggl dead? Has it been abandoned by the developer? Any replacement plugins if that&#39;s the case? I&#39;ve used Excalibrain. The only problem is that, as far as I am aware, Excalibrain supports only 3 hyrarchical levels (the parents of the selected note and it&#39;s children). For my studies I would need a lot more than that. Any guidance from this community will be profoundly appreciated. Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/OkCatch1930\"> /u/OkCatch1930 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7h9h/juggl_no_longer_maintained/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7h9h/juggl_no_longer_maintained/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "Obsidian 新手因核心插件 Juggl 长期未维护且 Bug 频出而陷入恐慌，急需能支持多层级视图的替代品以挽救学习工作流。",
+      "ai_pain_point": "关键插件停止维护导致功能不稳定，且现有替代品（如 Excalibrain）无法满足深度层级需求。",
+      "ai_highlights": [
+        "Juggl 的层级功能曾是学习利器，但现因开发者失联（2-3年未更新、Discord无活动）而面临崩溃风险。",
+        "尝试使用 Excalibrain 作为替代，却发现其层级深度受限（仅支持3层），无法完美复刻原有体验。"
+      ],
+      "ai_comment": "把知识库的命门押在一个两年没维护的插件上，简直是技术自杀；别指望僵尸代码突然诈尸，与其对着代码哭，不如赶紧找下家。",
+      "ai_tags": [
+        "学术党",
+        "效率党"
+      ],
+      "ai_score": 5
     },
     {
       "source": "Reddit",
@@ -238,7 +563,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb7d7n/hotkey_for_getting_out_of_properties/",
       "author": "/u/somianomoly",
       "created_at": "2026-01-12T21:10:28+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;m trying to lessen my use of the mouse which is why I post this. There is a hotkey to add a property &quot;ctrl+;&quot; but not something to get out of the property screen and type on the note. ctrl+end doesn&#39;t work for me. Any solutions?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/somianomoly\"> /u/somianomoly </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7d7n/hotkey_for_getting_out_of_properties/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7d7n/hotkey_for_getting_out_of_properties/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;m trying to lessen my use of the mouse which is why I post this. There is a hotkey to add a property &quot;ctrl+;&quot; but not something to get out of the property screen and type on the note. ctrl+end doesn&#39;t work for me. Any solutions?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/somianomoly\"> /u/somianomoly </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7d7n/hotkey_for_getting_out_of_properties/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb7d7n/hotkey_for_getting_out_of_properties/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "用户试图摆脱鼠标操作，却发现 Obsidian 缺少从属性面板直接退出并返回正文输入的快捷键，陷入“有进无出”的尴尬。",
+      "ai_pain_point": "全键盘操作流程在属性编辑界面断层，无法无缝切换回笔记正文内容",
+      "ai_highlights": [
+        "致力于减少鼠标使用以提升效率",
+        "吐槽虽有 `Ctrl+;` 进场，但找不到合适的退场热键，连 `Ctrl+End` 都失效"
+      ],
+      "ai_comment": "给了一把进门的钥匙，却把门焊死了，这种只管添加不管导航的设计，纯粹是在给全键盘用户添堵。",
+      "ai_tags": [
+        "[效率党]"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -246,7 +583,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb6nhw/what_do_u_guys_think_of_my_homepage/",
       "author": "/u/Only_Bath697",
       "created_at": "2026-01-12T20:43:49+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb6nhw/what_do_u_guys_think_of_my_homepage/\"> <img src=\"https://b.thumbs.redditmedia.com/9fukUnfJVpeQXe9b7QBN6v-wUmFCbzN-ApfjBc5SGTg.jpg\" alt=\"what do u guys think of my homepage\" title=\"what do u guys think of my homepage\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>is it overkill ? should i reduce stuff on it </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Only_Bath697\"> /u/Only_Bath697 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1qb6nhw\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb6nhw/what_do_u_guys_think_of_my_homepage/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb6nhw/what_do_u_guys_think_of_my_homepage/\"> <img src=\"https://b.thumbs.redditmedia.com/9fukUnfJVpeQXe9b7QBN6v-wUmFCbzN-ApfjBc5SGTg.jpg\" alt=\"what do u guys think of my homepage\" title=\"what do u guys think of my homepage\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>is it overkill ? should i reduce stuff on it </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Only_Bath697\"> /u/Only_Bath697 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1qb6nhw\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb6nhw/what_do_u_guys_think_of_my_homepage/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "纠结于主页堆砌信息过多，寻求极简与功能平衡的审美建议。",
+      "ai_pain_point": "主页信息过载与界面整洁度的平衡难题",
+      "ai_highlights": [
+        "展示个人Obsidian主页布局",
+        "针对信息密度寻求社区反馈"
+      ],
+      "ai_comment": "如果连你自己看着都觉得累，那绝对是overkill，别指望别人能替你做断舍离。",
+      "ai_tags": [
+        "颜值党",
+        "效率党"
+      ],
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -254,7 +604,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb4s4z/broke_all_my_links_for_future_how_do_i_insert_a/",
       "author": "/u/centipedeberryjuice",
       "created_at": "2026-01-12T19:35:47+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>So, I take a lot of notes that require links to other notes and my workflow is to first write out my note as text:</p> <p>A is a treatment to B</p> <p>and then I insert the note &quot;A: disease characteristics&quot; into the letter A.</p> <p>I was originally doing this with markdown links, hitting command K and then doing [A]([[A: disease characteristics]]) because it was super fast and was working correctly. However, I guess with an auto update, all of these links broke, and I learned that it is not the correct syntax.</p> <p>So I went through and manually fixed all of the links using correct syntax such as [[link | text]]</p> <p>But my question is - is there any way to mirror the same work flow I was originally doing to insert a link while allowing me to use the in-built auto complete to find the correct article to link in the text? I essentially just want to highlight text I wrote, and then use auto complete to insert a link to the correct note.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/centipedeberryjuice\"> /u/centipedeberryjuice </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4s4z/broke_all_my_links_for_future_how_do_i_insert_a/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4s4z/broke_all_my_links_for_future_how_do_i_insert_a/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>So, I take a lot of notes that require links to other notes and my workflow is to first write out my note as text:</p> <p>A is a treatment to B</p> <p>and then I insert the note &quot;A: disease characteristics&quot; into the letter A.</p> <p>I was originally doing this with markdown links, hitting command K and then doing [A]([[A: disease characteristics]]) because it was super fast and was working correctly. However, I guess with an auto update, all of these links broke, and I learned that it is not the correct syntax.</p> <p>So I went through and manually fixed all of the links using correct syntax such as [[link | text]]</p> <p>But my question is - is there any way to mirror the same work flow I was originally doing to insert a link while allowing me to use the in-built auto complete to find the correct article to link in the text? I essentially just want to highlight text I wrote, and then use auto complete to insert a link to the correct note.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/centipedeberryjuice\"> /u/centipedeberryjuice </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4s4z/broke_all_my_links_for_future_how_do_i_insert_a/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4s4z/broke_all_my_links_for_future_how_do_i_insert_a/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "惨遭自动更新“背刺”导致链接全崩，用户跪求在选中文本上快速应用内部链接的高效工作流。",
+      "ai_pain_point": "误用Markdown外部链接语法导致内部链接批量失效，且无法像原来那样快捷地通过选中文本+自动补全来插入Wiki链接。",
+      "ai_highlights": [
+        "先写文本后套链接的写作习惯",
+        "误用Cmd+K配合Markdown语法导致灾难性断链"
+      ],
+      "ai_comment": "居然把 Markdown 外部链接语法硬套在内部笔记上，这波操作属于是“用金锄头种地”；痛定思痛赶紧学会 Wiki 链接吧，别再给自动更新当测试员了。",
+      "ai_tags": [
+        "[效率党]"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -262,7 +624,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb4mgx/i_have_setup_obsidian_to_git_for_first_time_along/",
       "author": "/u/akgo",
       "created_at": "2026-01-12T19:30:08+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hello</p> <p>So, I have set up git with github and also have drive for sync with phone.</p> <p>Is it part of the whole thing to have the heavy .git folder everywhere.</p> <p>Because this is so much of sync for drive and phone.</p> <p>just some confusion </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/akgo\"> /u/akgo </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4mgx/i_have_setup_obsidian_to_git_for_first_time_along/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4mgx/i_have_setup_obsidian_to_git_for_first_time_along/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hello</p> <p>So, I have set up git with github and also have drive for sync with phone.</p> <p>Is it part of the whole thing to have the heavy .git folder everywhere.</p> <p>Because this is so much of sync for drive and phone.</p> <p>just some confusion </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/akgo\"> /u/akgo </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4mgx/i_have_setup_obsidian_to_git_for_first_time_along/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb4mgx/i_have_setup_obsidian_to_git_for_first_time_along/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "新手用户尝试Obsidian+Git+Google Drive多端同步，被`.git`文件夹的体积和同步逻辑搞懵了。",
+      "ai_pain_point": "混合使用Git与云盘同步时，冗余的`.git`文件夹导致的数据传输负担。",
+      "ai_highlights": [
+        "搭建了Obsidian通过Git连接GitHub，同时使用Google Drive同步手机端的混合架构",
+        "提出`.git`文件夹体积过大导致网盘同步负担重的困惑"
+      ],
+      "ai_comment": "用网盘同步Git仓库就像用拖车运金条，虽然能跑，但纯属给设备和流量找罪受。",
+      "ai_tags": [
+        "新手友好",
+        "数据极客"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -270,7 +645,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb2y44/is_there_a_way_to_bind_a_hotkey_to_open_the_note/",
       "author": "/u/bball2",
       "created_at": "2026-01-12T18:31:28+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I used to use the breadcrumbs plugin extensively on all my notes to quickly navigate to previous/next/parent notes using keyboard/mouse shortcuts, but it&#39;s gotten really buggy recently - 15-20s extra load times, random crashes, not remembering settings/locations.</p> <p>Most of my notes have the parent property tag and some of them have the next/previous tag as well. Do you guys have any suggestions on how I could bind a keyboard shortcut to open the note based on those tags? Maybe with some kind of script using templater or meta bind?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/bball2\"> /u/bball2 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb2y44/is_there_a_way_to_bind_a_hotkey_to_open_the_note/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb2y44/is_there_a_way_to_bind_a_hotkey_to_open_the_note/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I used to use the breadcrumbs plugin extensively on all my notes to quickly navigate to previous/next/parent notes using keyboard/mouse shortcuts, but it&#39;s gotten really buggy recently - 15-20s extra load times, random crashes, not remembering settings/locations.</p> <p>Most of my notes have the parent property tag and some of them have the next/previous tag as well. Do you guys have any suggestions on how I could bind a keyboard shortcut to open the note based on those tags? Maybe with some kind of script using templater or meta bind?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/bball2\"> /u/bball2 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb2y44/is_there_a_way_to_bind_a_hotkey_to_open_the_note/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb2y44/is_there_a_way_to_bind_a_hotkey_to_open_the_note/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "因 Breadcrumbs 插件性能崩坏，急需用快捷键读取属性中的父/子笔记链接。",
+      "ai_pain_point": "核心插件(Breadcrumbs)性能崩坏导致加载缓慢且频繁崩溃，急需替代方案实现基于属性的快捷键跳转。",
+      "ai_highlights": [
+        "寻求替代 Breadcrumbs 以保持键盘导航流",
+        "探索 Templater/Meta Bind 定制脚本来解析属性"
+      ],
+      "ai_comment": "传说中的 Breadcrumbs 终于还是因为性能灾难把用户逼疯了，看来“自己写脚本”才是 Obsidian 用户的最终归宿，指望插件修 Bug？不存在的。",
+      "ai_tags": [
+        "效率党",
+        "开发者"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -278,7 +666,8 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb11qc/is_there_a_way_to_make_my_own_graph_view/",
       "author": "/u/thinking_and_curious",
       "created_at": "2026-01-12T17:23:47+00:00",
-      "content_text": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/thinking_and_curious\"> /u/thinking_and_curious </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb11qc/is_there_a_way_to_make_my_own_graph_view/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb11qc/is_there_a_way_to_make_my_own_graph_view/\">[comments]</a></span>"
+      "content_text": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/thinking_and_curious\"> /u/thinking_and_curious </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb11qc/is_there_a_way_to_make_my_own_graph_view/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb11qc/is_there_a_way_to_make_my_own_graph_view/\">[comments]</a></span>",
+      "_source_key": "reddit"
     },
     {
       "source": "Reddit",
@@ -286,7 +675,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb0u4v/todoist_app_flows/",
       "author": "/u/smerdy",
       "created_at": "2026-01-12T17:16:08+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Anyone else use Todoist for tasks and Obsidian as a repo of thinking? If I think about using what different apps are well designed for, it&#39;d look like: Todoist for quickly capturing tasks, synced to Fantastical so I can drag them around my day, and some Todoist tasks are to revisit Obsidian notes (so i include the Obsidian URI in the title)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/smerdy\"> /u/smerdy </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0u4v/todoist_app_flows/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0u4v/todoist_app_flows/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Anyone else use Todoist for tasks and Obsidian as a repo of thinking? If I think about using what different apps are well designed for, it&#39;d look like: Todoist for quickly capturing tasks, synced to Fantastical so I can drag them around my day, and some Todoist tasks are to revisit Obsidian notes (so i include the Obsidian URI in the title)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/smerdy\"> /u/smerdy </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0u4v/todoist_app_flows/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0u4v/todoist_app_flows/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "探讨利用 Todoist 捕捉任务、Fantastical 进行日历排期，并通过 URI 链接回溯 Obsidian 笔记的分工流。",
+      "ai_pain_point": "Obsidian 缺乏高效的任务捕捉与日历视图功能，难以单一应用兼顾思考与日程管理。",
+      "ai_highlights": [
+        "利用 Todoist 快速捕捉并同步至 Fantastical 实现拖拽排期",
+        "在任务标题嵌入 Obsidian URI，建立任务与笔记的直达链接"
+      ],
+      "ai_comment": "终于有人不再妄想用一个 Obsidian 穷尽万物了，把 URI 塞进 Todoist 标题虽然像个缝合怪，但这叫专业的事交给专业的软件做。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -294,7 +695,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qb0hz4/new_plugin_for_personal_finance_tracking_in/",
       "author": "/u/Working-Chemical-447",
       "created_at": "2026-01-12T17:04:00+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0hz4/new_plugin_for_personal_finance_tracking_in/\"> <img src=\"https://preview.redd.it/x4oxbxoa9ycg1.gif?width=640&amp;crop=smart&amp;s=748447e39d7be7ab0ab9a39b09cf63dc853fd421\" alt=\"New plugin for personal finance tracking in obsidian\" title=\"New plugin for personal finance tracking in obsidian\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>A simple Beancount integration for Obsidian, allowing you to manage your personal finances, track expenses, and view interactive dashboards directly within your vault.</p> <p>Github Repo: <a href=\"https://github.com/pranjulsingh/obsidian-flat-financing\">https://github.com/pranjulsingh/obsidian-flat-financing</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Working-Chemical-447\"> /u/Working-Chemical-447 </a> <br/> <span><a href=\"https://i.redd.it/x4oxbxoa9ycg1.gif\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0hz4/new_plugin_for_personal_finance_tracking_in/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0hz4/new_plugin_for_personal_finance_tracking_in/\"> <img src=\"https://preview.redd.it/x4oxbxoa9ycg1.gif?width=640&amp;crop=smart&amp;s=748447e39d7be7ab0ab9a39b09cf63dc853fd421\" alt=\"New plugin for personal finance tracking in obsidian\" title=\"New plugin for personal finance tracking in obsidian\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>A simple Beancount integration for Obsidian, allowing you to manage your personal finances, track expenses, and view interactive dashboards directly within your vault.</p> <p>Github Repo: <a href=\"https://github.com/pranjulsingh/obsidian-flat-financing\">https://github.com/pranjulsingh/obsidian-flat-financing</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Working-Chemical-447\"> /u/Working-Chemical-447 </a> <br/> <span><a href=\"https://i.redd.it/x4oxbxoa9ycg1.gif\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qb0hz4/new_plugin_for_personal_finance_tracking_in/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "基于Beancount语法，在Obsidian内实现复式记账、开支追踪及交互式数据可视化。",
+      "ai_pain_point": "财务数据与笔记库隔离，缺乏本地化的记账工具，导致资产管理与知识管理割裂。",
+      "ai_highlights": [
+        "集成Beancount复式记账语法，满足专业记账需求",
+        "提供交互式仪表盘，直接在笔记中可视化财务状况"
+      ],
+      "ai_comment": "既然连复式记账都能塞进笔记软件，看来把Obsidian当操作系统用的执念又要加深了——只要你不怕被数字淹没，这确实比Excel有情调。",
+      "ai_tags": [
+        "数据极客",
+        "效率党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -302,7 +716,21 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaz9cd/obsidian_111_new_mobile_design_widgets_siri/",
       "author": "/u/kepano",
       "created_at": "2026-01-12T16:19:33+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz9cd/obsidian_111_new_mobile_design_widgets_siri/\"> <img src=\"https://external-preview.redd.it/cWlycDhzMmcxeWNnMbfNcw86yzihnq4Ihu6ivxhU4u2QICrz8jHRMssYjKfO.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=bfe4a2ee2f128ec3fb2eecb03bf429576e03acaa\" alt=\"Obsidian 1.11 — new mobile design, widgets, Siri integration, shortcuts and more!\" title=\"Obsidian 1.11 — new mobile design, widgets, Siri integration, shortcuts and more!\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>This update contains major changes to Obsidian&#39;s appearance on mobile so please remember to update your themes and plugins. If you encounter any issues, try using the default theme and restricted mode.</p> <p>Full release notes can be found here:</p> <ul> <li><a href=\"https://obsidian.md/changelog/2026-01-12-desktop-v1.11.4\">Obsidian 1.11.4 Desktop</a></li> <li><a href=\"https://obsidian.md/changelog/2026-01-12-mobile-v1.11.4\">Obsidian 1.11.4 Mobile</a></li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/kepano\"> /u/kepano </a> <br/> <span><a href=\"https://v.redd.it/4yug782g1ycg1\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz9cd/obsidian_111_new_mobile_design_widgets_siri/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz9cd/obsidian_111_new_mobile_design_widgets_siri/\"> <img src=\"https://external-preview.redd.it/cWlycDhzMmcxeWNnMbfNcw86yzihnq4Ihu6ivxhU4u2QICrz8jHRMssYjKfO.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=bfe4a2ee2f128ec3fb2eecb03bf429576e03acaa\" alt=\"Obsidian 1.11 — new mobile design, widgets, Siri integration, shortcuts and more!\" title=\"Obsidian 1.11 — new mobile design, widgets, Siri integration, shortcuts and more!\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>This update contains major changes to Obsidian&#39;s appearance on mobile so please remember to update your themes and plugins. If you encounter any issues, try using the default theme and restricted mode.</p> <p>Full release notes can be found here:</p> <ul> <li><a href=\"https://obsidian.md/changelog/2026-01-12-desktop-v1.11.4\">Obsidian 1.11.4 Desktop</a></li> <li><a href=\"https://obsidian.md/changelog/2026-01-12-mobile-v1.11.4\">Obsidian 1.11.4 Mobile</a></li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/kepano\"> /u/kepano </a> <br/> <span><a href=\"https://v.redd.it/4yug782g1ycg1\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz9cd/obsidian_111_new_mobile_design_widgets_siri/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "移动端终于大整容，Siri 和小组件加身，但代价是主题插件可能集体崩溃。",
+      "ai_pain_point": "移动端界面陈旧、缺乏系统集成，以及重大版本更新引发的兼容性危机。",
+      "ai_highlights": [
+        "移动端设计重构（场景：视觉体验现代化，结果：更顺眼但需适配主题）",
+        "集成 Siri 和小组件（场景：无需打开 App，结果：快速记录与查看更高效）",
+        "官方紧急救急方案（场景：遇到 UI 崩坏，结果：切回默认主题和受限模式恢复）"
+      ],
+      "ai_comment": "这版本更新简直是给爱折腾的人准备的“惊喜”，界面是变美了，但你的主题库大概率要经历一场大清洗。",
+      "ai_tags": [
+        "颜值党",
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -310,7 +738,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaz8n0/basescentric_graph_view_controls/",
       "author": "/u/GASSANDRlD",
       "created_at": "2026-01-12T16:18:53+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Simple enough of an idea, but I feel like it would be neat if the bases philosophy for honing display properties, filtering, etc applied to the graph view as well. Not sure if this would look like creating a new bases view entirely for the graph view, or adding the same controls to the default one, but building custom views for graphs of a certain subject, without having to make a complex search query in the tiny text box we have right now. </p> <p>I feel like it would also make the obsidian philosophy more consistent and unify the varying features under a certain standard. There are some things I could see being a problem with this, like the grouping/sorting implementation for a graph view, but regardless I think it would be a nice venture for a core/community plugin. Properties of a base could also control the hover functionality, in the same way the Map core plugin allows you to display stuff on hover, etc.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/GASSANDRlD\"> /u/GASSANDRlD </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz8n0/basescentric_graph_view_controls/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz8n0/basescentric_graph_view_controls/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Simple enough of an idea, but I feel like it would be neat if the bases philosophy for honing display properties, filtering, etc applied to the graph view as well. Not sure if this would look like creating a new bases view entirely for the graph view, or adding the same controls to the default one, but building custom views for graphs of a certain subject, without having to make a complex search query in the tiny text box we have right now. </p> <p>I feel like it would also make the obsidian philosophy more consistent and unify the varying features under a certain standard. There are some things I could see being a problem with this, like the grouping/sorting implementation for a graph view, but regardless I think it would be a nice venture for a core/community plugin. Properties of a base could also control the hover functionality, in the same way the Map core plugin allows you to display stuff on hover, etc.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/GASSANDRlD\"> /u/GASSANDRlD </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz8n0/basescentric_graph_view_controls/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaz8n0/basescentric_graph_view_controls/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "提议将Bases的筛选逻辑引入图谱视图，彻底告别在狭窄文本框里写复杂查询的噩梦。",
+      "ai_pain_point": "关系图谱目前的筛选方式极其原始，依赖狭窄文本框手搓复杂查询语句，体验与Bases插件割裂。",
+      "ai_highlights": [
+        "通过复用Bases的可视化控件，替代原始的文本搜索框来构建自定义图谱。",
+        "旨在统一Obsidian的交互标准，将不同功能的控制逻辑收敛到同一套体系下。"
+      ],
+      "ai_comment": "终于有人想治治那个令人窒息的微小搜索框了，但这大一统的愿望怕是要让插件开发者再多掉几根头发。",
+      "ai_tags": [
+        "效率党",
+        "数据极客"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -318,7 +759,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qayxux/obsidian_game_library/",
       "author": "/u/Kurzh",
       "created_at": "2026-01-12T16:08:22+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Out of curiosity, I see that some people are using Obsidian to integrate games, or are they just links to a website? Transform Obsidian into a functional library for launching games, whether from Steam, Xbox, or other platforms.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Kurzh\"> /u/Kurzh </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qayxux/obsidian_game_library/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qayxux/obsidian_game_library/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Out of curiosity, I see that some people are using Obsidian to integrate games, or are they just links to a website? Transform Obsidian into a functional library for launching games, whether from Steam, Xbox, or other platforms.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Kurzh\"> /u/Kurzh </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qayxux/obsidian_game_library/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qayxux/obsidian_game_library/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "想把 Obsidian 变成 Steam、Xbox 等平台的统一游戏启动器和管理库。",
+      "ai_pain_point": "游戏分散在不同平台，缺乏一个统一的聚合入口来记录和启动。",
+      "ai_highlights": [
+        "整合 Steam 和 Xbox 等多平台游戏资源",
+        "探索将笔记软件转化为功能性游戏启动器的可行性"
+      ],
+      "ai_comment": "用笔记软件打游戏，这脑洞也是没谁了，合着以后玩游戏还得先查查文档再按 Start？",
+      "ai_tags": [
+        "数据极客",
+        "效率党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -326,7 +780,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/",
       "author": "/u/Pure-Ticket5777",
       "created_at": "2026-01-12T15:51:10+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\"> <img src=\"https://b.thumbs.redditmedia.com/8wCN-eshKaeIq6DlO7TRGCb_iBunyUfvXXhcoKMJ1PM.jpg\" alt=\"Help Syncing Obsidian and Zotero\" title=\"Help Syncing Obsidian and Zotero\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Hello!</p> <p>I just started my PhD and want to sync Obsidian with Zotero. I followed the step by step guide below in the link but keep getting an error message (photo). I tried following a couple of other tutorials but didn&#39;t end up making any changes from them. (<a href=\"https://www.linkedin.com/pulse/step-by-step-how-integrate-zotero-obsidian-seamless-sofie-peters-gfngf/\">https://www.linkedin.com/pulse/step-by-step-how-integrate-zotero-obsidian-seamless-sofie-peters-gfngf/</a>).</p> <p><a href=\"https://preview.redd.it/d7x3trzmwxcg1.jpg?width=3024&amp;format=pjpg&amp;auto=webp&amp;s=ffdaa8b392f446f9c7db19a7b7607551626eece4\">https://preview.redd.it/d7x3trzmwxcg1.jpg?width=3024&amp;format=pjpg&amp;auto=webp&amp;s=ffdaa8b392f446f9c7db19a7b7607551626eece4</a></p> <p>Anyone have any ideas? Thanks all!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Pure-Ticket5777\"> /u/Pure-Ticket5777 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\"> <img src=\"https://b.thumbs.redditmedia.com/8wCN-eshKaeIq6DlO7TRGCb_iBunyUfvXXhcoKMJ1PM.jpg\" alt=\"Help Syncing Obsidian and Zotero\" title=\"Help Syncing Obsidian and Zotero\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Hello!</p> <p>I just started my PhD and want to sync Obsidian with Zotero. I followed the step by step guide below in the link but keep getting an error message (photo). I tried following a couple of other tutorials but didn&#39;t end up making any changes from them. (<a href=\"https://www.linkedin.com/pulse/step-by-step-how-integrate-zotero-obsidian-seamless-sofie-peters-gfngf/\">https://www.linkedin.com/pulse/step-by-step-how-integrate-zotero-obsidian-seamless-sofie-peters-gfngf/</a>).</p> <p><a href=\"https://preview.redd.it/d7x3trzmwxcg1.jpg?width=3024&amp;format=pjpg&amp;auto=webp&amp;s=ffdaa8b392f446f9c7db19a7b7607551626eece4\">https://preview.redd.it/d7x3trzmwxcg1.jpg?width=3024&amp;format=pjpg&amp;auto=webp&amp;s=ffdaa8b392f446f9c7db19a7b7607551626eece4</a></p> <p>Anyone have any ideas? Thanks all!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Pure-Ticket5777\"> /u/Pure-Ticket5777 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaygpl/help_syncing_obsidian_and_zotero/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "刚入学博士生试图按教程整合 Obsidian 与 Zotero，结果卡在报错界面束手无策。",
+      "ai_pain_point": "工具集成配置报错、新手配置失败",
+      "ai_highlights": [
+        "PhD 新生参考 Sofie Peters 的 LinkedIn 教程搭建学术工作流",
+        "按照步骤操作却依然遇到技术错误并在线求助"
+      ],
+      "ai_comment": "读博的第一课往往不是学术研究，而是对着报错截图怀疑人生；以为跟着教程就能一步登天，现实总是狠狠打脸。",
+      "ai_tags": [
+        "新手友好",
+        "学术党"
+      ],
+      "ai_score": 5
     },
     {
       "source": "Reddit",
@@ -334,7 +801,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaxv0a/font_size_based_on_theme/",
       "author": "/u/quisegosum",
       "created_at": "2026-01-12T15:28:33+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Is it possible to set a custom font size with a CSS snippet based on the currently used theme?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/quisegosum\"> /u/quisegosum </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxv0a/font_size_based_on_theme/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxv0a/font_size_based_on_theme/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Is it possible to set a custom font size with a CSS snippet based on the currently used theme?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/quisegosum\"> /u/quisegosum </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxv0a/font_size_based_on_theme/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxv0a/font_size_based_on_theme/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "用户询问能否通过 CSS 代码片段实现字体大小随主题切换自动调整。",
+      "ai_pain_point": "不同主题的排版适配需求不同，切换主题时需反复手动调整字体大小，破坏了沉浸感。",
+      "ai_highlights": [
+        "尝试用 CSS snippet 针对特定主题定制专属字号",
+        "探索样式表与主题切换的联动机制"
+      ],
+      "ai_comment": "又是 CSS 碎片，看来强迫症是 Obsidian 用户的第一生产力，字体差一像素都能逼死个人。",
+      "ai_tags": [
+        "颜值党",
+        "开发者"
+      ],
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -342,7 +822,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaxd3v/sync_obsidian_between_ios_and_windows/",
       "author": "/u/Jones-XL",
       "created_at": "2026-01-12T15:09:25+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi experts,</p> <p>I recently started using Obsidian on my iPhone. I really like it and want to know if there is any way to use Dropbox for syncing with Windows?</p> <p>Is this a possibility or do i need an other cloudservice?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Jones-XL\"> /u/Jones-XL </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxd3v/sync_obsidian_between_ios_and_windows/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxd3v/sync_obsidian_between_ios_and_windows/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi experts,</p> <p>I recently started using Obsidian on my iPhone. I really like it and want to know if there is any way to use Dropbox for syncing with Windows?</p> <p>Is this a possibility or do i need an other cloudservice?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Jones-XL\"> /u/Jones-XL </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxd3v/sync_obsidian_between_ios_and_windows/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaxd3v/sync_obsidian_between_ios_and_windows/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "新用户寻求利用Dropbox在iOS与Windows间同步Obsidian的可行性确认。",
+      "ai_pain_point": "跨平台数据同步",
+      "ai_highlights": [
+        "新用户尝试构建多端工作流",
+        "针对特定云服务Dropbox的兼容性提问"
+      ],
+      "ai_comment": "这种问题属于“搜索技能缺失症”的临床表现，官方明明支持Dropbox，连点一下“帮助”的耐心都没有吗？",
+      "ai_tags": [
+        "新手友好"
+      ],
+      "ai_score": 2
     },
     {
       "source": "Reddit",
@@ -350,7 +842,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qawbnh/obsidian_tutorvault_setup_help_paid/",
       "author": "/u/AdRepresentative672",
       "created_at": "2026-01-12T14:28:29+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;ve been using Obsidian for a while and I love it but I&#39;m having a hard time figuring out how best to organize my vault. I&#39;m particularly overwhelmed by trying to learn Bases. I&#39;m very intrigued by Kepano&#39;s system and am looking for someone to help, tutor, assist in setting up a simple system that works for my needs. Online or in-person (NYC) - I&#39;m very happy to pay for the service and would appreciate any responses. I&#39;ve looked at the Obsidian Discord but it doesn&#39;t seem like Obsidian tutors are a thing...</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/AdRepresentative672\"> /u/AdRepresentative672 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qawbnh/obsidian_tutorvault_setup_help_paid/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qawbnh/obsidian_tutorvault_setup_help_paid/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;ve been using Obsidian for a while and I love it but I&#39;m having a hard time figuring out how best to organize my vault. I&#39;m particularly overwhelmed by trying to learn Bases. I&#39;m very intrigued by Kepano&#39;s system and am looking for someone to help, tutor, assist in setting up a simple system that works for my needs. Online or in-person (NYC) - I&#39;m very happy to pay for the service and would appreciate any responses. I&#39;ve looked at the Obsidian Discord but it doesn&#39;t seem like Obsidian tutors are a thing...</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/AdRepresentative672\"> /u/AdRepresentative672 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qawbnh/obsidian_tutorvault_setup_help_paid/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qawbnh/obsidian_tutorvault_setup_help_paid/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "一位因库组织混乱且被 Bases 劝退的用户，发帖重金求聘导师以复刻 Kepano 的工作流体系。",
+      "ai_pain_point": "库架构搭建困难，对 Bases 功能感到不知所措，无法独立实现 Kepano 的高阶工作流。",
+      "ai_highlights": [
+        "壕气冲天寻求付费家教，支持线上或纽约线下教学",
+        "直指 Kepano 系统的落地痛点，愿意为知识服务付费"
+      ],
+      "ai_comment": "钞能力虽然万能，但想花钱买来 Kepano 的逻辑，这大概是给导师出了道送命题。",
+      "ai_tags": [
+        "效率党",
+        "数据极客"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -358,7 +863,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qavk2v/folder_template_not_applied_as_default_when/",
       "author": "/u/Katmai_X",
       "created_at": "2026-01-12T13:57:28+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qavk2v/folder_template_not_applied_as_default_when/\"> <img src=\"https://preview.redd.it/s8tjbtq8cxcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=2fddc234b6f17d6f03b61d4be72ee328d608eff0\" alt=\"Folder template not applied as default when creating a new note (Templater)\" title=\"Folder template not applied as default when creating a new note (Templater)\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Hi!</p> <p>I’m having an issue with Templater folder templates and I can’t figure out what I’m missing.</p> <p>I’ve enabled Folder templates and set a template on the root folder /, pointing to System/Templates/Notes.md. According to the docs, a template defined on / should act as a global default, and the deepest match should be used.</p> <p>However, when I create a new note (empty file) anywhere in the vault, the template is not applied automatically. Nothing gets inserted.</p> <p>What I’ve checked so far:</p> <ul> <li>Folder templates are enabled</li> <li>File regex templates are disabled (I know they’re mutually exclusive)</li> <li>The template file exists and works if I insert it manually </li> <li>I’m creating new notes as empty files</li> </ul> <p>Am I misunderstanding how folder templates work, or is there something else required to make a root / template act as the default?</p> <p>What am I doing wrong?</p> <p>Edit: Spelling</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Katmai_X\"> /u/Katmai_X </a> <br/> <span><a href=\"https://i.redd.it/s8tjbtq8cxcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qavk2v/folder_template_not_applied_as_default_when/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qavk2v/folder_template_not_applied_as_default_when/\"> <img src=\"https://preview.redd.it/s8tjbtq8cxcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=2fddc234b6f17d6f03b61d4be72ee328d608eff0\" alt=\"Folder template not applied as default when creating a new note (Templater)\" title=\"Folder template not applied as default when creating a new note (Templater)\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Hi!</p> <p>I’m having an issue with Templater folder templates and I can’t figure out what I’m missing.</p> <p>I’ve enabled Folder templates and set a template on the root folder /, pointing to System/Templates/Notes.md. According to the docs, a template defined on / should act as a global default, and the deepest match should be used.</p> <p>However, when I create a new note (empty file) anywhere in the vault, the template is not applied automatically. Nothing gets inserted.</p> <p>What I’ve checked so far:</p> <ul> <li>Folder templates are enabled</li> <li>File regex templates are disabled (I know they’re mutually exclusive)</li> <li>The template file exists and works if I insert it manually </li> <li>I’m creating new notes as empty files</li> </ul> <p>Am I misunderstanding how folder templates work, or is there something else required to make a root / template act as the default?</p> <p>What am I doing wrong?</p> <p>Edit: Spelling</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Katmai_X\"> /u/Katmai_X </a> <br/> <span><a href=\"https://i.redd.it/s8tjbtq8cxcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qavk2v/folder_template_not_applied_as_default_when/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "以为在根目录设置了 Templater 模板就能“一键全局默认”，结果新建笔记时插件装死，啥都没填进去。",
+      "ai_pain_point": "Templater 插件自动化失效 / 根目录模板无法触发",
+      "ai_highlights": [
+        "用户严格遵循文档在根目录/配置模板，企图覆盖全局，结果遭遇静默失败",
+        "排查了开关启用、正则互斥、文件存在性等所有环节，依然无法自动插入内容"
+      ],
+      "ai_comment": "文档里写的“全局默认”可能是写给开发者自己看的，普通用户的“根目录”在插件眼里就是个空气，连个报错都不给，直接装聋作哑。",
+      "ai_tags": [
+        "[效率党]",
+        "[开发者]"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -366,7 +884,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/",
       "author": "/u/Beginning_Sun_7558",
       "created_at": "2026-01-12T13:28:35+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\"> <img src=\"https://b.thumbs.redditmedia.com/8uPxVAzLPrurhn3VLl3nnmDa7zBa8CKja1iHTb9EShQ.jpg\" alt=\"Hot take: Obsidian Bases should be renamed to Obsidian Indexes\" title=\"Hot take: Obsidian Bases should be renamed to Obsidian Indexes\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Maybe because I come from a software dev background - reading &quot;bases&quot; automatically meant databases.</p> <p>Something similar to databases inside Notion is what came to my mind. I took me a while to understand that in reality it is just custom indexes (with filters &amp; sorting options), probably an easier replacement for a subset of Dataview plugin, for people who need the UI and aren&#39;t comfortable with writing SQL like queries.</p> <p><strong>Update:</strong> I just checked they seemed to have revised the documentation pages to make it more clear, but still database-like views is a bit more clear. </p> <p>I think this part screenshot-ed below should be the first sentence of the entire Bases section of the documentation. Instead I found this under Filters in one of the sub pages.</p> <p><a href=\"https://preview.redd.it/m0ef9z3n6xcg1.png?width=1522&amp;format=png&amp;auto=webp&amp;s=4c5420d0e0a9f5dc057c8fd7057529d05131c183\">https://preview.redd.it/m0ef9z3n6xcg1.png?width=1522&amp;format=png&amp;auto=webp&amp;s=4c5420d0e0a9f5dc057c8fd7057529d05131c183</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Beginning_Sun_7558\"> /u/Beginning_Sun_7558 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\"> <img src=\"https://b.thumbs.redditmedia.com/8uPxVAzLPrurhn3VLl3nnmDa7zBa8CKja1iHTb9EShQ.jpg\" alt=\"Hot take: Obsidian Bases should be renamed to Obsidian Indexes\" title=\"Hot take: Obsidian Bases should be renamed to Obsidian Indexes\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Maybe because I come from a software dev background - reading &quot;bases&quot; automatically meant databases.</p> <p>Something similar to databases inside Notion is what came to my mind. I took me a while to understand that in reality it is just custom indexes (with filters &amp; sorting options), probably an easier replacement for a subset of Dataview plugin, for people who need the UI and aren&#39;t comfortable with writing SQL like queries.</p> <p><strong>Update:</strong> I just checked they seemed to have revised the documentation pages to make it more clear, but still database-like views is a bit more clear. </p> <p>I think this part screenshot-ed below should be the first sentence of the entire Bases section of the documentation. Instead I found this under Filters in one of the sub pages.</p> <p><a href=\"https://preview.redd.it/m0ef9z3n6xcg1.png?width=1522&amp;format=png&amp;auto=webp&amp;s=4c5420d0e0a9f5dc057c8fd7057529d05131c183\">https://preview.redd.it/m0ef9z3n6xcg1.png?width=1522&amp;format=png&amp;auto=webp&amp;s=4c5420d0e0a9f5dc057c8fd7057529d05131c183</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Beginning_Sun_7558\"> /u/Beginning_Sun_7558 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauvin/hot_take_obsidian_bases_should_be_renamed_to/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "开发者吐槽“Obsidian Bases”名不副实，容易让人误解为Notion式数据库，实则是带UI的Dataview索引视图。",
+      "ai_pain_point": "命名混淆导致的功能预期偏差，误以为是全功能数据库，实际只是带筛选排序的索引。",
+      "ai_highlights": [
+        "点破本质：Bases是Dataview的UI平替，适合不写SQL查询的用户",
+        "文档优化建议：核心定义被埋没在子页面，应提至章节首句以正视听"
+      ],
+      "ai_comment": "别被“Base”这个高大上的词忽悠了，它既不是SQL也不是Notion，说穿了就是个穿了西装的Dataview查询结果。",
+      "ai_tags": [
+        "开发者",
+        "数据极客"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -374,7 +905,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qauhkm/google_docs_tabs_a_osidian/",
       "author": "/u/Extension-Physics-73",
       "created_at": "2026-01-12T13:11:27+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hola! Quisiera saber si hay alguna manera de pasar un documento de Google doc con pestañas a Obsidian directamente. Ya que tiene bastantes pestañas y subdocumentos, además bastantes imágenes y gastaría un montón de tiempo pasándolas uno por uno. Cabe tener en cuenta que el vault no lo tengo sincronizado con Drive y ya intenté descargarlo en formato html y md y ninguno funcionó.</p> <p>Gracias!!!!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Extension-Physics-73\"> /u/Extension-Physics-73 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauhkm/google_docs_tabs_a_osidian/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauhkm/google_docs_tabs_a_osidian/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hola! Quisiera saber si hay alguna manera de pasar un documento de Google doc con pestañas a Obsidian directamente. Ya que tiene bastantes pestañas y subdocumentos, además bastantes imágenes y gastaría un montón de tiempo pasándolas uno por uno. Cabe tener en cuenta que el vault no lo tengo sincronizado con Drive y ya intenté descargarlo en formato html y md y ninguno funcionó.</p> <p>Gracias!!!!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Extension-Physics-73\"> /u/Extension-Physics-73 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauhkm/google_docs_tabs_a_osidian/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qauhkm/google_docs_tabs_a_osidian/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "试图将包含大量嵌套标签页和图片的复杂 Google Docs 导入 Obsidian，却发现常规的 HTML 或 Markdown 导出方式均无效。",
+      "ai_pain_point": "复杂嵌套文档与大量图片的批量迁移及格式丢失",
+      "ai_highlights": [
+        "包含多个标签页和子文档的 Google Docs 迁移需求",
+        "尝试 HTML 和 MD 导出均无法解决图片与结构问题"
+      ],
+      "ai_comment": "指望 Google Docs 这种反 Markdown 的编辑器能顺滑导出简直是痴人说梦，既然不使用云端同步，那只能祝你在复制粘贴地狱中好运了。",
+      "ai_tags": [
+        "新手友好",
+        "效率党"
+      ],
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -382,7 +926,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qas3a2/struggling_to_actually_complete_my_note/",
       "author": "/u/bizbaaz",
       "created_at": "2026-01-12T11:06:37+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I am studying cloud and networking, I use obsidian and make my notes in there. I making use of tagging and linking different notes together, however, i often find myself starting a note and never finishing it. In fact out of the around 150 notes, I maybe completed 10.</p> <p>Another thing is I struggle to decide how concise or detailed it should be. Should I create a general note with topic that covers a lot of things, this way everything is in one place? Or should I divide it as much as I can and then use the smallest question or topic as the title and make a note about that, and then link those smaller notes using a tag, or linking them to the main note.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/bizbaaz\"> /u/bizbaaz </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qas3a2/struggling_to_actually_complete_my_note/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qas3a2/struggling_to_actually_complete_my_note/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I am studying cloud and networking, I use obsidian and make my notes in there. I making use of tagging and linking different notes together, however, i often find myself starting a note and never finishing it. In fact out of the around 150 notes, I maybe completed 10.</p> <p>Another thing is I struggle to decide how concise or detailed it should be. Should I create a general note with topic that covers a lot of things, this way everything is in one place? Or should I divide it as much as I can and then use the smallest question or topic as the title and make a note about that, and then link those smaller notes using a tag, or linking them to the main note.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/bizbaaz\"> /u/bizbaaz </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qas3a2/struggling_to_actually_complete_my_note/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qas3a2/struggling_to_actually_complete_my_note/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "建了150个笔记却只完工10个，深陷笔记颗粒度（原子笔记还是大百科）的选择困难中无法自拔。",
+      "ai_pain_point": "笔记完成率极低（烂尾），纠结笔记颗粒度与结构设计",
+      "ai_highlights": [
+        "学习云和网络知识时，使用 Obsidian 标签和链接，但 150 个笔记中有 140 个处于未完成状态",
+        "陷入方法论陷阱，无法决定是创建包罗万象的综合笔记，还是拆分为极小的原子笔记"
+      ],
+      "ai_comment": "你这哪是在记笔记，分明是在搞“数字烂尾楼”开发工程；别纠结结构了，先把一个字写完再谈方法论，完美主义是知识的最大杀手。",
+      "ai_tags": [
+        "新手友好",
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -390,7 +947,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaqeuf/is_there_any_way_to_also_upload_plugins_folder_to/",
       "author": "/u/Nshx-",
       "created_at": "2026-01-12T09:23:43+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I use the &quot;Fit&quot; plugin to sync with my iPad and iPhone. The first time, to also have the plugins on my iPhone, I manually transferred the plugins folder to the iPhone using a shortcut that lets me view hidden files.</p> <p>But then, if I add new plugins to my MacBook, the Fit plugin doesn&#39;t sync the plugin folders.</p> <p>Is there any way to also upload this folder to the GitHub repository?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Nshx-\"> /u/Nshx- </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaqeuf/is_there_any_way_to_also_upload_plugins_folder_to/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaqeuf/is_there_any_way_to_also_upload_plugins_folder_to/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I use the &quot;Fit&quot; plugin to sync with my iPad and iPhone. The first time, to also have the plugins on my iPhone, I manually transferred the plugins folder to the iPhone using a shortcut that lets me view hidden files.</p> <p>But then, if I add new plugins to my MacBook, the Fit plugin doesn&#39;t sync the plugin folders.</p> <p>Is there any way to also upload this folder to the GitHub repository?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Nshx-\"> /u/Nshx- </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaqeuf/is_there_any_way_to_also_upload_plugins_folder_to/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaqeuf/is_there_any_way_to_also_upload_plugins_folder_to/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "用户因同步插件无法自动传输插件文件夹，试图寻找将插件目录直接上传至GitHub的方法。",
+      "ai_pain_point": "多端同步时插件文件夹无法自动同步",
+      "ai_highlights": [
+        "用户首次同步时通过快捷指令手动传输了插件文件夹",
+        "当在 MacBook 添加新插件后，Fit 插件无法将其同步到 iPhone，导致用户寄希望于 GitHub"
+      ],
+      "ai_comment": "既然都折腾到 GitHub 和隐藏文件了，为什么不直接换个能顺带把 `.obsidian` 文件夹一起同步的工具，非要在一棵树上吊死？",
+      "ai_tags": [
+        "数据极客",
+        "效率党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -398,7 +968,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qapmmn/kindle_scribe_notes_sync_to_obsidian/",
       "author": "/u/karnajik",
       "created_at": "2026-01-12T08:33:18+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapmmn/kindle_scribe_notes_sync_to_obsidian/\"> <img src=\"https://preview.redd.it/0nwagqwogqcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=45f88497dd4065cae2d057f189285569f9111fcd\" alt=\"Kindle Scribe notes sync to obsidian\" title=\"Kindle Scribe notes sync to obsidian\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/karnajik\"> /u/karnajik </a> <br/> <span><a href=\"https://i.redd.it/0nwagqwogqcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapmmn/kindle_scribe_notes_sync_to_obsidian/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapmmn/kindle_scribe_notes_sync_to_obsidian/\"> <img src=\"https://preview.redd.it/0nwagqwogqcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=45f88497dd4065cae2d057f189285569f9111fcd\" alt=\"Kindle Scribe notes sync to obsidian\" title=\"Kindle Scribe notes sync to obsidian\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/karnajik\"> /u/karnajik </a> <br/> <span><a href=\"https://i.redd.it/0nwagqwogqcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapmmn/kindle_scribe_notes_sync_to_obsidian/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "打通 Kindle Scribe 与 Obsidian 的数据壁垒，让手写笔记自动化流入知识库。",
+      "ai_pain_point": "Kindle Scribe 上的手写笔记和高亮被困在设备或云端，无法直接进入 Obsidian，手动导出和格式化极其繁琐。",
+      "ai_highlights": [
+        "场景：Kindle Scribe 电子墨水屏阅读 + 结果：笔记自动同步至 Obsidian",
+        "场景：跨设备笔记整理 + 结果：打破数据孤岛，实现阅读与管理的无缝衔接"
+      ],
+      "ai_comment": "终于有人把 Kindle Scribe 从‘昂贵的电子镇纸’变成了真正的生产力工具，虽然亚马逊的封闭生态依然让人恶心，但好歹有人修了条狗洞。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -406,7 +988,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qapd83/looking_for_advices_on_using_obsidian_for_a/",
       "author": "/u/Tupuchan",
       "created_at": "2026-01-12T08:16:30+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi everyone,</p> <p>For a few months I&#39;ve been trying out Obsidian to take notes for Tabletop Roleplaying Games (ttrpg) or even academic research. </p> <p>I&#39;ve only used the basic functionalities and very few plugins, so consider me a newbie! </p> <p>I&#39;ve been wanting to try out a new projet, some kind of Choose Your Own Adventure. My aim is to think tabletop first: - each section is attributed to a number, and when making choices you refer to these number - you have a &quot;variable sheet&quot;, the player keeps track of certain choices manually by checking boxes in a table (so no need to keep track of variables automatically, the text will say &quot;check the box corresponding to your choice&quot; or &quot;if you have this box checked, directly go to X&quot;) - I want to export everything in the same pdf</p> <p>Do you have any tips or plugins that&#39;d work best? I&#39;ve been wondering: - are each section a different note? - are the names of the notes the numbers (to keep track of not making two times the same number) - should I merge all the files in the end, to export as a pdf a single note? (Haven&#39;t tried it yet) - to keep track of variables, are they notes or tags?</p> <p>Thank you for reading!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Tupuchan\"> /u/Tupuchan </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapd83/looking_for_advices_on_using_obsidian_for_a/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapd83/looking_for_advices_on_using_obsidian_for_a/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi everyone,</p> <p>For a few months I&#39;ve been trying out Obsidian to take notes for Tabletop Roleplaying Games (ttrpg) or even academic research. </p> <p>I&#39;ve only used the basic functionalities and very few plugins, so consider me a newbie! </p> <p>I&#39;ve been wanting to try out a new projet, some kind of Choose Your Own Adventure. My aim is to think tabletop first: - each section is attributed to a number, and when making choices you refer to these number - you have a &quot;variable sheet&quot;, the player keeps track of certain choices manually by checking boxes in a table (so no need to keep track of variables automatically, the text will say &quot;check the box corresponding to your choice&quot; or &quot;if you have this box checked, directly go to X&quot;) - I want to export everything in the same pdf</p> <p>Do you have any tips or plugins that&#39;d work best? I&#39;ve been wondering: - are each section a different note? - are the names of the notes the numbers (to keep track of not making two times the same number) - should I merge all the files in the end, to export as a pdf a single note? (Haven&#39;t tried it yet) - to keep track of variables, are they notes or tags?</p> <p>Thank you for reading!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Tupuchan\"> /u/Tupuchan </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapd83/looking_for_advices_on_using_obsidian_for_a/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapd83/looking_for_advices_on_using_obsidian_for_a/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "一位仅使用基础功能的新手询问如何在 Obsidian 中构建并导出基于编号段落和手动变量记录的“桌面版”自选冒险小说。",
+      "ai_pain_point": "如何将 Obsidian 的笔记结构转化为传统的“数字跳转”逻辑，以及处理包含变量表的复杂导出格式。",
+      "ai_highlights": [
+        "尝试将 Obsidian 从笔记工具跨界应用于 TTRPG 和互动小说创作",
+        "提出了“桌面优先”的独特设计：用表格复选框代替代码追踪变量"
+      ],
+      "ai_comment": "用高科技的双向链接去模拟低科技的实体书翻页逻辑，这是返璞归真还是强行跨行？连插件都没装几个就想搞定这种奇葩导出需求，心真大。",
+      "ai_tags": [
+        "[新手友好]",
+        "[学术党]"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -414,7 +1009,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qapckl/obsidian_bases_but_for_google_drive/",
       "author": "/u/memetorangutan",
       "created_at": "2026-01-12T08:15:23+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi all,</p> <p>For some context I really love the Base feature in Obsidian. I feel like it is a much more flexible way of categorizing files than putting stuff in folders. Does such a thing exist in Google Drive? Especially across multiple Google Drive accounts for a small team of people. I&#39;d love it if by simply tagging things, we wouldn&#39;t need to move files across google drives so often and create multiple bases based on file tags/properties. Would like to know if there&#39;s a 3rd party app that has this function especially across different workspaces (Google Drive, Microsoft 360, etc.)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/memetorangutan\"> /u/memetorangutan </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapckl/obsidian_bases_but_for_google_drive/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapckl/obsidian_bases_but_for_google_drive/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi all,</p> <p>For some context I really love the Base feature in Obsidian. I feel like it is a much more flexible way of categorizing files than putting stuff in folders. Does such a thing exist in Google Drive? Especially across multiple Google Drive accounts for a small team of people. I&#39;d love it if by simply tagging things, we wouldn&#39;t need to move files across google drives so often and create multiple bases based on file tags/properties. Would like to know if there&#39;s a 3rd party app that has this function especially across different workspaces (Google Drive, Microsoft 360, etc.)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/memetorangutan\"> /u/memetorangutan </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapckl/obsidian_bases_but_for_google_drive/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qapckl/obsidian_bases_but_for_google_drive/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "某用户试图在 Google Drive 上复刻 Obsidian Bases 的功能，妄想用标签代替文件夹跨账户管理团队文件。",
+      "ai_pain_point": "传统文件夹管理僵化，多账户协作时为了分类需频繁在不同 Google Drive 间移动文件。",
+      "ai_highlights": [
+        "希望通过标签/属性创建虚拟 Base，打破物理文件夹的限制",
+        "需求横跨 Google Drive 和 Microsoft 360 等多个工作区"
+      ],
+      "ai_comment": "想让云盘变数据库？这就像指望拖拉机开出法拉利的速度，还是老老实实建文件夹吧。",
+      "ai_tags": [
+        "效率党",
+        "数据极客"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -422,7 +1030,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qap5ra/how_do_you_feel_about_the_obsidian_mobile_app/",
       "author": "/u/Katmai_X",
       "created_at": "2026-01-12T08:03:18+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi,</p> <p>I’m curious to hear how you’re experiencing the Obsidian mobile app these days.</p> <p>I’ve only been using it for a short while, but my first impression has been very positive, especially with the newer layout and overall flow. That said, I haven’t used it long enough to really judge how it holds up in daily use. I know you can&#39;t compare it to Bear or Apple Notes.</p> <p>Do you feel the mobile app is “good enough” now to be a natural part of your workflow?<br/> Or do you mainly see it as a companion to the desktop app?</p> <p>Would love to hear what works well for you, what still feels rough, and how you’re actually using it.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Katmai_X\"> /u/Katmai_X </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qap5ra/how_do_you_feel_about_the_obsidian_mobile_app/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qap5ra/how_do_you_feel_about_the_obsidian_mobile_app/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi,</p> <p>I’m curious to hear how you’re experiencing the Obsidian mobile app these days.</p> <p>I’ve only been using it for a short while, but my first impression has been very positive, especially with the newer layout and overall flow. That said, I haven’t used it long enough to really judge how it holds up in daily use. I know you can&#39;t compare it to Bear or Apple Notes.</p> <p>Do you feel the mobile app is “good enough” now to be a natural part of your workflow?<br/> Or do you mainly see it as a companion to the desktop app?</p> <p>Would love to hear what works well for you, what still feels rough, and how you’re actually using it.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Katmai_X\"> /u/Katmai_X </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qap5ra/how_do_you_feel_about_the_obsidian_mobile_app/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qap5ra/how_do_you_feel_about_the_obsidian_mobile_app/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "新用户发帖询问 Obsidian 移动端是否能胜任主力生产力工具，而非仅作桌面端附属。",
+      "ai_pain_point": "对移动端在长期日常使用中的稳定性及功能完整性的信任危机",
+      "ai_highlights": [
+        "用户对新版 UI 布局和交互流畅度表示赞赏",
+        "社区讨论移动端作为独立工作流节点的可行性"
+      ],
+      "ai_comment": "非要拿 Bear 的极致体验去套 Obsidian 的本地化插件生态，这种提问除了暴露自己是个只看皮的颜控，毫无建设性。",
+      "ai_tags": [
+        "新手友好",
+        "效率党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -430,7 +1051,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaoryb/feedback_on_my_obsidian_backup_setup/",
       "author": "/u/jaziillearning",
       "created_at": "2026-01-12T07:39:16+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Please let me know what you think of my backup setup:</p> <ul> <li>I sync my vault to iCloud. However, as I learned -the hard way- that sync ≠ backup,</li> <li>I use the &quot;Local Backup&quot; community plugin (by GC Chen) to back up my vault.</li> <li>The backup itself is stored in my Google Drive folder, so it is also saved on the cloud.</li> </ul> <p>Am I good this way?</p> <p>PS: I&#39;m aware of Obsidian Sync, but I cannot use it at the moment.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/jaziillearning\"> /u/jaziillearning </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaoryb/feedback_on_my_obsidian_backup_setup/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaoryb/feedback_on_my_obsidian_backup_setup/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Please let me know what you think of my backup setup:</p> <ul> <li>I sync my vault to iCloud. However, as I learned -the hard way- that sync ≠ backup,</li> <li>I use the &quot;Local Backup&quot; community plugin (by GC Chen) to back up my vault.</li> <li>The backup itself is stored in my Google Drive folder, so it is also saved on the cloud.</li> </ul> <p>Am I good this way?</p> <p>PS: I&#39;m aware of Obsidian Sync, but I cannot use it at the moment.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/jaziillearning\"> /u/jaziillearning </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaoryb/feedback_on_my_obsidian_backup_setup/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaoryb/feedback_on_my_obsidian_backup_setup/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "吸取惨痛教训后，采用iCloud同步配合Local Backup插件自动归档至Google Drive的双保险策略。",
+      "ai_pain_point": "误将云盘同步当做备份导致的数据丢失风险",
+      "ai_highlights": [
+        "吸取'Sync≠Backup'教训并引入Local Backup插件",
+        "将备份存储至Google Drive文件夹实现异地容灾"
+      ],
+      "ai_comment": "总算有人搞懂了同步不是备份，这顿学费没白交。虽然用插件把'本地备份'塞进网盘有点像叠罗汉，但比起把身家性命全押在iCloud上，简直是活菩萨。",
+      "ai_tags": [
+        "数据极客",
+        "新手友好"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -438,7 +1072,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaorht/please_help_me_fix_this_issue_in_baseline/",
       "author": "/u/registrartulip",
       "created_at": "2026-01-12T07:38:25+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaorht/please_help_me_fix_this_issue_in_baseline/\"> <img src=\"https://preview.redd.it/qz14e1elgvcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=6059ce5c4d9da974cead7667d61448fd7ad419ed\" alt=\"Please help me fix this issue in Baseline\" title=\"Please help me fix this issue in Baseline\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I am using baseline theme which makes these left sidebar items in a list automatically but I want them side by side as in default theme.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/registrartulip\"> /u/registrartulip </a> <br/> <span><a href=\"https://i.redd.it/qz14e1elgvcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaorht/please_help_me_fix_this_issue_in_baseline/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaorht/please_help_me_fix_this_issue_in_baseline/\"> <img src=\"https://preview.redd.it/qz14e1elgvcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=6059ce5c4d9da974cead7667d61448fd7ad419ed\" alt=\"Please help me fix this issue in Baseline\" title=\"Please help me fix this issue in Baseline\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I am using baseline theme which makes these left sidebar items in a list automatically but I want them side by side as in default theme.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/registrartulip\"> /u/registrartulip </a> <br/> <span><a href=\"https://i.redd.it/qz14e1elgvcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaorht/please_help_me_fix_this_issue_in_baseline/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "Baseline主题用户试图将侧边栏强制从列表布局改回默认主题的并排模式。",
+      "ai_pain_point": "主题默认布局与用户操作习惯冲突",
+      "ai_highlights": [
+        "场景：使用Baseline主题追求极简美学",
+        "需求：为了操作习惯强行覆盖主题默认布局"
+      ],
+      "ai_comment": "既然想要默认布局，当初干嘛费劲换主题？这就好比你买了件高定非要改成大裤衩穿，不如直接穿大裤衩，老老实实改CSS去吧。",
+      "ai_tags": [
+        "颜值党"
+      ],
+      "ai_score": 5
     },
     {
       "source": "Reddit",
@@ -446,7 +1092,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qaogxs/page_preview_pop_up_in_mobile_app/",
       "author": "/u/godarchmage",
       "created_at": "2026-01-12T07:19:35+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Can we have page preview pop up in mobile app like it is in desktop. Maybe it can show on first tap then second tap on the link can take user to the page or the pop up can show on press and hold </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/godarchmage\"> /u/godarchmage </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaogxs/page_preview_pop_up_in_mobile_app/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaogxs/page_preview_pop_up_in_mobile_app/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Can we have page preview pop up in mobile app like it is in desktop. Maybe it can show on first tap then second tap on the link can take user to the page or the pop up can show on press and hold </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/godarchmage\"> /u/godarchmage </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaogxs/page_preview_pop_up_in_mobile_app/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qaogxs/page_preview_pop_up_in_mobile_app/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "移动端用户强烈呼吁增加类似桌面端的链接预览弹窗功能，以优化碎片化阅读体验。",
+      "ai_pain_point": "移动端点击链接强制跳转，导致上下文丢失，难以快速检索关联信息。",
+      "ai_highlights": [
+        "移动端阅读链接时（场景），通过长按或单击唤出预览窗口（结果）",
+        "优化交互逻辑（场景），实现首次点击预览、二次点击跳转（结果）"
+      ],
+      "ai_comment": "桌面端的“上帝视角”早就玩腻了，移动端用户却还得靠脑补预览内容，这种跨平台体验的割裂感是该好好补补课了。",
+      "ai_tags": [
+        "[效率党]",
+        "[新手友好]"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -454,7 +1113,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qao9tk/online_editing_of_md_files_to_accompany_obsidian/",
       "author": "/u/Final-Isopod",
       "created_at": "2026-01-12T07:07:47+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I switched to Obsidian from Notion like three months ago and am amazed how simple yet powerful it is. The moment I think it doesn&#39;t have a feature I need it turns out it does but in different fashion and more. BUT there is one thing it doesn&#39;t have which wanted me to maybe switch back to Notion. I dropped this idea quite quickly realizing how much I got accustomed to Obsidian and really like it. So I&#39;m talking about the fact that Notion is a web service so I can access it from wherever I want not having to install anything. I got now Obsidian set up to sync with my Google Drive across devices. My primary work is done on a machine where Obsidian is installed so I only need this online feature from time to time. So far I was simply using Notion to do whatever I wanted to do online and then copy back to Obsidian when possible but obviously it doesnt always work as I don&#39;t have access to vast array of files I got. So I started to ask if there is a different way - by simply accessing the files on my Google Drive directly with some third party MD editor or even a web service that would have access to my Google Drive. Has anyone done this like that? Any recommendations on the workflow or tools for online MD editing?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Final-Isopod\"> /u/Final-Isopod </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qao9tk/online_editing_of_md_files_to_accompany_obsidian/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qao9tk/online_editing_of_md_files_to_accompany_obsidian/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I switched to Obsidian from Notion like three months ago and am amazed how simple yet powerful it is. The moment I think it doesn&#39;t have a feature I need it turns out it does but in different fashion and more. BUT there is one thing it doesn&#39;t have which wanted me to maybe switch back to Notion. I dropped this idea quite quickly realizing how much I got accustomed to Obsidian and really like it. So I&#39;m talking about the fact that Notion is a web service so I can access it from wherever I want not having to install anything. I got now Obsidian set up to sync with my Google Drive across devices. My primary work is done on a machine where Obsidian is installed so I only need this online feature from time to time. So far I was simply using Notion to do whatever I wanted to do online and then copy back to Obsidian when possible but obviously it doesnt always work as I don&#39;t have access to vast array of files I got. So I started to ask if there is a different way - by simply accessing the files on my Google Drive directly with some third party MD editor or even a web service that would have access to my Google Drive. Has anyone done this like that? Any recommendations on the workflow or tools for online MD editing?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Final-Isopod\"> /u/Final-Isopod </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qao9tk/online_editing_of_md_files_to_accompany_obsidian/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qao9tk/online_editing_of_md_files_to_accompany_obsidian/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "用户高度认可 Obsidian 的强大功能，但因缺乏原生 Web 编辑器而在受限设备上感到不便，正寻求在线编辑云端 Markdown 文件的折中方案。",
+      "ai_pain_point": "在无法安装 Obsidian 客户端的设备上，难以直接编辑通过 Google Drive 同步的 Markdown 笔记。",
+      "ai_highlights": [
+        "典型 'Notion 逃兵' 的心路历程：虽被 Obsidian 的深度功能征服，却仍贪恋 Web 端的便捷",
+        "通过 Google Drive 跨设备同步，构建本地为主、在线为辅的混合工作流"
+      ],
+      "ai_comment": "既想要 Obsidian 的自由，又舍不得 Notion 的 Web 端保姆服务，这种既要又要的贪婪往往是折腾的开始。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -462,7 +1133,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qanceh/image_converter_plugin_annotate_image_how_to_erase/",
       "author": "/u/ValdertCrossXX",
       "created_at": "2026-01-12T06:14:09+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I can&#39;t seem to figure it out. So when I add annotations to my images is there a way to erase the annotation without having to CTRL Z? Something like an erasure tool. Thanks. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/ValdertCrossXX\"> /u/ValdertCrossXX </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qanceh/image_converter_plugin_annotate_image_how_to_erase/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qanceh/image_converter_plugin_annotate_image_how_to_erase/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I can&#39;t seem to figure it out. So when I add annotations to my images is there a way to erase the annotation without having to CTRL Z? Something like an erasure tool. Thanks. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/ValdertCrossXX\"> /u/ValdertCrossXX </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qanceh/image_converter_plugin_annotate_image_how_to_erase/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qanceh/image_converter_plugin_annotate_image_how_to_erase/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "抱怨 Image Converter 插件标注图片找不到橡皮擦，不想靠撤销键回退操作。",
+      "ai_pain_point": "图片标注修改不便，缺乏撤销之外的更正工具。",
+      "ai_highlights": [
+        "场景：给图片添加标注后发现需要修改",
+        "场景：寻找类似橡皮擦的工具以避免使用 Ctrl+Z"
+      ],
+      "ai_comment": "连撤销键都懒得按，这是多想一步到位？没橡皮擦就觉得自己像在宣纸上画水墨画，一旦落笔生死难料啊。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 3
     },
     {
       "source": "Reddit",
@@ -470,7 +1153,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qam4cm/view_settings_getting_reset/",
       "author": "/u/AssociatePatient4629",
       "created_at": "2026-01-12T05:08:29+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hello, thanks for reading. I&#39;m using Windows 10, Obsidian MD version 1.9.10 without any addons at all. No syncing.</p> <p>I like to use Split/Linked Tabs: the left tab is set to show Source Mode and the right tab is linked with the left tab and set to Reading Mode with Backtrack Links in Document enabled. It works fine mostly.</p> <p>When I click on a Base page, the link functionality maintains the link but experiences some trouble. </p> <ol> <li>Source mode is unchecked.</li> <li>Reading mode is unchecked.</li> <li>Backlink mode is unchecked.</li> <li>The right tab remains stuck on the Base page when pressing the &quot;Back&quot; or &quot;Previous Page&quot; button on my mouse while the left tab &quot;Back&quot; functionality works fine.</li> </ol> <p>What am I doing wrong? Are Bases not compatible or friendly to this kind of work layout?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/AssociatePatient4629\"> /u/AssociatePatient4629 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qam4cm/view_settings_getting_reset/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qam4cm/view_settings_getting_reset/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hello, thanks for reading. I&#39;m using Windows 10, Obsidian MD version 1.9.10 without any addons at all. No syncing.</p> <p>I like to use Split/Linked Tabs: the left tab is set to show Source Mode and the right tab is linked with the left tab and set to Reading Mode with Backtrack Links in Document enabled. It works fine mostly.</p> <p>When I click on a Base page, the link functionality maintains the link but experiences some trouble. </p> <ol> <li>Source mode is unchecked.</li> <li>Reading mode is unchecked.</li> <li>Backlink mode is unchecked.</li> <li>The right tab remains stuck on the Base page when pressing the &quot;Back&quot; or &quot;Previous Page&quot; button on my mouse while the left tab &quot;Back&quot; functionality works fine.</li> </ol> <p>What am I doing wrong? Are Bases not compatible or friendly to this kind of work layout?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/AssociatePatient4629\"> /u/AssociatePatient4629 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qam4cm/view_settings_getting_reset/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qam4cm/view_settings_getting_reset/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "纯净版Obsidian使用Base功能导致分屏联动标签页视图设置重置及导航失效。",
+      "ai_pain_point": "Base页面导致分屏链接标签页的视图模式设置（源/阅读/反链接）被强制取消勾选，且鼠标后退键无法导航。",
+      "ai_highlights": [
+        "用户在无插件纯净环境下，发现Base页面会导致右侧链接标签页的阅读模式和反向链接显示设置失效",
+        "Base视图导致右侧标签页在鼠标后退键操作下无法正常导航，用户怀疑Base与特定布局不兼容"
+      ],
+      "ai_comment": "辛辛苦苦搭好的分屏联动，一开Base就被重置，官方功能内部互殴的戏码比插件还精彩。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -478,7 +1173,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qalk49/dd_2024_resources_where_to_find_other_resources/",
       "author": "/u/Aborted_Plebeian",
       "created_at": "2026-01-12T04:40:05+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hey all, first time poster so sorry if I&#39;m asking a repeated question.</p> <p>Im worldbuilding for my D&amp;D campaign and have recently stumbled across this wonderful tool. Im now using Obsidian to worldbuild and have found ttrpgtutorials and his content which has helped a bunch with plugins etc. However most of his videos are before the latest run of D&amp;D 2024 and im using that as my base.</p> <p>I plan to use ObsidianMD to worldbuild, storyboard and also run my games.</p> <p>I own DND 2024 as physical and digital copies, but I really dont want to go through all of the hassle of copying and pasting everything into my vault. There-in lies my question.</p> <p>Is there a general resource hub that I can find these sorts of things? And is there a method to finding something like a DND 2024 compendium that i can copy into my vault to avoid the painstaking task of copying a textbook paragraph by paragraph and making sure all of the links are valid?</p> <p>Please be kind in your response, I am only one man 🙏</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Aborted_Plebeian\"> /u/Aborted_Plebeian </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qalk49/dd_2024_resources_where_to_find_other_resources/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qalk49/dd_2024_resources_where_to_find_other_resources/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hey all, first time poster so sorry if I&#39;m asking a repeated question.</p> <p>Im worldbuilding for my D&amp;D campaign and have recently stumbled across this wonderful tool. Im now using Obsidian to worldbuild and have found ttrpgtutorials and his content which has helped a bunch with plugins etc. However most of his videos are before the latest run of D&amp;D 2024 and im using that as my base.</p> <p>I plan to use ObsidianMD to worldbuild, storyboard and also run my games.</p> <p>I own DND 2024 as physical and digital copies, but I really dont want to go through all of the hassle of copying and pasting everything into my vault. There-in lies my question.</p> <p>Is there a general resource hub that I can find these sorts of things? And is there a method to finding something like a DND 2024 compendium that i can copy into my vault to avoid the painstaking task of copying a textbook paragraph by paragraph and making sure all of the links are valid?</p> <p>Please be kind in your response, I am only one man 🙏</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Aborted_Plebeian\"> /u/Aborted_Plebeian </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qalk49/dd_2024_resources_where_to_find_other_resources/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qalk49/dd_2024_resources_where_to_find_other_resources/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "D&D 2024 新手 DM 试图寻找现成的电子资料库，以逃避将规则书手动录入 Obsidian 的苦力活。",
+      "ai_pain_point": "版权书刊内容数字化繁琐，缺乏针对 D&D 2024 版本的现成资源库",
+      "ai_highlights": [
+        "计划利用 Obsidian 实现世界构建、故事板及实战跑团的一站式工作流",
+        "渴望通过外部资源库解决大量复制粘贴录入的低效问题"
+      ],
+      "ai_comment": "以为买了实体书就能自动进 Vault？这种只想一键同步不想动脑的梦，还是去睡吧。",
+      "ai_tags": [
+        "[新手友好]",
+        "[效率党]"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -486,7 +1194,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qakpyc/tasknotes_calendar/",
       "author": "/u/Acceptable_Oven7602",
       "created_at": "2026-01-12T03:59:28+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I have been playing around with Tasknotes and was thinking if there is a way to create calendar events (not tasks, just events) in the advanced calendar. I saw that there is Google and Outlook integration, but what if I don&#39;t want to go down that route and I only want to create the event within Obsidian?</p> <p>I tried playing around with the advanced calendars and creating time entries, but those are for creating tasks, so I don&#39;t think that is what I am looking for. </p> <p>Thank you!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Acceptable_Oven7602\"> /u/Acceptable_Oven7602 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qakpyc/tasknotes_calendar/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qakpyc/tasknotes_calendar/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I have been playing around with Tasknotes and was thinking if there is a way to create calendar events (not tasks, just events) in the advanced calendar. I saw that there is Google and Outlook integration, but what if I don&#39;t want to go down that route and I only want to create the event within Obsidian?</p> <p>I tried playing around with the advanced calendars and creating time entries, but those are for creating tasks, so I don&#39;t think that is what I am looking for. </p> <p>Thank you!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Acceptable_Oven7602\"> /u/Acceptable_Oven7602 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qakpyc/tasknotes_calendar/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qakpyc/tasknotes_calendar/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "拒绝外部同步，用户只想在 Obsidian 本地用 TaskNotes 搞定纯日历事件。",
+      "ai_pain_point": "插件功能混淆（无法区分任务与事件）以及对本地化（拒绝Google/Outlook同步）的执着。",
+      "ai_highlights": [
+        "用户尝试了 Advanced Calendar 的时间条目功能，但发现那是给任务用的，无法满足创建纯事件的需求。",
+        "用户明确拒绝了 Google 和 Outlook 集成，坚持要在 Obsidian 内部闭环解决问题。"
+      ],
+      "ai_comment": "明明只是想记个日子，非要和“任务”分得清清楚楚，这大概就是 Obsidian 用户的强迫症绝症吧。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -494,7 +1214,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qai7uk/behold_the_brain_of_an_author_5_years_17_worlds/",
       "author": "/u/RavensQuillWriting",
       "created_at": "2026-01-12T02:02:42+00:00",
-      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qai7uk/behold_the_brain_of_an_author_5_years_17_worlds/\"> <img src=\"https://preview.redd.it/zqkdonhistcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=f4f42bc818e24198df7c12079c17fbabd1d1a4b9\" alt=\"Behold the brain of an author (5 years, 17 worlds, 15 novels, and much tea)\" title=\"Behold the brain of an author (5 years, 17 worlds, 15 novels, and much tea)\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I think it&#39;s pretty clear that I love Obsidian by this point. Also, I said 5 years, haven&#39;t been using the program much longer than 2. But I&#39;ve copied over almost all my notes/manuscripts.</p> <p>Never thought a program made for researchers and coders recommended to me by a reader would become almost as big an obsession as the actual worldbuilding and writing :)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/RavensQuillWriting\"> /u/RavensQuillWriting </a> <br/> <span><a href=\"https://i.redd.it/zqkdonhistcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qai7uk/behold_the_brain_of_an_author_5_years_17_worlds/\">[comments]</a></span> </td></tr></table>"
+      "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qai7uk/behold_the_brain_of_an_author_5_years_17_worlds/\"> <img src=\"https://preview.redd.it/zqkdonhistcg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=f4f42bc818e24198df7c12079c17fbabd1d1a4b9\" alt=\"Behold the brain of an author (5 years, 17 worlds, 15 novels, and much tea)\" title=\"Behold the brain of an author (5 years, 17 worlds, 15 novels, and much tea)\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I think it&#39;s pretty clear that I love Obsidian by this point. Also, I said 5 years, haven&#39;t been using the program much longer than 2. But I&#39;ve copied over almost all my notes/manuscripts.</p> <p>Never thought a program made for researchers and coders recommended to me by a reader would become almost as big an obsession as the actual worldbuilding and writing :)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/RavensQuillWriting\"> /u/RavensQuillWriting </a> <br/> <span><a href=\"https://i.redd.it/zqkdonhistcg1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qai7uk/behold_the_brain_of_an_author_5_years_17_worlds/\">[comments]</a></span> </td></tr></table>",
+      "_source_key": "reddit",
+      "ai_summary": "一位作者将五年积累的17个世界和15部小说全盘迁移至Obsidian，把工具用成了比创作更严重的执念。",
+      "ai_pain_point": "海量历史手稿与复杂世界观设定的统一迁移与管理",
+      "ai_highlights": [
+        "场景：迁移5年创作积累（17个世界、15部小说）",
+        "结果：将面向极客的工具转化为作家的核心创作中枢"
+      ],
+      "ai_comment": "既然能忍受把两年前的旧笔记全搬过来，看来这位作者对“搬砖”的热情不亚于写小说，所谓的“大脑”大概就是为了给这无处安放的强迫症找个豪宅住。",
+      "ai_tags": [
+        "数据极客",
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -502,7 +1235,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qahx1r/goto_themes_for_ttrpg_worldbuildingnotetaking/",
       "author": "/u/thoegn",
       "created_at": "2026-01-12T01:49:33+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hey everyone! Not much more than what the title is really. I’m just always very cautious and picky about what I want stuff to look like so I still haven’t done anything to the themes of my vault and I still use the vanilla look😅</p> <p>So I’m asking here if you could recommend some themes for me to try out!</p> <p>Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/thoegn\"> /u/thoegn </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahx1r/goto_themes_for_ttrpg_worldbuildingnotetaking/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahx1r/goto_themes_for_ttrpg_worldbuildingnotetaking/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hey everyone! Not much more than what the title is really. I’m just always very cautious and picky about what I want stuff to look like so I still haven’t done anything to the themes of my vault and I still use the vanilla look😅</p> <p>So I’m asking here if you could recommend some themes for me to try out!</p> <p>Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/thoegn\"> /u/thoegn </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahx1r/goto_themes_for_ttrpg_worldbuildingnotetaking/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahx1r/goto_themes_for_ttrpg_worldbuildingnotetaking/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "一位患有审美强迫症的TTRPG玩家终于决定抛弃原生主题，向社区征集能撑起世界构建“门面”的推荐。",
+      "ai_pain_point": "原生界面过于简陋无法满足沉浸式体验，且面对海量主题时因过于挑剔而导致的选择瘫痪。",
+      "ai_highlights": [
+        "针对TTRPG（桌面角色扮演游戏）这一特定场景的主题定制需求",
+        "从极简原生风格向视觉沉浸式体验的审美升级"
+      ],
+      "ai_comment": "嘴上说着“谨慎挑剔”，其实就是还没找到那个对眼的吧？毕竟在这个看脸的年代，谁愿意看着记事本一样的界面去拯救世界呢。",
+      "ai_tags": [
+        "颜值党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -510,7 +1255,19 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qahkjo/tasknotes_bidirectional_sync/",
       "author": "/u/Spiritual_Flow_501",
       "created_at": "2026-01-12T01:34:03+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Now that TaskNotes does bi-directional sync could you use that to sync tasks between multiple vaults connected to the same google calendar? For example 3 people share a calendar and all their tasknotes get put onto the calendar so you can see what other people are doing or assign tasks to other people through TaskNotes. just use tags to assign people or departments? </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Spiritual_Flow_501\"> /u/Spiritual_Flow_501 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahkjo/tasknotes_bidirectional_sync/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahkjo/tasknotes_bidirectional_sync/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Now that TaskNotes does bi-directional sync could you use that to sync tasks between multiple vaults connected to the same google calendar? For example 3 people share a calendar and all their tasknotes get put onto the calendar so you can see what other people are doing or assign tasks to other people through TaskNotes. just use tags to assign people or departments? </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Spiritual_Flow_501\"> /u/Spiritual_Flow_501 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahkjo/tasknotes_bidirectional_sync/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahkjo/tasknotes_bidirectional_sync/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "试图利用 TaskNotes 的双向同步功能，将共享 Google 日历作为中介，实现多用户跨库的任务协作与指派。",
+      "ai_pain_point": "Obsidian 缺乏原生多人协作功能，难以在多个个人笔记库之间实时同步和分配任务。",
+      "ai_highlights": [
+        "提出利用共享 Google 日历作为“服务器”连接多个 Obsidian 库",
+        "构想通过标签系统在日历界面上实现任务的指派与进度查看"
+      ],
+      "ai_comment": "把 Google 日历当数据库，硬把单机游戏搞成联机版，这折腾精神可嘉，就是怕日历接口一限流全乱套。",
+      "ai_tags": [
+        "效率党"
+      ],
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -518,7 +1275,20 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qahf2n/thousands_of_note_md_files_but_i_never_read_or/",
       "author": "/u/ElKorTorro",
       "created_at": "2026-01-12T01:27:19+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi,</p> <p>I have thousands of note files, all of which are varying in length and don&#39;t follow any specific structure. Some of them are literally just from watching a YouTube video, taking a few notes, and that&#39;s it.</p> <p>I&#39;ve realized now that I never really re-open these notes and thus I&#39;m questioning the value of this approach to note-taking. Obviously I&#39;ve been doing something wrong/inefficient since my notes never get revisited other than a handful.</p> <p>Now I&#39;m looking to clean this up, resolve this, and change my approach to note-taking.</p> <p>Any specific approaches or methods you use to handle this? </p> <p>Do you try to consolidate all of them into a single note MD file? Use interlinking to drill down? Create a mindmap of the main concepts only?</p> <p>Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/ElKorTorro\"> /u/ElKorTorro </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahf2n/thousands_of_note_md_files_but_i_never_read_or/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahf2n/thousands_of_note_md_files_but_i_never_read_or/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi,</p> <p>I have thousands of note files, all of which are varying in length and don&#39;t follow any specific structure. Some of them are literally just from watching a YouTube video, taking a few notes, and that&#39;s it.</p> <p>I&#39;ve realized now that I never really re-open these notes and thus I&#39;m questioning the value of this approach to note-taking. Obviously I&#39;ve been doing something wrong/inefficient since my notes never get revisited other than a handful.</p> <p>Now I&#39;m looking to clean this up, resolve this, and change my approach to note-taking.</p> <p>Any specific approaches or methods you use to handle this? </p> <p>Do you try to consolidate all of them into a single note MD file? Use interlinking to drill down? Create a mindmap of the main concepts only?</p> <p>Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/ElKorTorro\"> /u/ElKorTorro </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahf2n/thousands_of_note_md_files_but_i_never_read_or/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qahf2n/thousands_of_note_md_files_but_i_never_read_or/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "面对数千个从不打开的无结构笔记，寻求从数字囤积到有效回顾的整理方案。",
+      "ai_pain_point": "笔记堆积如山却从不回顾",
+      "ai_highlights": [
+        "拥有数千个无结构笔记，多源自视频转录，却意识到自己从未重读",
+        "寻求具体方案：合并单文件、双向链接或思维导图来清洗知识库"
+      ],
+      "ai_comment": "把视频转录当笔记纯属自我安慰，你的硬盘不是外置大脑，别假装收藏就是学习了。",
+      "ai_tags": [
+        "新手友好",
+        "效率党"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -526,7 +1296,27 @@
       "url": "https://www.reddit.com/r/ObsidianMD/comments/1qah3pc/how_to_sync_vault_between_devices_without_using/",
       "author": "/u/nicohenriqueds",
       "created_at": "2026-01-12T01:13:14+00:00",
-      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>As the title suggests, I&#39;d like to get some feedback on how you have been navigating around paying for Sync to sync between devices.</p> <p>Is there a third party plugin available?</p> <p>Are you using some form of cloud service?</p> <p>I really appreciate any and all suggestions!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/nicohenriqueds\"> /u/nicohenriqueds </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qah3pc/how_to_sync_vault_between_devices_without_using/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qah3pc/how_to_sync_vault_between_devices_without_using/\">[comments]</a></span>"
+      "content_text": "<!-- SC_OFF --><div class=\"md\"><p>As the title suggests, I&#39;d like to get some feedback on how you have been navigating around paying for Sync to sync between devices.</p> <p>Is there a third party plugin available?</p> <p>Are you using some form of cloud service?</p> <p>I really appreciate any and all suggestions!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/nicohenriqueds\"> /u/nicohenriqueds </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qah3pc/how_to_sync_vault_between_devices_without_using/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1qah3pc/how_to_sync_vault_between_devices_without_using/\">[comments]</a></span>",
+      "_source_key": "reddit",
+      "ai_summary": "拒绝为官方 Sync 付费，试图用云盘和插件曲线救国的求助帖。",
+      "ai_pain_point": "不想花钱购买官方 Sync 服务，急需免费的替代同步方案。",
+      "ai_highlights": [
+        "[场景] 想绕过官方付费同步 [结果] 求推荐可靠的第三方插件",
+        "[场景] 希望利用现有云服务 [结果] 征集非官方同步方案的成功经验"
+      ],
+      "ai_comment": "官方订阅也就一杯奶茶钱，非要为了这个去折腾 Git 和各种云盘的冲突，大概这就是 DIY 的精神吧。",
+      "ai_tags": [
+        "数据极客",
+        "效率党"
+      ],
+      "ai_score": 8
     }
-  ]
+  ],
+  "ai": {
+    "overview": "今天 Obsidian 又是“大乱炖”：官方 1.11.4 版本自爆，Excalidraw 把高配机卡成 PPT，还得靠玩家自己修 Canvas 鼠标漂移。一边有人把笔记折腾成“独自升级”健身系统，一边还在为 Readwise 的银子心疼。属性面板“有进无出”，链接全崩，Kepano 只能发起“纸割”大扫除让大家发泄。咱们到底是来记笔记的，还是给官方修 Bug 的免费外包？",
+    "generated_at": "2026-01-13T19:20:47.595007+00:00",
+    "model": "glm-4.7",
+    "processed_count": 63,
+    "selected_count": 62
+  }
 }
