@@ -9,11 +9,11 @@ const Home = () => {
   // But preferably show loading state
   
   if (loading) {
-     return <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-secondary)' }}>Loading...</div>;
+     return <div className="flex items-center justify-center h-screen">Loading...</div>;
   }
 
   if (error || !index) {
-     return <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--error)' }}>Failed to load directory.</div>;
+     return <div className="flex items-center justify-center h-screen">Failed to load directory.</div>;
   }
 
   const latestDaily = index.latest.daily;
