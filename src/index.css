@@ -1,18 +1,6 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", "system-ui", "Avenir", "Helvetica", "Arial", "sans-serif";
-  --color-accent: var(--color-violet-600);
-  --color-accent-hover: var(--color-violet-700);
-  --color-accent-dark: var(--color-violet-400);
-  --color-bg-primary: var(--color-white);
-  --color-bg-secondary: var(--color-slate-50);
-  --color-text-primary: var(--color-slate-900);
-}
+/* Dark mode configuration for Tailwind CSS v4 */
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* Custom Base Styles if needed, though Tailwind utilities are preferred */
-@layer base {
-  body {
-    @apply antialiased bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300;
-  }
-}
+
