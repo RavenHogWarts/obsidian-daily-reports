@@ -7,15 +7,22 @@ import type { ForumPost, PullRequest, RedditPost } from '../types/data';
 
 const getSummary = (htmlOrText: string | undefined, maxLength: number = 200): string => {
   if (!htmlOrText) return '';
-  const text = htmlOrText.replace(/<[^>]*>?/gm, ''); // Strip HTML
+  const text = htmlOrText.replace(/<[^>]*>?/gm, ''); 
   const cleanText = text.replace(/&nbsp;/g, ' ').trim();
   if (cleanText.length <= maxLength) return cleanText;
   return cleanText.substring(0, maxLength) + '...';
 };
 
+// Auto-detect type from title (simple heuristic)
+const detectProjectType = (title: string): 'plugin' | 'theme' | null => {
+  const lower = title.toLowerCase();
+  if (lower.includes('theme')) return 'theme';
+  if (lower.includes('plugin')) return 'plugin';
+  return null;
+};
+
 // --- Components ---
 
-// 1. Decorative Header mimicking the SKILL.md SVG style
 const ReportHeader = ({ date }: { date: string }) => (
   <div style={{ textAlign: 'center', marginBottom: '3rem', paddingTop: '1rem' }}>
     <svg width="60" height="4" viewBox="0 0 60 4" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', margin: '0 auto' }}>
@@ -23,7 +30,7 @@ const ReportHeader = ({ date }: { date: string }) => (
     </svg>
     <h1 style={{
       fontSize: '2rem',
-      fontWeight: '400', // Lighter weight for elegance
+      fontWeight: '400',
       letterSpacing: '1px',
       margin: '1rem 0 0.5rem 0',
       color: 'var(--text-primary)'
@@ -43,14 +50,33 @@ const ReportHeader = ({ date }: { date: string }) => (
   </div>
 );
 
-// 2. Obsidian Callout Style Card
-type CalloutType = 'forum' | 'pr' | 'reddit' | 'merged';
+// Badge Component
+const Badge = ({ text, color, bg }: { text: string, color: string, bg?: string }) => (
+  <span style={{
+    display: 'inline-block',
+    padding: '0.15rem 0.5rem',
+    borderRadius: '4px',
+    fontSize: '0.7rem',
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    color: color,
+    backgroundColor: bg || `${color}15`, // default low opacity bg
+    border: `1px solid ${color}40`,
+    marginRight: '0.5rem',
+    verticalAlign: 'middle'
+  }}>
+    {text}
+  </span>
+);
+
+type CalloutType = 'forum' | 'pr' | 'merged' | 'reddit';
 
 const getCalloutStyles = (type: CalloutType) => {
   switch (type) {
-    case 'pr': // Opened
+    case 'pr': 
       return { color: '#3b82f6', icon: '⚡', bg: 'rgba(59, 130, 246, 0.04)' };
-    case 'merged': // Merged
+    case 'merged': 
       return { color: '#10b981', icon: '🚀', bg: 'rgba(16, 185, 129, 0.04)' };
     case 'reddit':
       return { color: '#ff4500', icon: '🔥', bg: 'rgba(255, 69, 0, 0.04)' };
@@ -60,12 +86,13 @@ const getCalloutStyles = (type: CalloutType) => {
   }
 };
 
-const CalloutCard = ({ title, summary, meta, link, type }: {
+const CalloutCard = ({ title, summary, meta, link, type, badges = [] }: {
   title: string,
   summary: string,
   meta: React.ReactNode,
   link: string,
-  type: CalloutType
+  type: CalloutType,
+  badges?: React.ReactNode[]
 }) => {
   const style = getCalloutStyles(type);
   
@@ -73,38 +100,43 @@ const CalloutCard = ({ title, summary, meta, link, type }: {
     <div style={{
       borderLeft: `4px solid ${style.color}`,
       backgroundColor: style.bg,
-      borderRadius: '4px', // Sqaure-ish look like Obsidian callouts
+      borderRadius: '4px',
       boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
-      border: '1px solid var(--border-light)', // Outer border
-      borderLeftWidth: '4px', // Override left
+      border: '1px solid var(--border-light)',
+      borderLeftWidth: '4px',
       borderLeftColor: style.color,
       transition: 'transform 0.2s, box-shadow 0.2s',
+      position: 'relative'
     }}
-    className="hover-card" // Class for hover effects if added to CSS
+    className="hover-card"
     >
       {/* Header */}
       <div style={{
         padding: '1rem 1rem 0.5rem',
         display: 'flex',
-        alignItems: 'baseline',
+        alignItems: 'start', // Align top to handle multiline titles
         gap: '0.75rem'
       }}>
-        <span style={{ fontSize: '1.2em' }} role="img" aria-label="icon">{style.icon}</span>
-        <h3 style={{ 
-          fontSize: '1.1rem', 
-          margin: 0, 
-          fontWeight: 700,
-          lineHeight: 1.4,
-          flex: 1
-        }}>
-          <a href={link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>
-            {title}
-          </a>
-        </h3>
+        <span style={{ fontSize: '1.2em', lineHeight: 1.4 }} role="img" aria-label="icon">{style.icon}</span>
+        <div style={{ flex: 1 }}>
+            <div style={{ marginBottom: '0.25rem' }}>
+                {badges.map((badge, i) => <span key={i}>{badge}</span>)}
+            </div>
+            <h3 style={{ 
+            fontSize: '1.1rem', 
+            margin: 0, 
+            fontWeight: 700,
+            lineHeight: 1.4,
+            }}>
+            <a href={link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>
+                {title}
+            </a>
+            </h3>
+        </div>
       </div>
 
       {/* Content */}
@@ -127,7 +159,7 @@ const CalloutCard = ({ title, summary, meta, link, type }: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'rgba(255,255,255,0.3)' // Subtle footer bg
+        backgroundColor: 'rgba(255,255,255,0.3)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           {meta}
@@ -195,7 +227,6 @@ const DailyReport = () => {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
       
-      {/* Breadcrumb */}
       <div style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
         <Link to="/" style={{ color: 'var(--text-tertiary)' }}>Home</Link>
         <span style={{ margin: '0 0.5rem', color: 'var(--text-tertiary)' }}>/</span>
@@ -204,14 +235,12 @@ const DailyReport = () => {
 
       <ReportHeader date={data.date} />
 
-      {/* No Content State */}
       {!hasContent && (
         <div style={{ textAlign: 'center', padding: '4rem', background: 'var(--bg-secondary)', borderRadius: '12px' }}>
           <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)' }}>💤 No community activity recorded for this day.</p>
         </div>
       )}
 
-      {/* Sections */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
         
         {/* Development Activity */}
@@ -230,26 +259,40 @@ const DailyReport = () => {
                 🛠️ Development Activity
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '1.5rem' }}>
-                {data.github_merged?.map((pr: PullRequest, idx: number) => (
+                {data.github_merged?.map((pr: PullRequest, idx: number) => {
+                    const projectType = detectProjectType(pr.title);
+                    return (
                     <CalloutCard 
                         key={`merged-${idx}`}
                         type="merged"
                         title={pr.title}
                         summary={getSummary(pr.body)}
                         link={pr.url}
-                        meta={<span>Merged by <strong>{pr.author}</strong></span>}
+                        badges={[
+                            <Badge key="status" text="Merged" color="#10b981" />,
+                            projectType === 'plugin' && <Badge key="type" text="Plugin" color="#8b5cf6" />,
+                            projectType === 'theme' && <Badge key="type" text="Theme" color="#ec4899" />
+                        ]}
+                        meta={<span>by <strong>{pr.author}</strong></span>}
                     />
-                ))}
-                {data.github_opened?.map((pr: PullRequest, idx: number) => (
+                )})}
+                {data.github_opened?.map((pr: PullRequest, idx: number) => {
+                    const projectType = detectProjectType(pr.title);
+                    return (
                     <CalloutCard 
                         key={`opened-${idx}`}
                         type="pr"
                         title={pr.title}
                         summary={getSummary(pr.body)}
                         link={pr.url}
-                        meta={<span>Opened by <strong>{pr.author}</strong></span>}
+                        badges={[
+                            <Badge key="status" text="Opened" color="#3b82f6" />,
+                            projectType === 'plugin' && <Badge key="type" text="Plugin" color="#8b5cf6" />,
+                            projectType === 'theme' && <Badge key="type" text="Theme" color="#ec4899" />
+                        ]}
+                        meta={<span>by <strong>{pr.author}</strong></span>}
                     />
-                ))}
+                )})}
             </div>
           </section>
         )}
@@ -277,7 +320,8 @@ const DailyReport = () => {
                         title={post.title}
                         summary={getSummary(post.content_html)}
                         link={post.url}
-                        meta={<span>{post.author} • <span style={{opacity: 0.7}}>English Forum</span></span>}
+                        badges={[<Badge key="lang" text="English" color="#64748b" />]}
+                        meta={<span>{post.author}</span>}
                     />
                 ))}
                 {data.chinese_forum?.map((post: ForumPost, idx: number) => (
@@ -287,7 +331,8 @@ const DailyReport = () => {
                         title={post.title}
                         summary={getSummary(post.content_html)}
                         link={post.url}
-                        meta={<span>{post.author} • <span style={{opacity: 0.7}}>Chinese Forum</span></span>}
+                        badges={[<Badge key="lang" text="中文" color="#eab308" />]}
+                        meta={<span>{post.author}</span>}
                     />
                 ))}
             </div>
