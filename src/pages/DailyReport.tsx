@@ -1,30 +1,79 @@
 import { useParams, Link } from 'react-router-dom';
 import { useDailyData } from '../hooks/useData';
-import type { ForumPost, PullRequest } from '../types/data';
+import type { ForumPost, PullRequest, RedditPost } from '../types/data';
 
-const Card = ({ title, children }: { title: string, children: React.ReactNode }) => (
+// Helper to strip HTML and truncate text
+const getSummary = (htmlOrText: string | undefined, maxLength: number = 200): string => {
+  if (!htmlOrText) return '';
+  // Remove HTML tags
+  const text = htmlOrText.replace(/<[^>]*>?/gm, '');
+  // Decode confusing entities if simple regex missed them or just trim
+  const cleanText = text.replace(/&nbsp;/g, ' ').trim();
+  if (cleanText.length <= maxLength) return cleanText;
+  return cleanText.substring(0, maxLength) + '...';
+};
+
+const Card = ({ title, summary, meta, link, type }: { 
+  title: string, 
+  summary: string, 
+  meta: React.ReactNode, 
+  link: string,
+  type: 'forum' | 'pr' | 'reddit'
+}) => (
   <div style={{
     backgroundColor: 'var(--card-bg)',
     borderRadius: '12px',
     boxShadow: 'var(--card-shadow)',
     padding: '1.5rem',
     border: '1px solid var(--border-light)',
-    height: '100%',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    height: '100%',
+    transition: 'transform 0.2s',
   }}>
-    <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>{title}</h3>
-    {children}
+    <div style={{ marginBottom: '1rem' }}>
+        <span style={{ 
+            fontSize: '0.75rem', 
+            textTransform: 'uppercase', 
+            letterSpacing: '0.05em',
+            color: type === 'pr' ? '#3b82f6' : type === 'reddit' ? '#ff4500' : 'var(--accent)',
+            fontWeight: 700
+        }}>
+            {type}
+        </span>
+    </div>
+    <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: 'var(--text-primary)', lineHeight: 1.4 }}>
+        <a href={link} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }} className="hover-link">
+            {title}
+        </a>
+    </h3>
+    <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', flex: 1, lineHeight: 1.6 }}>
+      {summary}
+    </p>
+    <div style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        fontSize: '0.8rem', 
+        color: 'var(--text-tertiary)',
+        borderTop: '1px solid var(--border-light)',
+        paddingTop: '1rem'
+    }}>
+      {meta}
+      <a href={link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', fontWeight: 600 }}>Read &rarr;</a>
+    </div>
   </div>
 );
 
 const DailyReport = () => {
   const { date } = useParams<{ date: string }>();
-  const { data, loading, error } = useDailyData(date || '');
+  // Handle case where date might be "latest" in URL for some reason, though logic is in hook
+  const { data, loading, error } = useDailyData(date || 'latest');
 
   if (loading) return (
     <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
-      Loading report for {date}...
+      <div className="spinner"></div>
+      <p style={{ marginTop: '1rem' }}>Loading report for {date}...</p>
     </div>
   );
 
@@ -36,6 +85,13 @@ const DailyReport = () => {
     </div>
   );
 
+  // Calculate stats dynamically
+  const totalForum = (data.chinese_forum?.length || 0) + (data.english_forum?.length || 0);
+  const totalReddit = data.reddit?.length || 0;
+  const totalPRs = (data.github_opened?.length || 0) + (data.github_merged?.length || 0);
+  
+  const hasContent = totalForum + totalReddit + totalPRs > 0;
+
   return (
     <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '2rem 1rem' }}>
       <div style={{ marginBottom: '2rem' }}>
@@ -44,70 +100,120 @@ const DailyReport = () => {
         <span style={{ color: 'var(--text-primary)' }}>Daily Report</span>
       </div>
 
-      <header style={{ marginBottom: '3rem' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Daily Report: {data.date}</h1>
-        <div style={{ display: 'flex', gap: '2rem', color: 'var(--text-secondary)' }}>
-           <span>📝 {data.stats.total_posts} Posts</span>
-           <span>twisted_rightwards_arrows {data.stats.total_prs} PRs</span>
+      <header style={{ marginBottom: '4rem' }}>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 800 }}>Daily Report: {data.date}</h1>
+        <div style={{ display: 'flex', gap: '1.5rem', color: 'var(--text-secondary)', fontSize: '1rem', flexWrap: 'wrap' }}>
+           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent)' }}></span>
+             {totalForum} Forum Discussions
+           </span>
+           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff4500' }}></span>
+             {totalReddit} Reddit Posts
+           </span>
+           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#3b82f6' }}></span>
+             {totalPRs} Changes
+           </span>
         </div>
       </header>
+      
+      {!hasContent && (
+        <div style={{ textAlign: 'center', padding: '4rem', background: 'var(--card-bg)', borderRadius: '16px' }}>
+          <p>No activity recorded for this day.</p>
+        </div>
+      )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-        
-        {/* Forum Section */}
-        <section>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', borderBottom: '2px solid var(--accent)', paddingBottom: '0.5rem', display: 'inline-block' }}>
-            Community Discussions
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {data.posts.length === 0 && <p style={{ color: 'var(--text-tertiary)' }}>No updates today.</p>}
-            {data.posts.map((post: ForumPost, idx: number) => (
-              <Card key={idx} title={post.title}>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem', flex: 1 }}>
-                  {post.summary}
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-tertiary)' }}>
-                  <span>{post.author}</span>
-                  <a href={post.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>Read More &rarr;</a>
-                </div>
-              </Card>
-            ))}
-          </div>
+      {/* GitHub Section */}
+      {(data.github_merged?.length > 0 || data.github_opened?.length > 0) && (
+        <section style={{ marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '1.75rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontSize: '1.5rem' }}>🛠️</span> Development Activity
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+                {data.github_merged?.map((pr: PullRequest, idx: number) => (
+                    <Card 
+                        key={`merged-${idx}`}
+                        type="pr"
+                        title={pr.title}
+                        summary={getSummary(pr.body)}
+                        link={pr.url}
+                        meta={
+                            <span style={{ color: 'var(--success)', backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
+                                Merged by {pr.author}
+                            </span>
+                        }
+                    />
+                ))}
+                {data.github_opened?.map((pr: PullRequest, idx: number) => (
+                    <Card 
+                        key={`opened-${idx}`}
+                        type="pr"
+                        title={pr.title}
+                        summary={getSummary(pr.body)}
+                        link={pr.url}
+                        meta={
+                            <span style={{ color: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
+                                Opened by {pr.author}
+                            </span>
+                        }
+                    />
+                ))}
+            </div>
         </section>
+      )}
 
-        {/* PR Section */}
-        <section>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', borderBottom: '2px solid var(--accent)', paddingBottom: '0.5rem', display: 'inline-block' }}>
-            Developer Activity
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-             {data.pull_requests.length === 0 && <p style={{ color: 'var(--text-tertiary)' }}>No updates today.</p>}
-             {data.pull_requests.map((pr: PullRequest, idx: number) => (
-               <Card key={idx} title={pr.title}>
-                 <div style={{ marginBottom: '0.5rem' }}>
-                   <span style={{ 
-                     display: 'inline-block', 
-                     padding: '0.1rem 0.5rem', 
-                     borderRadius: '4px', 
-                     fontSize: '0.75rem',
-                     backgroundColor: pr.status === 'merged' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(59, 130, 246, 0.1)',
-                     color: pr.status === 'merged' ? 'var(--success)' : '#3b82f6'
-                   }}>
-                     {pr.status}
-                   </span>
-                 </div>
-                 <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem', flex: 1 }}>
-                   {pr.summary}
-                 </p>
-                 <a href={pr.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', fontSize: '0.8rem', textAlign: 'right' }}>
-                   View PR &rarr;
-                 </a>
-               </Card>
-             ))}
-          </div>
+      {/* Forum Section */}
+      {(data.english_forum?.length > 0 || data.chinese_forum?.length > 0) && (
+        <section style={{ marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '1.75rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontSize: '1.5rem' }}>💬</span> Community Forum
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+                {data.english_forum?.map((post: ForumPost, idx: number) => (
+                    <Card 
+                        key={`en-${idx}`}
+                        type="forum"
+                        title={post.title}
+                        summary={getSummary(post.content_html)}
+                        link={post.url}
+                        meta={<span>{post.author} • English</span>}
+                    />
+                ))}
+                {data.chinese_forum?.map((post: ForumPost, idx: number) => (
+                    <Card 
+                        key={`cn-${idx}`}
+                        type="forum"
+                        title={post.title}
+                        summary={getSummary(post.content_html)}
+                        link={post.url}
+                        meta={<span>{post.author} • Chinese</span>}
+                    />
+                ))}
+            </div>
         </section>
+      )}
 
-      </div>
+      {/* Reddit Section */}
+      {data.reddit?.length > 0 && (
+        <section style={{ marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '1.75rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontSize: '1.5rem' }}>🔴</span> Reddit
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+                {data.reddit.map((post: RedditPost, idx: number) => (
+                    <Card 
+                        key={`reddit-${idx}`}
+                        type="reddit"
+                        title={post.title}
+                        summary={getSummary(post.content_text)}
+                        link={post.url}
+                        meta={<span>{post.author}</span>}
+                    />
+                ))}
+            </div>
+        </section>
+      )}
     </div>
   );
 };
