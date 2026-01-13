@@ -1068,7 +1068,18 @@
       "author": "/u/guilherme_retro",
       "created_at": "2026-01-09T11:57:30+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>É possível transformar o Obsidian em uma IDE para programação em linguagem de bash ? Acho muito interessante o conceito de transformar as notas junto com executáveis e deixar as coisas que aprendi junto com anotações em .md. Resumidamente: tudo junto e misturado !</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/guilherme_retro\"> /u/guilherme_retro </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q86e16/transformar_o_obsidian_em_uma_ide/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q86e16/transformar_o_obsidian_em_uma_ide/\">[comments]</a></span>",
-      "_source_key": "reddit"
+      "_source_key": "reddit",
+      "ai_summary": "试图将 Obsidian 变成 Bash 编程的 IDE，追求笔记与可执行代码的无缝融合。",
+      "ai_pain_point": "传统 IDE 与笔记软件分离，导致代码学习过程中的记录与执行割裂。",
+      "ai_highlights": [
+        "提出将可执行脚本与 Markdown 笔记混合存储，实现“笔记即代码”的统一管理",
+        "探索将 Obsidian 作为 Bash 脚本开发环境的可能性"
+      ],
+      "ai_comment": "把 Markdown 和可执行文件“一锅乱炖”，虽然听起来像个疯狂的黑客实验，但也算是对“第二大脑”的硬核误解。",
+      "ai_tags": [
+        "开发者"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -1099,7 +1110,19 @@
       "author": "/u/Salt-Counter4088",
       "created_at": "2026-01-09T10:28:55+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q84u7p/code_tikz_graph_generator/\"> <img src=\"https://b.thumbs.redditmedia.com/6jR_509g8JawjglD4KWvkSIBKroTx4IMWpccS7nwURw.jpg\" alt=\"code TikZ Graph Generator\" title=\"code TikZ Graph Generator\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>This program automatically generates mathematical graphs in TikZ format, ready to be copied into Obsidian. It analyzes mathematical functions and creates visualizations adapted to the number of variables. </p> <p>Installation required </p> <p>Before using the program, install the necessary Python libraries:</p> <p>pip install sympy numpy</p> <p>Features </p> <p>The generator supports several types of graphs:</p> <p>1 variable (x) → Classic 2D curve</p> <p>2 variables (x,y) → 3D surface</p> <p>3+ variables (x,y,z,...) → 3D scatter plot with color for an additional dimension Integrals → Convergence analysis + integrand graph <a href=\"https://github.com/Garfield566/Graph.git\">https://github.com/Garfield566/Graph.git</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Salt-Counter4088\"> /u/Salt-Counter4088 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1q84u7p\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q84u7p/code_tikz_graph_generator/\">[comments]</a></span> </td></tr></table>",
-      "_source_key": "reddit"
+      "_source_key": "reddit",
+      "ai_summary": "嫌 LaTeX 手写 TikZ 太头疼？这个 Python 脚本能把你的数学公式一键变成 Obsidian 可用的矢量图。",
+      "ai_pain_point": "在 Obsidian 中手动编写 TikZ 代码绘制复杂数学函数极其繁琐，且容易出错。",
+      "ai_highlights": [
+        "智能适配维度：无论是二维曲线、三维曲面还是多维散点图，都能自动生成代码",
+        "积分可视化：不仅画图，还能做收敛分析和绘制被积函数，适合高阶数学场景"
+      ],
+      "ai_comment": "终于不用对着 TikZ 文档抓秃头皮了，虽然还得配 Python 环境，但这波“数学公式转代码”的自动化足以让理工科党高呼真香。",
+      "ai_tags": [
+        "学术党",
+        "数据极客"
+      ],
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -1353,10 +1376,10 @@
     }
   ],
   "ai": {
-    "overview": "Kepano 正忙着给官方“填坑”，这帮用户却硬要把 Obsidian 玩成 Notion 和健身房，就为了省那点订阅费。强迫症们在纠结 Frontmatter 顺序，懒人有现成模板，健忘的也有救了。我就纳闷了，大家是来记笔记的，还是来展示“虽然穷但我会折腾”的？只要脑洞大，Markdown 里啥都能装下！",
-    "generated_at": "2026-01-13T18:51:43.210757+00:00",
+    "overview": "Kepano 大神带头搞自动化，底下信徒正忙着把 Obsidian 硬改成 Excel 和 Notion，只为省那点可怜的订阅费。强迫症在和 Bases 的元数据较劲，极客们则拒绝被商业软件绑架，硬是把健身记录和游戏数据全塞进 Markdown。从 AI 同步到胶片美化，这软件终究是被你们这群“野生开发者”玩成了万能瑞士军刀。",
+    "generated_at": "2026-01-13T18:54:59.764814+00:00",
     "model": "glm-4.7",
     "processed_count": 65,
-    "selected_count": 63
+    "selected_count": 65
   }
 }
