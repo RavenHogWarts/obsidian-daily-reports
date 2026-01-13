@@ -63,7 +63,7 @@ const WeeklyReport = () => {
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 🛠️ Development Activity
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
                 {data.github_merged?.map((pr: PullRequest, idx: number) => {
                     const projectType = detectProjectType(pr.title);
                     return (
@@ -79,6 +79,7 @@ const WeeklyReport = () => {
                             projectType === 'theme' && <Badge key="type" text="Theme" color="#ec4899" />
                         ]}
                         meta={<span>by <strong>{pr.author}</strong></span>}
+                        aiAnalysis={pr}
                     />
                 );})}
                 {data.github_opened?.map((pr: PullRequest, idx: number) => {
@@ -96,6 +97,7 @@ const WeeklyReport = () => {
                             projectType === 'theme' && <Badge key="type" text="Theme" color="#ec4899" />
                         ]}
                         meta={<span>by <strong>{pr.author}</strong></span>}
+                        aiAnalysis={pr}
                     />
                 );})}
             </div>
@@ -108,7 +110,7 @@ const WeeklyReport = () => {
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 💬 Community Forum
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
                 {data.english_forum?.map((post: ForumPost, idx: number) => (
                     <CalloutCard 
                         key={`en-${idx}`}
@@ -118,6 +120,7 @@ const WeeklyReport = () => {
                         link={post.url}
                         badges={[<Badge key="lang" text="English" color="#64748b" />]}
                         meta={<span>{post.author}</span>}
+                        aiAnalysis={post}
                     />
                 ))}
                 {data.chinese_forum?.map((post: ForumPost, idx: number) => (
@@ -129,6 +132,7 @@ const WeeklyReport = () => {
                         link={post.url}
                         badges={[<Badge key="lang" text="中文" color="#eab308" />]}
                         meta={<span>{post.author}</span>}
+                        aiAnalysis={post}
                     />
                 ))}
             </div>
@@ -141,7 +145,7 @@ const WeeklyReport = () => {
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 🔴 Reddit Highlights
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
                 {data.reddit.map((post: RedditPost, idx: number) => (
                     <CalloutCard 
                         key={`reddit-${idx}`}
@@ -150,6 +154,7 @@ const WeeklyReport = () => {
                         summary={getSummary(post.content_text)}
                         link={post.url}
                         meta={<span>u/{post.author}</span>}
+                        aiAnalysis={post}
                     />
                 ))}
             </div>

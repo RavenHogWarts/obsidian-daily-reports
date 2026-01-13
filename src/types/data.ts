@@ -1,4 +1,13 @@
-export interface ForumPost {
+export interface AIAnalysis {
+  ai_summary?: string;
+  ai_pain_point?: string;
+  ai_highlights?: string[];
+  ai_comment?: string;
+  ai_tags?: string[];
+  ai_score?: number;
+}
+
+export interface ForumPost extends AIAnalysis {
   source: string;
   title: string;
   url: string;
@@ -8,7 +17,7 @@ export interface ForumPost {
   content_text?: string;
 }
 
-export interface PullRequest {
+export interface PullRequest extends AIAnalysis {
   source: string;
   title: string;
   url: string;
@@ -19,7 +28,7 @@ export interface PullRequest {
   state: string; // 'open' | 'closed' | 'merged'
 }
 
-export interface RedditPost {
+export interface RedditPost extends AIAnalysis {
   source: string;
   title: string;
   url: string;
