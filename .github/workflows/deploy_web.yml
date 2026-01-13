@@ -27,6 +27,7 @@ jobs:
           ref: web
           path: web
           fetch-depth: 0
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN || github.token }}
 
       - name: Checkout master branch (data source)
         uses: actions/checkout@v4
@@ -71,7 +72,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No data changes detected. Skipping commit."
           else
-            git commit -m "chore: sync data from master [skip ci]"
+            git commit -m "chore: sync data from master"
             # Use specific branch to avoid ambiguity
             git push origin web
           fi
