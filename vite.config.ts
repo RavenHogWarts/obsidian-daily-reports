@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
+import tailwindcss from "@tailwindcss/vite";
 
 // Plugin to generate index.json file at build start
 const generateIndexFilePlugin = () => {
@@ -52,5 +53,5 @@ const generateIndexFilePlugin = () => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), generateIndexFilePlugin()],
+  plugins: [react(), tailwindcss(), generateIndexFilePlugin()],
 });
