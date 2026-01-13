@@ -35,7 +35,7 @@ const WeeklyReportHeader = ({ week, dateRange }: { week: string, dateRange: { st
       margin: '1rem 0 0.5rem 0',
       color: 'var(--text-primary)'
     }}>
-      Weekly Recap <span style={{ color: 'var(--accent)' }}>·</span> {week}
+      社区周刊 <span style={{ color: 'var(--accent)' }}>·</span> {week}
     </h1>
     <p style={{
       fontSize: '0.9rem',
