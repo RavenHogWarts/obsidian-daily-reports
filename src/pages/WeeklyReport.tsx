@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Minus } from 'lucide-react';
 import { useWeeklyData } from '../hooks/useData';
 import type { ForumPost, PullRequest, RedditPost } from '../types/data';
 
@@ -25,9 +26,7 @@ const detectProjectType = (title: string): 'plugin' | 'theme' | null => {
 
 const WeeklyReportHeader = ({ week, dateRange }: { week: string, dateRange: { start: string, end: string } }) => (
   <div className="text-center mb-12 pt-4">
-    <svg width="60" height="4" viewBox="0 0 60 4" xmlns="http://www.w3.org/2000/svg" className="block mx-auto">
-      <rect width="60" height="4" rx="2" fill="currentColor" className="text-slate-900 dark:text-slate-100 opacity-80" />
-    </svg>
+    <Minus size={60} strokeWidth={4} className="mx-auto text-slate-900 dark:text-slate-100 opacity-80" />
     <h1 className="text-3xl md:text-4xl font-normal tracking-wide mt-4 mb-2 text-slate-900 dark:text-white">
       社区周刊 <span className="text-violet-600 dark:text-violet-400">·</span> {week}
     </h1>
