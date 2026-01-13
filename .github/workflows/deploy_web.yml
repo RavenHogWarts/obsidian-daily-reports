@@ -14,61 +14,59 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  sync-and-deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     permissions:
       contents: write
 
     steps:
-      - name: Checkout master (data)
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          path: master
-
-      - name: Checkout web (source)
+      - name: Checkout web branch
         uses: actions/checkout@v4
         with:
           ref: web
           path: web
+          fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Checkout master branch (data)
+        uses: actions/checkout@v4
         with:
-          node-version: "20"
-          cache: "npm"
-          cache-dependency-path: web/package-lock.json
+          ref: master
+          path: master
+          fetch-depth: 1
 
-      - name: Copy data to web
+      - name: Sync data to web branch
         run: |
+          # 确保目标目录存在
           mkdir -p web/public/data
-          # Copy daily if exists
+
+          # 移除旧数据以确保同步删除
+          rm -rf web/public/data/daily
+          rm -rf web/public/data/weekly
+
+          # 复制新数据
           if [ -d "master/data/daily" ]; then
             cp -r master/data/daily web/public/data/
           fi
-          # Copy weekly if exists
+
           if [ -d "master/data/weekly" ]; then
             cp -r master/data/weekly web/public/data/
           fi
-          echo "Data directory structure:"
+
+          echo "Sync complete. Directory structure:"
           ls -R web/public/data
 
-      - name: Install dependencies
+      - name: Commit and Push changes
         working-directory: web
-        run: npm ci
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Build
-        working-directory: web
-        run: npm run build
+          git add public/data
 
-      - name: Deploy to web branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: web/dist
-          publish_branch: web
-          force_orphan: true
-          commit_message: "chore: deploy web dashboard [skip ci]"
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+          if git diff --staged --quiet; then
+            echo "No data changes detected."
+          else
+            git commit -m "chore: sync data from master [skip ci]"
+            git push origin web
+          fi
