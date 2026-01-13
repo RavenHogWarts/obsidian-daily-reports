@@ -232,22 +232,34 @@ class DailyProcessor:
 
         # 3. Process Items Parallelly
         valid_selections = []
+        futures = {}
         
         # Adjust max_workers based on account rate limits. 5 is conservative.
         with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-            future_to_item = {executor.submit(self.evaluate_single_item, item): item for item in all_items}
-            
-            processed_count = 0
-            for future in concurrent.futures.as_completed(future_to_item):
-                item = future_to_item[future]
+            for item in all_items:
+                # Check if already processed (has summary)
+                if item.get("ai_summary"):
+                    logger.info(f"⏭️  Skipping already processed: {item.get('title')[:30]}...")
+                    valid_selections.append(item)
+                    continue
+
+                # Submit task
+                future = executor.submit(self.evaluate_single_item, item)
+                futures[future] = item
+
+            processed_count = len(valid_selections) # Start count from already processed
+            total_items = len(all_items)
+
+            for future in concurrent.futures.as_completed(futures):
+                item = futures[future]
                 processed_count += 1
                 try:
                     result = future.result()
                     if result:
                         valid_selections.append(item)
-                        logger.info(f"[{processed_count}/{len(all_items)}] ✅ Summary: {item.get('title')[:30]}...")
+                        logger.info(f"[{processed_count}/{total_items}] ✅ Summary: {item.get('title')[:30]}...")
                     else:
-                        logger.info(f"[{processed_count}/{len(all_items)}] ❌ Failed/Dropped: {item.get('title')[:30]}...")
+                        logger.info(f"[{processed_count}/{total_items}] ❌ Failed/Dropped: {item.get('title')[:30]}...")
                 except Exception as exc:
                     logger.error(f"Item generated an exception: {exc}")
 
