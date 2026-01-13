@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync-and-deploy:
+  sync-data:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     permissions:
@@ -28,7 +28,7 @@ jobs:
           path: web
           fetch-depth: 0
 
-      - name: Checkout master branch (data)
+      - name: Checkout master branch (data source)
         uses: actions/checkout@v4
         with:
           ref: master
@@ -37,14 +37,17 @@ jobs:
 
       - name: Sync data to web branch
         run: |
-          # 确保目标目录存在
+          echo "Syncing data from master to web/public/data..."
+
+          # Create target directory
           mkdir -p web/public/data
 
-          # 移除旧数据以确保同步删除
+          # Remove existing data to handle deletions/renames
+          # But be careful not to delete .gitkeep if it exists (glob handles files)
           rm -rf web/public/data/daily
           rm -rf web/public/data/weekly
 
-          # 复制新数据
+          # Copy new data
           if [ -d "master/data/daily" ]; then
             cp -r master/data/daily web/public/data/
           fi
@@ -53,7 +56,7 @@ jobs:
             cp -r master/data/weekly web/public/data/
           fi
 
-          echo "Sync complete. Directory structure:"
+          echo "Data sync complete."
           ls -R web/public/data
 
       - name: Commit and Push changes
@@ -64,9 +67,11 @@ jobs:
 
           git add public/data
 
+          # Check if there are changes to commit
           if git diff --staged --quiet; then
-            echo "No data changes detected."
+            echo "No data changes detected. Skipping commit."
           else
             git commit -m "chore: sync data from master [skip ci]"
+            # Use specific branch to avoid ambiguity
             git push origin web
           fi
