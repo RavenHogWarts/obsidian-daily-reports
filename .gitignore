@@ -26,3 +26,4 @@ dist-ssr
 *.sw?
 
 src/data-index.json
+__pycache__
