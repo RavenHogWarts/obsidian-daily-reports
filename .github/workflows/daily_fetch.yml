@@ -5,6 +5,16 @@ on:
     # 每天 UTC 0点运行 (Beijing Time 8:00)
     - cron: "0 0 * * *"
   workflow_dispatch: # 允许手动触发测试
+    inputs:
+      skip_fetch:
+        description: "Skip Data Fetching?"
+        type: boolean
+        required: false
+        default: false
+      date:
+        description: "Target Date (YYYY-MM-DD)"
+        type: string
+        required: false
 
 jobs:
   fetch-and-commit:
@@ -23,12 +33,31 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
       - name: Run Fetcher Script
+        if: ${{ inputs.skip_fetch != true }}
         env:
           # GitHub Actions 自动提供的 Token，有读写权限（如果在 permissions 中声明了）
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python scripts/obsidian_fetcher.py
+          if [ -n "${{ inputs.date }}" ]; then
+            python scripts/obsidian_fetcher.py --date "${{ inputs.date }}"
+          else
+            python scripts/obsidian_fetcher.py
+          fi
+
+      - name: Run AI Processor
+        env:
+          ZHIPU_API_KEY: ${{ secrets.ZHIPU_PLAN_API_KEY }}
+        run: |
+          if [ -n "${{ inputs.date }}" ]; then
+            python scripts/ai_processor.py --date "${{ inputs.date }}"
+          else
+            python scripts/ai_processor.py
+          fi
 
       - name: Commit and Push changes
         run: |

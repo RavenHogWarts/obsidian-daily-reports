@@ -299,8 +299,22 @@ def fetch_github_prs(repo_name, start_time, end_time):
 
     return opened_prs, merged_prs
 
+import argparse
+
 def main():
-    start_time, end_time, yesterday_date = get_yesterday_range()
+    parser = argparse.ArgumentParser(description="Fetch Obsidian community data")
+    parser.add_argument("--date", help="Target date YYYY-MM-DD", default=None)
+    args = parser.parse_args()
+
+    if args.date:
+        target_date = datetime.date.fromisoformat(args.date)
+        # Calculate start/end for the SPECIFIED date
+        start_time = datetime.datetime.combine(target_date, datetime.time.min).replace(tzinfo=datetime.timezone.utc)
+        end_time = datetime.datetime.combine(target_date, datetime.time.max).replace(tzinfo=datetime.timezone.utc)
+        yesterday_date = target_date # Variable name kept for compatibility, effectively target_date
+    else:
+        start_time, end_time, yesterday_date = get_yesterday_range()
+    
     yesterday_str = yesterday_date.isoformat()
     
     print(f"📅 Target Date (UTC): {yesterday_str}")
