@@ -127,7 +127,7 @@ const Home = () => {
         <section style={{ marginTop: '3rem' }}>
             <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Daily Archive</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-                {index.daily.slice(0, 5).map(date => (
+                {index.daily.slice(0, 5).map((date: string) => (
                     <Link key={date} to={`/daily/${date}`} style={{
                         padding: '0.5rem 1rem',
                         backgroundColor: 'var(--bg-tertiary)',
@@ -146,7 +146,7 @@ const Home = () => {
         <section style={{ marginTop: '3rem' }}>
             <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Weekly Archive</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-                {index.weekly.slice(0, 5).map(week => (
+                {index.weekly.slice(0, 5).map((week: string) => (
                     <Link key={week} to={`/weekly/${week}`} style={{
                         padding: '0.5rem 1rem',
                         backgroundColor: 'var(--bg-tertiary)',
