@@ -34,14 +34,14 @@ export const CalloutCard: React.FC<CalloutCardProps> = ({
     <div 
       className={`callout group relative rounded-xl overflow-hidden flex flex-col h-full 
         transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 
-        border-l-4 shadow-sm ${s.bgClass} ${s.borderClass}`}
+        border border-slate-200 dark:border-slate-800 shadow-sm ${s.bgClass}`}
     >
       {/* Header */}
       <div className={`callout-header flex items-center gap-2.5 px-5 py-3 text-base font-semibold ${s.headerBgClass}`}>
         <span className='callout-icon text-lg'>{s.icon}</span>
         <div className='callout-header-inner flex flex-1 items-center gap-2 justify-between min-w-0'>
           <span className='callout-title truncate text-slate-800 dark:text-slate-100'>{title}</span>
-          <div className='callout-badges flex items-center gap-1.5 flex-shrink-0'>
+          <div className='callout-badges flex items-center gap-1.5 shrink-0'>
             {badges.filter(Boolean).map((badge) => badge)}
             {aiAnalysis?.ai_score && (
               <Badge key="score" text={`Score: ${aiAnalysis.ai_score}/10`} type="score" />

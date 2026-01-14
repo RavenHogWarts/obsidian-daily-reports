@@ -52,7 +52,7 @@ const DailyReport = () => {
       />
 
       {data.ai?.overview && (
-        <div className="mb-10 p-6 rounded-2xl bg-gradient-to-br from-violet-50/50 to-fuchsia-50/50 dark:from-violet-900/10 dark:to-fuchsia-900/10 border border-violet-100 dark:border-violet-800/30 shadow-sm">
+        <div className="mb-10 p-6 rounded-2xl bg-linear-to-br from-violet-50/50 to-fuchsia-50/50 dark:from-violet-900/10 dark:to-fuchsia-900/10 border border-violet-100 dark:border-violet-800/30 shadow-sm">
           <div className="flex items-start gap-4">
             <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm ring-1 ring-slate-900/5 text-violet-600 dark:text-violet-400">
               <Sparkles size={24} />
