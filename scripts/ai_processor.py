@@ -183,6 +183,41 @@ class AIClientWrapper:
 
 import concurrent.futures
 import time
+import threading
+
+
+class RateLimiter:
+    """
+    线程安全的速率限制器（令牌桶算法）。
+    确保并发环境下 API 请求速率不超过限制。
+    """
+    def __init__(self, max_concurrent: int = 2, min_interval: float = 2.0):
+        """
+        Args:
+            max_concurrent: 最大同时执行的请求数
+            min_interval: 两次请求之间的最小间隔（秒）
+        """
+        self.semaphore = threading.Semaphore(max_concurrent)
+        self.min_interval = min_interval
+        self.last_request_time = 0.0
+        self.lock = threading.Lock()
+    
+    def acquire(self):
+        """获取执行许可（阻塞直到允许执行）"""
+        self.semaphore.acquire()
+        
+        with self.lock:
+            # 确保请求间隔
+            now = time.time()
+            elapsed = now - self.last_request_time
+            if elapsed < self.min_interval:
+                sleep_time = self.min_interval - elapsed
+                time.sleep(sleep_time)
+            self.last_request_time = time.time()
+    
+    def release(self):
+        """释放执行许可"""
+        self.semaphore.release()
 
 class DailyProcessor:
     ITEM_EVAL_PROMPT = """
@@ -232,6 +267,9 @@ class DailyProcessor:
     def __init__(self, api_key: str, model_name: str = "glm-4.7"):
         self.ai_client = AIClientWrapper(api_key, model=model_name)
         self.formatter = DataFormatter()
+        # 速率限制器：最多2个并发请求，每次请求间隔至少2秒
+        # Thinking模式下API对并发非常敏感，需要更保守的设置
+        self.rate_limiter = RateLimiter(max_concurrent=2, min_interval=2.0)
 
     def process(self, file_path: str, overwrite: bool = False):
         start_time = time.time()
@@ -258,29 +296,33 @@ class DailyProcessor:
 
         logger.info(f"Total items to evaluate: {len(all_items)}")
 
-        # 3. Process Items Parallelly
+        # 3. Process Items Parallelly with Rate Limiting
+        # 使用速率限制器严格控制实际并发数和请求间隔
         valid_selections = []
         futures = {}
         
-        # Adjust max_workers based on account rate limits. 5 is conservative.
-        # Reduced to 3 for Thinking Mode compatibility to avoid 429 errors.
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-            for item in all_items:
-                # Check if already processed (has summary)
-                if not overwrite and item.get("ai_summary"):
-                    logger.info(f"⏭️  Skipping already processed: {item.get('title')[:30]}...")
-                    valid_selections.append(item)
-                    continue
-
-                # Submit task
-                future = executor.submit(self.evaluate_single_item, item)
+        # 预先过滤已处理的条目
+        items_to_process = []
+        for item in all_items:
+            if not overwrite and item.get("ai_summary"):
+                logger.info(f"⏭️  Skipping already processed: {item.get('title')[:30]}...")
+                valid_selections.append(item)
+            else:
+                items_to_process.append(item)
+        
+        total_items = len(all_items)
+        processed_count = len(valid_selections)
+        items_pending = len(items_to_process)
+        
+        logger.info(f"Items to process: {items_pending}, Already processed: {processed_count}")
+        
+        # 使用更多 workers，但由 RateLimiter 控制实际并发
+        # max_workers 设置更高是为了让任务队列有足够容量
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            for item in items_to_process:
+                # Submit task with rate limiter wrapper
+                future = executor.submit(self._evaluate_with_rate_limit, item)
                 futures[future] = item
-                
-                # Small delay to avoid burst limits
-                time.sleep(1.0)
-
-            processed_count = len(valid_selections) # Start count from already processed
-            total_items = len(all_items)
 
             for future in concurrent.futures.as_completed(futures):
                 item = futures[future]
@@ -293,7 +335,7 @@ class DailyProcessor:
                     else:
                         logger.info(f"[{processed_count}/{total_items}] ❌ Failed/Dropped: {item.get('title')[:30]}...")
                 except Exception as exc:
-                    logger.error(f"Item generated an exception: {exc}")
+                    logger.error(f"[{processed_count}/{total_items}] ❌ Exception: {exc}")
 
         logger.info(f"Processed {len(valid_selections)} items successfully.")
 
@@ -319,6 +361,43 @@ class DailyProcessor:
         end_time = time.time()
         duration = end_time - start_time
         logger.info(f"AI processing complete and saved. Total time: {duration:.2f}s")
+
+    def _evaluate_with_rate_limit(self, item: Dict[str, Any], max_retries: int = 3) -> bool:
+        """
+        带速率限制和重试的评估方法。
+        使用 RateLimiter 控制并发，并在失败时进行指数退避重试。
+        """
+        retries = 0
+        base_delay = 5.0  # 基础重试延迟（秒）
+        
+        while retries <= max_retries:
+            try:
+                # 获取速率限制许可
+                self.rate_limiter.acquire()
+                try:
+                    return self.evaluate_single_item(item)
+                finally:
+                    # 确保释放许可
+                    self.rate_limiter.release()
+            except Exception as e:
+                error_str = str(e)
+                # 检查是否是429错误
+                if "429" in error_str or "Too Many Requests" in error_str or "并发数过高" in error_str:
+                    retries += 1
+                    if retries <= max_retries:
+                        # 指数退避
+                        delay = base_delay * (2 ** (retries - 1))
+                        logger.warning(f"Rate limited, retry {retries}/{max_retries} after {delay}s: {item.get('title', '')[:30]}")
+                        time.sleep(delay)
+                    else:
+                        logger.error(f"Max retries exceeded for: {item.get('title', '')[:30]}")
+                        return False
+                else:
+                    # 其他错误直接返回失败
+                    logger.error(f"Error evaluating item: {e}")
+                    return False
+        
+        return False
 
     def evaluate_single_item(self, item: Dict[str, Any]) -> bool:
         """
@@ -439,7 +518,7 @@ def main():
         
         # Add cooldown between files to avoid rate limiting
         if idx < total_files:
-            cooldown = 5  # seconds
+            cooldown = 10  # 增加到10秒，确保API速率限制有足够恢复时间
             logger.info(f"Cooldown {cooldown}s before next file...")
             time.sleep(cooldown)
 
