@@ -56,7 +56,41 @@ const WeeklyReport = () => {
       {!hasContent && <EmptyState period="week" />}
 
       <div className="flex flex-col gap-16">
-        
+        {/* Community Forum */}
+        {(data.english_forum?.length > 0 || data.chinese_forum?.length > 0) && (
+          <section>
+            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
+                💬 Community Forum
+            </h2>
+            <div className="grid grid-cols-1 gap-6">
+                {data.english_forum?.map((post: ForumPost, idx: number) => (
+                    <CalloutCard 
+                        key={`en-${idx}`}
+                        type="forum"
+                        title={post.title}
+                        summary={getSummary(post.content_html)}
+                        link={post.url}
+                        badges={[<Badge key="lang" text="EN" type="enforum" />]}
+                        meta={<span>{post.author}</span>}
+                        aiAnalysis={post}
+                    />
+                ))}
+                {data.chinese_forum?.map((post: ForumPost, idx: number) => (
+                    <CalloutCard 
+                        key={`cn-${idx}`}
+                        type="forum"
+                        title={post.title}
+                        summary={getSummary(post.content_html)}
+                        link={post.url}
+                        badges={[<Badge key="lang" text="CN" type="cnforum" />]}
+                        meta={<span>{post.author}</span>}
+                        aiAnalysis={post}
+                    />
+                ))}
+            </div>
+          </section>
+        )}
+
         {/* Development Activity */}
         {((data.github_merged && data.github_merged.length > 0) || (data.github_opened && data.github_opened.length > 0)) && (
           <section>
@@ -74,9 +108,9 @@ const WeeklyReport = () => {
                         summary={getSummary(pr.body)}
                         link={pr.url}
                         badges={[
-                            <Badge key="status" text="Merged" color="#10b981" />,
-                            projectType === 'plugin' && <Badge key="type" text="Plugin" color="#8b5cf6" />,
-                            projectType === 'theme' && <Badge key="type" text="Theme" color="#ec4899" />
+                            <Badge key="status" text="Merged" type="merged" />,
+                            projectType === 'plugin' && <Badge key="type" text="Plugin" type="plugin" />,
+                            projectType === 'theme' && <Badge key="type" text="Theme" type="theme" />
                         ]}
                         meta={<span>by <strong>{pr.author}</strong></span>}
                         aiAnalysis={pr}
@@ -92,49 +126,14 @@ const WeeklyReport = () => {
                         summary={getSummary(pr.body)}
                         link={pr.url}
                         badges={[
-                            <Badge key="status" text="Opened" color="#3b82f6" />,
-                            projectType === 'plugin' && <Badge key="type" text="Plugin" color="#8b5cf6" />,
-                            projectType === 'theme' && <Badge key="type" text="Theme" color="#ec4899" />
+                            <Badge key="status" text="Opened" type="opened" />,
+                            projectType === 'plugin' && <Badge key="type" text="Plugin" type="plugin" />,
+                            projectType === 'theme' && <Badge key="type" text="Theme" type="theme" />
                         ]}
                         meta={<span>by <strong>{pr.author}</strong></span>}
                         aiAnalysis={pr}
                     />
                 );})}
-            </div>
-          </section>
-        )}
-
-        {/* Community Forum */}
-        {(data.english_forum?.length > 0 || data.chinese_forum?.length > 0) && (
-          <section>
-            <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
-                💬 Community Forum
-            </h2>
-            <div className="grid grid-cols-1 gap-6">
-                {data.english_forum?.map((post: ForumPost, idx: number) => (
-                    <CalloutCard 
-                        key={`en-${idx}`}
-                        type="forum"
-                        title={post.title}
-                        summary={getSummary(post.content_html)}
-                        link={post.url}
-                        badges={[<Badge key="lang" text="English" color="#64748b" />]}
-                        meta={<span>{post.author}</span>}
-                        aiAnalysis={post}
-                    />
-                ))}
-                {data.chinese_forum?.map((post: ForumPost, idx: number) => (
-                    <CalloutCard 
-                        key={`cn-${idx}`}
-                        type="forum"
-                        title={post.title}
-                        summary={getSummary(post.content_html)}
-                        link={post.url}
-                        badges={[<Badge key="lang" text="中文" color="#eab308" />]}
-                        meta={<span>{post.author}</span>}
-                        aiAnalysis={post}
-                    />
-                ))}
             </div>
           </section>
         )}

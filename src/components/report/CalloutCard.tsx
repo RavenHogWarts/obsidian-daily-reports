@@ -1,6 +1,7 @@
 import React from 'react';
 import { getCalloutStyles, type CalloutType } from '../../utils/calloutStyles';
 import type { AIAnalysis } from '../../types/data';
+import { Badge } from '.';
 
 export interface CalloutCardProps {
   title: string;
@@ -38,11 +39,9 @@ export const CalloutCard: React.FC<CalloutCardProps> = ({
         <div className='callout-header-inner flex flex-1 items-center gap-2 justify-between'>
           <div className='callout-title'>{title}</div>
           <div className='callout-badges flex items-center gap-2'>
-            {badges.map((badge, i) => <span key={i} className="callout-badge">{badge}</span>)}
+            {badges.filter(Boolean).map((badge, i) => badge)}
             {aiAnalysis?.ai_score && (
-              <span className="callout-badge inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
-                Score: {aiAnalysis.ai_score}/10
-              </span>
+              <Badge key="score" text={`Score: ${aiAnalysis.ai_score}/10`} type="score" />
             )}
           </div>
         </div>

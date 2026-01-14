@@ -1,5 +1,5 @@
 // 导出所有报告相关组件
-export { Badge, type BadgeProps } from "./Badge";
+export { Badge, type BadgeProps, type BadgeType } from "./Badge";
 export { CalloutCard, type CalloutCardProps } from "./CalloutCard";
 export { Breadcrumb, type BreadcrumbProps } from "./Breadcrumb";
 export { LoadingSpinner, type LoadingSpinnerProps } from "./LoadingSpinner";
