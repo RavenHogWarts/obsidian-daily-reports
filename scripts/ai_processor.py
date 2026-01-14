@@ -181,7 +181,6 @@ class AIClientWrapper:
             logger.debug(f"Raw content: {original_content}")
             return None
 
-import concurrent.futures
 import time
 
 class DailyProcessor:
@@ -258,42 +257,39 @@ class DailyProcessor:
 
         logger.info(f"Total items to evaluate: {len(all_items)}")
 
-        # 3. Process Items Parallelly
+        # 3. Process Items SEQUENTIALLY (串行处理)
+        # 使用串行处理而非并行，彻底避免智谱AI Thinking模式下的429并发错误
         valid_selections = []
-        futures = {}
         
-        # Adjust max_workers based on account rate limits. 5 is conservative.
-        # Reduced to 3 for Thinking Mode compatibility to avoid 429 errors.
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-            for item in all_items:
-                # Check if already processed (has summary)
-                if not overwrite and item.get("ai_summary"):
-                    logger.info(f"⏭️  Skipping already processed: {item.get('title')[:30]}...")
+        # 先收集已处理和待处理的条目
+        items_to_process = []
+        for item in all_items:
+            # Check if already processed (has summary)
+            if not overwrite and item.get("ai_summary"):
+                logger.info(f"⏭️  Skipping already processed: {item.get('title')[:30]}...")
+                valid_selections.append(item)
+            else:
+                items_to_process.append(item)
+        
+        total_items = len(all_items)
+        processed_count = len(valid_selections)
+        
+        # 串行处理每个条目，确保不会触发并发限制
+        for item in items_to_process:
+            processed_count += 1
+            try:
+                result = self.evaluate_single_item(item)
+                if result:
                     valid_selections.append(item)
-                    continue
-
-                # Submit task
-                future = executor.submit(self.evaluate_single_item, item)
-                futures[future] = item
-                
-                # Small delay to avoid burst limits
-                time.sleep(1.0)
-
-            processed_count = len(valid_selections) # Start count from already processed
-            total_items = len(all_items)
-
-            for future in concurrent.futures.as_completed(futures):
-                item = futures[future]
-                processed_count += 1
-                try:
-                    result = future.result()
-                    if result:
-                        valid_selections.append(item)
-                        logger.info(f"[{processed_count}/{total_items}] ✅ Summary: {item.get('title')[:30]}...")
-                    else:
-                        logger.info(f"[{processed_count}/{total_items}] ❌ Failed/Dropped: {item.get('title')[:30]}...")
-                except Exception as exc:
-                    logger.error(f"Item generated an exception: {exc}")
+                    logger.info(f"[{processed_count}/{total_items}] ✅ Summary: {item.get('title')[:30]}...")
+                else:
+                    logger.info(f"[{processed_count}/{total_items}] ❌ Failed/Dropped: {item.get('title')[:30]}...")
+            except Exception as exc:
+                logger.error(f"[{processed_count}/{total_items}] ❌ Exception: {exc}")
+            
+            # 每次API调用后等待1.5秒，确保速率限制恢复
+            # Thinking模式需要更长的间隔
+            time.sleep(1.5)
 
         logger.info(f"Processed {len(valid_selections)} items successfully.")
 
@@ -439,7 +435,7 @@ def main():
         
         # Add cooldown between files to avoid rate limiting
         if idx < total_files:
-            cooldown = 5  # seconds
+            cooldown = 15  # 增加冷却时间以确保API速率限制完全恢复
             logger.info(f"Cooldown {cooldown}s before next file...")
             time.sleep(cooldown)
 
