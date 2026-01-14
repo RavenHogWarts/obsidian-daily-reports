@@ -10,15 +10,16 @@
       "created_at": "2026-01-08T18:56:05.917Z",
       "content_html": "<h1><a name=\"p-112002-h-1\" class=\"anchor\" href=\"#p-112002-h-1\"></a>效果演示</h1>\n<p><img src=\"https://forum-zh.obsidian.md/uploads/default/original/3X/b/0/b057f248aa87c83202b19b7fff5eef3e7080406f.gif\" alt=\"VID_20260109_033716\" data-base62-sha1=\"pa0ssVmjH36tUds5QS2vnG42TCL\" width=\"224\" height=\"500\" class=\"animated\"></p>\n<p>样式可以用 css 片段自定义。</p>\n<p>这个功能实现不算太难，之前的方案是用 metaedit 插件，但是这个插件已经很久没有更新了。求人不如求己，自己写了个 dataviewjs 代码。</p>\n<h1><a name=\"p-112002-h-2\" class=\"anchor\" href=\"#p-112002-h-2\"></a>核心代码</h1>\n<pre data-code-wrap=\"dataviewjs\"><code class=\"lang-dataviewjs\">dv.table(headers, data.map(row=&gt;row.map(cell=&gt;{\n  const text = this.container.createEl(\"input\", {\n    \"type\": \"text\",\n    \"value\": cell.rawValue\n  })\n  text.addEventListener('change', async (evt) =&gt; {\n    updateMetadata(cell, evt.target.value)\n  })\n  return text\n})))\n</code></pre>\n<p>代码只是一部分，还需要自行获取数据赋值到 headers 和 data，实现 updateMetadata 更新函数。如果是 front matter 字段，那更新函数很简单。如果是内联字段，也可以用 vault.process() 逐行查找替换。</p>\n<p>这个代码也很简单，就是在表格每个单元格数据外套了一个输入框，监视输入同步更新笔记中的元数据。</p>\n<p>需要注意，在实时模式下，显示的内联字段元数据不会立即更新（但笔记内容已经更新了），可以点一个链接，原地 tp 一下，就能刷新元数据显示。在阅读模式下，表格、笔记、元数据显示都会立即刷新。但是刷新时，会闪一下。几秒后（自己设定的 dataview 刷新时间），会再次闪一下。</p>",
       "_source_key": "chinese_forum",
-      "ai_summary": "放弃老旧插件，手撸DataviewJS实现表格内直接修改元数据，简单粗暴解决数据录入痛点",
-      "ai_pain_point": "Metaedit插件更新停滞，无法在Dataview查询结果视图中直接编辑内容",
+      "ai_summary": "让 Dataview 表格可编辑，不用切回笔记就能改元数据。",
+      "ai_pain_point": "批量整理笔记属性时，必须逐个点开笔记进入编辑模式，来回切换极其繁琐。",
       "ai_highlights": [
-        "批量修改元数据时无需进入笔记，表格中直接输入即同步更新",
-        "利用DataviewJS原生DOM操作替代老旧插件，灵活可控"
+        "直接在查询结果表格中修改数据，适合快速更新笔记状态或日期。",
+        "用自写代码替代停更的 Metaedit 插件，解决旧工具无法使用的问题。",
+        "自动将表格输入同步至笔记文件，避免手动编辑元数据时的繁琐。"
       ],
-      "ai_comment": "虽然写代码比等插件更新靠谱，但阅读模式刷新时的“频闪特效”简直是闪瞎眼，用户体验堪忧。",
+      "ai_comment": "既然插件作者都在躺平，用户只能自力更生。虽然阅读模式闪烁得像接触不良的电视，但这“所见即所得”的偷懒感，确实值回票价。",
       "ai_tags": [
-        "开发者",
+        "开发者向",
         "数据极客"
       ],
       "ai_score": 8
@@ -31,15 +32,16 @@
       "created_at": "2026-01-08T16:27:20.885Z",
       "content_html": "<p>试了各种导入方法都不行，后来发现在 dataviewjs 代码块中其实是可以正常导入的，只是在 dv.view(…) 的外部文件中不能导入。然后就很容易想到直接传参过去不就行了吗。<br>\n甚至可以直接把 require 传过去，然后就想怎么导入就怎么导入了。</p>\n<h1><a name=\"p-112001-h-1\" class=\"anchor\" href=\"#p-112001-h-1\"></a>示例</h1>\n<pre data-code-wrap=\"md\"><code class=\"lang-md\">```dataviewjs\nconst ob = require('obsidian')\ndv.view(\"js 文件\", { ob:ob })\n```\n</code></pre>\n<pre data-code-wrap=\"js\"><code class=\"lang-js\">// js 文件\nconst { Notice } = input.ob\nnew Notice(\"导入成功\")\n</code></pre>",
       "_source_key": "chinese_forum",
-      "ai_summary": "搞定 Dataview 外部 JS 文件无法导入模块的顽疾，利用参数传递把 `require` “走私”进去。",
-      "ai_pain_point": "Dataview 的 `dv.view` 外部文件受限于沙箱环境，无法直接使用 `require` 导入 Obsidian 原生 API 或其他模块。",
+      "ai_summary": "突破外部JS限制，巧传参数调用Obsidian API",
+      "ai_pain_point": "在DataViewJS调用外部JS文件时，无法直接导入obsidian等模块导致功能受限",
       "ai_highlights": [
-        "在 `dv.view` 引用的外部 JS 文件中成功调用 Obsidian 原生 API（如 Notice）",
-        "利用 `input` 参数将主代码块的 `require` 对象传递给外部文件，巧妙绕过沙箱限制"
+        "解决外部文件无法直接导入模块痛点，实现外部脚本调用Notice等API",
+        "通过传递require参数，打破限制让外部文件能加载任意Node模块",
+        "将脚本逻辑封装到外部文件，主笔记区只保留一行调用代码"
       ],
-      "ai_comment": "沙箱防得住君子防不住野路子，虽然这种写法有点像在系统后门贴了个快递单，但对于想深度定制 `dv.view` 的人来说简直是救命稻草。",
+      "ai_comment": "虽是简单的参数传递，却捅破了“外部文件是残废”的窗户纸，程序员看了直呼内行。",
       "ai_tags": [
-        "开发者"
+        "开发者向"
       ],
       "ai_score": 8
     }
@@ -53,16 +55,17 @@
       "created_at": "2026-01-08T18:37:04.580Z",
       "content_html": "<p>I use a lot of Vaults and installing plugins for every new Vault can be time consuming. So I created PluginHub. An Obsidian plugin that allows you to browse GitHub, the Official Community Plugin Archive, and the Obsidian Forum to find and install plugins across multiple vaults simultaneously.<br>\nYou can also save collections of plugins into “Sets” (e.g., “Favorites”, “Developer Tools”) and install the entire group with one click.<br>\n<strong>Multi-Vault Installation:</strong></p>\n<ul>\n<li>\n<p><strong>All Vaults under parent folder:</strong> Enter a parent folder (like your iCloud Obsidian folder), and it will automatically find all vaults within it.</p>\n</li>\n<li>\n<p><strong>Selected Vaults:</strong> List specific vault folders.</p>\n</li>\n<li>\n<p>Choose whether to install to your current vault, all vaults or only to the selected vaults.</p>\n</li>\n<li>\n<p><strong>Cross-Platform:</strong> Works on Windows, macOS for multi-vault deployment. Browsing works on all platforms.</p>\n<p>I am using it on Windows with Remotely Save and Icloud Drive for my IOS devices. Haven´t tested on Mac but it should work.</p>\n<p>I made this for myself but maybe someone else will find it useful.</p>\n</li>\n</ul>\n<p>You can find it here: <a href=\"https://github.com/PixeroJan/PluginHub\" rel=\"noopener nofollow ugc\">https://github.com/PixeroJan/PluginHub</a></p>",
       "_source_key": "english_forum",
-      "ai_summary": "专为多库重度用户设计的插件管理器，支持跨库批量安装和插件集合一键部署，终结了重复劳动。",
-      "ai_pain_point": "拥有多个库（Vaults）时，每个新库都要手动搜索、下载并配置相同的插件，极其繁琐且耗时。",
+      "ai_summary": "一次操作即可多库同步安装插件，告别重复劳动。",
+      "ai_pain_point": "每次新建或切换 Obsidian 仓库时，都需要手动去社区插件市场一个个重新搜索、下载、安装和配置常用插件。",
       "ai_highlights": [
-        "跨库批量安装：支持指定父文件夹或特定库，一键将插件同时安装到多个目标库",
-        "插件集合：可将常用插件打包（如“开发工具”），新建库时一键整组导入"
+        "管理多个仓库时，选中目标后一键批量安装常用插件。",
+        "将插件打包成集合，新建仓库时一键部署整套工具。",
+        "无需跳转页面，在软件内直接聚合搜索并安装全网插件。"
       ],
-      "ai_comment": "Obsidian 官方要是早把全局插件配置做进去，这插件就没必要存在了，不过还好有人来填这个坑。",
+      "ai_comment": "以前装插件像是在每个房间装插座，现在有了总闸，这才算真的把 Obsidian 用明白了。",
       "ai_tags": [
-        "效率党",
-        "开发者"
+        "多仓管理",
+        "效率党必备"
       ],
       "ai_score": 9
     }
@@ -77,18 +80,19 @@
       "body": "# I am submitting a new Community Plugin\n\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\n\n## Repo URL\n\nLink to my plugin: https://github.com/diegomarzaa/obsidian-pinned-tabs-customizer\n\n## Release Checklist\n- [x] I have tested the plugin on\n  - [x] Windows\n  - [ ] macOS\n  - [x] Linux\n  - [ ] Android _(if applicable)_\n  - [ ] iOS _(if applicable)_\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\n  - [x] `main.js`\n  - [x] `manifest.json`\n  - [x] `styles.css` _(optional)_\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\n- [x] I have added a license in the LICENSE file.\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\n      I have given proper attribution to these other projects in my `README.md`.",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "终于有个插件能让你把Obsidian死板的固定标签页改成想要的样子了。",
-      "ai_pain_point": "原生固定标签页样式单调，难以通过视觉快速区分不同类型的笔记，强迫症患者难受。",
+      "ai_summary": "自定义固定标签样式，让你的关键笔记一眼入魂。",
+      "ai_pain_point": "固定标签多了后千篇一律，常在茫茫标签海中找不到核心笔记。",
       "ai_highlights": [
-        "打破原生UI限制，允许用户自定义固定标签的外观",
-        "已在Windows和Linux平台通过测试，核心桌面端用户可尝鲜"
+        "修改固定标签颜色背景，在多项目并行时快速区分不同领域。",
+        "强调关键笔记样式，避免在处理临时文档时误触关闭核心页面。",
+        "独立设置固定项外观，让长期驻留的文档与临时阅读页视觉隔离。"
       ],
-      "ai_comment": "为了这点颜面折腾代码也是够拼的，不过看着舒服就行，至于Mac用户？那是另一个世界的事了。",
+      "ai_comment": "原生那死板的白色标签简直是对审美的侮辱，终于有人来填坑了。",
       "ai_tags": [
-        "颜值党",
-        "效率党"
+        "颜值党专属",
+        "效率党必备"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -99,16 +103,17 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\nLink to my plugin: https://github.com/Yannaner/Vercel-Publish\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "Obsidian 笔记一键发布至 Vercel 平台的插件，旨在简化博客部署流程。",
-      "ai_pain_point": "解决传统笔记发布到网络需要繁琐的静态网站生成（SSG）配置、构建和部署步骤的问题。",
+      "ai_summary": "无需付费订阅，一键将笔记部署至 Vercel",
+      "ai_pain_point": "不愿支付官方订阅费，且需要自定义域名的知识库托管需求",
       "ai_highlights": [
-        "集成 Vercel 发布能力，试图打通笔记与公网展示的最后一步",
-        "作者承诺积极维护并对代码质量有信心"
+        "省去官方订阅费，适合希望免费公开分享笔记的用户",
+        "利用 Vercel 全球加速，适合需要秒级访问速度的个人博客",
+        "支持绑定自定义域名，适合打造个人品牌的极客玩家"
       ],
-      "ai_comment": "声称自己尽了最大努力、代码值得自豪，结果测试环境里只勾了 macOS，看来 Windows 和 Linux 用户在作者眼里只是“建议体验”的二等公民？",
+      "ai_comment": "既然能白嫖 Vercel 的全球 CDN，何必给官方送订阅费？",
       "ai_tags": [
-        "效率党",
-        "开发者"
+        "开发者向",
+        "效率党必备"
       ],
       "ai_score": 8
     },
@@ -121,17 +126,19 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\nLink to my plugin: https://github.com/dsynkd/obsidian-chess/\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "将国际象棋棋盘直接嵌入 Obsidian，满足你在笔记间隙的对弈与复盘需求。",
-      "ai_pain_point": "无法在 Obsidian 中直接研究棋谱或进行对弈，需频繁切换应用打断心流（或打断摸鱼）。",
+      "ai_summary": "写作累了想摸鱼，无需切出应用在笔记内直接杀一局。",
+      "ai_pain_point": "想研究棋谱或摸鱼下棋时，不想切出 Obsidian 打开其他软件。",
       "ai_highlights": [
-        "支持在笔记内直接进行国际象棋对弈与学习",
-        "已完成 Windows、macOS 及 iOS 平台的兼容性测试"
+        "写作累了想摸鱼，无需切出应用在笔记内直接杀一局国际象棋。",
+        "复盘分析棋局时，边下棋边在旁边实时记录每一步的心得。",
+        "分享精彩对局时，笔记中直接渲染出可视化的交互棋盘。"
       ],
-      "ai_comment": "当你的大脑因为写不出字而宕机时，终于有个看起来很“学术”的方式来逃避工作了。",
+      "ai_comment": "生产力的尽头是娱乐，这下有理由彻底不关掉 Obsidian 了。",
       "ai_tags": [
-        "新手友好"
+        "摸鱼神器",
+        "娱乐向"
       ],
-      "ai_score": 7
+      "ai_score": 6
     },
     {
       "source": "GitHub Open",
@@ -142,18 +149,19 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: [daun/obsidian-pretty-urls](https://github.com/daun/obsidian-pretty-urls)\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [x]  Linux\r\n  - [x]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "新插件 Pretty URLs 正式提交，旨在将丑陋的文件路径链接转换为优雅的 URL。",
-      "ai_pain_point": "Obsidian 默认的文件路径链接冗长且包含乱码般的字符，强迫症看着难受，对外分享时也显得不够专业。",
+      "ai_summary": "拒绝乱码链接，一键生成清爽可读的笔记URL。",
+      "ai_pain_point": "原生链接包含大量百分比编码和文件后缀，不仅难看且难以在分享时辨识。",
       "ai_highlights": [
-        "全平台兼容性测试拉满，Windows/Mac/Linux 及移动端无一遗漏",
-        "开发者签署“投名状”承诺长期维护，并备好了寻找接班人的方案"
+        "分享笔记时，自动去除空格乱码，生成可直接阅读的清爽链接。",
+        "隐藏繁琐的文件后缀名，让文内链接不再充满杂乱的技术字符。",
+        "支持自定义URL路径结构，让发布到Web或跨设备调用的链接更规范。"
       ],
-      "ai_comment": "终于有人来收拾 Obsidian 那原始人一样的链接格式了，虽然也就是把你的 `notes/2023/10/01...` 变成了 `diary/today`，但这该死的仪式感很重要。",
+      "ai_comment": "终于有人看不下去那些满屏百分比编码的“乱码”链接了，强迫症患者的福音。",
       "ai_tags": [
-        "颜值党",
-        "开发者"
+        "颜值党专属",
+        "效率党必备"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -164,13 +172,14 @@
       "body": "# I am submitting a new Community Plugin\n\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\n\n## Repo URL\n\nLink to my plugin: https://github.com/robfelice/folder-guard\n\n## Release Checklist\n- [x] I have tested the plugin on\n  - [x] Windows\n  - [ ] macOS\n  - [ ] Linux\n  - [ ] Android _(if applicable)_\n  - [ ] iOS _(if applicable)_\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\n  - [x] `main.js`\n  - [x] `manifest.json`\n  - [x] `styles.css` _(optional)_\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\n- [x] I have added a license in the LICENSE file.\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\n      I have given proper attribution to these other projects in my `README.md`.",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "Folder Guard 插件申请入库，作者承诺长期维护但目前仅完成 Windows 测试。",
-      "ai_pain_point": "防止文件夹被意外移动、重命名或删除（根据插件名称推断）。",
+      "ai_summary": "给重要文件夹加把锁，彻底告别误删误改的焦虑。",
+      "ai_pain_point": "管理庞大知识库时，整理或移动文件容易误删归档资料或破坏目录结构。",
       "ai_highlights": [
-        "作者签署了'高质量代码'承诺书并保证会寻找接班人",
-        "Release Checklist 勾选完整，但目前仅在 Windows 平台通过测试"
+        "锁定敏感文件夹，避免整理文件库时手滑导致数据丢失。",
+        "将归档设为只读，防止意外修改破坏历史笔记的完整性。",
+        "可视化锁定标识，一眼识别不可编辑区域，避免无效操作。"
       ],
-      "ai_comment": "又是只测 Windows 就敢发布的插件，这是把 Mac 和 Linux 用户当空气吗？虽然名字听起来安全感爆棚，但没跨平台测试就提交，多少有点心大。",
+      "ai_comment": "与其指望撤销键能救命，不如给重要的文件夹上个锁，毕竟防人之心不可无，防己之心更要有。",
       "ai_tags": [
         "数据极客"
       ],
@@ -185,15 +194,17 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [ ]  macOS\r\n  - [ ]  Linux\r\n  - [x]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "这款插件将 Habitica 游戏化任务管理器与 Obsidian 进行全量同步，让笔记和习惯打卡不再分离。",
-      "ai_pain_point": "习惯追踪工具与笔记库割裂，导致需要在多个 App 之间频繁切换维护待办事项。",
+      "ai_summary": "笔记任务游戏化，与Habitica双向同步拒绝拖延。",
+      "ai_pain_point": "在Obsidian规划任务后，需手动去Habitica打勾，重复操作打断心流。",
       "ai_highlights": [
-        "实现 Obsidian 与 Habitica 的数据互通，支持双端管理",
-        "已适配移动端 (iOS/Android) 和 Windows 平台"
+        "免去在笔记和游戏间重复记录任务，一键同步状态。",
+        "将枯燥的待办事项转化为游戏经验值，强迫症也能爽。",
+        "让习惯追踪器能直接读写笔记中的待办列表，沉浸感强。"
       ],
-      "ai_comment": "开发者声称“尽最大努力”却没测 macOS 和 Linux，这份自信我给满分；不过能把写笔记变成 RPG 打怪，确实能哄着懒人动起来。",
+      "ai_comment": "只有打怪升级的诱惑，才能逼动懒癌晚期患者打开Obsidian。",
       "ai_tags": [
-        "[效率党]"
+        "生产力工具",
+        "游戏化"
       ],
       "ai_score": 8
     },
@@ -206,16 +217,17 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\nhttps://github.com/mrstruijk/toggle-read-source-preview\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [x]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [ x My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "提供一键循环切换阅读模式、源码模式和实时预览的指令，解决视图切换繁琐的痛点。",
-      "ai_pain_point": "Obsidian 默认需要在界面角落手动点击微小图标或配置不同快捷键来切换视图，操作繁琐且容易打断心流。",
+      "ai_summary": "一键精准切换阅读/源码/预览，告别鼠标点选模式图标。",
+      "ai_pain_point": "原生快捷键无法精准区分“源码”与“实时预览”，需手动点击顶部图标切换。",
       "ai_highlights": [
-        "支持通过单一指令循环切换视图模式，无需鼠标寻找界面控件",
-        "全平台测试通过（Windows、macOS、Linux 及 iOS），确保移动端也能顺滑切换"
+        "使用命令强制切换至源码模式，检查复杂语法无需鼠标找图标。",
+        "绑定快捷键在三种视图间快速流转，手不离键盘维持写作心流。",
+        "规避原生切换键逻辑不清问题，精准控制当前文档的显示方式。"
       ],
-      "ai_comment": "这种功能居然也能单独抽离成插件？不过对于懒得在角落里找那三个切换图标的懒人来说，确实是不可多得的摸鱼神器。",
+      "ai_comment": "连切个“源代码”都要精准点鼠标？这插件补齐了 Obsidian 久违的拼图。",
       "ai_tags": [
-        "效率党",
-        "新手友好"
+        "效率党必备",
+        "键盘流"
       ],
       "ai_score": 7
     },
@@ -228,16 +240,17 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/iamjjanga-ouo/obsidian-link\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "提交了一个将外部HTTPS链接重定向到本地副本的新插件。",
-      "ai_pain_point": "在线资源加载慢、不稳定或处于离线状态时无法访问外部链接。",
+      "ai_summary": "将网络链接重定向至本地文件，无需手动修改路径",
+      "ai_pain_point": "笔记中保留着网页链接，但本地已下载文件，点击链接却跳转浏览器无法直接打开本地副本",
       "ai_highlights": [
-        "链接本地化，自动将HTTPS请求指向本地存储文件",
-        "离线可用，确保在无网络环境下依然能打开参考链接"
+        "点击外部链接自动打开本地对应文件，省去手动替换路径的繁琐",
+        "资料本地化存储后，通过原链接秒开，不再受网络波动影响",
+        "无需修改已有笔记中的链接格式，后台静默映射网络与本地资源"
       ],
-      "ai_comment": "名字起得像占位符一样敷衍，而且只测了macOS，这是想让其他系统的用户帮忙测Bug吗？",
+      "ai_comment": "看着满篇的 https 链接却在本地找不到文件？这插件就是来治这种“精神分裂”的，终于不用手动把链接改成 file:/// 了。",
       "ai_tags": [
-        "数据极客",
-        "效率党"
+        "效率党必备",
+        "资料管理"
       ],
       "ai_score": 7
     },
@@ -250,18 +263,19 @@
       "body": "Added Lazy Sketch plugin for generating AI sketches.\r\n\r\n# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n\r\nLink to my plugin: https://github.com/jaroslaw-weber/obsidian-lazy-sketch-plugin/tree/1.0.0\r\n\r\n## Release Checklist\r\n- [ ] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "在 Obsidian 内直接调用 AI 生成草图，让笔记不再只是枯燥的文字堆砌。",
-      "ai_pain_point": "想要为笔记配图但缺乏绘图能力，或厌烦了在不同 AI 绘图工具与 Obsidian 之间反复横跳导图的繁琐流程。",
+      "ai_summary": "笔记内直接生成AI草图，填补灵感空白。",
+      "ai_pain_point": "撰写笔记时急需配图却不会画画，切换到绘图工具打断思路。",
       "ai_highlights": [
-        "直接在 Obsidian 界面内生成 AI 草图，打破图文分离的工作流",
-        "支持一键生成，降低视觉化记录的创作门槛"
+        "无需切换应用，在笔记内直接调用AI生成草图辅助表达。",
+        "将抽象概念具象化，快速厘清笔记中复杂的逻辑关系细节。",
+        "解决手残党不会画画的尴尬，快速生成示意图提升笔记质感。"
       ],
-      "ai_comment": "号称“高质量”代码，结果测试清单里只有 macOS 打了勾，Windows 和 Linux 用户这是要拿命在帮你做测试吗？",
+      "ai_comment": "开发者敢只在macOS上测试就发版，勇气可嘉，但这功能确实切中了手残党的痛点。",
       "ai_tags": [
-        "颜值党",
-        "效率党"
+        "AI赋能",
+        "创意辅助"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -272,15 +286,17 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/Processori7/Polinations-AI-Chat\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [ ]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "将Polinations AI对话功能引入Obsidian，让你在笔记中直接调用AI助手而无需切屏。",
-      "ai_pain_point": "写作或整理笔记时，需要在Obsidian和浏览器或其他AI工具之间来回切换，打断心流。",
+      "ai_summary": "免费AI聊天直连笔记，无需跳转浏览器",
+      "ai_pain_point": "写作时需频繁切换窗口调用AI，导致思路中断",
       "ai_highlights": [
-        "集成Polinations AI，实现笔记内的即时AI对话",
-        "目前已完成Windows平台的测试与适配"
+        "右侧边栏直接调用AI服务，省去频繁切换网页的繁琐",
+        "免去API Key配置繁琐，直接调用免费模型降低使用成本",
+        "聊天内容即时存入笔记库，避免重要灵感流失或手动复制"
       ],
-      "ai_comment": "测试清单里只有Windows那一项孤零零地打钩，看来Mac和Linux用户只能先看着，希望这不仅是作者的“独宠”。",
+      "ai_comment": "又一个把网页搬进笔记的插件，好在免费；只测了Windows，Mac用户只能眼馋。",
       "ai_tags": [
-        "效率党"
+        "效率党必备",
+        "免费工具"
       ],
       "ai_score": 7
     },
@@ -293,15 +309,17 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\nLink to my plugin: https://github.com/qingu-x/obsidian-md-beautify-plugin\r\n\r\n## Release Checklist\r\n- [-] I have tested the plugin on\r\n  - [] Windows\r\n  - [x] macOS\r\n  - [] Linux\r\n  - [] Android (if applicable)\r\n  - [] iOS (if applicable)\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css`\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (Note: Use the exact version number, don't include a prefix v)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "一款名为 MD Beautify 的插件申请上架，作者承诺代码高质量并长期维护，目前仅在 macOS 上通过测试。",
-      "ai_pain_point": "Markdown 源码格式混乱、排版不统一，导致强迫症发作及阅读困难。",
+      "ai_summary": "一键美化排版，治愈复制粘贴带来的格式强迫症。",
+      "ai_pain_point": "多处复制粘贴导致Markdown源码缩进错乱，手动调整极易打乱心流。",
       "ai_highlights": [
-        "作者签署了'维护承诺书'，保证不鸽并积极响应 Bug 报告",
-        "标准化的发布流程，已在 macOS 平台完成基础测试与打包"
+        "自动修复空行和缩进，告别复制粘贴后的排版灾难。",
+        "统一标题层级与列表格式，让快速记录后的笔记焕然一新。",
+        "批量格式化文档结构，瞬间将杂乱手稿转化为标准文档。"
       ],
-      "ai_comment": "Mac 用户再次验证了'嫡系'身份，Windows 和 Linux 直接被无视；既然名字叫 Beautify，希望别把我的丑代码格式化成丑八怪。",
+      "ai_comment": "手动删空行删到吐的人终于有救了，虽然只是个美化工具，但能保命。",
       "ai_tags": [
-        "颜值党"
+        "颜值党专属",
+        "效率党必备"
       ],
       "ai_score": 7
     },
@@ -314,17 +332,19 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/Tanyangkai/VoxTrack\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [ ] Windows\r\n  - [x] macOS\r\n  - [ ] Linux\r\n  - [ ] Android _(if applicable)_\r\n  - [ ] iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "开发者提交名为 VoxTrack 的新社区插件，主打语音追踪功能并承诺长期维护。",
-      "ai_pain_point": "缺乏在笔记中直接进行语音录制与追踪的集成工具。",
+      "ai_summary": "Obsidian 语音速记插件，录音转文字一键搞定。",
+      "ai_pain_point": "会议记录或灵感迸发时，打字速度跟不上思维，急需快速记录语音并转为文字。",
       "ai_highlights": [
-        "开发者立下“军令状”，承诺积极维护并寻找接任者，避免插件烂尾",
-        "已在 macOS 上完成测试验证，确保核心功能在该平台稳定运行"
+        "语音录音实时转写为文本，适合开会或灵感到来时快速记录。",
+        "录音文件与文本直接嵌入当前笔记，无需在软件间来回切换。",
+        "无需离开编辑器即可启动录音并插入内容，保障工作流连贯性。"
       ],
-      "ai_comment": "信誓旦旦承诺高质量和极速响应，结果测试平台只选了 macOS，这是要把 Windows 和 Linux 用户当外包测试团队养吗？",
+      "ai_comment": "市面上的语音录入插件虽然多，但敢打包票“高质量”的不多。希望它能精准识别你的方言，别把“Obsidian”转写成“阿布西丹”。",
       "ai_tags": [
-        "效率党"
+        "效率党必备",
+        "懒人福音"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -335,18 +355,19 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [X] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\nLink to my plugin: https://github.com/nnoodle/obsidian-require-final-newline\r\n\r\n## Release Checklist\r\n- [X] I have tested the plugin on\r\n  - [X]  Windows\r\n  - [ ]  macOS\r\n  - [X]  Linux\r\n  - [X]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [X] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [X] `main.js`\r\n  - [X] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [X] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [X] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [X] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [X] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [X] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [X] I have added a license in the LICENSE file.\r\n- [X] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "强制为文件末尾添加换行符，治愈 POSIX 标准强迫症。",
-      "ai_pain_point": "Git diff 显示乱码报错、Linter 审核不通过、或者单纯忍受不了光标不停在行首。",
+      "ai_summary": "自动补全末尾换行，解决 Git 提交时的 Diff 警告。",
+      "ai_pain_point": "使用 Git 同步笔记时，Obsidian 默认不保存末尾换行，导致 Diff 显示整行变动或红色警告，干扰审查。",
       "ai_highlights": [
-        "自动检测并补全文件末尾缺失的换行符，保持代码规范",
-        "支持多平台编辑（虽然开发者自己都没测 Mac/iOS，但这不妨碍它是个实用的小工具）"
+        "结合 Git 同步时，自动补全文件末尾换行，消除无意义的 Diff 警告。",
+        "在终端查看笔记时，确保光标停在新行，避免格式错乱影响阅读。",
+        "符合 POSIX 文件规范，防止因格式问题导致脚本处理失败。"
       ],
-      "ai_comment": "连 Mac 和 iOS 都没测就敢提交 PR，这胆量值得佩服。但对于那些看到 Git diff 末尾没有换行符就抓心挠肝的程序员来说，这确实是救命稻草。",
+      "ai_comment": "这大概只属于那群把笔记当代码管的疯子，虽然它治好了我的 Git 强迫症。",
       "ai_tags": [
-        "开发者",
-        "效率党"
+        "开发者向",
+        "效率党必备"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -357,16 +378,17 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/xamgore/obsidian-quiz-blocks\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [ ]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [x]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "把你的笔记直接变成考场，拒绝“眼睛学会了脑子没学会”的假努力。",
-      "ai_pain_point": "笔记整理得井井有条，但回头一问三不知，缺乏主动回忆和自我检测机制。",
+      "ai_summary": "笔记里也能做测验，复习不再只有死记硬背。",
+      "ai_pain_point": "考前复习只看不练记忆模糊，需切换软件出题自测打断心流。",
       "ai_highlights": [
-        "在笔记中直接编写互动测验，将被动阅读变为主动测试",
-        "已验证支持 macOS 和 Android 平台（Windows 和 Linux 用户只能暂时围观）"
+        "笔记中直接嵌入自测题，无需切换应用，随时检验记忆成果。",
+        "将枯燥笔记转化为互动测试，通过主动回忆巩固知识点。",
+        "支持在笔记中编写问答，告别死记硬背，把读书变成刷题。"
       ],
-      "ai_comment": "别光顾着感动自己了，这插件能让你看看脑子里到底进了多少水，还是真材实料。",
+      "ai_comment": "终于有人把“痛苦”搬进了 Obsidian，毕竟不考一考你怎么知道自己啥也没记住？",
       "ai_tags": [
-        "学术党",
-        "效率党"
+        "学术党福音",
+        "效率党必备"
       ],
       "ai_score": 7
     },
@@ -379,18 +401,19 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin: https://github.com/mizuki-momose/obsidian-releases\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [x]  Android _(if applicable)_\r\n  - [x]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [x] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "既然Kindle原生笔记导出是个老大难，那就先搞定图书元数据吧，至少让你的笔记库看着专业点。",
-      "ai_pain_point": "Kindle阅读时的书籍元数据无法直接同步至Obsidian，导致读书笔记缺失封面、作者、ASIN等关键索引信息。",
+      "ai_summary": "告别手动搬运，一键将Kindle书籍信息注入Obsidian。",
+      "ai_pain_point": "想在Obsidian中归档Kindle藏书时，需手动去网页搜索并复制粘贴书名、作者和封面，耗时且容易破坏笔记排版。",
       "ai_highlights": [
-        "移动端全平台适配（含安卓/iOS），让手机党也能体面地管理书库",
-        "专注图书元数据抓取，从源头拯救你的笔记整洁度"
+        "自动化抓取书籍元数据，在添加新书笔记时省去手动打字的繁琐。",
+        "自动下载并嵌入书籍封面，在建立读书索引时保持视觉统一。",
+        "直接读取Kindle本地文件信息，在整理阅读清单时无需重复检索。"
       ],
-      "ai_comment": "居然跳过了Linux测试？看来开发者觉得用Linux的大佬都不看Kindle。不过好在手机端全绿，勉强算个合格的搬运工。",
+      "ai_comment": "别再手动当亚马逊的搬运工了，这插件专治复制粘贴强迫症，懒人狂喜。",
       "ai_tags": [
-        "效率党",
-        "数据极客"
+        "读书笔记",
+        "效率党必备"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -401,18 +424,19 @@
       "body": "# I am submitting a new Community Plugin\r\n\r\n- [x] I attest that I have done my best to deliver a high-quality plugin, am proud of the code I have written, and would recommend it to others. I commit to maintaining the plugin and being responsive to bug reports. If I am no longer able to maintain it, I will make reasonable efforts to find a successor maintainer or withdraw the plugin from the directory.\r\n\r\n## Repo URL\r\n\r\n<!--- Paste a link to your repo here for easy access -->\r\nLink to my plugin:\r\n\r\n## Release Checklist\r\n- [x] I have tested the plugin on\r\n  - [x]  Windows\r\n  - [x]  macOS\r\n  - [ ]  Linux\r\n  - [ ]  Android _(if applicable)_\r\n  - [ ]  iOS _(if applicable)_\r\n- [x] My GitHub release contains all required files (as individual files, not just in the source.zip / source.tar.gz)\r\n  - [x] `main.js`\r\n  - [x] `manifest.json`\r\n  - [ ] `styles.css` _(optional)_\r\n- [x] GitHub release name matches the exact version number specified in my manifest.json (_**Note:** Use the exact version number, don't include a prefix `v`_)\r\n- [x] The `id` in my `manifest.json` matches the `id` in the `community-plugins.json` file.\r\n- [x] My README.md describes the plugin's purpose and provides clear usage instructions.\r\n- [x] I have read the developer policies at https://docs.obsidian.md/Developer+policies, and have assessed my plugin's adherence to these policies.\r\n- [x] I have read the tips in https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines and have self-reviewed my plugin to avoid these common pitfalls.\r\n- [x] I have added a license in the LICENSE file.\r\n- [x] My project respects and is compatible with the original license of any code from other plugins that I'm using.\r\n      I have given proper attribution to these other projects in my `README.md`.\r\n",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "集成 AntV 引擎，直接在 Obsidian 中生成专业数据信息图。",
-      "ai_pain_point": "解决原生 Markdown 不支持复杂数据可视化、依赖外部静态图片难以维护更新的痛点。",
+      "ai_summary": "无需导出，在笔记中直接生成高质量数据图表",
+      "ai_pain_point": "记录数据时只能面对枯燥表格，或需频繁切换至外部绘图工具截图",
       "ai_highlights": [
-        "利用 AntV 强大的渲染能力，在笔记内实现动态数据可视化",
-        "本地化运行，无需切换至 Excel 或在线绘图工具"
+        "将枯燥表格转化为精美的商业级可视化图表，让笔记颜值飙升",
+        "省去切换工具和截图步骤，在编辑器内直接完成数据图表绘制",
+        "引入AntV专业级图表库，满足技术文档对数据展示的专业要求"
       ],
-      "ai_comment": "连样式文件和移动端测试都没做完就提交了，真是心急。不过能把 AntV 搬进来，对于不想切出去画图的效率党来说，这确实是个能省下不少头发的好东西。",
+      "ai_comment": "对于写技术文档的大佬来说这确实是神器，毕竟谁也不想对着那堆 JSON 配置抓破头皮。",
       "ai_tags": [
         "数据极客",
-        "效率党"
+        "颜值党专属"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "GitHub Open",
@@ -423,17 +447,19 @@
       "body": "Re-submitting theme that was previously merged in #7799 but appears to be missing from the theme list.\n\n## Theme info\n- **Name**: Vermilion\n- **Author**: vigor-13\n- **Repository**: https://github.com/vigor-13/vermilion-theme\n- **Modes**: Dark",
       "state": "open",
       "_source_key": "github_opened",
-      "ai_summary": "修复了此前已合并却莫名消失的暗色主题 Vermilion，让其重新回归用户视野。",
-      "ai_pain_point": "解决了主题明明已合并却在官方列表中凭空消失、导致用户无法安装查找的“鬼影”问题。",
+      "ai_summary": "找回遗失的朱砂红深色主题，拯救深夜写作的视觉疲劳。",
+      "ai_pain_point": "深夜写作时默认主题刺眼，千篇一律的深色配色令人乏味，且曾经喜爱的主题莫名消失无处寻找。",
       "ai_highlights": [
-        "重新提交并恢复了此前遗漏的 Vermilion 主题安装源",
-        "为用户提供纯正的暗色模式视觉风格选择"
+        "找回意外丢失的主题资源，节省用户四处搜索确认的时间。",
+        "独特朱砂红配色，为深夜码字场景营造沉浸式视觉体验。",
+        "深色模式优化低光环境显示，缓解长时间盯屏带来的不适。"
       ],
-      "ai_comment": "好端端合并的主题也能玩失踪，官方的数据库大概又是在梦游，赶紧拿回来是正事。",
+      "ai_comment": "官方居然能把已合并的主题搞丢，代码管理堪忧。不过这抹红色看着确实带劲，比那些性冷淡风强多了。",
       "ai_tags": [
-        "颜值党"
+        "颜值党专属",
+        "视觉党"
       ],
-      "ai_score": 8
+      "ai_score": 5
     }
   ],
   "github_merged": [],
@@ -446,18 +472,18 @@
       "created_at": "2026-01-08T23:28:00+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi all, new to Obisidian. When I want to add a link to a note and type [[, a list of notes appears, ready for linking. Is there a way to change the order of those prompted notes? I have a LOT of notes, so scrolling down the list of possible notes is very time consuming, given that they are not alphabetised, for example. I searched and couldn&#39;t see a similar question being asked before. </p> <p>Cheers. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/nukethesitefrom0rbit\"> /u/nukethesitefrom0rbit </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7rqoy/link_prompt_order/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7rqoy/link_prompt_order/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "新手吐槽 Obsidian 输入 [[]] 时笔记列表排序混乱，导致在海量笔记中查找链接极为耗时。",
-      "ai_pain_point": "笔记库庞大，内部链接建议列表排序逻辑不直观（非字母序），导致检索困难。",
+      "ai_summary": "解决海量笔记下链接候选乱序查找慢的问题",
+      "ai_pain_point": "拥有成百上千条笔记时，输入双链后因列表不按字母排列，导致翻页查找耗时极长。",
       "ai_highlights": [
-        "场景：拥有海量笔记的新手在输入 [[]] 时，因列表非字母排序而不得不疯狂滚动",
-        "诉求：希望修改链接提示笔记的排列顺序以提高查找效率"
+        "开启字母排序功能，在拥有海量笔记时快速定位目标。",
+        "摆脱默认的时间排序，当仅记得笔记名称时免于翻页。"
       ],
-      "ai_comment": "笔记多不代表就能乱点，连基础搜索和排序逻辑都搞不清，还建什么第二大脑？这哪是 Obsidian 的问题，分明是用户自己的整理能力欠费了。",
+      "ai_comment": "这么基础的排序设置都找不到，建议先通读官方文档。",
       "ai_tags": [
         "新手友好",
-        "效率党"
+        "效率党必备"
       ],
-      "ai_score": 6
+      "ai_score": 5
     },
     {
       "source": "Reddit",
@@ -467,17 +493,19 @@
       "created_at": "2026-01-08T23:16:50+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi folks, because I’m all Apple, I sync my vaults via iCloud and do a 3-2-1 backup.</p> <p>My company now issued Android phones and I looked into 3rd party sync solutions and none of them convinced me 100%. So I decided to go with Obsidian Sync.</p> <p>I’m curious to learn if my iCloud vaults will stay put (and serve as the first source of truth) or be moved into Obsidian Sync which then turns into the first source. I couldn’t find a reliable info that explains the mechanism.</p> <p>Can you help me understand?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/_GOREHOUND_\"> /u/_GOREHOUND_ </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7rgsm/question_re_obsidian_sync_mechanism/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7rgsm/question_re_obsidian_sync_mechanism/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "全生态果粉因公司配发安卓机被迫启用 Obsidian Sync，纠结切换后 iCloud 数据是否会被云端同步取代。",
-      "ai_pain_point": "跨平台同步机制不透明导致的“数据真相源”归属焦虑",
+      "ai_summary": "苹果安卓混用时，探究官方同步与 iCloud 数据的共存机制。",
+      "ai_pain_point": "全苹果生态因工作需求切换至混合生态，原有 iCloud 同步失效，且对第三方同步方案缺乏信任，需明确官方同步是否会覆盖本地数据。",
       "ai_highlights": [
-        "被迫从纯苹果生态跨越到安卓的职场打工人心路历程",
-        "纠结于 iCloud 与 Sync 谁才是“第一真理”的数据洁癖表现"
+        "跨越苹果与安卓生态鸿沟，在混合设备间实现无缝笔记同步。",
+        "解决多平台切换时的同步焦虑，明确官方服务与本地云盘的数据共存机制。",
+        "引入官方同步时保留原有备份习惯，在不改变数据源头前提下确保安全。"
       ],
-      "ai_comment": "这种“苹果原生教”信徒面对安卓时的战战兢兢真是感人，放心吧，Sync 只是同步，不是抢劫，它不会吃了你的 iCloud 数据。",
+      "ai_comment": "还在做全苹果梦呢？公司发了安卓就是逼你承认现实：原生云盘在跨平台面前就是一坨泥，乖乖掏钱买 Sync 才是成年人该做的事。",
       "ai_tags": [
-        "[数据极客]"
+        "跨平台协作",
+        "数据极客"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -487,18 +515,19 @@
       "created_at": "2026-01-08T22:56:55+00:00",
       "content_text": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/ERROR_ALREADY_EXISTS\"> /u/ERROR_ALREADY_EXISTS </a> <br/> <span><a href=\"/r/PKMS/comments/1q7qvi9/i_want_to_know_more_about_pkms/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7qydt/i_want_to_know_more_about_pkms/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "一个典型的 PKMS（个人知识管理系统）入门级提问，试图理清第二大脑的核心概念。",
-      "ai_pain_point": "面对 PKMS 这一缩写词感到茫然，缺乏对知识管理系统整体架构的认知。",
+      "ai_summary": "给被缩写吓退的新手扫盲，别再假装懂了。",
+      "ai_pain_point": "满脑子PKMS、PARA等缩写却不知从何下手，盲目囤积工具和插件却产不出知识。",
       "ai_highlights": [
-        "新手试图打破信息茧房，寻求系统化的知识管理定义",
-        "用户名 'ERROR_ALREADY_EXISTS' 预言了此类基础问题在社区的高频重复"
+        "面对术语丛林不知所措时，快速厘清PKMS核心概念",
+        "陷入笔记堆砌无法产出时，回归知识连接的本质",
+        "纠结工具选型时，参考社区讨论明确适用性"
       ],
-      "ai_comment": "这问题就像在问'饭怎么吃'一样基础，虽然用户名暗示了这问题已经被问过无数次，但总得有人当那个'不懂装懂'的小白来引出各路大神的传教。",
+      "ai_comment": "又是一个被缩写噎住的小白，这帖子就是专治各种概念不清的急救包，别再死磕功能了。",
       "ai_tags": [
-        "[新手友好]",
-        "[效率党]"
+        "新手友好",
+        "方法论"
       ],
-      "ai_score": 6
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -508,16 +537,17 @@
       "created_at": "2026-01-08T22:45:24+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>New to Obsidian and trying to decide how to organize my stuff, lol</p> <p><a href=\"https://www.reddit.com/poll/1q7qnsg\">View Poll</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/zandm7\"> /u/zandm7 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7qnsg/do_yall_keep_your_notes_organized_with_folders/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7qnsg/do_yall_keep_your_notes_organized_with_folders/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "新手面对Obsidian经典难题陷入纠结：该用老派的文件夹归档，还是用标签/链接构建知识网络？",
-      "ai_pain_point": "笔记管理策略缺失，陷入文件系统与双向链接之间的选择困难症",
+      "ai_summary": "新手建库纠结文件夹还是标签？社区投票给你答案",
+      "ai_pain_point": "新手刚建库面对空白界面，陷入该建文件夹还是纯标签的决策瘫痪，不知从何下笔",
       "ai_highlights": [
-        "通过发起社区投票，试图用“民主决策”来替代个人思考",
-        "精准命中Obsidian社区最热衷的“文件夹党”与“链接党”之争"
+        "查看社区投票结果，在搭建知识库初期直接照搬主流方案，避免试错浪费时间",
+        "对比文件夹和标签的优缺点，结合自身习惯制定混合策略，防止后期因结构崩塌而重构",
+        "浏览评论区的真实案例，了解特定组织方式随笔记量增长后的优劣，规避未来维护陷阱"
       ],
-      "ai_comment": "这种每隔三天就要在首页刷屏一次的“永恒哲学问题”，仿佛只要选对了文件夹，知识就能自动长进脑子里。",
+      "ai_comment": "别以为结构搭好了笔记就会自己长出来，过度规划就是最华丽的拖延症。",
       "ai_tags": [
         "新手友好",
-        "效率党"
+        "工作流"
       ],
       "ai_score": 7
     },
@@ -529,17 +559,19 @@
       "created_at": "2026-01-08T22:23:58+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I want a system that helps me produce and revise content, not just decorate the interface. What practices prevent the addiction of tinkering with templates and plugins all day long?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/guxxtavohenriick\"> /u/guxxtavohenriick </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7q41e/how_do_you_use_obsidian_without_becoming_obsessed/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7q41e/how_do_you_use_obsidian_without_becoming_obsessed/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "如何摆脱对整理和折腾插件的强迫症，真正把 Obsidian 用作生产力工具而非装修模拟器？",
-      "ai_pain_point": "过度沉迷于折腾界面、整理和插件配置（Obsidian 作为装修游戏），导致实际产出和内容修订效率低下。",
+      "ai_summary": "拒绝把笔记软件玩成装修游戏，只关注产出内容。",
+      "ai_pain_point": "沉迷于折腾插件与模板，导致花在装修上的时间远超实际写作。",
       "ai_highlights": [
-        "明确区分了工具属性，拒绝将 Obsidian 仅仅作为界面装饰工具，强调内容生产与修订才是核心。",
-        "直击社区痛点，询问具体方法以克制无休止调整模板和插件的冲动（即“生产力色情”陷阱）。"
+        "纠正装修癖心态，在需要写作时强制关闭设置面板。",
+        "摆脱复杂模板依赖，在捕捉灵感时直接使用白纸黑字。",
+        "树立产出导向，在尝试新插件前先思考能否提升质量。"
       ],
-      "ai_comment": "终于有人醒悟，Obsidian 的本体其实是‘装修模拟器’，写作只是个附赠 DLC。",
+      "ai_comment": "花两小时调教插件只为写五个字，建议直接去玩《模拟人生》。",
       "ai_tags": [
-        "效率党"
+        "新手友好",
+        "效率党必备"
       ],
-      "ai_score": 8
+      "ai_score": 9
     },
     {
       "source": "Reddit",
@@ -549,16 +581,16 @@
       "created_at": "2026-01-08T21:56:03+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7pdgd/i_made_a_tool_to_autosummarize_apple_podcasts/\"> <img src=\"https://a.thumbs.redditmedia.com/AA4ND-MzSkLcqd4AjXXE7i3L52FrOwRBBsFr5U-Jps8.jpg\" alt=\"I made a tool to auto-summarize Apple podcasts into Obsidian notes\" title=\"I made a tool to auto-summarize Apple podcasts into Obsidian notes\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Been manually taking notes on podcasts and it was eating up so much time. Built a local CLI tool to fix this for myself so thought I&#39;d share it.</p> <p>(disclaimer: it&#39;s an cli automation tool and open source and i get nothing)</p> <p><strong>What it does:</strong></p> <ul> <li>Grabs episodes you listened to in Apple Podcasts (locally)</li> <li>Pulls the official transcripts locally</li> <li>Uses AI to summarize them (Gemini but if there&#39;s interest can configure a local llm)</li> <li>Drops markdown files into your vault</li> </ul> <p><strong>How it does it:</strong> Everytime Apple Podcasts plays any episdoes, it stores it locally in a .sqlite which is synchronized across devices. The transcript is not always available so i wrote a bashscript to go and play that episode so it plays it and waits for it fetch transcript to summarize.</p> <p><strong>The Obsidian part:</strong> Everything&#39;s set up for the graph view. Wiki links everywhere for people/concepts, tags for topics, frontmatter with metadata. Each podcast gets its own folder.</p> <p>Example output:</p> <pre><code>Podcasts/ ├── Lex Fridman Podcast/ │ └── #123 - Sam Altman.md └── All-In Podcast/ └── E150 Tech Trends.md </code></pre> <p><strong>Setup:</strong></p> <pre><code>git clone https://github.com/Jayyk09/AfterThought.git cd AfterThought pipx install . </code></pre> <p>Need a Gemini API key (free tier works) and you&#39;re good to go.</p> <p><strong>Limitations: MacOS only</strong></p> <p>Been using it for a few weeks and it&#39;s been great for building up my podcast knowledge base without the manual work.</p> <p><a href=\"https://github.com/Jayyk09/AfterThought\">https://github.com/Jayyk09/AfterThought</a></p> <p>Happy to answer questions, and feel free to add issues. It&#39;s fully opensource</p> <p><a href=\"https://reddit.com/link/1q7pdgd/video/pwv8p1gg57cg1/player\">https://reddit.com/link/1q7pdgd/video/pwv8p1gg57cg1/player</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Still-Cell-6686\"> /u/Still-Cell-6686 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7pdgd/i_made_a_tool_to_autosummarize_apple_podcasts/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7pdgd/i_made_a_tool_to_autosummarize_apple_podcasts/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "嫌手动整理播客太累？这个CLI工具能自动抓取Apple Podcasts收听记录并生成AI摘要存入Obsidian。",
-      "ai_pain_point": "手动为播客做笔记极其耗时，导致知识积累效率低下。",
+      "ai_summary": "自动抓取Apple播客字幕并生成摘要，彻底解放双手。",
+      "ai_pain_point": "每次听完播客都要回听整理要点，耗时巨大且难以坚持。",
       "ai_highlights": [
-        "本地CLI工具，通过读取Apple Podcasts的SQLite数据库获取收听记录",
-        "自动获取官方转录文本并调用AI（如Gemini）总结成Markdown导入库中",
-        "包含Bash脚本自动触发播放以抓取缺失的转录文本"
+        "自动抓取收听记录并生成AI摘要，省去手动整理播客笔记的繁琐。",
+        "直接读取本地数据库生成Markdown，无缝集成到你的知识库中。",
+        "自动触发获取官方字幕，解决部分播客无文本内容难以归档的问题。"
       ],
-      "ai_comment": "听个播客还要动用SQLite和脚本，这哪里是省时间，分明是把“懒”演绎到了极致的硬核浪漫。",
+      "ai_comment": "终于有人把“懒”贯彻到底了，虽然CLI门槛劝退一半人，但能自动喂饭谁还自己嚼？",
       "ai_tags": [
-        "效率党",
+        "效率党必备",
         "数据极客"
       ],
       "ai_score": 8
@@ -571,18 +603,19 @@
       "created_at": "2026-01-08T21:52:17+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Noticed today that changed I made to my daily notes are being deleted. Not sure if it is just the daily notes or more widespread. I can see the changes in the history. Maybe it is the open to the daily note default that is creating a new file and that replaces the current one. </p> <p>I don&#39;t get any alert that there is a conflict. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/one-wandering-mind\"> /u/one-wandering-mind </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7p9q9/obsidian_is_deleting_changes_in_my_daily_notes/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7p9q9/obsidian_is_deleting_changes_in_my_daily_notes/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "Obsidian Sync惊现吞稿事故：跨设备同步时每日笔记修改被静默删除，且无任何冲突提示。",
-      "ai_pain_point": "数据丢失、同步冲突",
+      "ai_summary": "多端同步不仅吞还没提示？教你靠历史版本“起死回生”。",
+      "ai_pain_point": "安卓与Windows跨设备同步时，日常笔记内容无冲突提示被覆盖或删除。",
       "ai_highlights": [
-        "用户在Android与Windows跨平台同步时遭遇修改消失",
-        "历史记录可查证但无冲突警告，怀疑默认新建覆盖机制导致"
+        "利用文件历史版本找回被吞内容，跨设备同步防止心血白费。",
+        "规避默认打开日记导致的覆盖，多端协作时保障数据安全。",
+        "识别无冲突警报的同步假象，防止修改在设备间悄悄丢失。"
       ],
-      "ai_comment": "连每日笔记都能吞，这 Sync 是在玩“薛定谔的存档”吗？连个冲突弹窗都没有，这数据安全感碎了一地。",
+      "ai_comment": "同步工具最可怕的不是报错，而是它自以为在“优化”，其实是在帮你一键销号。",
       "ai_tags": [
-        "数据极客",
-        "效率党"
+        "数据安全",
+        "Bug警示"
       ],
-      "ai_score": 6
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -592,18 +625,19 @@
       "created_at": "2026-01-08T21:29:36+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hi everyone.</p> <p>I have been using Obsidian since 2022 and it&#39;s still my favorite App.</p> <p>For a long time now, I have been looking for a way to change the color background of my notes based on their file path. I prefer not to use CSS-Snippets because I like to keep my Note Properties very minimal and I tend to move my notes around quite frequently... Furthermore I want to immediately know in which folder the note is, without looking at the sidebar.</p> <p>I have 4 Folders (i am using the PARA Method). I Would love my notes to automatically have the correct color based on the folder they are in. I Want my Daily notes to be blue, my permanent notes to be green, ...</p> <p>Has anyone experimented with this? I am grateful for any kind of suggestions!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/LED-go\"> /u/LED-go </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7onmz/looking_for_a_way_to_change_color_background/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7onmz/looking_for_a_way_to_change_color_background/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "用户拒绝维护CSS代码段，却想通过文件夹路径实现PARA笔记的背景自动变色。",
-      "ai_pain_point": "因文件移动频繁导致CSS维护困难，且需要不依赖侧边栏即可直观区分不同PARA分类的笔记。",
+      "ai_summary": "笔记背景随文件夹自动变色，实现视觉化PARA分类",
+      "ai_pain_point": "频繁切换笔记时需查看侧边栏确认归属，缺乏直观视觉反馈",
       "ai_highlights": [
-        "追求极简主义，因文件移动频繁而主动抛弃CSS片段方案",
-        "为PARA方法论定制视觉编码，如日记蓝、永久笔记绿，以此实现快速定位"
+        "通过背景色区分文件夹，无需查看侧边栏即可识别笔记类型",
+        "移动文件后颜色自动更新，无需手动修改CSS代码或标签",
+        "为PARA四类笔记设定专属色，建立清晰的视觉心理分区"
       ],
-      "ai_comment": "省了写CSS的力气，就得费插件的眼力，这年头连变色都要追求“无感自动化”，大概是把Obsidian当成变色龙养了。",
+      "ai_comment": "为了不看侧边栏就把笔记搞成调色盘，强迫症福音，但别把眼睛看花了。",
       "ai_tags": [
-        "颜值党",
-        "效率党"
+        "颜值党专属",
+        "视觉辅助"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -613,18 +647,19 @@
       "created_at": "2026-01-08T20:52:26+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;m looking to migrate from Evernote and considering Obsidian as one of the possible replacements. I&#39;m trying to understand its search capabilities. Coming from Evernote, I&#39;m used to being able to search within PDFs. Does Obsidian have that capability? After searching through posts on this subreddit, I found a cluster of &quot;Obsidian search sucks&quot; posts from 4 years ago and a few &quot;Obsidian search is great&quot; posts from about a year ago. From that, I&#39;m assuming search was bad and then got better. Is that a correct take-away? Finally, it seems like a lot of Obsidian functionality comes through plugins, including search. Would those plugins be able to search PDFs?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/daver\"> /u/daver </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7nncd/obsidian_search_capabilities/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7nncd/obsidian_search_capabilities/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "Evernote难民试图通过考古社区旧帖来确认Obsidian的PDF搜索能力是否已今非昔比，并寄希望于插件救赎。",
-      "ai_pain_point": "PDF附件全文搜索",
+      "ai_summary": "Evernote 迁移者关注：Obsidian 搜索与 PDF 支持现状",
+      "ai_pain_point": "迁移时担心无法像 Evernote 一样全文搜索 PDF 附件内容",
       "ai_highlights": [
-        "敏锐捕捉到社区评价的时间线差异：四年前的差评与近期的好评形成对比",
-        "将核心需求聚焦在PDF内容检索这一硬核功能上，而非仅仅关注文件名搜索"
+        "消除旧帖误导，确认近期搜索性能已显著提升且稳定",
+        "通过插件实现 PDF 全文检索，无缝衔接 Evernote 习惯",
+        "利用插件生态扩展能力，解决原生搜索不支持附件的局限"
       ],
-      "ai_comment": "拿着四年前的老黄历做决策简直是掩耳盗铃，原生搜索搞不定PDF全文检索没插件就是瞎子，别幻想了。",
+      "ai_comment": "别再翻四年前那本烂账了，现在的搜索早就能打，想搜 PDF 还是得靠插件治好你的 Evernote 依赖症。",
       "ai_tags": [
         "新手友好",
-        "学术党"
+        "迁移向"
       ],
-      "ai_score": 7
+      "ai_score": 8
     },
     {
       "source": "Reddit",
@@ -634,18 +669,19 @@
       "created_at": "2026-01-08T20:02:41+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7mb0k/i_am_looking_for_advice_on_how_i_can_organise_my/\"> <img src=\"https://b.thumbs.redditmedia.com/VI4j_XSV19lMhH5hj8RJvZmaKaBqvxHgQGBsE-ruveM.jpg\" alt=\"I am looking for advice on how I can organise my notes better for memorisation + spaced repetition\" title=\"I am looking for advice on how I can organise my notes better for memorisation + spaced repetition\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Dear all,</p> <p>I am very new to Obsidian and have only trialed it for a month (so forgive me for being a noob!). I am an undergraduate in History and have been using Obsidian to make my notes. I enjoyed its layout but I think I have not made the most of its plug-ins (core and communal).</p> <p>Here is an explanation of how I have organised my notes so far:</p> <p>Firstly, I have organised my readings into topics.</p> <p><a href=\"https://preview.redd.it/ohp5wcopj6cg1.png?width=1916&amp;format=png&amp;auto=webp&amp;s=d6ddf48a023acce61da27853683c0d15cdc49107\">https://preview.redd.it/ohp5wcopj6cg1.png?width=1916&amp;format=png&amp;auto=webp&amp;s=d6ddf48a023acce61da27853683c0d15cdc49107</a></p> <p>Here is probably where I have not organised the best! Once you open a specific reading, my notes are pretty standard, as I would have done in Word and such when I began my degree.</p> <p><a href=\"https://preview.redd.it/ttgbbeb3k6cg1.png?width=863&amp;format=png&amp;auto=webp&amp;s=f3fa62cd12b96dee3048cfb34bd4dd733d3ba8dd\">https://preview.redd.it/ttgbbeb3k6cg1.png?width=863&amp;format=png&amp;auto=webp&amp;s=f3fa62cd12b96dee3048cfb34bd4dd733d3ba8dd</a></p> <p>Many of my readings are really valuable and I want to find a way to memorise them. I could make flashcards on an external app, however, I am interested in how others have/may approach such a format of notes into a (likely laborious, but necessary) process of organisation that is efficient.</p> <p>I have had some thoughts:</p> <ul> <li>From my understanding of the spaced repetition plugin, I can restructure my notes so that a dividing &#39;?&#39; can create question then flashcard between prompts. This is one thing I could do.</li> <li>There is certainly more work that could be done in thematising my notes. They are mostly separated by reading but could be organised conceptually (e.g. &#39;The &#39;maximalist&#39; arguments for late Anglo-Saxon statehood&#39; or &#39;The Domesday Book as a stabilising weapon for Norman relationships&#39;.</li> </ul> <p>I know this is a very vague request for advice but I am keen to hear how others suggest, through their experiences, the potential to take my notes from its preliminary stages to maximising my learning.</p> <p>Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/LuminousDesigns\"> /u/LuminousDesigns </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7mb0k/i_am_looking_for_advice_on_how_i_can_organise_my/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7mb0k/i_am_looking_for_advice_on_how_i_can_organise_my/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "历史系本科生提问如何将类似Word的线性阅读笔记转化为适合记忆和间隔复习的结构。",
-      "ai_pain_point": "试图将传统的线性阅读笔记适配到间隔重复（SRS）流程中，且尚未充分利用插件功能。",
+      "ai_summary": "历史党如何摆脱Word思维，用Obsidian高效背书",
+      "ai_pain_point": "将线性笔记搬运到Obsidian却无法转化为记忆卡片，导致背书时信息过载",
       "ai_highlights": [
-        "展示按主题分类的阅读笔记目录截图，建立了初步的MOC或文件夹结构",
-        "分享类似Word的传统线性笔记截图，坦诚承认当前模式对复习效率不高"
+        "借助社区插件实现间隔重复，解决历史人物与事件容易混淆的记忆痛点",
+        "探讨以主题为核心重构文件夹结构，改变按阅读书单归档的陈旧习惯",
+        "展示从线性笔记到卡片式管理的思维转变，适合文科生整理海量文献"
       ],
-      "ai_comment": "买了辆法拉利却拿来当拖拉机开，把Word里的线性大段文字搬进Obsidian并不会自动产生记忆点；不动刀修剪，SRS插件也救不了这种“流水账”。",
+      "ai_comment": "都用Obsidian了还在写Word流水账，难怪脑子存不下历史",
       "ai_tags": [
         "新手友好",
-        "学术党"
+        "学术党福音"
       ],
-      "ai_score": 8
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -655,18 +691,19 @@
       "created_at": "2026-01-08T19:26:26+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7lb90/finally_created_some_real_linking_between_my/\"> <img src=\"https://b.thumbs.redditmedia.com/2GuhpeG4Gqc-x5AqrtMKFJc6oTAPDQBTuaIjsppfR0k.jpg\" alt=\"Finally created some real linking between my notes for the first time\" title=\"Finally created some real linking between my notes for the first time\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I&#39;ve always taken notes for work and my own stuff, really just a mess of directories based on subjects, or arbitrary things. Last year I switched to PARA to simplify my mess and I like it. My top dir is Planner which is basically Bujo daily and monthly logs. Last few days I&#39;ve been reading on ZK so I can create meaningful notes that I can reference later so I added ZK and started today with a book I am reading. I think is a good start for me. </p> <p>PS: Oh I am using bases for seeing my source notes, I only have books view but in the future I want to add articles, videos, etc.</p> <p><a href=\"https://preview.redd.it/5xneecdve6cg1.png?width=1266&amp;format=png&amp;auto=webp&amp;s=0345f9b2a866799489107d9606fcb5214c1130bc\">https://preview.redd.it/5xneecdve6cg1.png?width=1266&amp;format=png&amp;auto=webp&amp;s=0345f9b2a866799489107d9606fcb5214c1130bc</a></p> <p><a href=\"https://preview.redd.it/tjvy3jv6f6cg1.png?width=935&amp;format=png&amp;auto=webp&amp;s=9634246f1c38cb0c1e55e46bff0750c2d762486b\">https://preview.redd.it/tjvy3jv6f6cg1.png?width=935&amp;format=png&amp;auto=webp&amp;s=9634246f1c38cb0c1e55e46bff0750c2d762486b</a></p> <p><a href=\"https://preview.redd.it/in6if4p8f6cg1.png?width=940&amp;format=png&amp;auto=webp&amp;s=541fdc61004917725a8e561392c73e0be0acb526\">https://preview.redd.it/in6if4p8f6cg1.png?width=940&amp;format=png&amp;auto=webp&amp;s=541fdc61004917725a8e561392c73e0be0acb526</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/TheFern3\"> /u/TheFern3 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7lb90/finally_created_some_real_linking_between_my/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7lb90/finally_created_some_real_linking_between_my/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "告别混乱的文件夹管理，结合 PARA 方法论与卡片盒笔记法（ZK），终于实现了笔记间的真正链接。",
-      "ai_pain_point": "笔记仅按主题或随意分类堆砌在文件夹中，缺乏逻辑关联，导致知识碎片化，难以复用和回顾。",
+      "ai_summary": "告别文件夹依赖，融合PARA与ZK构建知识库",
+      "ai_pain_point": "仅按主题建文件夹存笔记，导致文件越积越多越乱，无法检索",
       "ai_highlights": [
-        "采用 PARA 方法论重构目录结构，将 Planner（子弹日记）作为顶层核心。",
-        "引入卡片盒笔记法（ZK）处理阅读书籍，建立有意义的双向链接以便未来引用。",
-        "利用 Bases 插件搭建可视化的源素材视图，目前管理书籍，计划扩展至文章和视频。"
+        "针对目录杂乱场景，用PARA让笔记瞬间各就各位",
+        "摆脱笔记孤立无援，通过ZK建立可复用的知识链接",
+        "面对大量阅读素材，用Bases视图直观管理书籍来源"
       ],
-      "ai_comment": "折腾了这么久总算明白“链接”才是灵魂，看来以前那不叫记笔记，单纯是在给硬盘填埋电子垃圾。",
+      "ai_comment": "终于不再把 Obsidian 当成 Windows 资源管理器用了，值得庆祝。",
       "ai_tags": [
-        "效率党"
+        "新手友好",
+        "知识管理"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -676,17 +713,19 @@
       "created_at": "2026-01-08T19:06:44+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>So I’ve just started using obsidian for world-building purposes and I’ve came across an issue where I want something that behaves both like a folder and a note. For example I’d like to make a folder/note about a country in my world, where you can both read information about the country like a note, and open it up to see other notes that are describing locations inside the country. Is this possible or am I going to have to find a different solution to the problem?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Roomkeys_\"> /u/Roomkeys_ </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7krii/is_it_possible_to_make_an_entity_thats_both_a/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7krii/is_it_possible_to_make_an_entity_thats_both_a/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "刚入门的世界观构建者试图寻找一种既能像文件夹一样展开子项、又能像笔记一样阅读内容的混合实体。",
-      "ai_pain_point": "传统文件系统将目录与文件严格分离，无法实现“容器即内容”的直观层级管理。",
+      "ai_summary": "世界观构建中，如何让笔记同时具备文件夹功能。",
+      "ai_pain_point": "在设定国家或地区时，既需要撰写详细简介，又需要收纳下属地点的子文件，原生系统需分别创建文件夹和说明文档，导致结构冗余。",
       "ai_highlights": [
-        "在世界观构建场景中，用户希望“国家”词条既能作为笔记展示信息，又能作为文件夹收纳下属地点",
-        "试图打破操作系统的基础规则，寻求一种兼顾结构层级与内容详情的统一视图"
+        "世界观构建中，让“国家”页面兼具简介与收纳下属地点的功能。",
+        "无需在文件夹和说明文档间反复跳转，实现目录与内容的一体化。",
+        "解决实体分类矛盾，让父级目录既能被阅读又能承载子文件。"
       ],
-      "ai_comment": "又是试图挑战操作系统底线的“文件夹笔记”梦想家，这种既想要文件夹的结构又想要笔记的内容的贪婪想法，简直是每个双链笔记新手的成人礼。",
+      "ai_comment": "典型的“既要又要”思维，想用Notion的逻辑驾驭Obsidian？别想了，老实去装Folder Note插件才是正解。",
       "ai_tags": [
-        "新手友好"
+        "新手友好",
+        "世界观设定"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -696,18 +735,18 @@
       "created_at": "2026-01-08T17:57:31+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7isgm/1k_notes_all_of_them_fit_in_one_of_those/\"> <img src=\"https://b.thumbs.redditmedia.com/97pNienQiowCHJyzn8eiRchkYOQS2Rwi27UcOrQJqLM.jpg\" alt=\"📁 +1K Notes, All of them fit in one of those!\" title=\"📁 +1K Notes, All of them fit in one of those!\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p><a href=\"https://preview.redd.it/cm8wckakx5cg1.png?width=864&amp;format=png&amp;auto=webp&amp;s=45d3836b70474b5cc7a6665660ec59d60d0840e2\">https://preview.redd.it/cm8wckakx5cg1.png?width=864&amp;format=png&amp;auto=webp&amp;s=45d3836b70474b5cc7a6665660ec59d60d0840e2</a></p> <p>If you’re new to Obsidian, you might wonder: <strong>“How many folders should I create before I start writing?”</strong></p> <p>That’s actually a <strong>common mistake</strong>.</p> <p>The right approach is to <strong>start writing first</strong>.<br/> After some time, you’ll notice that many of your notes naturally revolve around the same ideas or topics. <strong>That’s the perfect moment to create folders.</strong></p> <p>For example, you might write <strong>50 notes</strong> without any prior planning. Later, you realize that <strong>15 of them are about movies</strong>! not because you planned it, but because that’s what your mind naturally gravitated toward.</p> <p>At that point, you can simply gather those notes under one category and name it something like:</p> <p><code>1) 🍿 Movies</code></p> <p>Write first.<br/> Organize later.</p> <h1>1) 🍿 Movies</h1> <p>As for the folder naming structure:</p> <p>It starts with a <strong>number</strong>.<br/> The number itself isn’t very important, it’s usually there simply because it was the first folder. If it were the fifth folder, I would just write:</p> <p><code>5) 🍿 Movies</code></p> <p>Sometimes, though, I feel it’s useful to <strong>reorder things based on importance</strong>, so I manually adjust the numbers later.<br/> This always happens <strong>after creating the folders and spending time writing</strong>, not before.</p> <p>Next comes a <strong>friendly emoji</strong> that visually reinforces the idea.<br/> For movies, for example:</p> <p>🎥 🍿 🎬<br/> (or whatever emoji you like)</p> <p>This is one of my own folders, and you can see how much I like using emojis 👇🏻</p> <p><a href=\"https://preview.redd.it/mdjuub4gz5cg1.png?width=804&amp;format=png&amp;auto=webp&amp;s=f603a10e4ed4c18d64adffd1f35e618e96645faf\">https://preview.redd.it/mdjuub4gz5cg1.png?width=804&amp;format=png&amp;auto=webp&amp;s=f603a10e4ed4c18d64adffd1f35e618e96645faf</a></p> <p>Finally, the folder name itself should be <strong>clear, simple, and effortless to understand</strong>.<br/> I almost always prefer <strong>one word</strong>, or <strong>two words at most</strong>.</p> <p>Titles like:</p> <blockquote> </blockquote> <p>are not useful at all.</p> <p>Instead, try structuring it like this:</p> <pre><code>1) ✈️ Travel └─ 3) 📆 2019 └─ 2) 🇧🇷 Brazil </code></pre> <p>Clarity over cleverness.<br/> Structure that grows from use, not from overthinking.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Matthew_Trys\"> /u/Matthew_Trys </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7isgm/1k_notes_all_of_them_fit_in_one_of_those/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7isgm/1k_notes_all_of_them_fit_in_one_of_those/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "别在没写几个字之前就纠结建几个文件夹，先写笔记再整理才是 Obsidian 的正确打开方式。",
-      "ai_pain_point": "新手未动笔先纠结文件夹结构导致的“建目录强迫症”或拖延。",
+      "ai_summary": "治愈新手的文件夹焦虑，先记录后归类",
+      "ai_pain_point": "新手还没开始写笔记，就纠结于要建多少个文件夹分类，导致迟迟无法动笔",
       "ai_highlights": [
-        "场景：先随心所欲写 50 条笔记，结果：发现 15 条是关于电影，顺势归类",
-        "打破传统先规划后写作的教条，解放生产力"
+        "消除搭建完美库的压力，开局零规划直接写，拒绝过度分类浪费时间",
+        "依据笔记自然涌现的主题建文件夹，在积累一定量后，顺应思维惯性归类"
       ],
-      "ai_comment": "总有人还没憋出几个字就开始操心怎么给诺贝尔奖分类，这篇帖子专治各种“文件夹整理强迫症”晚期患者。",
+      "ai_comment": "别当只会建文件夹的装修工，先把房子盖起来再谈装修，内容永远大于形式。",
       "ai_tags": [
         "新手友好",
-        "效率党"
+        "效率党必备"
       ],
-      "ai_score": 8
+      "ai_score": 9
     },
     {
       "source": "Reddit",
@@ -717,16 +756,17 @@
       "created_at": "2026-01-08T17:29:15+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7hzmc/export_to_pdf_without_huge_gaps_between_headers/\"> <img src=\"https://b.thumbs.redditmedia.com/k921yWsq4yB2p1A6ghcJ3YIIy_MUI-qgucrpjF-SfVM.jpg\" alt=\"Export to PDF without huge gaps between headers and bullets? Driving me crazy\" title=\"Export to PDF without huge gaps between headers and bullets? Driving me crazy\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><pre><code> @media print { h1,h2,h3,h4,h5,h6 { line-height: 1.1em !important; margin: 2px 0px 2px 0px !important; } p{ margin: 0px 0px 10px 0px !important; } } </code></pre> <p>This snippet from <a href=\"/r/Oritide\">r/Oritide</a> is working somewhat for me, but it&#39;s not reducing the padding around my bullet points. Would appreciate if anyone could help! I have already used Style Settings to reduce the vertical spacing in list items to 0, which fixes it in reading mode, but not pdf.</p> <p><a href=\"https://preview.redd.it/ytryqetut5cg1.png?width=1120&amp;format=png&amp;auto=webp&amp;s=bda30d78a01c38f2fa2749379f037333714033ae\">Before</a></p> <p><a href=\"https://preview.redd.it/by873ofwt5cg1.png?width=1128&amp;format=png&amp;auto=webp&amp;s=66a82a00c214296cdced5b98167c944e5bb07041\">After - notice how it reduces the gap when there is plain text below the header, but doesn&#39;t reduce the gap around bullets</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/loafoveryonder\"> /u/loafoveryonder </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7hzmc/export_to_pdf_without_huge_gaps_between_headers/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7hzmc/export_to_pdf_without_huge_gaps_between_headers/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "PDF导出时标题下方的列表间距顽固不减，常规CSS片段只能救文本救不了列表。",
-      "ai_pain_point": "PDF导出时的排版格式失效，特别是标题与列表项之间存在无法消除的垂直间隙。",
+      "ai_summary": "折腾CSS修复PDF导出时令人抓狂的巨大间距",
+      "ai_pain_point": "导出PDF文档时，标题与列表间出现大量留白，严重浪费纸张且排版难看",
       "ai_highlights": [
-        "分享了一段针对 `@media print` 的 CSS 片段，部分修复了标题后的间距",
-        "揭示了 Style Settings 插件在 PDF 导出时无法生效，导致列表排版依然丑陋"
+        "利用CSS代码段直接缩减标题行高，修复PDF导出时的排版稀疏",
+        "揭示Style Settings仅限阅读模式，无法解决PDF打印端的布局问题",
+        "调整列表项垂直间距参数，致力于消除PDF导出时浪费纸张的空白"
       ],
-      "ai_comment": "为了几像素的间距跟 CSS 死磕，这大概就是 Obsidian 用户的宿命。别指望原生导出能继承你的审美，代码写不好，导出来就是一坨没排版的长图。",
+      "ai_comment": "PDF导出的排版永远是Obsidian的顽疾，指望Style Settings救场？还是老老实实写CSS吧。",
       "ai_tags": [
-        "颜值党",
-        "效率党"
+        "颜值党专属",
+        "学术党福音"
       ],
       "ai_score": 7
     },
@@ -738,18 +778,19 @@
       "created_at": "2026-01-08T17:15:56+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7hmf6/after_a_year_guys_obsidian_is_worth_it/\"> <img src=\"https://b.thumbs.redditmedia.com/6_4V0InqX1YWHGcAWpkP9FexqelJyoLwZI9Tj2NJ61w.jpg\" alt=\"After a year, Guys.. Obsidian is worth it 👍🏻\" title=\"After a year, Guys.. Obsidian is worth it 👍🏻\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p><a href=\"https://preview.redd.it/mazx9f57s5cg1.png?width=1332&amp;format=png&amp;auto=webp&amp;s=de30c007bfb51a213c67fe809ed7fa694acb90d6\">https://preview.redd.it/mazx9f57s5cg1.png?width=1332&amp;format=png&amp;auto=webp&amp;s=de30c007bfb51a213c67fe809ed7fa694acb90d6</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Matthew_Trys\"> /u/Matthew_Trys </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7hmf6/after_a_year_guys_obsidian_is_worth_it/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7hmf6/after_a_year_guys_obsidian_is_worth_it/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "坚持使用一年后，Obsidian用实打实的数据积累证明了长期主义的价值。",
-      "ai_pain_point": "担心笔记软件难以长期坚持，或无法直观看到知识积累的复利回报。",
+      "ai_summary": "用一年实践证明熬过学习曲线，能获得巨大回报",
+      "ai_pain_point": "初期上手难度大导致频繁换工具，或担心笔记数据被平台绑架",
       "ai_highlights": [
-        "长期使用一年的真实留存体验",
-        "通过图表可视化展示笔记增长带来的成就感"
+        "面对配置混乱的挫败感，确信最终能定制完美工作流",
+        "担心数据丢失时，本地文件夹结构提供绝对安全感",
+        "厌倦通用模板限制时，灵活的连结激发灵感新思路"
       ],
-      "ai_comment": "又是一个沉迷于‘图表涨势’无法自拔的用户，只要别把Obsidian玩成单纯的Excel模拟器，这波安利我就勉强收下了。",
+      "ai_comment": "这种年度“真香”帖最适合拉新，毕竟没人想承认自己花在配置上的时间打水漂。",
       "ai_tags": [
-        "效率党",
-        "数据极客"
+        "入坑心态",
+        "长期主义"
       ],
-      "ai_score": 7.5
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -759,16 +800,17 @@
       "created_at": "2026-01-08T17:02:35+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I find [[Digital Gardening]] like a meta-game, and the goal of the game is to connect unrelated notes together. To create more bridges that link clusters together. It’s a pattern-recognition and bridge-building game.</p> <p>Here are some pathways and bridges I have:</p> <ul> <li>The divorce of cute aesthetics from systematic violence in the commodification of Chiikawa as a sign of media illiteracy &gt; Suffering in &#39;Chiikawa&#39; vs &#39;Throne of Glass&#39; &gt; gothic vs romantasy &gt; The Possession of Alba Díaz &gt; Structural confinement of women</li> <li>My book cluster and my reflection on creating cluster are two clusters but the note on &#39;Word as bridge vs word as canva&#39; bridged the two clusters together.</li> </ul> <p>I connected a note about Chiikawa reflection from the colonialism framework to how gothic illustrates structural confinement of women. This is a very fascinating connection and isn&#39;t something I can see if I&#39;m putting my notes in my &#39;Notes&#39; app or if I&#39;m just writing them down in my notebook.</p> <p>Back to the title, so what do you call your game? &#39;Digital gardening&#39; Or &#39;Second Brain&#39;? Personally, I prefer &#39;Digital Gardening&#39; because:</p> <ul> <li>the vibes (hey it&#39;s a legit reason okay!) <ul> <li>it evokes a sense of peacefulness</li> <li>i like grounded vibes</li> <li>care and slowness</li> </ul></li> <li>it does not trigger productivity or hustle anxiety like &#39;Second Brain&#39; or &#39;Personal Wiki&#39; do <ul> <li>&#39;Second Brain&#39; &gt; storage + optimization</li> </ul></li> <li>it&#39;s a very concrete and vivid imagery</li> <li>it gamifies the system</li> <li>ease of communication</li> <li>it takes a few sentences to explain what this hobby (?) actually is. <ul> <li>And it does sound like an activity (compared to &#39;Second Brain&#39;)</li> <li>easy of mentioning in small talks (Can you imagine saying &#39;Oh my hobby is Cabinet of Curiosity&#39;???)</li> </ul></li> </ul> <p>However calling it &#39;Digital Gardening&#39; does not make sense entirely for m. While the name captures the nurturing aspect of the practice (planting a thought seed and letting it grow) it fails to name the part I find most exciting: pattern recognition and bridge-building across distant ideas.</p> <p>What would be a more accurate name?</p> <ul> <li>Bridge Builder (eh)</li> <li>Constellation Making (I guess it&#39;s okay)</li> <li>Bridgecraft (umm....?)</li> <li>Thread Weaving (vivid imagery but boring)</li> <li>Pattern Bingo (bestie I&#39;m not 80)</li> <li>Constellation Gardening (this is kinda fire?????????)</li> <li>Cabinet of Curiosity (cute)</li> <li>Meaning Alchemy (Hmmm I like this too.)</li> </ul> <p>Conclusion</p> <p>I&#39;m still sticking to &#39;Digital Gardening&#39; but I&#39;m eyeing &#39;Constellation Gardening&#39;.</p> <p>Context: I&#39;ve started Digital Gardening using Obsidian a few days ago.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/kaka1012\"> /u/kaka1012 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7h92x/naming_your_digital_gardening_game/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7h92x/naming_your_digital_gardening_game/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "把数字花园定义为一种模式识别游戏，致力于在八竿子打不着的笔记间强行搭桥。",
-      "ai_pain_point": "知识点孤立，难以通过联想将分散的笔记集群串联成网。",
+      "ai_summary": "把笔记连接视为拼图游戏，在孤立内容间建立逻辑桥梁。",
+      "ai_pain_point": "积累大量笔记却只是孤立存在，无法通过连接产生新知，导致笔记沦为死档。",
       "ai_highlights": [
-        "将数字园艺隐喻为一种通过建立连接来组合模式的‘元游戏’",
-        "展示了从吉伊卡哇商业化到女性结构禁锢的奇妙思维跳跃路径"
+        "将建立连接视为游戏，在整理知识时打破学科壁垒。",
+        "通过模式识别寻找共性，将无关主题串联成知识网络。",
+        "发现潜在关联，让看似风马牛不相及的笔记产生化学反应。"
       ],
-      "ai_comment": "看着这些跨越次元壁的链接，不禁让人怀疑你是做笔记太闲，还是单纯想显摆脑洞。",
+      "ai_comment": "别以为随便连线就是数字园艺，这种跨次元的脑回路才是真玩家，囤积党退散。",
       "ai_tags": [
-        "学术党",
-        "数据极客"
+        "深度思考",
+        "方法论"
       ],
       "ai_score": 8
     },
@@ -780,18 +822,19 @@
       "created_at": "2026-01-08T15:19:00+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Olá, boa tarde,</p> <p>Há uns meses li que o obsidian seria muito util para integração com zotero e ligação fazer relações entre artigos cientificos. </p> <p>Sou estudante de biotecnologia genética com TDAH e espetro autista e gostaria de configurar corretamente o obsidian para as minhas necessidades mas como estou em hiperfoco, ja estou em com uns dias sem horas de sono, refeiçoes em atraso e esta tudo e cada vez estou com mais dificuldade em configurar. alguem me conseguiria ajudar a configurar por videoconferencia, apenas para eu conseguir sair deste bloqueio.</p> <p>Este bloqueio e hiperfoco faz que nao consiga fazer mais nada antes de configurar o obsidian, apesar de saber que nao é prioridade, o modo hiperfoco interpreta como sendo</p> <p>Estou disposto a pagar por uma horita de apoio video na configuração.</p> <p>Alguem me consegue ajudar?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Ambitious_Raisin_377\"> /u/Ambitious_Raisin_377 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7eh5s/pedido_de_ajuda_configurações/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7eh5s/pedido_de_ajuda_configurações/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "基因工程学生因 ADHD 陷于 Obsidian 与 Zotero 配置的死循环，多日不睡，愿付费求视频指导以打破心理阻滞。",
-      "ai_pain_point": "ADHD 导致的过度专注与执行功能障碍，使得软件配置变成了生活瘫痪的诱因。",
+      "ai_summary": "生物学子为打破配置超专注，愿付费求Zotero集成指导。",
+      "ai_pain_point": "ADHD/自闭症用户因配置 Zotero 集成陷入超专注，导致无法睡眠或进食，需要即时干预打破死循环。",
       "ai_highlights": [
-        "学术场景：生物技术专业学生试图构建 Zotero 与文献关系连接工作流。",
-        "极端案例：因超专注导致生活作息崩塌（不睡不吃），甚至愿意付费寻求一小时的人工干预。"
+        "付费远程指导 -> ADHD用户陷入配置超专注无法自拔时打破僵局。",
+        "外部代劳配置 -> 学术党急需搞定Zotero集成时节省自学时间。",
+        "专属工作流搭建 -> 神经多样性用户面对复杂软件时的上手阶梯。"
       ],
-      "ai_comment": "典型的“工欲善其事”把人逼疯现场。本来是为了科研利器，结果成了 ADHD 的囚徒，先把饭吃了吧，配置又不跑。",
+      "ai_comment": "为了配个软件连饭都顾不上吃，这哪是笔记工具，简直是“电子海洛因”。",
       "ai_tags": [
-        "学术党",
-        "效率党"
+        "学术党福音",
+        "新手友好"
       ],
-      "ai_score": 8
+      "ai_score": 5
     },
     {
       "source": "Reddit",
@@ -801,17 +844,19 @@
       "created_at": "2026-01-08T15:17:58+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7eg6w/my_vault_layout/\"> <img src=\"https://b.thumbs.redditmedia.com/WkkauwRSmv9SY7LR2mNht91fhRLDjZLmdHM55GTZI5I.jpg\" alt=\"My Vault Layout\" title=\"My Vault Layout\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>After watching Josh Plunkett&#39;s YouTube tutorials, this is my current Vault layout for for my own d20-based ruleset and campaign setting. I&#39;m pretty happy with it so far, but still have a lot to learn and import before it&#39;s close to being complete.</p> <p>What do you think?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/GMCWard72\"> /u/GMCWard72 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1q7eg6w\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7eg6w/my_vault_layout/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "看完 Josh Plunkett 教程后搭建的 d20 规则库，正拿着半成品到处求夸。",
-      "ai_pain_point": "不知道如何从零构建自定义 TRPG 规则与战役设定的知识库。",
+      "ai_summary": "d20跑团库布局示例，解决战役资料分类混乱问题",
+      "ai_pain_point": "TRPG玩家面对庞杂的怪物、法术、战役笔记时，文件夹结构混乱导致检索困难",
       "ai_highlights": [
-        "基于教程构建 d20 规则体系（解决了不知从何下手的迷茫）",
-        "处于大量导入内容的填坑阶段（虽然没做完但自我感觉良好）"
+        "提供d20规则集的文件夹分类思路，方便跑团玩家建立体系。",
+        "参考知名博主的架构设计，降低新手搭建跑团库的试错成本。",
+        "展示成品库的视觉呈现，激发玩家整理手头散乱笔记的动力。"
       ],
-      "ai_comment": "看来 Josh Plunkett 是 Obsidian 圈的“上帝”，只要照着他的视频做，连填不完的坑都能吹成“我的布局”。",
+      "ai_comment": "抄作业不可耻，能把自己那堆乱七八糟的D&D笔记理清楚才是本事。",
       "ai_tags": [
-        "新手友好"
+        "新手友好",
+        "TRPG向"
       ],
-      "ai_score": 7
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -821,17 +866,19 @@
       "created_at": "2026-01-08T15:08:09+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7e70s/small_window_issue/\"> <img src=\"https://preview.redd.it/4ofx36mf55cg1.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=cee13af8c3688be0345a2b6351bd916b78957816\" alt=\"Small window issue\" title=\"Small window issue\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Hi, I&#39;m using a plugin &quot;Spaced Repetition&quot;. When I run &quot;Review flashcards&quot;, the window is way too small. It used to work correctly before, do you khow how to fix it? </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/yawning_passerby\"> /u/yawning_passerby </a> <br/> <span><a href=\"https://i.redd.it/4ofx36mf55cg1.jpeg\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7e70s/small_window_issue/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "间隔重复插件复习窗口突然缩小，导致闪卡内容无法正常查看。",
-      "ai_pain_point": "插件UI尺寸异常",
+      "ai_summary": "修复间隔记忆插件窗口缩水致无法复习的问题",
+      "ai_pain_point": "点击间隔记忆插件的“复习卡片”功能时，弹窗极小导致无法查看内容或点击按钮",
       "ai_highlights": [
-        "闪卡复习窗口过小",
-        "功能曾正常，现需修复"
+        "确认非人为误操作，复习窗口异常缩小时，快速定位插件故障",
+        "排查版本兼容性问题，更新后出现界面Bug，避免盲目重装软件",
+        "维护复习心流体验，解决窗口无法调整导致的中断，挽救学习进度"
       ],
-      "ai_comment": "难道是觉得卡片越短小精悍记忆越深刻？看来这个插件不仅想帮你复习知识，顺便还想考验一下你的视力。",
+      "ai_comment": "以为是显示器抽风，结果是插件更新背锅，这波“负优化”绝了。",
       "ai_tags": [
-        "学术党"
+        "间隔记忆",
+        "Bug排查"
       ],
-      "ai_score": 5
+      "ai_score": 3
     },
     {
       "source": "Reddit",
@@ -841,17 +888,19 @@
       "created_at": "2026-01-08T15:06:04+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7e53w/the_most_advanced_obsidian_task_manager_taskforge/\"> <img src=\"https://b.thumbs.redditmedia.com/1mzr147iwgojiQGMbYld8F6yVPh1_Hu1_1kYW3gljZE.jpg\" alt=\"The most advanced Obsidian task manager - TaskForge 2.0 major upgrade! (iOS/Android/macOS)\" title=\"The most advanced Obsidian task manager - TaskForge 2.0 major upgrade! (iOS/Android/macOS)\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Hey <a href=\"/r/ObsidianMD\">r/ObsidianMD</a>! 👋</p> <p>I&#39;ve spent the last year building TaskForge - the iOS/macOS/Android app that aims to bring best-in-class task management support to Obsidian and is compatible with both inline and TaskNotes tasks.</p> <p>It includes all features you&#39;d expect from any task management application including:</p> <ul> <li>System notifications on iOS, Android, and macOS (deadline nudges that aren’t trapped in a note tab)</li> <li>Widgets for quick triage from your Home Screen / Desktop</li> <li>Custom lists &amp; filters for different contexts</li> <li>Kanban &amp; Calendar views when you need project mode</li> <li>Deep links back to the exact note/heading in your vault</li> <li>Works with your vault: supports Obsidian task syntax + TaskNotes one-task-per-note YAML mapping - no migration, no lock-in</li> </ul> <h1>What&#39;s New</h1> <p>I&#39;ve just released the largest app update to date which includes the following new app features and enhancements:</p> <ul> <li><strong>Brand new look</strong> - TaskForge now looks much more sleek and modern</li> <li><strong>Performance improvements</strong> - tasks from all vaults, large and small, load much much more quickly</li> <li><strong>Weekly calendar view</strong> - visualize all your tasks for the week in a new weekly view in addition to the existing monthly view</li> <li><strong>Set TaskNotes task descriptions</strong> - directly view and edit your TaskNotes task file&#39;s body from TaskForge</li> <li><strong>Multi-level subtasks for inline tasks</strong> - you can now create subtasks with unlimited nesting levels</li> </ul> <p>This release and the app in general have truly been a labour of love that has largely been driven by the support of this community.</p> <h1>Links</h1> <ul> <li>iOS / macOS → <a href=\"https://apps.apple.com/ca/app/taskforge-for-obsidian-tasks/id6744716215\">https://apps.apple.com/app/taskforge-for-obsidian-tasks/id6744716215</a></li> <li>Android → <a href=\"https://play.google.com/store/apps/details?id=com.azhard.taskforge\">https://play.google.com/store/apps/details?id=com.azhard.taskforge</a></li> <li>Website &amp; docs → <a href=\"https://taskforge.md/\">https://taskforge.md/</a></li> </ul> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/zaza126\"> /u/zaza126 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1q7e53w\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7e53w/the_most_advanced_obsidian_task_manager_taskforge/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "Obsidian 原生任务管理只是个半成品？TaskForge 2.0 试图用全平台系统通知和看板视图来填补这个巨大的空白。",
-      "ai_pain_point": "Obsidian 原生任务管理缺乏系统级弹窗提醒、移动端小组件支持，且难以在移动端高效进行任务分诊。",
+      "ai_summary": "摆脱笔记限制，全平台原生通知让任务不再“自生自灭”。",
+      "ai_pain_point": "关闭 Obsidian App 后任务彻底失联，错过截止日期毫无感知。",
       "ai_highlights": [
-        "全平台系统通知（iOS/Android/macOS），彻底解决提醒被关在笔记标签页里看不见的尴尬",
-        "零迁移、无锁定，直接操作本地 Vault 兼容原生语法与 TaskNotes，看板与日历视图一应俱全"
+        "死线不再被无视，离开软件也能收到系统级强制提醒。",
+        "无需打开笔记，在手机桌面直接通过小组件极速筛选待办。",
+        "零成本同步现有任务，点击提醒直接跳回笔记原文编辑。"
       ],
-      "ai_comment": "又是“最先进”的任务管理器，不过要是真能解决那该死的原生通知缺失问题，这牛皮吹得也就不算太离谱。",
+      "ai_comment": "Obsidian 原生任务还在石器时代，这玩意儿直接把你拉进工业革命。",
       "ai_tags": [
-        "效率党"
+        "效率党必备",
+        "跨端神器"
       ],
-      "ai_score": 8
+      "ai_score": 9
     },
     {
       "source": "Reddit",
@@ -861,16 +910,17 @@
       "created_at": "2026-01-08T13:08:10+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;m pretty new to Obsidian and honestly feeling stuck before I&#39;ve even really started.</p> <p>I keep falling into this loop where I’m obsessing over the perfect vault setup folder structure, tags, templates, workflows and because it never feels &quot;ready,&quot; I end up not actually taking notes at all. I spend more time redesigning the system than using it.</p> <p>I&#39;m curious as to:-</p> <p>What did your Obsidian setup look like when you actually started? What do beginners usually overthink or get wrong? What things did you wish you ignored at the start? Are folders/tags even worth worrying about early on? How do you move from random notes to something coherent over time?</p> <p>I&#39;m aiming to use Obsidian as a long-term knowledge system / second brain, but right now I just want to break out of analysis paralysis and start writing without feeling like I’m doing it &quot;wrong.&quot;</p> <p>Any beginner tips, mindset shifts, pitfalls to avoid, or &quot;I&#39;ve been there&quot; advice would really help. Thanks!</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Dual-VectorFoil\"> /u/Dual-VectorFoil </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7bc4z/obsidian_beginner_herestuck_trying_to_perfect_my/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7bc4z/obsidian_beginner_herestuck_trying_to_perfect_my/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "还没记几个字就死磕完美设置，导致笔记系统彻底沦为装修模拟器。",
-      "ai_pain_point": "完美主义引发的“配置瘫痪”，过度纠结文件夹结构与标签模板，导致无法开始记录。",
+      "ai_summary": "专治“装修强迫症”，教你无视焦虑直接开始记笔记",
+      "ai_pain_point": "纠结于完美的文件夹结构和插件配置，导致迟迟不敢动笔记录",
       "ai_highlights": [
-        "典型的新手死循环：沉迷于设计完美的文件夹、标签和模板，导致花费大量时间折腾系统而零产出。",
-        "寻求破局之法：询问社区大佬起手式，想知道早期哪些细节可以忽略，如何从碎片过渡到系统。"
+        "提供低门槛起步方案，在初建库时直接无视文件夹分类",
+        "倡导自然生长模式，在笔记积累到一定数量后再重构结构",
+        "减少形式主义干扰，在初期使用时忽略复杂的标签与模板"
       ],
-      "ai_comment": "还没学会走就想着跑酷，把 Obsidian 玩成了室内设计软件，你的第二大脑大概现在还是空的吧。",
+      "ai_comment": "把 Obsidian 当装修模拟器？别光顾着给空房子贴瓷砖，先住进去再说。",
       "ai_tags": [
         "新手友好",
-        "效率党"
+        "避坑指南"
       ],
       "ai_score": 8
     },
@@ -882,18 +932,19 @@
       "created_at": "2026-01-08T12:57:46+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Hello, I would like to add maps to my notes that are fully interactive. So that if you click an icon it can display a name and maybe a note when I click on the showcased name with costom icons. I found the leaflet plugin but I&#39;m not sure if that is possible with what I had in mind. Does anybody know if leaflet can do this or if there is a more suitable plugin that I can use. I think I can make a fuckton of costom markers with every place and use it one time but that would be extremely time-consuming with every costom marker.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/King_Everything69\"> /u/King_Everything69 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7b3xm/maps/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7b3xm/maps/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "用户试图在笔记中集成全交互地图以展示带图标的地点笔记，但担心使用Leaflet插件时需手动配置海量自定义标记的繁琐性。",
-      "ai_pain_point": "为大量地理位置逐一创建自定义地图标记极其耗时，缺乏批量高效配置手段。",
+      "ai_summary": "探讨如何在Obsidian中实现点击地图图标联动笔记",
+      "ai_pain_point": "构建RPG世界观或旅游攻略时，无法直观通过地图坐标索引特定笔记",
       "ai_highlights": [
-        "用户寻求点击地图图标即可显示名称及笔记的交互功能",
-        "用户对Leaflet插件的自定义图标能力存疑，且极力避免手动重复劳动"
+        "地图与笔记双向链接，构建RPG世界观或旅游攻略时直观检索",
+        "自定义地图标记样式，复杂项目中快速定位并展示关键节点信息",
+        "插件自动化标记管理，避免为每个地点手动重复创建图标素材"
       ],
-      "ai_comment": "每个人都在妄想把Obsidian变成谷歌地球，却连几个自定义标记都懒得手动建，指望插件能凭空把脑子里的世界打印出来。",
+      "ai_comment": "想偷懒是对的，但在Leaflet里折腾自定义图标，大概率比做笔记还累。",
       "ai_tags": [
         "数据极客",
-        "颜值党"
+        "可视化"
       ],
-      "ai_score": 8
+      "ai_score": 6
     },
     {
       "source": "Reddit",
@@ -903,16 +954,17 @@
       "created_at": "2026-01-08T12:49:29+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>To explain better. I&#39;m building up a mental map for a dnd session of mine. I&#39;d like to link various notes based on &quot;sentiments&quot; (like this specific name in the note hate that other name, this one love that other one) and so on. I was looking trough CSS snippets or plugins but honestly i don&#39;t understand a lot about that... Thanks in advance to anyone who answer</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Aion_Abyssae_606\"> /u/Aion_Abyssae_606 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7axt1/is_there_any_way_to_create_different_colour_links/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7axt1/is_there_any_way_to_create_different_colour_links/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "DND玩家想用不同颜色的链接表现角色间的爱恨情仇，却被CSS代码卡在了门外。",
-      "ai_pain_point": "缺乏代码基础，难以实现基于特定属性（如情感关系）的链接视觉差异化。",
+      "ai_summary": "Dnd战役想按情绪着色链接，苦于CSS代码门槛高。",
+      "ai_pain_point": "构建Dnd角色关系网时，无法直观区分情感走向（爱恨亲疏）。",
       "ai_highlights": [
-        "场景独特：利用 Obsidian 构建龙与地下城（DND）的思维导图",
-        "需求具体：试图通过链接颜色来直观展示角色间的“爱恨情仇”等情绪关系"
+        "实现链接颜色编码，直观区分角色间的爱恨亲疏关系。",
+        "视觉化复杂关系网，在Dnd战役构建中快速理清剧情。",
+        "降低非技术用户门槛，通过外观定制提升笔记沉浸感。"
       ],
-      "ai_comment": "想在纯文本笔记里玩出《权游》的感觉，结果被几行 CSS 吓退，看来复杂的代码比恶龙还难对付。",
+      "ai_comment": "想玩转CSS美化又不肯学代码，这届DnD主祭要求有点多。",
       "ai_tags": [
-        "颜值党",
-        "新手友好"
+        "颜值党专属",
+        "玩家杂谈"
       ],
       "ai_score": 6
     },
@@ -924,16 +976,16 @@
       "created_at": "2026-01-08T12:43:30+00:00",
       "content_text": "<table> <tr><td> <a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7athk/what_are_the_best_options_for_storing_many_images/\"> <img src=\"https://preview.redd.it/cavc1yjmf4cg1.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=41454b0e2436e596109047c399384f54252bcd34\" alt=\"What are the best options for storing many images (inside or outside vault)?\" title=\"What are the best options for storing many images (inside or outside vault)?\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>I’ve been thinking about making a base of all books/comics/manga I own and/or have read. I use a combination of media db, BookFusion, and the web clipper to make these notes, so the metadata is mostly automatically (cover image is an external url). But I want to future-proof my vault, and store these cover images somewhere else. Things I’ve been thinking about:</p> <p>Outside vault: - Imgur: I have used the imgur plugin in the past to auto-upload images, but I feel like it’s on its last legs. - GoogleDrive: I managed to link to an image in a locally synced folder with file:///home/. Works great, but it’s an absolute path on my pc, so that wouldn’t work on my phone/ipad. I don’t find how I can link to image stored in my GoogleDrive with urls. - Dropbox, OneDrive, ProtonDrive: I supposed this would be similar to GoogleDrive. - Cloudflare S3: their free tier includes 10 GB and millions of actions, which would more than suffice for my use case. But I have no idea how to set this up, and I feel there might be easier solutions. - Setting up a small home server or even a NAS: I’ve been wanting to try this, but setting up and managing a server seems daunting (DNS, port-forwarding, and all kinds of things I don’t know anything about).</p> <p>Inside vault: - I’m currently paying for obsidian sync (mainly to support the developers), which has a limit of 1 GB storage. My vault size on my PC is 58 mb, but my obsidian sync storage usage is currently 593 MB/1 GB. I guess the tenfold increase has to do with snapshots and back-ups? But what worries me is if I start adding lots of images as attachments, my vault size will explode and become slow and sluggish to sync. I guess upgrading to Sync Plus would resolve this (storage increase to 10 GB), but it’s pretty costly for me. </p> <p>What I want is a simple set-up where I can store images that can be accessed by obsidian on my pc, phone, and iPad. Can anyone give me some pointers or advice?</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Nihan-gen3\"> /u/Nihan-gen3 </a> <br/> <span><a href=\"https://i.redd.it/cavc1yjmf4cg1.jpeg\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7athk/what_are_the_best_options_for_storing_many_images/\">[comments]</a></span> </td></tr></table>",
       "_source_key": "reddit",
-      "ai_summary": "想为藏书归档封面，却因 Imgur 服务不稳和云盘绝对路径无法跨设备的问题，在图床选择上举步维艰。",
-      "ai_pain_point": "第三方图床（Imgur）濒临停摆导致链接风险，本地绝对路径无法跨设备同步",
+      "ai_summary": "解决大量图片存储与跨设备访问难题",
+      "ai_pain_point": "构建媒体库时，图床服务不稳定且本地绝对路径无法在手机端访问",
       "ai_highlights": [
-        "使用 Imgur 插件自动上传封面，但预感该服务已时日无多，缺乏长期安全感",
-        "尝试链接 Google Drive 本地文件夹，却发现 PC 上的绝对路径在手机/iPad 上完全失效，无法跨设备阅读"
+        "避免依赖濒死图床，防止未来数据丢失导致笔记变成红叉",
+        "摒弃绝对路径，确保图片链接在手机和PC间无缝切换",
+        "评估网盘直链方案，为海量媒体资产寻找稳定的托管地"
       ],
-      "ai_comment": "把身家性命寄托在 Imgur 这种随时可能跑路的图床上做归档，心也是够大的；至于还在纠结绝对路径在手机上打不开，建议先去补习一下 Obsidian 的相对路径和云盘同步基础课。",
+      "ai_comment": "都能感觉到Imgur快凉了才想起来跑路，这种“亡羊补牢”的觉悟比你那个只能在电脑上看的绝对路径强多了。",
       "ai_tags": [
-        "数据极客",
-        "效率党"
+        "数据极客"
       ],
       "ai_score": 7
     },
@@ -945,16 +997,17 @@
       "created_at": "2026-01-08T12:22:09+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I couldn&#39;t find a native method to force a page break that would be visible in the exported PDF file. However, this can be done using a CSS snippet:</p> <pre><code>@media print { hr { page-break-after: always; visibility: hidden; } } </code></pre> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/voi-tech\"> /u/voi-tech </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7aedj/add_page_breaks_to_the_exported_pdf_file/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q7aedj/add_page_breaks_to_the_exported_pdf_file/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "既然官方迟迟不肯加“分页符”按钮，那就用几行 CSS 代码强行把导出 PDF 的排版给掰正了。",
-      "ai_pain_point": "导出 PDF 时缺乏原生的强制分页功能，导致打印阅读体验极差。",
+      "ai_summary": "巧用CSS让PDF导出支持分页，告别格式混乱",
+      "ai_pain_point": "导出长文为PDF时，章节标题截断或图表被切断",
       "ai_highlights": [
-        "巧用 `hr` 标签结合 CSS 片段，在打印模式下实现强制分页",
-        "利用 `visibility: hidden` 让分页线在导出 PDF 中隐形，保持页面整洁"
+        "将横线转化为隐形分页符，精准控制章节起止位置",
+        "彻底解决导出PDF时标题落底或图表被截断的排版尴尬",
+        "无需安装插件即可填补原生导出功能缺失的分页空白"
       ],
-      "ai_comment": "连最基本的分页都要靠用户自己写 CSS 补丁，这导出功能看来是官方弃养的荒地了。",
+      "ai_comment": "官方迟迟不加这功能，逼得用户拿横线当挡箭牌，好在确实管用。",
       "ai_tags": [
-        "学术党",
-        "开发者"
+        "学术党福音",
+        "PDF排版"
       ],
       "ai_score": 8
     },
@@ -966,18 +1019,19 @@
       "created_at": "2026-01-08T11:40:29+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>Biggest shift in my voice editing: I stopped trusting my memory. Once I started tracking takes, feedback, and versions in one place, projects stopped feeling like chaos. I built an Obsidian system for this—if you edit voice and constantly lose track of versions, tell me your biggest headache and I’ll see if I can help.</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/audioproductivity\"> /u/audioproductivity </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q79lox/voice_flow_obsidian_vault/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q79lox/voice_flow_obsidian_vault/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "音频编辑师利用Obsidian构建工作流，用系统取代不可靠的记忆，终结版本管理与录音追踪的混乱。",
-      "ai_pain_point": "靠记忆追踪多版本录音与反馈，导致项目管理混乱失控。",
+      "ai_summary": "告别记忆管理，用Obsidian搞定音频版控与反馈。",
+      "ai_pain_point": "音频剪辑时录音片段多、反馈零散，版本混乱导致找不到最终定稿",
       "ai_highlights": [
-        "将录音、反馈和版本追踪统一至Obsidian，用系统替代不可靠的记忆",
-        "针对音频编辑构建专属系统，有效缓解多版本项目带来的混乱感"
+        "集中管理录音版本与反馈，剪辑时不再依赖容易出错的大脑记忆。",
+        "将所有录音片段关联在知识库内，终结多文件散落导致的版本地狱。",
+        "整合修改意见与工程链接，避免在不同软件间频繁切换造成的漏改。"
       ],
-      "ai_comment": "脑子是用来思考的，不是当版本控制系统的，这位编辑终于明白“好记性不如烂笔头（哪怕是数字版）”的真谛了。",
+      "ai_comment": "声音工作者才懂的痛，别再靠脑子记那个“听起来不错”的第五版录音了。",
       "ai_tags": [
-        "效率党",
-        "数据极客"
+        "效率党必备",
+        "工作流"
       ],
-      "ai_score": 8
+      "ai_score": 7
     },
     {
       "source": "Reddit",
@@ -987,23 +1041,24 @@
       "created_at": "2026-01-08T11:24:14+00:00",
       "content_text": "<!-- SC_OFF --><div class=\"md\"><p>I&#39;m trying to create a Vault which kinda recreates what <a href=\"https://www.getrecall.ai/\">Recall</a> does.<br/> I have tried it using the copilot plugin with my gemini pro API keys, but the results are very underwhelming.<br/> Has anyone else tried this? It should be possible I think..</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Royal_Plenty_4455\"> /u/Royal_Plenty_4455 </a> <br/> <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q79bg2/recreate_recallai_in_obsidian/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/ObsidianMD/comments/1q79bg2/recreate_recallai_in_obsidian/\">[comments]</a></span>",
       "_source_key": "reddit",
-      "ai_summary": "试图利用 Obsidian 插件和 Gemini API 复刻 Recall.ai 的全记录功能，结果发现效果惨不忍睹。",
-      "ai_pain_point": "试图在笔记软件中通过集成 AI 实现类似系统级时间线回顾的 Recall 功能，但插件与 API 的结合表现远低于预期。",
+      "ai_summary": "尝试复刻 Recall 失败，现有 AI 插件难胜任。",
+      "ai_pain_point": "想用 Copilot 插件配合 Gemini API 在本地库中复刻微软 Recall 的屏幕回忆功能，但生成结果不理想。",
       "ai_highlights": [
-        "场景：使用 Obsidian 的 Copilot 插件接入 Gemini Pro API",
-        "结果：尝试模拟 Recall.ai 失败，实际体验令人失望"
+        "揭示现有插件无法完美复刻 Recall 功能，节省试错成本。",
+        "明确通用 API 难以精准处理屏幕上下文，避免盲目折腾。",
+        "探索本地化知识库替代微软 Recall 的可能性与边界。"
       ],
-      "ai_comment": "以为把 AI 接进笔记软件就能变身为全知全能的超级大脑，现实却告诉你：术业有专攻，别强 Gemini 所难。",
+      "ai_comment": "别指望装个插件就能把 Obsidian 变成你的“数字大脑皮层”，目前这纯属自虐。",
       "ai_tags": [
         "数据极客",
-        "效率党"
+        "避坑指南"
       ],
-      "ai_score": 6
+      "ai_score": 3
     }
   ],
   "ai": {
-    "overview": "PluginHub 专治多库狂魔的强迫症，DataviewJS 大神更是离谱，不仅手撸表格，连 `require` 都敢“走私”。那个被迫用安卓的果粉别纠结了，Sync 又不是毒药。还有整天沉迷“装修”的各位，醒醒吧！别光顾着调教文件夹，要么让 AI 吞播客，要么老老实实写够一千条笔记，别让你的脑子还没动，软件先瘫痪了！",
-    "generated_at": "2026-01-13T18:12:43.265768+00:00",
+    "overview": "别把 Obsidian 玩成“装修模拟器”！治愈你的文件夹焦虑，先记下来再说。效率党看过来：TaskForge 2.0 全平台升级，PluginHub 告别重复安装，任务管理终于不再“自生自灭”。Dataview 竟然能直接编辑表格了，还能自动抓取播客摘要。拒绝完美主义，把笔记当拼图玩，才是打开 Obsidian 的正确姿势！",
+    "generated_at": "2026-01-14T09:31:20.780752+00:00",
     "model": "glm-4.7",
     "processed_count": 47,
     "selected_count": 47
