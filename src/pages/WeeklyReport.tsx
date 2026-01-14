@@ -152,6 +152,7 @@ const WeeklyReport = () => {
                         title={post.title}
                         summary={getSummary(post.content_text)}
                         link={post.url}
+                        badges={[<Badge key='type' text='Reddit' type='reddit'/>]}
                         meta={<span>u/{post.author}</span>}
                         aiAnalysis={post}
                     />
