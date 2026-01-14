@@ -25,21 +25,24 @@ export const CalloutCard: React.FC<CalloutCardProps> = ({
   badges = [],
   aiAnalysis
 }) => {
-  const style = getCalloutStyles(type);
+  const s = getCalloutStyles(type);
   
   // Decide what to show
   const showAIContent = !!aiAnalysis?.ai_summary;
 
   return (
     <div 
-      className="callout group relative rounded-xl border border-slate-200 dark:border-slate-700/60 overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 bg-white dark:bg-slate-800/40 backdrop-blur-sm"
+      className={`callout group relative rounded-xl overflow-hidden flex flex-col h-full 
+        transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 
+        border-l-4 shadow-sm ${s.bgClass} ${s.borderClass}`}
     >
-      <div className='callout-header flex items-center gap-2 px-5 py-3 border-b border-slate-100 dark:border-slate-700/50 text-lg font-bold text-slate-500 dark:text-slate-400 bg-slate-50/50 dark:bg-slate-800/30'>
-        <div className='callout-icon'>{style.icon}</div>
-        <div className='callout-header-inner flex flex-1 items-center gap-2 justify-between'>
-          <div className='callout-title'>{title}</div>
-          <div className='callout-badges flex items-center gap-2'>
-            {badges.filter(Boolean).map((badge, i) => badge)}
+      {/* Header */}
+      <div className={`callout-header flex items-center gap-2.5 px-5 py-3 text-base font-semibold ${s.headerBgClass}`}>
+        <span className='callout-icon text-lg'>{s.icon}</span>
+        <div className='callout-header-inner flex flex-1 items-center gap-2 justify-between min-w-0'>
+          <span className='callout-title truncate text-slate-800 dark:text-slate-100'>{title}</span>
+          <div className='callout-badges flex items-center gap-1.5 flex-shrink-0'>
+            {badges.filter(Boolean).map((badge) => badge)}
             {aiAnalysis?.ai_score && (
               <Badge key="score" text={`Score: ${aiAnalysis.ai_score}/10`} type="score" />
             )}
@@ -47,72 +50,90 @@ export const CalloutCard: React.FC<CalloutCardProps> = ({
         </div>
       </div>
 
-      <div className='callout-content px-5 py-2 flex-1 relative'>
+      {/* Content */}
+      <div className='callout-content px-5 py-4 flex-1 text-sm text-slate-600 dark:text-slate-300 space-y-3'>
         {showAIContent ? (<>
-          <div className='callout-content-summary mb-4'>
-            <p>
-              <span className='font-bold'>一句话摘要：</span>
-              {aiAnalysis.ai_summary && (<span>{aiAnalysis.ai_summary}</span>)}
+          {/* AI Summary */}
+          <div className='callout-content-summary'>
+            <p className='leading-relaxed'>
+              <span className={`font-semibold mr-1.5 ${s.textClass}`}>📝 摘要：</span>
+              <span className='text-slate-700 dark:text-slate-200'>{aiAnalysis.ai_summary}</span>
             </p>
           </div>
 
-          <div className='callout-content-pain-point'>
-            <p>
-              <span className='font-bold'>主要痛点：</span>
-              {aiAnalysis.ai_pain_point && (<span>{aiAnalysis.ai_pain_point}</span>)}
-            </p>
-          </div>
-
-          <div className='callout-content-highlights'>
-            <p>
-              <span className='font-bold'>💡 核心亮点：</span>
-              {aiAnalysis.ai_highlights && aiAnalysis.ai_highlights.length > 0 && (
-                <ul className='list-disc list-inside my-4'>
-                  {aiAnalysis.ai_highlights.map((highlight, i) => (
-                    <li key={i}>{highlight}</li>
-                  ))}
-                </ul>
-              )}
-            </p>
-          </div>
-
-          <div className='callout-content-ai-comment'>
-            <p>
-              <span className='font-bold'>💬 AI 锐评：</span>
-              {aiAnalysis.ai_comment && (<span>{aiAnalysis.ai_comment}</span>)}
-            </p>
-          </div>
-
-          <div className='callout-content-tags'>
-            <p>
-              {aiAnalysis.ai_tags && aiAnalysis.ai_tags.length > 0 && (
-                aiAnalysis.ai_tags.map((tag, tIdx) => (
-                  <span key={tIdx} className="callout-content-tag">
-                    #{tag}
-                  </span>
-                ))
+          {/* Pain Point */}
+          {aiAnalysis.ai_pain_point && (
+            <div className='callout-content-pain-point'>
+              <p className='leading-relaxed'>
+                <span className={`font-semibold mr-1.5 ${s.textClass}`}>🎯 痛点：</span>
+                <span className='text-slate-700 dark:text-slate-200'>{aiAnalysis.ai_pain_point}</span>
+              </p>
+            </div>
           )}
-            </p>
-          </div>
+
+          {/* Highlights */}
+          {aiAnalysis.ai_highlights && aiAnalysis.ai_highlights.length > 0 && (
+            <div className='callout-content-highlights'>
+              <span className={`font-semibold ${s.textClass}`}>💡 亮点：</span>
+              <ul className='list-none mt-2 space-y-1.5 pl-8'>
+                {aiAnalysis.ai_highlights.map((highlight, i) => (
+                  <li 
+                    key={i} 
+                    className='relative text-slate-700 dark:text-slate-200 before:content-["•"] before:absolute before:-left-3 before:text-slate-400 dark:before:text-slate-500'
+                  >
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* AI Comment */}
+          {aiAnalysis.ai_comment && (
+            <div className={`callout-content-ai-comment mt-3 p-3 rounded-lg text-slate-700 dark:text-slate-200 ${s.headerBgClass}`}>
+              <span className={`font-semibold mr-1.5 ${s.textClass}`}>💬 点评：</span>
+              <span className='italic'>{aiAnalysis.ai_comment}</span>
+            </div>
+          )}
+
+          {/* Tags */}
+          {aiAnalysis.ai_tags && aiAnalysis.ai_tags.length > 0 && (
+            <div className='callout-content-tags flex flex-wrap gap-1.5 pt-2'>
+              {aiAnalysis.ai_tags.map((tag, tIdx) => (
+                <span 
+                  key={tIdx} 
+                  className={`text-xs px-2 py-0.5 rounded-full ${s.tagBgClass} ${s.textClass}`}
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
         </>) : (<>
-          <p>
-            <span>原始内容：</span>
-            <span>{summary}</span>
+          <p className='leading-relaxed'>
+            <span className='font-semibold text-slate-500 dark:text-slate-400 mr-1.5'>原始内容：</span>
+            <span className='text-slate-700 dark:text-slate-200'>{summary}</span>
           </p>
         </>)}
       </div>
 
-      <div className='callout-footer mt-4 px-5 py-3 border-t border-slate-100 dark:border-slate-700/50 text-xs text-slate-500 dark:text-slate-400 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/30'>
-        <div className="flex items-center gap-2 font-medium">
+      {/* Footer */}
+      <div className={`callout-footer px-5 py-2.5 text-xs flex justify-between items-center ${s.headerBgClass}`}>
+        <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
           {meta}
         </div>
-        <a href={link} target="_blank" rel="noopener noreferrer" 
-          className="group/link font-semibold no-underline flex items-center gap-1 hover:underline transition-all"
-          style={{ color: style.color }}
+        <a 
+          href={link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className={`group/link font-semibold no-underline flex items-center gap-0.5 transition-all hover:gap-1 ${s.textClass}`}
         >
-          Read Source <span className="text-lg transition-transform group-hover/link:translate-x-0.5">›</span>
+          查看原文 
+          <span className="text-base transition-transform group-hover/link:translate-x-0.5">→</span>
         </a>
       </div>
     </div>
   );
 };
+
+
