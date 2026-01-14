@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { Sparkles, Bot } from 'lucide-react';
 import { useDailyData } from '../hooks/useData';
 import type { ForumPost, PullRequest, RedditPost } from '../types/data';
 import { getSummary, detectProjectType } from '../utils/textUtils';
@@ -49,6 +50,35 @@ const DailyReport = () => {
         }
         subtitle="Curated Highlights from Obsidian Community"
       />
+
+      {data.ai?.overview && (
+        <div className="mb-10 p-6 rounded-2xl bg-gradient-to-br from-violet-50/50 to-fuchsia-50/50 dark:from-violet-900/10 dark:to-fuchsia-900/10 border border-violet-100 dark:border-violet-800/30 shadow-sm">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm ring-1 ring-slate-900/5 text-violet-600 dark:text-violet-400">
+              <Sparkles size={24} />
+            </div>
+            <div className="space-y-2 flex-1">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                今日导读
+                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-violet-100 text-violet-700 dark:bg-violet-500/20 dark:text-violet-300 border border-violet-200 dark:border-violet-500/30">
+                  AI 生成
+                </span>
+              </h3>
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                {data.ai.overview}
+              </p>
+              <div className="pt-2 flex items-center gap-4 text-xs text-slate-400 dark:text-slate-500">
+                <span className="flex items-center gap-1">
+                  <Bot size={12} />
+                  {data.ai.model}
+                </span>
+                <span>•</span>
+                <span>Processed {data.ai.processed_count} items</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {!hasContent && <EmptyState period="day" />}
 

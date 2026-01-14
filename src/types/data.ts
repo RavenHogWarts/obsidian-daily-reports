@@ -37,9 +37,16 @@ export interface RedditPost extends AIAnalysis {
   content_text: string;
 }
 
+export interface AIOverview {
+  overview: string;
+  model: string;
+  processed_count: number;
+}
+
 export interface DailyReportData {
   date: string;
   generated_at: string;
+  ai?: AIOverview;
   chinese_forum: ForumPost[];
   english_forum: ForumPost[];
   github_opened: PullRequest[];
@@ -55,6 +62,7 @@ export interface WeeklyReportData {
   };
   actual_dates: string[];
   generated_at: string;
+  ai?: AIOverview;
   chinese_forum: ForumPost[];
   english_forum: ForumPost[];
   github_opened: PullRequest[];
