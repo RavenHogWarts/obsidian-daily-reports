@@ -12,9 +12,14 @@ on:
         required: false
         default: false
       date:
-        description: "Target Date (YYYY-MM-DD)"
+        description: "Target Date (YYYY-MM-DD) or Range (YYYY-MM-DD:YYYY-MM-DD)"
         type: string
         required: false
+      overwrite:
+        description: "Overwrite existing AI summaries?"
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   fetch-and-commit:
@@ -43,8 +48,12 @@ jobs:
           # GitHub Actions 自动提供的 Token，有读写权限（如果在 permissions 中声明了）
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ -n "${{ inputs.date }}" ]; then
-            python scripts/obsidian_fetcher.py --date "${{ inputs.date }}"
+          DATE_INPUT="${{ inputs.date }}"
+          # 日期范围模式下跳过 fetch（fetch 只支持单日期）
+          if [[ "$DATE_INPUT" == *":"* ]]; then
+            echo "Date range detected, skipping fetch (fetch only supports single date)"
+          elif [ -n "$DATE_INPUT" ]; then
+            python scripts/obsidian_fetcher.py --date "$DATE_INPUT"
           else
             python scripts/obsidian_fetcher.py
           fi
@@ -53,11 +62,14 @@ jobs:
         env:
           ZHIPU_API_KEY: ${{ secrets.ZHIPU_PLAN_API_KEY }}
         run: |
+          ARGS=""
           if [ -n "${{ inputs.date }}" ]; then
-            python scripts/ai_processor.py --date "${{ inputs.date }}"
-          else
-            python scripts/ai_processor.py
+            ARGS="$ARGS --date ${{ inputs.date }}"
           fi
+          if [ "${{ inputs.overwrite }}" == "true" ]; then
+            ARGS="$ARGS --overwrite"
+          fi
+          python scripts/ai_processor.py $ARGS
 
       - name: Commit and Push changes
         run: |

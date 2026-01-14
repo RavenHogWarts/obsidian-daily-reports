@@ -118,33 +118,50 @@ class AIClientWrapper:
             logger.warning("zai-sdk not installed. specific client features unavailable.")
             self.client = None
 
-    def generate_report(self, prompt: str) -> Optional[Dict[str, Any]]:
-        """Call AI to generate the report."""
+    def chat_completion(self, prompt: str) -> Optional[str]:
+        """Generic chat completion with thinking and streaming support."""
         if not self.client:
             logger.error("Client not initialized.")
             return None
 
-        logger.info(f"Calling ZhipuAI API (Model: {self.model})...")
+        # logger.info(f"Calling ZhipuAI API (Model: {self.model})...")
         try:
-            # Check if using thinking model parameters
-            # Note: For now, using standard create. Adapting based on scripts/test.py insights might happen here.
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
                     {"role": "user", "content": prompt}
                 ],
-                stream=False,
-                # If we wanted to enable thinking:
-                # thinking={"type": "enabled"} 
-                # ensuring the model supports it and we handle response correctly.
+                stream=True,
+                thinking={
+                    "type": "enabled"
+                }
             )
             
-            content = response.choices[0].message.content.strip()
-            return self._clean_json(content)
+            full_content = ""
+            for chunk in response:
+                if chunk.choices:
+                    delta = chunk.choices[0].delta
+                    # Capture reasoning context if available
+                    if getattr(delta, 'reasoning_content', None):
+                        # Use logger.debug to show thinking process if debug is on
+                        logger.debug(f"[Thinking] {delta.reasoning_content}")
+                    
+                    if delta.content:
+                        full_content += delta.content
+            
+            return full_content.strip()
             
         except Exception as e:
             logger.error(f"Error calling AI API: {e}")
             return None
+
+    def generate_report(self, prompt: str) -> Optional[Dict[str, Any]]:
+        """Call AI to generate the report."""
+        logger.info(f"Calling ZhipuAI API (Model: {self.model})...")
+        content = self.chat_completion(prompt)
+        if content:
+            return self._clean_json(content)
+        return None
 
     def _clean_json(self, content: str) -> Optional[Dict[str, Any]]:
         """Clean markdown wrapping and parse JSON."""
@@ -169,31 +186,42 @@ import time
 
 class DailyProcessor:
     ITEM_EVAL_PROMPT = """
-你是一个 Obsidian 社区日报的毒舌而专业的编辑。请分析以下单条内容，并撰写总结。
-**重要：不需要你判断内容的价值，所有给定的内容都需要进行总结和输出，不要丢弃任何内容。**
+你是一个 Obsidian 社区日报的毒舌而专业的编辑。请分析以下单条内容，提炼其对用户的实际价值。
 
-内容来源：{source}
-标题：{title}
-链接：{url}
-正文/描述：
+## 待分析内容
+- 来源：{source}
+- 标题：{title}
+- 链接：{url}
+- 正文/描述：
 {content}
 
-请直接返回以下 JSON 格式（不要 Markdown 代码块）：
+## 写作要求（严格遵守）
+1. **价值导向**：每条亮点必须回答"在什么场景下，能帮用户节省时间/减少挫败/获得愉悦"
+2. **禁止空洞**：严禁使用"更高效"、"更强大"、"更便捷"等空洞形容词，禁止纯功能罗列
+3. **亮点控制**：最多3条，按重要性递减，每条控制在25-35字
+4. **提炼方法**：从功能中提取 “核心价值 → 典型场景 → 具体结果”，只写前两层
+
+## 输出 JSON 格式（不要 Markdown 代码块）
 {{
-  "summary": "一句话中文摘要，切中痛点",
-  "pain_point": "具体解决的痛点（如：图片丢失、同步冲突）",
-  "highlights": ["亮点1（场景+结果）", "亮点2"],
-  "comment": "一两句带情绪的毒舌点评",
-  "tags": ["从列表选1-2个: [新手友好] [效率党] [颜值党] [数据极客] [开发者] [学术党]"],
-  "score": 8
+  "summary": "一句话中文摘要（15-25字），直击用户痛点，避免空洞描述",
+  "pain_point": "具体解决的问题场景（如：多设备同步时图片路径错乱、大文件夹加载卡顿）",
+  "highlights": [
+    "亮点1（25-35字）",
+    "亮点2（25-35字）",
+    "亮点3（25-35字）"
+  ],
+  "comment": "一两句带情绪的毒舌点评，可吐槽也可赞美",
+  "tags": ["1-2个标签，可从参考标签选择，也可根据内容自拟更贴切的标签。参考：新手友好 / 效率党必备 / 颜值党专属 / 数据极客 / 开发者向 / 学术党福音"],
+  "score": 1-10的整数，8分以上需有明确创新或解决高频痛点
 }}
 
-请直接输出 JSON，不要 Markdown 代码块。
+请直接输出 JSON。
 """
 
     OVERVIEW_PROMPT = """
 你是一个 Obsidian 社区日报的毒舌编辑。基于以下今日精选内容，写一段 100 字左右的**毒舌总结**（Overview）。
-风格要求：口语化、辛辣、幽默，像老朋友吐槽一样串联今日亮点。
+** 目的是为用户提供价值导向的社区新鲜事概览，帮助用户快速发现实用分享、节省时间、提升 Obsidian 使用体验。**
+风格要求：口语化、生活化、带情绪感（最爱、上瘾、告别xx、终于可以xx），像老朋友吐槽一样串联今日亮点。
 
 精选内容列表：
 {items_text}
@@ -205,7 +233,7 @@ class DailyProcessor:
         self.ai_client = AIClientWrapper(api_key, model=model_name)
         self.formatter = DataFormatter()
 
-    def process(self, file_path: str):
+    def process(self, file_path: str, overwrite: bool = False):
         start_time = time.time()
         logger.info(f"Target File: {file_path}")
         if not os.path.exists(file_path):
@@ -235,10 +263,11 @@ class DailyProcessor:
         futures = {}
         
         # Adjust max_workers based on account rate limits. 5 is conservative.
-        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        # Reduced to 3 for Thinking Mode compatibility to avoid 429 errors.
+        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
             for item in all_items:
                 # Check if already processed (has summary)
-                if item.get("ai_summary"):
+                if not overwrite and item.get("ai_summary"):
                     logger.info(f"⏭️  Skipping already processed: {item.get('title')[:30]}...")
                     valid_selections.append(item)
                     continue
@@ -246,6 +275,9 @@ class DailyProcessor:
                 # Submit task
                 future = executor.submit(self.evaluate_single_item, item)
                 futures[future] = item
+                
+                # Small delay to avoid burst limits
+                time.sleep(1.0)
 
             processed_count = len(valid_selections) # Start count from already processed
             total_items = len(all_items)
@@ -343,22 +375,17 @@ class DailyProcessor:
         if not self.ai_client.client:
              return "AI Client error."
 
-        try:
-            response = self.ai_client.client.chat.completions.create(
-                model=self.ai_client.model,
-                messages=[{"role": "user", "content": prompt}],
-                stream=False
-            )
-            return response.choices[0].message.content.strip()
-        except Exception as e:
-            logger.error(f"Overview generation failed: {e}")
-            return "生成总结失败。"
+        result = self.ai_client.chat_completion(prompt)
+        if result:
+            return result
+        return "生成总结失败。"
 
 def main():
     parser = argparse.ArgumentParser(description="AI Processor for Obsidian Daily Reports")
-    parser.add_argument("--date", help="Date string YYYY-MM-DD (defaults to yesterday)", default=None)
+    parser.add_argument("--date", help="Date string YYYY-MM-DD or range YYYY-MM-DD:YYYY-MM-DD (defaults to yesterday)", default=None)
     parser.add_argument("--file", help="Specific file path to process", default=None)
     parser.add_argument("--model", help="AI Model to use", default="glm-4.7")
+    parser.add_argument("--overwrite", action="store_true", help="Overwrite existing AI summaries")
     args = parser.parse_args()
 
     api_key = os.environ.get("ZHIPU_API_KEY")
@@ -368,16 +395,53 @@ def main():
 
     processor = DailyProcessor(api_key, model_name=args.model)
 
-    if args.file:
-        file_path = args.file
-    else:
-        date_str = args.date if args.date else DateUtils.get_yesterday_str()
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(script_dir)
-        data_dir = os.path.join(project_root, "data", "daily")
-        file_path = os.path.join(data_dir, f"{date_str}.json")
+    files_to_process = []
+    
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    data_dir = os.path.join(project_root, "data", "daily")
 
-    processor.process(file_path)
+    if args.file:
+        files_to_process.append(args.file)
+    else:
+        date_input = args.date if args.date else DateUtils.get_yesterday_str()
+        
+        # Check for range format "YYYY-MM-DD:YYYY-MM-DD"
+        if ":" in date_input:
+            try:
+                start_str, end_str = date_input.split(":")
+                start = datetime.datetime.strptime(start_str, "%Y-%m-%d").date()
+                end = datetime.datetime.strptime(end_str, "%Y-%m-%d").date()
+                
+                if start > end:
+                    logger.error("Start date must be before end date.")
+                    return
+
+                current = start
+                while current <= end:
+                    date_str = current.isoformat()
+                    f_path = os.path.join(data_dir, f"{date_str}.json")
+                    files_to_process.append(f_path)
+                    current += datetime.timedelta(days=1)
+            except ValueError:
+                logger.error("Invalid date range format. Please use YYYY-MM-DD:YYYY-MM-DD.")
+                return
+        else:
+            # Single date input or default yesterday
+            files_to_process.append(os.path.join(data_dir, f"{date_input}.json"))
+
+    total_files = len(files_to_process)
+    logger.info(f"Files to process: {total_files}")
+    
+    for idx, file_path in enumerate(files_to_process, 1):
+        logger.info(f"=== Processing file {idx}/{total_files} ===")
+        processor.process(file_path, overwrite=args.overwrite)
+        
+        # Add cooldown between files to avoid rate limiting
+        if idx < total_files:
+            cooldown = 5  # seconds
+            logger.info(f"Cooldown {cooldown}s before next file...")
+            time.sleep(cooldown)
 
 if __name__ == "__main__":
     main()
