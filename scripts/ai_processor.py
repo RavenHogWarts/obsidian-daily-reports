@@ -191,7 +191,7 @@ class RateLimiter:
     线程安全的速率限制器（令牌桶算法）。
     确保并发环境下 API 请求速率不超过限制。
     """
-    def __init__(self, max_concurrent: int = 2, min_interval: float = 2.0):
+    def __init__(self, max_concurrent: int = 3, min_interval: float = 2.0):
         """
         Args:
             max_concurrent: 最大同时执行的请求数
@@ -269,7 +269,7 @@ class DailyProcessor:
         self.formatter = DataFormatter()
         # 速率限制器：最多2个并发请求，每次请求间隔至少2秒
         # Thinking模式下API对并发非常敏感，需要更保守的设置
-        self.rate_limiter = RateLimiter(max_concurrent=2, min_interval=2.0)
+        self.rate_limiter = RateLimiter(max_concurrent=3, min_interval=2.0)
 
     def process(self, file_path: str, overwrite: bool = False):
         start_time = time.time()
