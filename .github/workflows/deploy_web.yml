@@ -25,54 +25,33 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: web
-          path: web
           fetch-depth: 0
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN || github.token }}
 
-      - name: Checkout master branch (data source)
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          path: master
-          fetch-depth: 1
-
-      - name: Sync data to web branch
-        run: |
-          echo "Syncing data from master to web/public/data..."
-
-          # Create target directory
-          mkdir -p web/public/data
-
-          # Remove existing data to handle deletions/renames
-          # But be careful not to delete .gitkeep if it exists (glob handles files)
-          rm -rf web/public/data/daily
-          rm -rf web/public/data/weekly
-
-          # Copy new data
-          if [ -d "master/data/daily" ]; then
-            cp -r master/data/daily web/public/data/
-          fi
-
-          if [ -d "master/data/weekly" ]; then
-            cp -r master/data/weekly web/public/data/
-          fi
-
-          echo "Data sync complete."
-          ls -R web/public/data
-
-      - name: Commit and Push changes
-        working-directory: web
+      - name: Setup Git
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-          git add public/data
-
-          # Check if there are changes to commit
-          if git diff --staged --quiet; then
-            echo "No data changes detected. Skipping commit."
+      # 使用 git subtree 从 master 分支同步 data 目录
+      # 这样数据不会被重复存储，而是直接引用
+      - name: Sync data using git subtree
+        run: |
+          echo "Syncing data from master branch using git subtree..."
+          
+          # 添加 master 作为远程（如果尚未添加）
+          git remote add master-branch https://github.com/${{ github.repository }}.git 2>/dev/null || true
+          git fetch master-branch master
+          
+          # 使用 subtree pull 来同步 data 目录
+          # 如果第一次使用，需要先 add
+          if [ ! -d "public/data" ]; then
+            git subtree add --prefix=public/data master-branch master:data --squash
           else
-            git commit -m "chore: sync data from master"
-            # Use specific branch to avoid ambiguity
-            git push origin web
+            git subtree pull --prefix=public/data master-branch master:data --squash -m "chore: sync data from master"
           fi
+
+      - name: Push changes
+        run: |
+          # subtree pull 已经创建了commit，直接push
+          git push origin web || echo "No changes to push"
