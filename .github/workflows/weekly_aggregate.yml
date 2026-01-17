@@ -2,8 +2,8 @@ name: Weekly Obsidian Report Aggregator
 
 on:
   schedule:
-    # 每周一 UTC 1:00 运行 (北京时间 9:05)
-    - cron: "5 1 * * 1"
+    # 每周一 UTC 1:00 运行 (北京时间 9:00)
+    - cron: "1 0 * * 1"
   workflow_dispatch: # 允许手动触发
     inputs:
       week:
