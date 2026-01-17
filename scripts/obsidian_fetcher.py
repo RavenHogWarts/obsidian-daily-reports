@@ -386,7 +386,7 @@ def main():
     output_file = os.path.join(data_dir, filename)
     
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(all_data, f, indent=2, ensure_ascii=False)
+        json.dump(all_data, f, ensure_ascii=False, separators=(',', ':'))
         
     print(f"\n✅ Data collection complete. Saved to {output_file}")
     
