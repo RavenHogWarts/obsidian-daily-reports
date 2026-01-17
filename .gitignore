@@ -1,6 +1,2 @@
 docs
-node_modules
-.vite
-dist
 __pycache__
-src/data-index.json
