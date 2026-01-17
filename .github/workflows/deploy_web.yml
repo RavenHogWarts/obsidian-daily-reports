@@ -28,30 +28,53 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN || github.token }}
 
+      - name: Checkout master branch (data source)
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: master
+          fetch-depth: 1
+
       - name: Setup Git
+        working-directory: web
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      # 使用 git subtree 从 master 分支同步 data 目录
-      # 这样数据不会被重复存储，而是直接引用
-      - name: Sync data using git subtree
+      - name: Incremental sync data with rsync
         run: |
-          echo "Syncing data from master branch using git subtree..."
+          echo "Incrementally syncing data from master to web/public/data..."
           
-          # 添加 master 作为远程（如果尚未添加）
-          git remote add master-branch https://github.com/${{ github.repository }}.git 2>/dev/null || true
-          git fetch master-branch master
+          # 创建目标目录
+          mkdir -p web/public/data
           
-          # 使用 subtree pull 来同步 data 目录
-          # 如果第一次使用，需要先 add
-          if [ ! -d "public/data" ]; then
-            git subtree add --prefix=public/data master-branch master:data --squash
-          else
-            git subtree pull --prefix=public/data master-branch master:data --squash -m "chore: sync data from master"
-          fi
+          # 使用 rsync 进行增量同步
+          # -a: 归档模式（保留权限、时间戳）
+          # -v: 详细输出
+          # --delete: 删除目标中源中不存在的文件
+          # --checksum: 基于校验和判断文件是否更改（只同步内容真正改变的文件）
+          rsync -av --delete --checksum master/data/ web/public/data/
+          
+          echo "✅ Data sync complete."
+          echo "Synced directory structure:"
+          ls -R web/public/data | head -20
 
-      - name: Push changes
+      - name: Commit and Push changes
+        working-directory: web
         run: |
-          # subtree pull 已经创建了commit，直接push
-          git push origin web || echo "No changes to push"
+          git add public/data
+
+          # 检查是否有变更
+          if git diff --staged --quiet; then
+            echo "No data changes detected. Skipping commit."
+          else
+            # 获取触发此workflow的commit信息（如果有）
+            TRIGGER_SHA="${{ github.event.workflow_run.head_sha }}"
+            if [ -n "$TRIGGER_SHA" ]; then
+              git commit -m "chore: sync data from master@${TRIGGER_SHA:0:7}"
+            else
+              git commit -m "chore: sync data from master"
+            fi
+            git push origin web
+            echo "✅ Changes pushed to web branch"
+          fi
