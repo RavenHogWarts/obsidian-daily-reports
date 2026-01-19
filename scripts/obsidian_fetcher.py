@@ -242,61 +242,70 @@ def fetch_github_prs(repo_name, start_time, end_time):
     Fetch PRs created or merged yesterday from a GitHub repo.
     """
     print(f"🔍 [GitHub] Checking {repo_name} for PRs...")
-    # 获取 Open 和 Closed 的 PR (state=all)
-    url = f"https://api.github.com/repos/{repo_name}/pulls?state=all&sort=created&direction=desc&per_page=50"
-    data = get_json(url, headers=GITHUB_HEADERS)
     
-    if not data:
-        print(f"❌ [GitHub] Failed to fetch PRs.")
-        return [], []
-
     opened_prs = []
     merged_prs = []
     
-    for pr in data:
-        # 检查创建时间
-        created_at_str = pr.get('created_at')
-        created_at = parse_iso_time(created_at_str)
-        
-        # 检查合并时间
-        merged_at_str = pr.get('merged_at')
-        merged_at = parse_iso_time(merged_at_str)
-        
-        # 处理昨日创建 (Opened Yesterday)
-        if created_at and start_time <= created_at <= end_time:
-            # 过滤掉已关闭且未合并的 PR (忽略废弃/重复提交)
-            # Filter out closed and unmerged PRs (Ignore abandoned/duplicate submissions)
-            state = pr.get('state')
-            is_merged = pr.get('merged_at') is not None
+    # 1. 获取昨日创建的 PR (按创建时间排序)
+    print(f"  📝 Fetching newly created PRs...")
+    url_created = f"https://api.github.com/repos/{repo_name}/pulls?state=all&sort=created&direction=desc&per_page=50"
+    data_created = get_json(url_created, headers=GITHUB_HEADERS)
+    
+    if data_created:
+        for pr in data_created:
+            created_at_str = pr.get('created_at')
+            created_at = parse_iso_time(created_at_str)
             
-            if state == 'closed' and not is_merged:
-                print(f"  🗑️ Skipped (Closed & Unmerged): {pr.get('title')}")
+            # 处理昨日创建 (Opened Yesterday)
+            if created_at and start_time <= created_at <= end_time:
+                # 过滤掉已关闭且未合并的 PR
+                state = pr.get('state')
+                is_merged = pr.get('merged_at') is not None
+                
+                if state == 'closed' and not is_merged:
+                    print(f"  🗑️ Skipped (Closed & Unmerged): {pr.get('title')}")
+                    continue
+
+                opened_prs.append({
+                    "source": "GitHub Open",
+                    "title": pr.get('title'),
+                    "url": pr.get('html_url'),
+                    "author": pr.get('user', {}).get('login'),
+                    "created_at": created_at_str,
+                    "body": pr.get('body'),
+                    "state": state
+                })
+                print(f"  ✨ Opened: {pr.get('title')}")
+    
+    # 2. 获取昨日合并的 PR (按更新时间排序，因为合并会更新 updated_at)
+    print(f"  🔀 Fetching merged PRs...")
+    url_merged = f"https://api.github.com/repos/{repo_name}/pulls?state=closed&sort=updated&direction=desc&per_page=100"
+    data_merged = get_json(url_merged, headers=GITHUB_HEADERS)
+    
+    if data_merged:
+        for pr in data_merged:
+            merged_at_str = pr.get('merged_at')
+            if not merged_at_str:  # 跳过未合并的已关闭 PR
                 continue
-
-            opened_prs.append({
-                "source": "GitHub Open",
-                "title": pr.get('title'),
-                "url": pr.get('html_url'),
-                "author": pr.get('user', {}).get('login'),
-                "created_at": created_at_str,
-                "body": pr.get('body'), # PR 描述
-                "state": state
-            })
-            print(f"  ✨ Opened: {pr.get('title')}")
+                
+            merged_at = parse_iso_time(merged_at_str)
             
-        # 处理昨日合并 (Merged Yesterday)
-        if merged_at and start_time <= merged_at <= end_time:
-            merged_prs.append({
-                "source": "GitHub Merged",
-                "title": pr.get('title'),
-                "url": pr.get('html_url'),
-                "author": pr.get('user', {}).get('login'),
-                "merged_at": merged_at_str,
-                "body": pr.get('body'),
-                "state": "merged"
-            })
-            print(f"  🚀 Merged: {pr.get('title')}")
+            # 处理昨日合并 (Merged Yesterday)
+            if merged_at and start_time <= merged_at <= end_time:
+                merged_prs.append({
+                    "source": "GitHub Merged",
+                    "title": pr.get('title'),
+                    "url": pr.get('html_url'),
+                    "author": pr.get('user', {}).get('login'),
+                    "merged_at": merged_at_str,
+                    "body": pr.get('body'),
+                    "state": "merged"
+                })
+                print(f"  🚀 Merged: {pr.get('title')}")
 
+    if not data_created and not data_merged:
+        print(f"❌ [GitHub] Failed to fetch PRs.")
+    
     return opened_prs, merged_prs
 
 import argparse
