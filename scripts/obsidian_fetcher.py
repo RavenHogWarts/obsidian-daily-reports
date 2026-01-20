@@ -247,6 +247,10 @@ def fetch_github_prs(repo_name, start_time, end_time):
     opened_prs = []
     merged_prs = []
     
+    # 用于去重的集合：存储 (author, title) 组合
+    # 防止同一作者重复提交相同标题的PR（如 #1000 和 #1001）
+    seen_opened_submissions = set()
+    
     # 格式化日期用于搜索 (GitHub Search API 格式: YYYY-MM-DD)
     target_date = start_time.date().isoformat()
     
@@ -270,16 +274,26 @@ def fetch_github_prs(repo_name, start_time, end_time):
                     print(f"  🗑️ Skipped (Closed & Unmerged): {pr.get('title')}")
                     continue
 
+                # 去重检查：防止同一作者重复提交相同插件/主题
+                author = pr.get('user', {}).get('login')
+                title = pr.get('title')
+                submission_key = (author, title)
+                
+                if submission_key in seen_opened_submissions:
+                    print(f"  ⚠️  Duplicate submission by {author}: {title}")
+                    continue
+                
+                seen_opened_submissions.add(submission_key)
                 opened_prs.append({
                     "source": "GitHub Open",
-                    "title": pr.get('title'),
+                    "title": title,
                     "url": pr.get('html_url'),
-                    "author": pr.get('user', {}).get('login'),
+                    "author": author,
                     "created_at": created_at_str,
                     "body": pr.get('body'),
                     "state": state
                 })
-                print(f"  ✨ Opened: {pr.get('title')}")
+                print(f"  ✨ Opened: {title}")
     
     # 2. 使用 Search API 直接搜索昨日合并的 PR
     print(f"  🔀 Fetching merged PRs using Search API...")
@@ -303,6 +317,7 @@ def fetch_github_prs(repo_name, start_time, end_time):
             
             # 二次验证时间范围（Search API 的日期粒度是天级别）
             if merged_at and start_time <= merged_at <= end_time:
+                # Merged PR 不需要去重，因为官方审核时会拒绝重复提交
                 merged_prs.append({
                     "source": "GitHub Merged",
                     "title": pr.get('title'),
@@ -329,6 +344,7 @@ def fetch_github_prs(repo_name, start_time, end_time):
                 merged_at = parse_iso_time(merged_at_str)
                 
                 if merged_at and start_time <= merged_at <= end_time:
+                    # 分页数据，Merged PR 不需要去重
                     merged_prs.append({
                         "source": "GitHub Merged",
                         "title": pr.get('title'),
@@ -342,6 +358,10 @@ def fetch_github_prs(repo_name, start_time, end_time):
 
     if not data_created and not search_result:
         print(f"❌ [GitHub] Failed to fetch PRs.")
+    
+    # 输出去重统计
+    print(f"  ✅ Total unique opened PRs: {len(opened_prs)}")
+    print(f"  ✅ Total unique merged PRs: {len(merged_prs)}")
     
     return opened_prs, merged_prs
 
