@@ -11,12 +11,32 @@ on:
         type: boolean
         required: false
         default: false
+      skip_analysis:
+        description: "Skip Item AI Analysis?"
+        type: boolean
+        required: false
+        default: false
+      skip_overview:
+        description: "Skip Overview Generation?"
+        type: boolean
+        required: false
+        default: false
       date:
         description: "Target Date (YYYY-MM-DD) or Range (YYYY-MM-DD:YYYY-MM-DD)"
         type: string
         required: false
-      overwrite:
-        description: "Overwrite existing AI summaries?"
+      overwrite_items:
+        description: "Overwrite existing item AI analysis?"
+        type: boolean
+        required: false
+        default: false
+      overwrite_overview:
+        description: "Overwrite existing overview?"
+        type: boolean
+        required: false
+        default: false
+      overwrite_all:
+        description: "Overwrite all AI content?"
         type: boolean
         required: false
         default: false
@@ -63,12 +83,32 @@ jobs:
           ZHIPU_API_KEY: ${{ secrets.ZHIPU_PLAN_API_KEY }}
         run: |
           ARGS=""
+          
+          # 日期参数
           if [ -n "${{ inputs.date }}" ]; then
             ARGS="$ARGS --date ${{ inputs.date }}"
           fi
-          if [ "${{ inputs.overwrite }}" == "true" ]; then
-            ARGS="$ARGS --overwrite"
+          
+          # 处理步骤控制
+          if [ "${{ inputs.skip_analysis }}" == "true" ]; then
+            ARGS="$ARGS --skip-analysis"
           fi
+          if [ "${{ inputs.skip_overview }}" == "true" ]; then
+            ARGS="$ARGS --skip-overview"
+          fi
+          
+          # 覆盖策略控制
+          if [ "${{ inputs.overwrite_all }}" == "true" ]; then
+            ARGS="$ARGS --overwrite-all"
+          else
+            if [ "${{ inputs.overwrite_items }}" == "true" ]; then
+              ARGS="$ARGS --overwrite-items"
+            fi
+            if [ "${{ inputs.overwrite_overview }}" == "true" ]; then
+              ARGS="$ARGS --overwrite-overview"
+            fi
+          fi
+          
           python scripts/ai_daily_processor.py $ARGS
 
       - name: Commit and Push changes

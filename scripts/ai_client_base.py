@@ -24,7 +24,7 @@ class RateLimiter:
     线程安全的速率限制器（令牌桶算法）。
     确保并发环境下 API 请求速率不超过限制。
     """
-    def __init__(self, max_concurrent: int = 3, min_interval: float = 2.0):
+    def __init__(self, max_concurrent: int = 3, min_interval: float = 5.0):
         """
         Args:
             max_concurrent: 最大同时执行的请求数
