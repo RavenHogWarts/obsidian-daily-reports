@@ -3,6 +3,7 @@ import { Sparkles, Bot } from 'lucide-react';
 import { useDailyData } from '../hooks/useData';
 import type { ForumPost, PullRequest, RedditPost } from '../types/data';
 import { getSummary, detectProjectType } from '../utils/textUtils';
+import type { TocSection } from '../hooks/useTableOfContents';
 import {
   Badge,
   CalloutCard,
@@ -11,7 +12,8 @@ import {
   ErrorMessage,
   EmptyState,
   ReportHeader,
-  ReportFooter
+  ReportFooter,
+  ReportLayout
 } from '../components/report';
 
 const DailyReport = () => {
@@ -38,8 +40,77 @@ const DailyReport = () => {
   const totalPRs = (data.github_opened?.length || 0) + (data.github_merged?.length || 0);
   const hasContent = totalForum + totalReddit + totalPRs > 0;
 
+  // 构建 TOC 章节
+  const tocSections: TocSection[] = [];
+  
+  if (data.ai?.overview) {
+    tocSections.push({
+      id: 'ai-overview',
+      label: '今日导读',
+      icon: '✨',
+    });
+  }
+  
+  if (totalForum > 0) {
+    const forumChildren = [
+      ...(data.english_forum || []).map((post, idx) => ({
+        id: `forum-en-${idx}`,
+        label: post.title
+      })),
+      ...(data.chinese_forum || []).map((post, idx) => ({
+        id: `forum-cn-${idx}`,
+        label: post.title
+      }))
+    ];
+    
+    tocSections.push({
+      id: 'community-forum',
+      label: 'Community Forum',
+      icon: '💬',
+      count: totalForum,
+      children: forumChildren
+    });
+  }
+  
+  if (totalPRs > 0) {
+    const prChildren = [
+      ...(data.github_merged || []).map((pr, idx) => ({
+        id: `pr-merged-${idx}`,
+        label: pr.title
+      })),
+      ...(data.github_opened || []).map((pr, idx) => ({
+        id: `pr-opened-${idx}`,
+        label: pr.title
+      }))
+    ];
+    
+    tocSections.push({
+      id: 'development-activity',
+      label: 'Development Activity',
+      icon: '🛠️',
+      count: totalPRs,
+      children: prChildren
+    });
+  }
+  
+  if (totalReddit > 0) {
+    const redditChildren = (data.reddit || []).map((post, idx) => ({
+      id: `reddit-${idx}`,
+      label: post.title
+    }));
+    
+    tocSections.push({
+      id: 'reddit-highlights',
+      label: 'Reddit Highlights',
+      icon: '🔴',
+      count: totalReddit,
+      children: redditChildren
+    });
+  }
+
   return (
-    <div className="max-w-5xl mx-auto px-6 py-8">
+    <ReportLayout tocSections={tocSections}>
+      <div>
       <Breadcrumb currentPage="Daily Report" />
 
       <ReportHeader 
@@ -52,7 +123,7 @@ const DailyReport = () => {
       />
 
       {data.ai?.overview && (
-        <div className="mb-10 p-6 rounded-2xl bg-linear-to-br from-violet-50/50 to-fuchsia-50/50 dark:from-violet-900/10 dark:to-fuchsia-900/10 border border-violet-100 dark:border-violet-800/30 shadow-sm">
+        <div id="ai-overview" className="mb-10 p-6 rounded-2xl bg-linear-to-br from-violet-50/50 to-fuchsia-50/50 dark:from-violet-900/10 dark:to-fuchsia-900/10 border border-violet-100 dark:border-violet-800/30 shadow-sm scroll-mt-24">
           <div className="flex items-start gap-4">
             <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm ring-1 ring-slate-900/5 text-violet-600 dark:text-violet-400">
               <Sparkles size={24} />
@@ -85,7 +156,7 @@ const DailyReport = () => {
       <div className="flex flex-col gap-16">
         {/* Community Forum */}
         {(data.english_forum?.length > 0 || data.chinese_forum?.length > 0) && (
-          <section>
+          <section id="community-forum" className="scroll-mt-24">
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 💬 Community Forum
             </h2>
@@ -93,6 +164,7 @@ const DailyReport = () => {
                 {data.english_forum?.map((post: ForumPost, idx: number) => (
                     <CalloutCard 
                         key={`en-${idx}`}
+                        id={`forum-en-${idx}`}
                         type="forum"
                         title={post.title}
                         summary={getSummary(post.content_html)}
@@ -105,6 +177,7 @@ const DailyReport = () => {
                 {data.chinese_forum?.map((post: ForumPost, idx: number) => (
                     <CalloutCard 
                         key={`cn-${idx}`}
+                        id={`forum-cn-${idx}`}
                         type="forum"
                         title={post.title}
                         summary={getSummary(post.content_html)}
@@ -120,7 +193,7 @@ const DailyReport = () => {
 
         {/* Development Activity */}
         {(data.github_merged?.length > 0 || data.github_opened?.length > 0) && (
-          <section>
+          <section id="development-activity" className="scroll-mt-24">
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 🛠️ Development Activity
             </h2>
@@ -130,6 +203,7 @@ const DailyReport = () => {
                     return (
                     <CalloutCard 
                         key={`merged-${idx}`}
+                        id={`pr-merged-${idx}`}
                         type="merged"
                         title={pr.title}
                         summary={getSummary(pr.body)}
@@ -148,6 +222,7 @@ const DailyReport = () => {
                     return (
                     <CalloutCard 
                         key={`opened-${idx}`}
+                        id={`pr-opened-${idx}`}
                         type="pr"
                         title={pr.title}
                         summary={getSummary(pr.body)}
@@ -169,7 +244,7 @@ const DailyReport = () => {
 
         {/* Reddit */}
         {data.reddit?.length > 0 && (
-          <section>
+          <section id="reddit-highlights" className="scroll-mt-24">
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3">
                 🔴 Reddit Highlights
             </h2>
@@ -177,6 +252,7 @@ const DailyReport = () => {
                 {data.reddit.map((post: RedditPost, idx: number) => (
                     <CalloutCard 
                         key={`reddit-${idx}`}
+                        id={`reddit-${idx}`}
                         type="reddit"
                         title={post.title}
                         summary={getSummary(post.content_text)}
@@ -193,6 +269,7 @@ const DailyReport = () => {
       
       <ReportFooter />
     </div>
+    </ReportLayout>
   );
 };
 

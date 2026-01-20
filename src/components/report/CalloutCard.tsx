@@ -4,6 +4,7 @@ import type { AIAnalysis } from '../../types/data';
 import { Badge } from '.';
 
 export interface CalloutCardProps {
+  id?: string; // 卡片唯一标识符，用于 TOC 导航
   title: string;
   summary?: string;
   meta: React.ReactNode;
@@ -17,6 +18,7 @@ export interface CalloutCardProps {
  * CalloutCard Component - Displays posts, PRs, Reddit items with AI insights
  */
 export const CalloutCard: React.FC<CalloutCardProps> = ({ 
+  id,
   title, 
   summary, 
   meta, 
@@ -32,9 +34,11 @@ export const CalloutCard: React.FC<CalloutCardProps> = ({
 
   return (
     <div 
+      id={id}
       className={`callout group relative rounded-xl overflow-hidden flex flex-col h-full 
         transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 
-        border border-slate-200 dark:border-slate-800 shadow-sm ${s.bgClass}`}
+        border border-slate-200 dark:border-slate-800 shadow-sm ${s.bgClass}
+        scroll-mt-24`}
     >
       {/* Header */}
       <div className={`callout-header flex items-center gap-2.5 px-5 py-3 text-base font-semibold ${s.headerBgClass}`}>

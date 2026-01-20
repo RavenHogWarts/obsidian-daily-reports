@@ -7,3 +7,5 @@ export { ErrorMessage, type ErrorMessageProps } from "./ErrorMessage";
 export { EmptyState, type EmptyStateProps } from "./EmptyState";
 export { ReportHeader, type ReportHeaderProps } from "./ReportHeader";
 export { ReportFooter, type ReportFooterProps } from "./ReportFooter";
+export { TableOfContents, type TableOfContentsProps } from "./TableOfContents";
+export { ReportLayout, type ReportLayoutProps } from "./ReportLayout";
