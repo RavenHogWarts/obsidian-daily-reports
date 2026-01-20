@@ -10,6 +10,11 @@ on:
         description: "指定 ISO 周 (格式: YYYY-Www，如 2026-W02)，留空则聚合上周"
         required: false
         type: string
+      overwrite:
+        description: "Overwrite existing AI summaries?"
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   aggregate-and-commit:
@@ -28,6 +33,10 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
       - name: Run Weekly Aggregator Script
         run: |
           if [ -n "${{ github.event.inputs.week }}" ]; then
@@ -35,6 +44,19 @@ jobs:
           else
             python scripts/weekly_aggregator.py
           fi
+
+      - name: Run Weekly AI Processor
+        env:
+          ZHIPU_API_KEY: ${{ secrets.ZHIPU_PLAN_API_KEY }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.week }}" ]; then
+            ARGS="$ARGS --week ${{ github.event.inputs.week }}"
+          fi
+          if [ "${{ github.event.inputs.overwrite }}" == "true" ]; then
+            ARGS="$ARGS --overwrite"
+          fi
+          python scripts/ai_weekly_processor.py $ARGS
 
       - name: Commit and Push changes
         run: |

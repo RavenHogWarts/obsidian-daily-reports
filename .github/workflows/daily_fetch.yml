@@ -58,7 +58,7 @@ jobs:
             python scripts/obsidian_fetcher.py
           fi
 
-      - name: Run AI Processor
+      - name: Run Daily AI Processor
         env:
           ZHIPU_API_KEY: ${{ secrets.ZHIPU_PLAN_API_KEY }}
         run: |
@@ -69,7 +69,7 @@ jobs:
           if [ "${{ inputs.overwrite }}" == "true" ]; then
             ARGS="$ARGS --overwrite"
           fi
-          python scripts/ai_processor.py $ARGS
+          python scripts/ai_daily_processor.py $ARGS
 
       - name: Commit and Push changes
         run: |
