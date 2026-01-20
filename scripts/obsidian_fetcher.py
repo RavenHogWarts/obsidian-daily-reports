@@ -1,5 +1,6 @@
 import urllib.request
 import urllib.error
+import urllib.parse
 import json
 import datetime
 import os
@@ -246,9 +247,12 @@ def fetch_github_prs(repo_name, start_time, end_time):
     opened_prs = []
     merged_prs = []
     
+    # 格式化日期用于搜索 (GitHub Search API 格式: YYYY-MM-DD)
+    target_date = start_time.date().isoformat()
+    
     # 1. 获取昨日创建的 PR (按创建时间排序)
     print(f"  📝 Fetching newly created PRs...")
-    url_created = f"https://api.github.com/repos/{repo_name}/pulls?state=all&sort=created&direction=desc&per_page=50"
+    url_created = f"https://api.github.com/repos/{repo_name}/pulls?state=all&sort=created&direction=desc&per_page=100"
     data_created = get_json(url_created, headers=GITHUB_HEADERS)
     
     if data_created:
@@ -277,20 +281,27 @@ def fetch_github_prs(repo_name, start_time, end_time):
                 })
                 print(f"  ✨ Opened: {pr.get('title')}")
     
-    # 2. 获取昨日合并的 PR (按更新时间排序，因为合并会更新 updated_at)
-    print(f"  🔀 Fetching merged PRs...")
-    url_merged = f"https://api.github.com/repos/{repo_name}/pulls?state=closed&sort=updated&direction=desc&per_page=100"
-    data_merged = get_json(url_merged, headers=GITHUB_HEADERS)
+    # 2. 使用 Search API 直接搜索昨日合并的 PR
+    print(f"  🔀 Fetching merged PRs using Search API...")
+    # Search query: is:pr is:merged repo:xxx merged:YYYY-MM-DD
+    search_query = f"is:pr is:merged repo:{repo_name} merged:{target_date}"
+    url_search = f"https://api.github.com/search/issues?q={urllib.parse.quote(search_query)}&sort=updated&order=desc&per_page=100"
     
-    if data_merged:
-        for pr in data_merged:
-            merged_at_str = pr.get('merged_at')
-            if not merged_at_str:  # 跳过未合并的已关闭 PR
+    search_result = get_json(url_search, headers=GITHUB_HEADERS)
+    
+    if search_result and 'items' in search_result:
+        for pr in search_result['items']:
+            # Search API 返回的是 issue 格式，需要获取 PR 详情来得到 merged_at
+            # 但我们可以从 pull_request 字段获取信息
+            if 'pull_request' not in pr:
                 continue
-                
+            
+            # 直接从搜索结果获取基本信息
+            # 注意：Search API 的 closed_at 对于 merged PR 就是 merged_at
+            merged_at_str = pr.get('closed_at')  # 对于merged的PR，closed_at就是merged时间
             merged_at = parse_iso_time(merged_at_str)
             
-            # 处理昨日合并 (Merged Yesterday)
+            # 二次验证时间范围（Search API 的日期粒度是天级别）
             if merged_at and start_time <= merged_at <= end_time:
                 merged_prs.append({
                     "source": "GitHub Merged",
@@ -302,8 +313,34 @@ def fetch_github_prs(repo_name, start_time, end_time):
                     "state": "merged"
                 })
                 print(f"  🚀 Merged: {pr.get('title')}")
+    
+    # 3. 如果 Search API 结果超过100条，尝试分页获取更多（最多2页）
+    if search_result and search_result.get('total_count', 0) > 100:
+        print(f"  📄 Found {search_result['total_count']} merged PRs, fetching page 2...")
+        url_search_page2 = f"{url_search}&page=2"
+        search_result_page2 = get_json(url_search_page2, headers=GITHUB_HEADERS)
+        
+        if search_result_page2 and 'items' in search_result_page2:
+            for pr in search_result_page2['items']:
+                if 'pull_request' not in pr:
+                    continue
+                
+                merged_at_str = pr.get('closed_at')
+                merged_at = parse_iso_time(merged_at_str)
+                
+                if merged_at and start_time <= merged_at <= end_time:
+                    merged_prs.append({
+                        "source": "GitHub Merged",
+                        "title": pr.get('title'),
+                        "url": pr.get('html_url'),
+                        "author": pr.get('user', {}).get('login'),
+                        "merged_at": merged_at_str,
+                        "body": pr.get('body'),
+                        "state": "merged"
+                    })
+                    print(f"  🚀 Merged (Page 2): {pr.get('title')}")
 
-    if not data_created and not data_merged:
+    if not data_created and not search_result:
         print(f"❌ [GitHub] Failed to fetch PRs.")
     
     return opened_prs, merged_prs
