@@ -40,13 +40,25 @@ export interface RedditPost extends AIAnalysis {
 export interface AIOverview {
   overview: string;
   model: string;
+}
+
+export interface DailyAIOverview extends AIOverview {
   processed_count: number;
 }
+
+export interface WeeklyAIOverview extends AIOverview {
+  total_items: number;
+  selected_count: number;
+  high_score_items: number;
+  average_score: number;
+  top_tags: { tag: string; count: number }[];
+}
+
 
 export interface DailyReportData {
   date: string;
   generated_at: string;
-  ai?: AIOverview;
+  ai?: DailyAIOverview;
   chinese_forum: ForumPost[];
   english_forum: ForumPost[];
   github_opened: PullRequest[];
@@ -62,7 +74,7 @@ export interface WeeklyReportData {
   };
   actual_dates: string[];
   generated_at: string;
-  ai?: AIOverview;
+  ai?: WeeklyAIOverview;
   chinese_forum: ForumPost[];
   english_forum: ForumPost[];
   github_opened: PullRequest[];
