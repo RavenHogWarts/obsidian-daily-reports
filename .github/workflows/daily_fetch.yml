@@ -79,6 +79,8 @@ jobs:
           fi
 
       - name: Run Daily AI Processor
+        # 临时禁用：GLM 速率限制较严格，先暂停 AI 处理步骤
+        if: ${{ false }}
         env:
           ZHIPU_API_KEY: ${{ secrets.ZHIPU_PLAN_API_KEY }}
         run: |

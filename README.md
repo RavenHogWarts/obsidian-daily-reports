@@ -2,6 +2,11 @@
 
 A lightweight, automated tool to fetch and aggregate daily updates from the Obsidian ecosystem. This project is designed to run automatically via GitHub Actions to generate a daily snapshot of community activities in JSON format.
 
+> ⚠️ Temporary Status
+>
+> Due to GLM API rate limits, the AI processing step in GitHub Actions is currently disabled.
+> Data fetching and local manual runs are still available.
+
 ## 🚀 Features
 
 - **Multi-Source Aggregation**: Fetches data from multiple key Obsidian community platforms:
@@ -65,6 +70,9 @@ The workflow is automatically scheduled to run every day. It will:
 1. Fetch the data for the **previous day** (UTC).
 2. Save the JSON report.
 3. Automatically commit and push the new file to the repository.
+
+Current limitation:
+- The `Run Daily AI Processor` step is temporarily disabled because of GLM rate limiting.
 
 ## 📄 Output Format
 
